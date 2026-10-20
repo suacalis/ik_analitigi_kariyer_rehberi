@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adım 5: Tutkunu Hizala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--bad:#c0392b;--shadow:0 2px 14px rgba(11,58,140,.08)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1040px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:740px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:100px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+.quote{background:var(--soft);border-radius:12px;padding:16px 22px;margin:16px 0;font-style:italic;text-align:center}
+.quote b{display:block;font-style:normal;font-family:Raleway;font-size:14px;color:var(--muted);margin-top:6px}
+.story{border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0;background:color-mix(in srgb,var(--soft) 40%,var(--card))}
+.story .h{font-family:Raleway;font-weight:800;color:var(--navy2);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn.sm{padding:4px 10px;font-size:12px}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,.chip:focus-visible,.seg button:focus-visible,.opt:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chip{font-family:Raleway;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--card);color:var(--muted);font-family:Raleway;font-weight:700;font-size:12px;padding:6px 11px;cursor:pointer}
+.seg button.on{background:var(--navy2);color:#fff}
+.seg button.on[data-v="g"]{background:var(--ok)}
+.seg button.on[data-v="y"]{background:var(--warn)}
+.seg button.on[data-v="r"]{background:var(--bad)}
+input[type=text],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+textarea{min-height:56px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.ok{color:var(--ok)}.no{color:var(--bad)}.wa{color:var(--warn)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.twocol{grid-template-columns:1fr}}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.fb{font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.opt.mid{border-color:var(--navy2);background:color-mix(in srgb,var(--navy2) 10%,var(--card))}
+.check{padding-left:0}.check li{list-style:none;margin:6px 0}
+.check input{width:17px;height:17px;accent-color:var(--navy2);vertical-align:-2px;margin-right:6px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tabs button{font-family:Raleway;font-weight:700;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;padding:7px 12px;cursor:pointer}
+.tabs button.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.tabs button .c{font-size:11px;margin-left:4px;opacity:.85}
+.meter{height:12px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0}
+.meter>div{height:100%;width:0;transition:width .3s,background .3s}
+.gray{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;background:var(--card);display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+@media (max-width:640px){.gray{grid-template-columns:1fr}}
+.kt{overflow-x:auto}
+.kt table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+.kt th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:6px 8px;border:1px solid var(--line);text-align:left}
+.kt td{border:1px solid var(--line);padding:5px 8px}
+.kt tr.risk td{background:color-mix(in srgb,var(--bad) 14%,var(--card))}
+.prin{display:flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--card)}
+.prin span{flex:1}
+.sa{overflow-x:auto}
+.sa table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+.sa th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.sa td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.sa td.sk{font-family:Raleway;font-weight:700;width:180px}
+.sa select{font-size:13px;padding:5px}
+.sa .gap{font-family:Raleway;font-size:11px;font-weight:800;color:var(--warn);display:block;margin-top:4px}
+.sa .met{font-family:Raleway;font-size:11px;font-weight:800;color:var(--ok);display:block;margin-top:4px}
+.sa tr.custom input{font-size:14px;padding:5px 7px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+@media (max-width:700px){.scale{grid-template-columns:1fr 1fr}}
+.scale .card{padding:10px}.scale .lv{font-family:Raleway;font-weight:800;font-size:12px;color:var(--navy2)}
+.map{display:grid;grid-template-columns:1fr 24px 1fr;gap:6px 8px;align-items:center;font-size:15px}
+.map .a{font-family:Raleway;font-weight:800;color:var(--muted);text-align:center}
+.map .l{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--card);font-family:Raleway;font-weight:700}
+.map .r{border:1px solid var(--ok);border-radius:10px;padding:8px 10px;background:color-mix(in srgb,var(--ok) 8%,var(--card))}
+.map .r.hid{border-style:dashed;border-color:var(--line);background:var(--card);color:var(--muted);cursor:pointer}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+a{color:var(--navy2)}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+.venn text{font-family:Raleway;font-weight:800;pointer-events:none}
+.venn .rg{cursor:pointer;fill:transparent;stroke:none}
+.venn .rg:hover,.venn .rg.on{fill:rgba(255,255,255,.28)}
+.venn .rg:focus-visible{outline:none;stroke:var(--ink);stroke-width:3}
+.star{font-size:16px;letter-spacing:-2px}
+.inv td{vertical-align:middle}
+.inv .seg button{padding:4px 8px}
+.del{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:18px;line-height:1}
+.del:hover{color:var(--bad)}
+.cat h4{font-family:Raleway;font-size:13px;color:var(--muted);margin:10px 0 2px;text-transform:uppercase;letter-spacing:.06em}
+.bars .b{display:grid;grid-template-columns:minmax(120px,38%) 1fr 34px;gap:8px;align-items:center;font-size:14px;margin:4px 0}
+.bars .b .tr{height:12px;background:var(--line);border-radius:99px;overflow:hidden}
+.bars .b .tr>div{height:100%;background:var(--navy2)}
+.region{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--card);border-top:5px solid var(--c,var(--navy2))}
+.region .t{font-family:Raleway;font-weight:800}
+.region .n{font-family:Raleway;font-weight:800;font-size:26px;color:var(--c,var(--navy2));float:right;line-height:1}
+.tag{display:inline-block;font-family:Raleway;font-size:12px;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin:2px;background:var(--soft)}
+.path{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0}
+.path .st{font-family:Raleway;font-weight:700;font-size:13px;border:1px solid var(--navy2);color:var(--navy2);border-radius:10px;padding:6px 10px;background:var(--card);cursor:pointer}
+.path .st.on{background:var(--navy2);color:#fff}
+.path .st.fut{border-style:dashed}
+.path .ar{color:var(--muted);font-family:Raleway;font-weight:800}
+.role{display:flex;justify-content:space-between;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:6px 10px;background:var(--card);font-size:15px}
+.roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px;margin:10px 0}
+.fit{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.fit .card .v{font-family:Raleway;font-weight:800;font-size:28px}
+.post td input,.post td select{font-size:14px;padding:5px 7px}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Adım 5</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">İkigai</a>
+      <a href="#s2" data-s="s2">Envanter</a>
+      <a href="#s3" data-s="s3">Güçlerini kullan</a>
+      <a href="#s4" data-s="s4">Dünyanın ihtiyacı</a>
+      <a href="#s5" data-s="s5">Unvanlar ve yollar</a>
+      <a href="#s6" data-s="s6">İlan analizi</a>
+      <a href="#s7" data-s="s7">İkigai haritan</a>
+      <a href="#s8" data-s="s8">Test</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema" aria-label="Açık/koyu tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">Bu bir işten fazlası · Kitap s. 323–357</div>
+  <h1>Adım 5: Tutkularını hizala, kariyerini tasarla</h1>
+  <p>Son adım, önceki adımlarda keşfettiğin güçlü yönleri ve ilgi alanlarını, piyasanın ihtiyaç duyduğu ve karşılığını ödediği becerilerle buluşturuyor. Bu sayfada envanterini çıkaracak, gerçek iş ilanlarını çözümleyecek ve kendi “ikigai” haritanı oluşturacaksın.</p>
+  <p class="note">Heather Whiteman'ın insan analitiği kariyer rehberinin ilgili bölümünün Türkçe, etkileşimli bir uyarlamasıdır; metin özetlenmiş ve yeniden yazılmıştır. Örnek ilanlar ve beceri listeleri kurgusaldır ya da kitaptaki örneklerden uyarlanmıştır. Girdiklerin yalnızca bu tarayıcıda saklanır.</p>
+</div>
+
+<!-- 1 -->
+<section class="ch" id="s1">
+  <h2>İkigai: dört dairenin kesiştiği yer</h2><hr>
+  <p>Japonca <em>ikigai</em> kavramı kabaca “hayata değer ve neşe katan, insana amaç duygusu veren şey” diye çevrilebilir. Dört daireli bir Venn şeması düşün: <strong>sevdiğin şey</strong>, <strong>iyi olduğun şey</strong>, <strong>dünyanın ihtiyaç duyduğu şey</strong> ve <strong>karşılığında para kazanabileceğin şey</strong>. İkigai, dördünün kesiştiği merkezdedir; ikili ve üçlü kesişimler de kendi anlamlarını taşır.</p>
+  <p>İnsan analitiğinde kariyerler, beceriler ve uygulamalar o kadar çeşitli ki yolunu kişiselleştirip bu kesişimi bulmanın pek çok yolu var. Şemadaki bölgelere tıkla.</p>
+  <div class="twocol">
+    <div>
+      <svg class="venn" id="venn" viewBox="0 0 400 400" role="img" aria-label="İkigai Venn şeması">
+        <circle cx="200" cy="130" r="95" fill="#1aa38a" opacity=".75"/>
+        <circle cx="130" cy="200" r="95" fill="#f2b81f" opacity=".75"/>
+        <circle cx="270" cy="200" r="95" fill="#e0457b" opacity=".75"/>
+        <circle cx="200" cy="270" r="95" fill="#ea6b2d" opacity=".75"/>
+        <text x="200" y="68" text-anchor="middle" fill="#fff" font-size="14">Sevdiğin</text>
+        <text x="72" y="204" text-anchor="middle" fill="#3a2a00" font-size="14">İyi olduğun</text>
+        <text x="330" y="196" text-anchor="middle" fill="#fff" font-size="13">Dünyanın</text>
+        <text x="330" y="212" text-anchor="middle" fill="#fff" font-size="13">ihtiyacı</text>
+        <text x="200" y="340" text-anchor="middle" fill="#fff" font-size="13">Para kazanabileceğin</text>
+        <text x="148" y="150" text-anchor="middle" fill="#fff" font-size="12">Tutku</text>
+        <text x="252" y="150" text-anchor="middle" fill="#fff" font-size="12">Misyon</text>
+        <text x="148" y="258" text-anchor="middle" fill="#fff" font-size="12">Meslek</text>
+        <text x="252" y="258" text-anchor="middle" fill="#fff" font-size="12">Uğraş</text>
+        <text x="200" y="206" text-anchor="middle" fill="#fff" font-size="18">İkigai</text>
+        <circle class="rg" data-rg="love" cx="200" cy="72" r="26" tabindex="0"/>
+        <circle class="rg" data-rg="good" cx="70" cy="200" r="26" tabindex="0"/>
+        <circle class="rg" data-rg="need" cx="330" cy="200" r="26" tabindex="0"/>
+        <circle class="rg" data-rg="paid" cx="200" cy="330" r="26" tabindex="0"/>
+        <circle class="rg" data-rg="passion" cx="148" cy="146" r="22" tabindex="0"/>
+        <circle class="rg" data-rg="mission" cx="252" cy="146" r="22" tabindex="0"/>
+        <circle class="rg" data-rg="prof" cx="148" cy="254" r="22" tabindex="0"/>
+        <circle class="rg" data-rg="voc" cx="252" cy="254" r="22" tabindex="0"/>
+        <circle class="rg" data-rg="iki" cx="200" cy="200" r="30" tabindex="0"/>
+      </svg>
+      <p class="small">Şema, Héctor García ve Francesc Miralles'in <em>Ikigai</em> kitabında popülerleşen görselden esinlenerek yeniden çizilmiştir.</p>
+    </div>
+    <div>
+      <div class="result" id="vennOut" style="min-height:150px"></div>
+      <div class="box">
+        <div class="lbl">Hızlı yoklama: aklındaki bir rol için</div>
+        <input type="text" id="ikRole" placeholder="Örn. İK veri analisti">
+        <div id="ikSl" style="margin-top:8px"></div>
+        <div id="ikOut" class="fb"></div>
+      </div>
+    </div>
+  </div>
+  <p>Bu çerçeve son keşif etkinliklerimize de yol gösteriyor: önce <strong>neyi sevdiğine ve neyde iyi olduğuna</strong> bakacak, sonra <strong>dünyanın neye ihtiyaç duyduğunu ve neyin karşılığının ödendiğini</strong> iş ilanlarından okuyacaksın. İkisini birleştirerek gelecekte daha çok “ikigai anı” yaşatacak bir kariyer ve gelişim planı tasarlayabilirsin.</p>
+  <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 2 -->
+<section class="ch" id="s2">
+  <h2>Kendini keşfet: neyde iyisin, neden keyif alıyorsun?</h2><hr>
+  <p>İnsan analitiğinde başarılı olmak için her beceride iyi olman ya da her birinden keyif alman gerekmez. Kariyerler o kadar çeşitli ki güçlü yönlerine ve ilgilerine en iyi uyan yola odaklanabilirsin; yeter ki bunların ne olduğu konusunda netliğin olsun. Adım 1'de güçlü yönlerini, Adım 2–4'te pek çok beceriyi değerlendirdin. Ama her iyi olduğumuz şeyden keyif almayız; keyif aldığımız bir şeyde iyi olmamız da gerekmez. Bu yüzden ikisine ayrı ayrı bakmaya değer.</p>
+  <div class="grid">
+    <div class="card"><div class="t">1 · Güçlü yönlerin</div><div class="small">Bir beceriyi “güç” saymak için asgari düzey yok. Bazı işler bir becerinin düşük düzeyini gerektirir; farkında olduğun bir şey bile doğru bağlamda güçtür. Emin değilsen sor: Bir arkadaşın bu konuda yardım isteseydi işine yarayacak bir destek verebilir miydin? Evetse işaretle.</div></div>
+    <div class="card"><div class="t">2 · İlgi ve tutkuların</div><div class="small">“Sevmek” bazıları için fazla güçlü bir kelime; “ilgimi çekiyor”, “bana çekici geliyor” de olur. Kararsızsan ilgi olarak işaretle. Güçlü olmadığın ama ilgini çeken becerileri de ekle.</div></div>
+    <div class="card"><div class="t">3 · Gelişim</div><div class="small">Yeni beceri eklemeden, tablodakilerden hangilerinde ustalaşmak istediğini işaretle. Ölçüt “neyde iyiyim?” değil, “neyi öğrenmek istiyorum?”. Zaten güçlü olduklarını işaretlemekten çekinme: derin uzmanlaşma da heyecan vericidir.</div></div>
+  </div>
+  <div class="box">
+    <div class="lbl">Önceki adımlardaki becerilerden ekle</div>
+    <p class="small" style="margin:0">Bir beceriye tıklayınca tabloya eklenir (yeniden tıklayınca çıkar). Kitapta her adımın sonunda yer alan öz değerlendirmelerden derlenmiştir.</p>
+    <div class="cat" id="cat"></div>
+    <div class="row" style="margin-top:10px"><input type="text" id="invNew" placeholder="Listede olmayan bir beceri (örn. Adım 1'deki bir güçlü yönün)" style="flex:1;min-width:220px"><button class="btn" id="invAdd">Ekle</button></div>
+  </div>
+  <div class="sa inv"><table id="invTab"></table></div>
+  <div class="row" style="margin-top:10px"><button class="btn ghost sm" id="invCsv">CSV indir</button><button class="btn ghost sm" id="invEx">Kitaptaki örneği göster</button><button class="btn ghost sm" id="invClr">Tabloyu temizle</button></div>
+  <div id="invExBox" style="display:none" class="box">
+    <div class="lbl">Örnek (kitaptan uyarlanmıştır)</div>
+    <div class="kt"><table><tr><th>Beceri</th><th>Güç</th><th>İlgi / tutku</th><th>Gelişim</th><th>Notlar</th></tr>
+      <tr><td>İstatistiksel anlamlılık testi</td><td>Güç</td><td></td><td></td><td></td></tr>
+      <tr><td>Grup karşılaştırma testleri (t-testi, ki-kare, ANOVA)</td><td>Güç</td><td>☆ İlgi</td><td>Gelişim</td><td>t-testi ve ki-karede iyiyim; ANOVA ve parametrik olmayan testlerde gelişebilirim.</td></tr>
+      <tr><td>Regresyon analizi</td><td>Güç</td><td>☆☆ Tutku</td><td></td><td></td></tr>
+      <tr><td>Keşifsel analiz</td><td>Güç</td><td></td><td></td><td></td></tr>
+      <tr><td>Kök neden analizi</td><td></td><td>☆ İlgi</td><td>Gelişim</td><td>Hiç denemedim ama ilginç görünüyor.</td></tr>
+      <tr><td>Ayrıntıya inme analizi</td><td></td><td></td><td>Gelişim</td><td>Kök neden analizinde daha iyi olmamı sağlar diye düşünüyorum.</td></tr>
+      <tr><td>Karşılaştırmalı analiz</td><td>Güç</td><td></td><td></td><td></td></tr></table></div>
+    <p class="small">Dikkat: “Ayrıntıya inme” ne güç ne de ilgi olarak işaretlenmiş, ama ilgi duyulan başka bir beceriye hizmet ettiği için gelişim listesinde.</p>
+  </div>
+  <div class="result" id="invSum"></div>
+  <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 3 -->
+<section class="ch" id="s3">
+  <h2>Keşfet ve harekete geç: güçlü yönlerinin mutluluk avantajı</h2><hr>
+  <p>Yazar, eksiklerimize ve “düzeltilmesi gerekenlere” odaklanma eğilimimizin hayranı değil; güçlü yönlerinden yararlanmanın ve tutkularını izlemenin her zaman en iyisi olduğunu savunuyor. İşverenlerin ne istediğine geçmeden önce, başka kimseyi ya da hiçbir şeyi düşünmeden güçlü yönlerin ve ilgilerin üzerine durup düşün. Kitap bu dört eylemi bir sonraki bölüme geçmeden tamamlamanı öneriyor.</p>
+
+  <h3>1 · Dur ve ne kadar harika olduğunu kabul et</h3>
+  <p class="small">Her güçlü yönünü başkalarına ve kendine nasıl yardım etmek için kullanabileceğini, onları kazanmak için harcadığın zamanı ve emeği düşün. Artık “Güçlü yönlerin neler?” sorusunda asla takılmayacaksın.</p>
+  <div class="box">
+    <div class="lbl">“Güçlü yönlerin neler?” yanıt oluşturucu</div>
+    <div class="twocol">
+      <label class="small ui" style="font-weight:700">Bu güçlerle en çok kime yardım edebilirim?<input type="text" id="ackWho" placeholder="Örn. veriye dayalı karar almak isteyen yöneticilere"></label>
+      <label class="small ui" style="font-weight:700">Somut bir kanıt / örnek<input type="text" id="ackProof" placeholder="Örn. bağlılık anketi sonuçlarını üç birim için eyleme dönüştürdüm"></label>
+    </div>
+    <div class="result" id="ackOut"></div>
+    <button class="btn ghost sm" id="ackCopy" style="margin-top:8px">Metni kopyala</button>
+  </div>
+
+  <h3>2 · Kendine biraz insan analitiği uygula</h3>
+  <p class="small">Güç ve ilgi verinde hangi örüntüleri görüyorsun? Benzersiz birleşimler ya da (ben)zemezlikler var mı? Analiz ve eleştirel düşünme becerilerini kendine çevir.</p>
+  <div class="twocol">
+    <div><svg id="quad" viewBox="0 0 360 300" role="img" aria-label="Güç ve ilgi dört bölge grafiği" style="width:100%"></svg></div>
+    <div><div id="patOut" class="small"></div></div>
+  </div>
+  <label class="small ui" style="font-weight:700;display:block;margin-top:8px">Fark ettiklerim<textarea id="patNote" placeholder="Örn. İlgilerim hep “neden” sorusuna yöneliyor; güçlerim ise betimleyici analizde."></textarea></label>
+
+  <h3>3 · Heyecanlan</h3>
+  <p class="small">En çok neyi öğrenmek için heyecanlanıyorsun? Araştırmalar olumlu beklentinin olayın kendisi kadar, hatta daha fazla keyif verebildiğini gösteriyor. Güçlerini sergileyecek ya da ilgi alanlarında “oynamanı” sağlayacak havalı bir proje planla.</p>
+  <div class="box">
+    <div class="lbl">Projemde kullanacağım beceriler</div>
+    <div class="chips" id="projSk"></div>
+    <div class="twocol">
+      <label class="small ui" style="font-weight:700">Proje fikri<input type="text" id="projIdea" placeholder="Örn. açık bir İK veri setiyle ayrılma nedenleri panosu"></label>
+      <label class="small ui" style="font-weight:700">Başlangıç tarihi<input type="text" id="projDate" placeholder="gg.aa.yyyy"></label>
+    </div>
+    <label class="small ui" style="font-weight:700;display:block;margin-top:6px">Bittiğinde nasıl hissedeceğim, ne göstereceğim?<input type="text" id="projFeel"></label>
+  </div>
+
+  <h3>4 · Oyna</h3>
+  <p class="small">Beklenti güzel ama yalnızca plan yapma, harekete geç. İlgi alanlarını öğreniyor musun? Değilse video, makale, kitap, webinar ya da konferans bul. İlham, deneyim ve fırsat bulabileceğin kişiler ve yerler kimler, neresi?</p>
+  <div class="box">
+    <ul class="check" id="playChk"></ul>
+    <div class="twocol">
+      <label class="small ui" style="font-weight:700">Bu hafta açacağım ilk kaynak<input type="text" id="playRes"></label>
+      <label class="small ui" style="font-weight:700">İlgimi paylaşan, bağlantı kuracağım kişi<input type="text" id="playWho"></label>
+    </div>
+  </div>
+  <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 4 -->
+<section class="ch" id="s4">
+  <h2>Dünyanın ihtiyacı ve karşılığı ödenen: uygulamalar ve alanlar</h2><hr>
+  <p>Veri odaklı dünyada insan analitiğine ihtiyaç moda olduğu için değil, işe yaradığı için açık. Kitap; Deloitte, Human Capital Institute ve McKinsey gibi kuruluşların çalışmalarının güçlü insan analitiği ile kurumsal başarı arasında net bir bağ gösterdiğini aktarıyor. Tarihsel olarak az veri kullanan İK'da analitik becerilere talep hiç bu kadar yüksek olmamıştı.</p>
+  <div class="grid">
+    <div class="card"><div class="t" style="font-size:28px">3×</div><div class="small">LinkedIn çalışmalarına göre İK profillerinde analitik anahtar kelimelerinde artış (kitapta aktarıldığı biçimiyle).</div></div>
+    <div class="card"><div class="t" style="font-size:28px">2.</div><div class="small">“HR Analytics Manager”, 5 yıllık dönemde ABD'de tüm alanlar arasında en hızlı büyüyen ikinci unvan olarak belirlenmiş; yazarın notuyla: kamyon şoförlerinin bile önünde.</div></div>
+    <div class="card"><div class="t" style="font-size:28px">“olmazsa olmaz”</div><div class="small">İnsan analitiği artık “olsa iyi olur” değil. Adında analitik geçmeyen işler bile bu becerileri temel gereklilik olarak listelemeye başladı.</div></div>
+  </div>
+  <p class="note">Bu rehber bir ders kitabı ya da yapılan her şeyin kataloğu değil; amaç, becerilerini kariyerinde uygulayabileceğin yolların çeşitliliğini göstermek.</p>
+
+  <div class="tabs" id="wTabs"></div>
+  <div id="wBody"></div>
+  <label class="readmark"><input type="checkbox" data-read="s4"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 5 -->
+<section class="ch" id="s5">
+  <h2>Unvanlar ve “kendi maceranı seç” kariyeri</h2><hr>
+  <p>Bu teknik, uygulama ve alanlarla neredeyse sınırsız unvan birleşimi mümkün. Aşağıdaki liste kapsayıcı değil, bir başlangıç noktası. İlgini çekenleri ☆ ile işaretle; bunlar ilan aramasında anahtar kelime olarak kullanılacak. Unvanlar İngilizce ilanlarda en sık görüldüğü biçimiyle verilmiş, yanında Türkçe karşılığı var.</p>
+  <div class="row"><input type="text" id="rq" placeholder="Unvan ara (örn. data, ücret, planlama)" style="flex:1;min-width:200px"><div class="seg" id="rFam"></div></div>
+  <div class="roles" id="roles"></div>
+  <div class="small" id="rCount"></div>
+
+  <div class="story">
+    <div class="h">Unvan değil, beceri seti</div>
+    <p style="margin:0">Yalnızca adında “people analytics” geçen işlerle kendini sınırlama. İnsan analitiği bir unvan olduğu kadar bir beceri seti, bir çalışma alanı ve uygulanabilir bir yaklaşım. İş, çalışan ya da işyeri hakkında bilinçli karar vermek için insan verisini kullandığın her an insan analitiği yapıyorsun. Kâr amacı gütmeyen kuruluşlar, halka açık şirketler, kamu kurumları, gönüllü örgütler, hatta ortak bir hedef için bir araya gelmiş bir grup… Sektör ya da kurum türü sınırı yok.</p>
+  </div>
+
+  <h3>Kendi maceranı seç</h3>
+  <p>Katı bir kariyer basamağının aksine, insan analitiği kariyeri beklenmedik dönemeçlerle dolu bir “kendi maceranı seç” oyununa benzer. Pek çok profesyonel çok farklı işlere atlar; bu rolleri bütünlüklü bir kariyere bağlayan ortak iplik insan analitiği becerileridir. Yazarın kendi yolu (adımlara tıkla):</p>
+  <div class="path" id="hPath"></div>
+  <div class="result small" id="hOut"></div>
+  <div class="box">
+    <div class="lbl">Senin yolun</div>
+    <p class="small" style="margin-top:0">Geçmiş ve şimdiki rollerini, ardından olası gelecek rollerini ekle (gelecek roller kesikli çizgiyle görünür). Yolun zamanla değişebilir; tüm kariyerin boyunca tek bir rol türünde kalman son derece düşük bir olasılık.</p>
+    <div class="row"><input type="text" id="pNew" placeholder="Rol / unvan" style="flex:1;min-width:180px"><div class="seg" id="pKind"></div><button class="btn" id="pAdd">Ekle</button></div>
+    <div class="path" id="myPath"></div>
+    <label class="small ui" style="font-weight:700;display:block">Bu rolleri birbirine bağlayan ortak iplik (beceriler)<input type="text" id="pThread" placeholder="Örn. soru sorma, veriyi hikâyeye dönüştürme, paydaşlarla güven kurma"></label>
+  </div>
+  <label class="readmark"><input type="checkbox" data-read="s5"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 6 -->
+<section class="ch" id="s6">
+  <h2>Talep gören beceriler: iş ilanlarını çözümle (iş aramıyor olsan bile)</h2><hr>
+  <p>Bugün insan analitiği alanında çok sayıda açık pozisyon var; kitabın yazıldığı dönemde One Model şirketinin derlediği listede (<a href="https://www.onemodel.co/roles-in-people-analytics-hr-technology" target="_blank" rel="noopener">onemodel.co</a>) her an 300–600 açık pozisyon bulunuyordu. Yine de iş bulmakta zorlanan çok insan var. Neden? Sorun çoğu zaman iş ya da aday sayısı değil, <strong>eşleştirme</strong>: kurumların aradığıyla doğru kişileri buluşturmak. Lokasyon, ücret, kültür, çalışma biçimi ve iletişim tercihleri işin içine girince daha da zorlaşıyor.</p>
+  <p>İş arıyorsan ne aradığın konusunda netlik süreci kolaylaştırır ve becerilerinin aranan şeyle nasıl örtüştüğünü göstermeni sağlar. İş aramıyorsan da <strong>bu adımı atlama</strong>: açık ilanlara bakmak alandaki işin türünü anlamanın, becerilerinin güncel olup olmadığını kıyaslamanın ve becerilerini uygulamak için yeni fikirler bulmanın en iyi yollarından biri.</p>
+
+  <h3>Eylem 1 · En az beş ilginç ilan bul</h3>
+  <p class="small">Gerçek, şu an başvuru kabul eden ilanlar seç: bu, ilandaki becerilerin karşılığını ödemeye hazır biri olduğunu doğrular. Bugün başvuracağın bir rol olması gerekmez; kariyerinin bir noktasında sana doyum verebilecek bir rol olsun.</p>
+  <div class="grid">
+    <div class="card"><div class="t">Unvanın ötesine bak</div><div class="small">Her iş “people analytics” aramasında çıkmaz. Sorumluluklara odaklan, “veri analizi”, “işgücü analitiği”, “raporlama” gibi anahtar kelimelerle ara.</div></div>
+    <div class="card"><div class="t">Seni enerjilendiren işi düşün</div><div class="small">Teknik analize mi, stratejik problem çözmeye mi, araştırma ve deneye mi çekiliyorsun? Güçlü yönlerini de anahtar kelime olarak kullan.</div></div>
+    <div class="card"><div class="t">Karıştır</div><div class="small">Tek bir rol türüne ya da alana takılma. Bu bir keşif; eğlen ve neler olduğunu gör.</div></div>
+  </div>
+  <div class="box">
+    <div class="lbl">Arama sorgusu üreteci</div>
+    <p class="small" style="margin-top:0">Envanterindeki güç/ilgi becerilerinden ve ☆ işaretlediğin unvanlardan sorgu önerileri oluşturur. Türkçe ilan siteleri için Türkçe karşılıklar da eklenmiştir (bu bir uyarlama eklentisidir).</p>
+    <div id="qGen"></div>
+  </div>
+
+  <h3>Çevirmen alıştırması: ilan dilini beceriye çevir</h3>
+  <p class="small">İlanlar bu rehberden farklı terimler kullanır. Örneğin “Tableau uzmanlığı” görürsen önce Tableau'nun ne olduğuna bakar, bir görsel analitik platformu olduğunu öğrenir ve bunu “Veri görselleştirme araçları” becerisine çevirirsin; ilanda hiç geçmese bile diğer görselleştirme becerilerinin de gerekeceğini varsayabilirsin. Örtük gereklilikleri de yakala.</p>
+  <div id="trans"></div>
+  <div class="fb" id="transOut"></div>
+
+  <h3>Eylem 2 · Her ilan için tabloyu doldur</h3>
+  <ol class="small">
+    <li>Beklenen görev, sorumluluk ve nitelikleri özetle; en önemli ve ayırt edici olanları yaz. Her şeyi listelemen gerekmez.</li>
+    <li>Her beklentinin yanına onu karşılamak için gereken beceri(leri) yaz. Birden fazla beceri gerekiyorsa her biri için ayrı satır aç (örn. “Raporlarda veri bütünlüğü ve doğruluğunu sağlamak” → veri temizleme, veri kalitesi yönetimi, veri yönetişimi).</li>
+    <li>Önceki öz keşif çalışmalarına dayanarak her becerinin senin için ilgi/tutku ve güç olup olmadığını işaretle.</li>
+    <li>Gelişime ihtiyaç var mı? Doğruluk için fazla kafa yorma: kimse kendini mükemmel değerlendiremez, hiçbir ilan da yeterince net değildir. Kısa bir öğrenme ya da tazelemeyle yapabileceğini düşünüyorsan “Hayır” de. Emin değilsen “Biraz” seç ve nüansı nota yaz.</li>
+  </ol>
+  <div class="tabs" id="pTabs"></div>
+  <div id="pBody"></div>
+  <div class="row" style="margin-top:8px"><button class="btn" id="pNewPost">+ Yeni ilan</button><button class="btn ghost" id="pExample">Kitaptaki örnek ilanı ekle</button><button class="btn ghost sm" id="pCsv">Tüm ilanları CSV indir</button></div>
+
+  <h3>Eylem 3 · Sonuçları analiz et</h3>
+  <p class="small">Tablon artık başkalarının ihtiyaç duyduğu ve karşılığını ödemeye hazır olduğu becerilerle dolu. Hangileri birden çok kez çıktı? Farklı iş türleri arasında ne gibi benzerlikler ya da farklar var? “Gelişim” sütununa bakınca, bu yolu izlesen gereken becerileri geliştirmeye vakit ayırmaktan mutlu olur muydun?</p>
+  <div class="twocol">
+    <div><div class="lbl">İlanlar arasında beceri sıklığı</div><div class="bars" id="freq"></div></div>
+    <div><div class="lbl">İlan bazında uyum</div><svg id="fitChart" viewBox="0 0 360 220" style="width:100%" role="img" aria-label="İlan bazında hazırlık ve ilgi uyumu"></svg><div class="small" id="fitNote"></div></div>
+  </div>
+
+  <h3>Eylem 5 · Olası kariyer yollarını belirle</h3>
+  <div class="story">
+    <div class="h">Kıyafet alışverişi benzetmesi</div>
+    <p>“Uyum”un doğru bir tanımı yok: seni heyecanlandırıyorsa ve başarılı olmak için gereken becerileri geliştirmeye hazırsan uyuyordur. Yine de doğru rol uyumu kıyafet almaya benzer; tarzına uyan ve üstüne iyi oturan bir şey istersin ama sana göre dikilmiş bir kıyafet bulmak nadirdir. <strong>Yaklaşık %70 uyumu hedefle</strong>; geri kalanı gelişme ve büyüme alanındır.</p>
+    <p style="margin-bottom:0">Kıyafeti tek mevsim için almazsın; neden tek bir kariyer yoluna odaklanasın? Prova kabinine birden çok parça götürebilirsin: farklı tarzlar (farklı iş türleri) ya da farklı bedenler (farklı sorumluluk düzeyleri). Belki de yalnızca mevcut yolunda “yukarı” çıkman gerektiğine dair yanlış bir inanç taşıyorsun ve tamamen yeni bir yolda farklı düzeyde bir rol seni daha mutlu edecek. Prova ettiğin her kıyafeti almak zorunda olmadığın gibi, burada incelediğin işlere de başvurmak zorunda değilsin.</p>
+  </div>
+  <div class="box">
+    <div class="lbl">Prova kabini</div>
+    <div id="fitRoom"></div>
+  </div>
+  <p class="note">Akılda tut: Yazar burada Rolling Stones'un, insanın her zaman istediğini değil, denerse ihtiyacı olanı bulabileceğini anlatan ünlü şarkısını hatırlatıyor. Bazen gerçek güçlerimizi ve ilgilerimizi ancak işe daldıktan sonra keşfederiz; konfor alanının dışındaki yönlere zaman tanı. Bu etkinlik iş yerindeki projeler, danışmanlık/serbest çalışma ya da gönüllülük fırsatlarıyla da yapılabilir. İlanlar kısa süre yayında kalabilir; işine yarayan kısımlarını kaydet.</p>
+  <label class="readmark"><input type="checkbox" data-read="s6"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 7 -->
+<section class="ch" id="s7">
+  <h2>Eylem 4 · İkigai becerilerini belirle</h2><hr>
+  <p>Envanterin (sevdiğin + iyi olduğun) ile ilan tabloların (dünyanın ihtiyacı + karşılığı ödenen) burada birleşiyor. Becerilerin, ilanlardaki işaretlerine (yoksa envanterine) göre otomatik olarak bölgelere yerleştirilir.</p>
+  <p class="note">Bu çalışmada iş ilanları hem “dünyanın ihtiyacı” hem de “para kazanabileceğin” dairesinin göstergesi olarak kullanılıyor; bu yüzden harita dört değil üç boyutlu.</p>
+  <div class="grid" id="ikMap"></div>
+  <div class="result" id="ikMsg"></div>
+  <div class="row" style="margin-top:10px"><button class="btn ghost sm" id="ikCopy">Özeti kopyala</button><button class="btn ghost sm" id="ikPrint">Yazdır / PDF</button></div>
+  <label class="readmark"><input type="checkbox" data-read="s7"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 8 -->
+<section class="ch" id="s8">
+  <h2>Mini test</h2><hr>
+  <div id="quiz"></div>
+  <div class="ui" id="score" style="font-weight:800;color:var(--navy)"></div>
+  <label class="readmark"><input type="checkbox" data-read="s8"> Bu bölümü tamamladım</label>
+</section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><a class="pv" href="insan_analitigi_adim4_etik.html"><small>← Önceki</small><b>Adım 4: Etik kalmak</b></a><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><a class="nx" href="insan_analitigi_adim5_gelisim_plani_kariyer_haritasi.html"><small>Sonraki →</small><b>Adım 5: Gelişim planı ve kariyer haritası</b></a></nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+const KEY="pa_adim5_ikigai_v1";
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const dl=(name,rows)=>{const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';const b=new Blob(["﻿"+rows.map(r=>r.map(q).join(";")).join("\n")],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href)};
+const copy=v=>{(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast("Kopyalandı")).catch(()=>toast("Kopyalanamadı"))};
+const bind=(id,key,cb)=>{const el=$("#"+id);el.value=st[key]??el.value;el.oninput=()=>{st[key]=el.value;save();cb&&cb()}};
+const norm=s=>String(s||"").trim().toLocaleLowerCase("tr-TR").replace(/\s+/g," ");
+const segH=(attr,opts,cur)=>`<div class="seg">${opts.map(([v,l])=>`<button ${attr} data-v="${v}" class="${cur===v?"on":""}">${l}</button>`).join("")}</div>`;
+
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$("#theme").onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";st.theme=d.dataset.theme;save()};
+st.read=st.read||{};const N=8;
+function prog(){const n=Object.values(st.read).filter(Boolean).length;$("#progbar").style.width=(n/N*100)+"%";$$("#nav a").forEach(a=>a.classList.toggle("done",!!st.read[a.dataset.s]))}
+$$("[data-read]").forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();if(cb.checked)toast("Bir bölüm daha tamam!")}});prog();
+
+// 1. ikigai
+const VR={love:["Sevdiğin","Seni enerjilendiren, zamanın nasıl geçtiğini unutturan işler. Envanterinde ☆ ilgi ya da ☆☆ tutku olarak işaretlediklerin."],
+ good:["İyi olduğun","Güçlü yönlerin. Asgari bir düzey yok: doğru bağlamda “farkında” olduğun bir beceri bile güçtür."],
+ need:["Dünyanın ihtiyacı","Kurumların, çalışanların ve toplumun çözülmesini istediği sorunlar: ayrılma, adil ücret, iyi işe alım, sağlıklı çalışma ortamı…"],
+ paid:["Para kazanabileceğin","Birinin karşılığını ödemeye hazır olduğu beceriler. Bu sayfada açık iş ilanları bunun göstergesi."],
+ passion:["Tutku = sevdiğin ∩ iyi olduğun","Örnek: regresyon analizini hem seven hem iyi yapan bir analist. Talep görmüyorsa hobi gibi kalabilir."],
+ mission:["Misyon = sevdiğin ∩ dünyanın ihtiyacı","Örnek: ücret eşitliğini önemseyen ve bu konuda gönüllü çalışan biri. Beceri ve gelir boyutu eklenince kariyere dönüşür."],
+ prof:["Meslek = iyi olduğun ∩ para kazanabileceğin","Örnek: iyi olduğun ve aranan bir raporlama becerisi. İlgi eksikse zamanla “boşluk” hissi doğabilir."],
+ voc:["Uğraş = dünyanın ihtiyacı ∩ para kazanabileceğin","Örnek: talep gören ama henüz ne güçlü olduğun ne de sevdiğin bir iş. Gelişim ve ilgi gerektirir."],
+ iki:["İkigai = dördünün kesişimi","Sevdiğin, iyi olduğun, dünyanın ihtiyaç duyduğu ve karşılığı ödenen şey. Bu adımın hedefi, kariyerinde bu anları çoğaltmak."]};
+st.vr=st.vr||"iki";
+function venn(){$$("#venn .rg").forEach(c=>c.classList.toggle("on",c.dataset.rg===st.vr));const v=VR[st.vr];$("#vennOut").innerHTML=`<div class="lbl">${v[0]}</div><div>${v[1]}</div>`}
+$$("#venn .rg").forEach(c=>{const f=()=>{st.vr=c.dataset.rg;save();venn()};c.addEventListener("click",f);c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();f()}})});venn();
+const IK=[["love","Bu işi sevebilirim"],["good","Bu işte iyiyim"],["need","Dünyanın buna ihtiyacı var"],["paid","Bunun karşılığı ödeniyor"]];
+st.ik=st.ik||{love:5,good:5,need:5,paid:5};
+$("#ikSl").innerHTML=IK.map(([k,l])=>`<label class="small ui" style="font-weight:700;display:grid;grid-template-columns:1fr 120px 24px;gap:8px;align-items:center">${l}<input type="range" min="0" max="10" data-ik="${k}" value="${st.ik[k]}"><span id="ikv_${k}">${st.ik[k]}</span></label>`).join("");
+function ik(){if(!st.ikT){$("#ikOut").innerHTML='<span class="small">Bir rol yaz ve dört kaydırıcıyı 0–10 arasında ayarla (6 ve üzeri “güçlü” sayılır).</span>';return}const on=IK.filter(([k])=>st.ik[k]>=6).map(x=>x[0]);const has=k=>on.includes(k);let m;
+ if(on.length===4)m=["ok","İkigai bölgesindesin: dört dairenin hepsi güçlü."];
+ else if(on.length===3){const miss=IK.find(([k])=>!has(k))[0];m=["wa",{paid:"Doyum ve katkı var ama geçim tarafı zayıf; ücretli karşılıklarını ilanlarda ara.",need:"Rahat ve keyifli ama işin etkisi/anlamı sorgulanabilir; hangi sorunu çözdüğünü netleştir.",good:"Heyecan ve anlam var ama yetkinlik belirsizliği yaşanabilir; bu bir gelişim planı fırsatı.",love:"Rahat ve kazançlı ama içten içe boşluk hissi doğabilir; işin sevdiğin bir yönünü bul."}[miss]]}
+ else if(on.length===2){const pair=on.join("+");const nm={"love+good":"Tutku","love+need":"Misyon","good+paid":"Meslek","need+paid":"Uğraş","love+paid":"Sevdiğin ve kazandıran","good+need":"İyi olduğun ve ihtiyaç duyulan"}[pair];m=["wa",`Yalnızca iki daire güçlü (${nm}). Eksik iki daireyi nasıl güçlendirebileceğini düşün ya da başka bir rolü dene.`]}
+ else m=["no","Bu rol şimdilik dairelerin çoğunun dışında kalıyor. Bu da değerli bir bilgi: farklı rolleri dene."];
+ $("#ikOut").innerHTML=`<strong class="${m[0]}">${st.ikRole?esc(st.ikRole)+": ":""}${m[1]}</strong>`}
+$$("[data-ik]").forEach(r=>r.oninput=()=>{st.ikT=1;st.ik[r.dataset.ik]=+r.value;$("#ikv_"+r.dataset.ik).textContent=r.value;save();ik()});bind("ikRole","ikRole",ik);ik();
+
+// 2. envanter
+const CAT=[["Adım 2 · Çevirmen ve veri tüketicisi",[["Sektör uzmanlığı","industry expertise"],["Şirket uzmanlığı","business acumen"],["Yetenek yönetimi uzmanlığı","talent management"],["Aktif dinleme","active listening"],["Sade ve açık iletişim","communication"],["Veri görselleştirme ve sunum","data visualization"],["Hikâye anlatımı","data storytelling"],["Analitik ve eleştirel düşünme","critical thinking"],["Sistem düşüncesi","systems thinking"],["Merak ve yaratıcılık","curiosity"]]],
+ ["Adım 3 · Analitik",[["Sayım, frekans, yüzdelik","descriptive statistics"],["Korelasyon","correlation"],["İstatistiksel anlamlılık testi","statistical testing"],["Grup karşılaştırma testleri","t-test ANOVA"],["Regresyon analizi","regression"],["Keşifsel analiz","exploratory analysis"],["Kök neden analizi","root cause analysis"],["Ayrıntıya inme analizi","drill-down analysis"],["Karşılaştırmalı analiz","comparative analysis"],["Nedensel çıkarım","causal inference"],["Zaman serisi analizi","time series"],["Sağkalım analizi","survival analysis"],["Öngörücü modelleme (ML)","machine learning"],["Optimizasyon modelleme","optimization"],["Simülasyonlar","simulation"],["Nitel veri kodlama","qualitative coding"],["Tematik analiz","thematic analysis"],["Duygu analizi","sentiment analysis"],["Örgütsel ağ analizi","organizational network analysis"],["Doğal dil işleme (NLP)","NLP"]]],
+ ["Adım 3 · Görselleştirme",[["Grafik türleri ve teknikleri","charts"],["Görsel tasarım ilkeleri","visual design"],["Karneler ve gösterge panelleri","dashboards"],["Veri görselleştirme araçları","Tableau Power BI"]]],
+ ["Adım 3 · Veri yönetimi, yönetişim ve etik",[["Veri temizleme","data cleaning"],["Veri kalitesi yönetimi","data quality"],["Veri yönetişimi","data governance"],["Veri mahremiyeti","data privacy"],["Bilgilendirilmiş onay","consent"],["Önyargıyı azaltma","bias mitigation"],["Etki değerlendirmesi","impact assessment"]]],
+ ["Adım 3 · Araştırma ve teknoloji",[["Araştırma tasarımı","research design"],["Hipotez geliştirme ve test","hypothesis testing"],["Örnekleme yöntemi","sampling"],["Güvenirlik ve geçerlik","validity reliability"],["Anket tasarımı","survey design"],["Elektronik tablolar (Excel)","Excel"],["SQL","SQL"],["R","R"],["Python","Python"],["İKBS (HRIS) bilgisi","HRIS"]]],
+ ["Adım 4 · Topluluk",[["Güven inşası","stakeholder trust"],["İş birliğine dayalı ekip çalışması","collaboration"],["Ağ kurma","networking"],["İlişkileri besleme","relationship management"]]]];
+const EN={};const GRP={};CAT.forEach(([g,l])=>l.forEach(([t,e])=>{EN[norm(t)]=e;GRP[norm(t)]=g.split("·")[1].trim()}));
+st.inv=st.inv||[];
+const invFind=n=>st.inv.find(x=>norm(x.n)===norm(n));
+function catR(){$("#cat").innerHTML=CAT.map(([g,l])=>`<h4>${g}</h4><div class="chips">${l.map(([t])=>`<button class="chip ${invFind(t)?"on":""}" data-ct="${esc(t)}">${t}</button>`).join("")}</div>`).join("");
+ $$("[data-ct]").forEach(b=>b.onclick=()=>{const t=b.dataset.ct;const f=invFind(t);if(f)st.inv=st.inv.filter(x=>x!==f);else st.inv.push({n:t,s:false,i:0,d:false,note:""});save();allInv()})}
+function invR(){const t=$("#invTab");if(!st.inv.length){t.innerHTML='<tr><td class="small">Henüz beceri yok. Yukarıdan seç ya da kendi becerini ekle.</td></tr>';return}
+ t.innerHTML=`<tr><th>Beceri</th><th>Güç</th><th>İlgi / tutku</th><th>Gelişim</th><th>Notlar</th><th></th></tr>`+st.inv.map((x,i)=>`<tr><td class="sk">${esc(x.n)}</td>
+  <td>${segH(`data-is="${i}"`,[["1","Güç"],["0","—"]],x.s?"1":"0")}</td>
+  <td>${segH(`data-ii="${i}"`,[["0","—"],["1","☆ İlgi"],["2","☆☆ Tutku"]],String(x.i))}</td>
+  <td>${segH(`data-id="${i}"`,[["1","Gelişim"],["0","—"]],x.d?"1":"0")}</td>
+  <td><input type="text" data-in="${i}" value="${esc(x.note)}" placeholder="Nüans, örnek…"></td>
+  <td><button class="del" data-ix="${i}" aria-label="Sil">×</button></td></tr>`).join("");
+ $$("[data-is]").forEach(b=>b.onclick=()=>{st.inv[b.dataset.is].s=b.dataset.v==="1";save();allInv()});
+ $$("[data-ii]").forEach(b=>b.onclick=()=>{st.inv[b.dataset.ii].i=+b.dataset.v;save();allInv()});
+ $$("[data-id]").forEach(b=>b.onclick=()=>{st.inv[b.dataset.id].d=b.dataset.v==="1";save();allInv()});
+ $$("[data-in]").forEach(e=>e.oninput=()=>{st.inv[e.dataset.in].note=e.value;save()});
+ $$("[data-ix]").forEach(b=>b.onclick=()=>{st.inv.splice(+b.dataset.ix,1);save();allInv()})}
+function invSum(){const s=st.inv.filter(x=>x.s).length,i=st.inv.filter(x=>x.i).length,p=st.inv.filter(x=>x.i===2).length,d=st.inv.filter(x=>x.d).length;
+ $("#invSum").innerHTML=st.inv.length?`<strong class="ui">${st.inv.length} beceri · ${s} güç · ${i} ilgi (${p} tutku) · ${d} gelişim hedefi</strong>${i===0&&s>0?'<div class="small">Henüz ilgi işaretlemedin. Hangisi seni çekiyor? Emin değilsen ilgi olarak işaretle.</div>':""}${d===0&&st.inv.length>2?'<div class="small">Gelişim sütunu boş: neyi öğrenmek istersin?</div>':""}`:'<span class="small">Tablo doldukça özet burada görünecek.</span>'}
+function allInv(){catR();invR();invSum();ack();quad();projR();qGen();ikMap()}
+$("#invAdd").onclick=()=>{const v=$("#invNew").value.trim();if(!v)return;if(invFind(v)){toast("Zaten tabloda");return}st.inv.push({n:v,s:false,i:0,d:false,note:""});$("#invNew").value="";save();allInv()};
+$("#invNew").addEventListener("keydown",e=>{if(e.key==="Enter")$("#invAdd").click()});
+$("#invCsv").onclick=()=>dl("beceri_envanterim.csv",[["Beceri","Güç","İlgi/Tutku","Gelişim","Notlar"]].concat(st.inv.map(x=>[x.n,x.s?"Güç":"",["","İlgi","Tutku"][x.i],x.d?"Gelişim":"",x.note])));
+$("#invEx").onclick=()=>{const b=$("#invExBox");b.style.display=b.style.display==="none"?"block":"none"};
+$("#invClr").onclick=()=>{if(!st.inv.length||!confirm("Envanterdeki tüm beceriler silinsin mi?"))return;st.inv=[];save();allInv()};
+
+// 3. güçler
+function ack(){const top=st.inv.filter(x=>x.s).sort((a,b)=>b.i-a.i).slice(0,3).map(x=>x.n.toLocaleLowerCase("tr-TR"));
+ const t=top.length?`En güçlü yönlerim ${top.length>1?top.slice(0,-1).join(", ")+" ve "+top.slice(-1):top[0]}. Bu güçleri ${st.ackWho||"[kime]"} yardım etmek için kullanıyorum. Örneğin ${st.ackProof||"[somut bir örnek]"}.${st.inv.some(x=>x.d&&x.i)?" Şu sıralar "+st.inv.filter(x=>x.d&&x.i)[0].n.toLocaleLowerCase("tr-TR")+" alanında da kendimi geliştiriyorum.":""}`:"Envanterinde “Güç” işaretlediğin beceriler burada otomatik bir yanıta dönüşecek.";
+ $("#ackOut").textContent=t;return t}
+bind("ackWho","ackWho",ack);bind("ackProof","ackProof",ack);$("#ackCopy").onclick=()=>copy(ack());
+function quad(){const W=360,H=300,c=[["si","Güç + ilgi",x=>x.s&&x.i,"--ok"],["s","Yalnızca güç",x=>x.s&&!x.i,"--navy2"],["i","Yalnızca ilgi",x=>!x.s&&x.i,"--warn"],["n","Henüz ikisi de değil",x=>!x.s&&!x.i,"--muted"]];
+ const pos={i:[0,0],si:[1,0],n:[0,1],s:[1,1]};let g=`<line x1="${W/2}" y1="10" x2="${W/2}" y2="${H-24}" stroke="${css("--line")}"/><line x1="10" y1="${(H-14)/2}" x2="${W-10}" y2="${(H-14)/2}" stroke="${css("--line")}"/>
+ <text x="${W/2}" y="${H-6}" text-anchor="middle" font-size="11" fill="${css("--muted")}" font-family="Raleway">← güç değil · GÜÇ →</text>`;
+ c.forEach(([k,l,f,col])=>{const n=st.inv.filter(f).length,dn=st.inv.filter(x=>f(x)&&x.d).length;const [cx,cy]=pos[k];const x=cx*W/2+W/4,y=cy*(H-24)/2+(H-24)/4+4;
+  g+=`<text x="${x}" y="${y-18}" text-anchor="middle" font-size="12" font-family="Raleway" font-weight="700" fill="${css("--muted")}">${l}</text><text x="${x}" y="${y+14}" text-anchor="middle" font-size="30" font-family="Raleway" font-weight="800" fill="${css(col)}">${n}</text><text x="${x}" y="${y+32}" text-anchor="middle" font-size="11" fill="${css("--muted")}" font-family="Raleway">${dn} gelişim hedefi</text>`});
+ g+=`<text x="12" y="20" font-size="11" fill="${css("--muted")}" font-family="Raleway">↑ İLGİ</text>`;$("#quad").innerHTML=g;
+ const L=[];const si=st.inv.filter(x=>x.s&&x.i);if(si.length)L.push(`<strong>Süper güçlerin</strong> (hem güç hem ilgi): ${si.map(x=>esc(x.n)).join(", ")}.`);
+ const pas=st.inv.filter(x=>x.i===2&&!x.s);if(pas.length)L.push(`<strong>Henüz güç olmayan tutkuların</strong>: ${pas.map(x=>esc(x.n)).join(", ")}. Bunlar gelecekteki ikigai adayları olabilir.`);
+ const so=st.inv.filter(x=>x.s&&!x.i);if(so.length)L.push(`<strong>İyi olduğun ama seni pek çekmeyenler</strong>: ${so.length} beceri. Başka bir ilgiyle birleşince heyecan verici hâle gelebilirler.`);
+ const gs={};st.inv.filter(x=>x.s).forEach(x=>{const g=GRP[norm(x.n)]||"Kendi eklediklerin";gs[g]=(gs[g]||0)+1});const gt=Object.entries(gs).sort((a,b)=>b[1]-a[1]);if(gt.length)L.push(`Güçlerin en çok <strong>${esc(gt[0][0])}</strong> alanında toplanıyor (${gt[0][1]}).`);
+ const gi={};st.inv.filter(x=>x.i).forEach(x=>{const g=GRP[norm(x.n)]||"Kendi eklediklerin";gi[g]=(gi[g]||0)+1});const it=Object.entries(gi).sort((a,b)=>b[1]-a[1]);if(it.length&&gt.length&&it[0][0]!==gt[0][0])L.push(`İlgilerin ise en çok <strong>${esc(it[0][0])}</strong> alanında: güç ve ilgi farklı yerlerde yoğunlaşıyor. Bu, olası bir yön değişikliğinin işareti olabilir.`);
+ $("#patOut").innerHTML=L.length?L.map(l=>`<p style="margin:.3em 0">${l}</p>`).join(""):"Envanteri doldurdukça otomatik gözlemler burada görünecek."}
+bind("patNote","patNote");
+st.proj=st.proj||[];
+function projR(){const c=st.inv.filter(x=>x.i||x.s);$("#projSk").innerHTML=c.length?c.map(x=>`<button class="chip ${st.proj.includes(x.n)?"on":""}" data-pj="${esc(x.n)}">${x.i===2?"☆☆ ":x.i?"☆ ":""}${esc(x.n)}</button>`).join(""):'<span class="small">Envanterde güç ya da ilgi işaretlediğin beceriler burada çıkar.</span>';
+ $$("[data-pj]").forEach(b=>b.onclick=()=>{const n=b.dataset.pj;st.proj=st.proj.includes(n)?st.proj.filter(x=>x!==n):st.proj.concat(n);save();projR()})}
+bind("projIdea","projIdea");bind("projDate","projDate");bind("projFeel","projFeel");
+const PL=["Bu ilgi alanında bir video ya da webinar izle","Bir makale ya da kitap bölümü oku","Bir konferans ya da meetup etkinliği bul","İlgini paylaşan biriyle bağlantı kur","İlham verecek bir topluluğa katıl","Bir beceriyi geliştirmek için küçük bir öğrenme etkinliği başlat"];
+st.pl=st.pl||{};
+$("#playChk").innerHTML=PL.map((p,i)=>`<li><label><input type="checkbox" data-pl="${i}" ${st.pl[i]?"checked":""}>${p}</label></li>`).join("");
+$$("[data-pl]").forEach(c=>c.onchange=()=>{st.pl[c.dataset.pl]=c.checked;save()});bind("playRes","playRes");bind("playWho","playWho");
+
+const ROLES=[["People Analyst","İnsan analisti","an"],["HR Analyst","İK analisti","an"],["Talent Analyst","Yetenek analisti","an"],["Workforce Analyst","İşgücü analisti","an"],["Business Intelligence Analyst (HR)","İş zekâsı analisti (İK)","ds"],["(People) Data Scientist","(İnsan) veri bilimcisi","ds"],["People Insights Specialist","İnsan içgörüleri uzmanı","an"],["Workforce Insights Analyst","İşgücü içgörüleri analisti","an"],["Strategic Workforce Planning Analyst","Stratejik işgücü planlama analisti","sp"],["HRIS Analyst","İK bilgi sistemleri (İKBS) analisti","ds"],["HR Data / Information Architect","İK veri / bilgi mimarı","ds"],["Data Governance Analyst","Veri yönetişimi analisti","ds"],["Data Quality Specialist","Veri kalitesi uzmanı","ds"],["Master Data Management Analyst","Ana veri yönetimi analisti","ds"],["Data Privacy Analyst","Veri mahremiyeti analisti","ds"],["People Data Security Analyst","İnsan verisi güvenliği analisti","ds"],["Talent Acquisition / Recruiting Analyst","İşe alım analisti","sp"],["Learning & Development Analyst","Öğrenme ve gelişim analisti","sp"],["Compensation & Benefits Analyst","Ücret ve yan haklar analisti","sp"],["Employee Relations Analyst","Çalışan ilişkileri analisti","sp"],["DE&I Analyst","Çeşitlilik, eşitlik ve kapsayıcılık analisti","sp"],["People Experience Analyst","Çalışan deneyimi analisti","sp"],["Workforce Retention Analyst","Çalışanı elde tutma analisti","sp"],["Employee Engagement Analyst","Çalışan bağlılığı analisti","sp"],["Employee Experience Manager","Çalışan deneyimi yöneticisi","ld"],["HR Technology Implementation Specialist","İK teknolojisi uygulama uzmanı","ds"],["People Analytics Manager","İnsan analitiği yöneticisi","ld"],["Director of People Analytics","İnsan analitiği direktörü","ld"],["Head of People Analytics","İnsan analitiği lideri","ld"],["People Insights Manager","İnsan içgörüleri yöneticisi","ld"],["VP of People Analytics","İnsan analitiğinden sorumlu başkan yardımcısı","ld"],["Chief People Officer (CPO)","İnsandan sorumlu üst yönetici","ld"],["Chief Human Resources Officer (CHRO)","İK'dan sorumlu üst yönetici","ld"],["People / HR / Talent / Workforce Analytics Consultant","İnsan / İK / yetenek / işgücü analitiği danışmanı","cr"],["People Success Analyst","Çalışan başarısı analisti","an"],["Organizational Development Analyst","Örgütsel gelişim analisti","sp"],["Researcher","Araştırmacı","cr"],["People Analytics Research Scientist","İnsan analitiği araştırma bilimcisi","cr"],["Human Capital Strategist","İnsan sermayesi stratejisti","cr"],["Talent Optimization Specialist","Yetenek optimizasyonu uzmanı","sp"],["People Operations Specialist","İnsan operasyonları uzmanı","sp"],["Reporting Analyst","Raporlama analisti","an"],["Director of Workforce Science","İşgücü bilimi direktörü","ld"],["Chief Human Capital Officer","İnsan sermayesinden sorumlu üst yönetici","ld"],["Workforce Transformation Specialist","İşgücü dönüşümü uzmanı","sp"],["HR Business Partner","İK iş ortağı","cr"],["People Analytics Project Manager","İnsan analitiği proje yöneticisi","ld"],["People Analytics Product Manager","İnsan analitiği ürün yöneticisi","ds"],["People Analytics Platform Manager","İnsan analitiği platform yöneticisi","ds"],["Strategic People Partner","Stratejik insan ortağı","cr"]];
+// 4. dünya
+const APP=[["Örgütsel ağ analizi","Bilgi ve iş birliği kimin üzerinden akıyor?"],["Öngörücü ayrılma modellemesi","Hangi gruplarda ayrılma riski artıyor, neden?"],["Sağkalım analizi","Çalışanlar ortalama ne zaman ve hangi koşullarda ayrılıyor?"],["İşgücü planlama","Stratejik ve operasyonel planlama, kadrolama, işgücü optimizasyonu."],["Öğrenme analitiği","Eğitim programları davranışı ve performansı değiştiriyor mu?"],["İnsan sermayesi değerlemesi","İnsanların kuruma kattığı değer nasıl ölçülür?"],["Yatırım getirisi hesapları","İnsana yönelik bir girişim maliyetini karşılıyor mu?"],["Ücret analizleri","Ücret eşitliği, ücret ve yan haklar, yönetici ücretleri, maliyet modelleme, plan dağılımı…"],["Yetenek kazanımı","İşe alım verimliliği, kaynak bulma, aday seçimi, oryantasyon, süreç optimizasyonu…"],["Çeşitlilik ve kapsayıcılık","Fırsatlar ve deneyimler gruplar arasında adil mi?"],["Çalışan gelişimi","Kim, hangi yolla, ne kadar hızlı gelişiyor?"],["Çalışan dinleme","Anketler, yorumlar ve diğer kanallardan çalışan sesi."],["Performans yönetimi","Değerlendirmeler adil ve işe yarar mı?"],["Tesis ve gayrimenkul planlaması","Ofis alanı insanların çalışma biçimine uyuyor mu?"],["Veri bilimi","İleri istatistik ve modellemeyle insan sorularını yanıtlamak."],["Veri mühendisliği","Verinin güvenilir biçimde akmasını sağlayan altyapı."],["Makine öğrenmesi ve derin öğrenme","Büyük veri setlerinde örüntü bulma ve tahmin."],["İş zekâsı","Raporlama, panolar ve öz-hizmet analitik."],["Bilgi sistemleri yönetimi","Özellikle (ama yalnızca değil) İK bilgi sistemleri."],["Yazılım ve teknoloji tasarımı/geliştirme","İnsan analitiği ürünleri inşa etmek."]];
+const AREA=[["İK / İnsan operasyonları","İşgücü verisine dokunan her şey: raporlama, analiz, veri yönetimi, panolar. Gereken teknik derinlik temel veri becerilerinden ileri programlama ve veri bilimine kadar geniş bir aralıkta. Yetenek yönetimi gibi başka adlarla da anılır."],["İş ortaklığı / Danışmanlık","Bulguları iş sorunlarını çözmek ve stratejik kararları desteklemek için uygulamak. Bu roller danışman gibi çalışır; farklı kişi ve kurumlarla veriyi eyleme dönüştürür."],["İnsan bilimi / Araştırma","İşgücü verisinin ardındaki “neden”i anlamak için yöntemlere daha derin iner; tipik bir analitik roldekinden daha fazla bilimsel titizlik ve ileri araştırma yöntemi içerir."],["Diğer uzmanlık alanları","İşgücü planlama, yetenek yönetimi, anket ve test tasarımı/analizi; performans, işe alım, öğrenme, kapsayıcılık, eşitlik, çeşitlilik, ücret gibi girişimlerin veri boyutu."],["Teknoloji rolleri","İş zekâsı, veri bilimi, veri yönetimi, kullanıcı deneyimi, ürün tasarımı ve yönetimi, bilgi mimarisi, sistem uygulama, İKBS yönetimi. Son yıllarda yatırımlar, girişimler ve birleşmelerle hızla büyüyen bir alan; her teknoloji iş türü burada da var."],["Yönetim","Liderlik, ekip yönetimi, operasyon, birleşme ve satın almalar, girişim sermayesi, tesis ve ofis yönetimi. Doğrudan ekip yönetmeyen roller (finans operasyonları, güvenlik, gayrimenkul, ürün sahipleri, proje yöneticileri) bile insanlar hakkında veriye dayalı karar vermek zorunda."],["Araştırma / Akademi","Genç ama hızla büyüyen bir alan. Yazar, popüler “insan analitiği” teriminin ötesinde yönetim bilimi ve endüstri-örgüt psikolojisinin köklü geleneğine dalmayı öneriyor. İstatistik, psikoloji, bilgi yönetimi ve işletme gibi disiplinler arası bir alan."]];
+st.wt=st.wt||"app";st.app=st.app||{};st.area=st.area||{};
+function wR(){$("#wTabs").innerHTML=[["app","Uygulamalar ve teknikler"],["area","Uygulama alanları"]].map(([k,l])=>`<button data-wt="${k}" class="${st.wt===k?"on":""}">${l}<span class="c">${Object.values(k==="app"?st.app:st.area).filter(v=>v&&v!=="n").length}</span></button>`).join("");
+ $$("[data-wt]").forEach(b=>b.onclick=()=>{st.wt=b.dataset.wt;save();wR()});
+ if(st.wt==="app"){$("#wBody").innerHTML=`<p class="small">İnsan analitiği her zaman bir iş unvanı değil, belirli bir veri türü üzerinde yürütülen bir yaklaşım ya da teknikler kümesidir. İlgini çekenleri ☆ ile işaretle; derinlemesine araştırmak için anahtar terimlerin olur. (Örnek sorular uyarlamaya aittir.)</p><div class="grid">${APP.map((a,i)=>`<div class="card"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><div class="t">${a[0]}</div><button class="chip ${st.app[i]?"on":""}" data-ap="${i}" aria-label="İlgimi çekiyor"><span class="star">☆</span></button></div><div class="small">${a[1]}</div></div>`).join("")}<div class="card"><div class="t">…ve çok daha fazlası</div><div class="small">Liste bilerek eksik bırakıldı.</div></div></div>`;
+  $$("[data-ap]").forEach(b=>b.onclick=()=>{st.app[b.dataset.ap]=!st.app[b.dataset.ap];save();wR()})}
+ else{$("#wBody").innerHTML=`<p class="small">İnsan analitiği tek bir biçimde, belirli kurum türlerinde ya da belirli unvanlarla yapılmaz. Bu çeşitlilik çok sayıda kariyer fırsatı demek, ama yeni başlayanlar için kafa karıştırıcı da olabilir. Aşağıdaki liste genelleştirilmiş, kapsayıcı olmayan ve birbirini dışlamayan alanlardan oluşuyor.</p>${AREA.map((a,i)=>`<div class="gray"><div><div class="ui" style="font-weight:800;color:var(--navy)">${a[0]}</div><div class="small">${a[1]}</div></div>${segH(`data-ar="${i}"`,[["y","Bana uygun"],["m","Belki"],["n","Değil"]],st.area[i])}</div>`).join("")}<div class="fb">${Object.values(st.area).filter(v=>v==="y").length?"Uygun bulduğun alanlar: "+AREA.filter((_,i)=>st.area[i]==="y").map(a=>a[0]).join(", ")+". İlan ararken bu alanların açıklamalarındaki kelimeleri kullan.":""}</div>`;
+  $$("[data-ar]").forEach(b=>b.onclick=()=>{st.area[b.dataset.ar]=b.dataset.v;save();wR()})}
+ qGen()}
+wR();
+
+// 5. unvanlar
+const FAM=[["all","Tümü"],["an","Analist"],["ds","Veri ve teknoloji"],["sp","Uzmanlık"],["cr","Danışmanlık ve araştırma"],["ld","Yönetim"],["star","☆"]];
+st.rf=st.rf||"all";st.rs=st.rs||{};st.rq=st.rq||"";
+function rolesR(){$("#rFam").innerHTML=FAM.map(([k,l])=>`<button data-rf="${k}" class="${st.rf===k?"on":""}">${l}</button>`).join("");
+ $$("[data-rf]").forEach(b=>b.onclick=()=>{st.rf=b.dataset.rf;save();rolesR()});
+ const q=norm(st.rq);const L=ROLES.map((r,i)=>[r,i]).filter(([r,i])=>(st.rf==="all"||(st.rf==="star"?st.rs[i]:r[2]===st.rf))&&(!q||norm(r[0]+" "+r[1]).includes(q)));
+ $("#roles").innerHTML=L.map(([r,i])=>`<div class="role"><div><div class="ui" style="font-weight:700;font-size:14px">${r[0]}</div><div class="small">${r[1]}</div></div><button class="chip ${st.rs[i]?"on":""}" data-rs="${i}" aria-label="İlgimi çekiyor"><span class="star">☆</span></button></div>`).join("")||'<p class="small">Eşleşen unvan yok.</p>';
+ $$("[data-rs]").forEach(b=>b.onclick=()=>{st.rs[b.dataset.rs]=!st.rs[b.dataset.rs];save();rolesR();qGen()});
+ const n=Object.values(st.rs).filter(Boolean).length;$("#rCount").textContent=`${L.length} unvan gösteriliyor · ${n} tanesini işaretledin · …ve çok daha fazlası.`}
+const rq=$("#rq");rq.value=st.rq;rq.oninput=()=>{st.rq=rq.value;save();rolesR()};rolesR();
+const HP=["Danışman","Araştırmacı","Analist","Veri bilimci","Stratejik işgücü planlamacısı","Yetenek yönetimi lideri","İK teknolojisi ve operasyon lideri","Başkan yardımcısı, insan stratejisi","Yeniden danışman","Profesör"];
+st.hp=st.hp??-1;
+function hpR(){$("#hPath").innerHTML=HP.map((h,i)=>`${i?'<span class="ar">→</span>':""}<button class="st ${st.hp===i?"on":""}" data-hp="${i}">${h}</button>`).join("");
+ $$("[data-hp]").forEach(b=>b.onclick=()=>{st.hp=+b.dataset.hp;save();hpR()});
+ $("#hOut").innerHTML=st.hp<0?"Bir role tıkla.":`<strong>${st.hp+1}/${HP.length} · ${HP[st.hp]}</strong> — Yazar her rolün farklı becerileri geliştirmesini ve esnetmesini gerektirdiğini, ama mevcut insan analitiği güçlerini kullanabildiği için bu geçişlerin mümkün olduğunu anlatıyor.${st.hp===8?" Dikkat: yol düz bir çizgi değil; aynı role farklı bir deneyimle geri dönmek de mümkün.":""}${st.hp===9?" Analist ve araştırmacılıkla başlayan yol, bugün öğretim üyeliğine uzanıyor.":""}`}
+hpR();
+st.myp=st.myp||[];st.pk=st.pk||"p";
+function mypR(){$("#pKind").innerHTML=[["p","Geçmiş / şimdi"],["f","Olası gelecek"]].map(([k,l])=>`<button data-pk="${k}" class="${st.pk===k?"on":""}">${l}</button>`).join("");
+ $$("[data-pk]").forEach(b=>b.onclick=()=>{st.pk=b.dataset.pk;save();mypR()});
+ const ord=st.myp.filter(x=>x.k==="p").concat(st.myp.filter(x=>x.k==="f"));
+ $("#myPath").innerHTML=ord.length?ord.map((x,i)=>`${i?'<span class="ar">→</span>':""}<span class="st ${x.k==="f"?"fut":""}" style="cursor:default">${esc(x.n)} <button class="del" data-mp="${st.myp.indexOf(x)}" aria-label="Sil" style="font-size:14px">×</button></span>`).join(""):'<span class="small">Henüz rol eklemedin.</span>';
+ $$("[data-mp]").forEach(b=>b.onclick=()=>{st.myp.splice(+b.dataset.mp,1);save();mypR()})}
+$("#pAdd").onclick=()=>{const v=$("#pNew").value.trim();if(!v)return;st.myp.push({n:v,k:st.pk});$("#pNew").value="";save();mypR()};mypR();bind("pThread","pThread");
+
+// 6. ilanlar
+function qGen(){const sk=st.inv.filter(x=>x.s||x.i).sort((a,b)=>(b.i+(b.s?1:0))-(a.i+(a.s?1:0))).slice(0,4);const rl=ROLES.filter((_,i)=>(st.rs||{})[i]).slice(0,4);
+ const en=[],tr=[];
+ rl.forEach(r=>{en.push(`"${r[0].replace(/\s*\(.*?\)/g,"").split(" / ")[0]}"`);tr.push(`"${r[1].split(" / ")[0]}"`)});
+ sk.forEach(x=>{const e=EN[norm(x.n)];if(e)en.push(`("people analytics" OR "HR analytics" OR "workforce analytics") "${e}"`);tr.push(`("İK" OR "insan kaynakları") "${x.n}"`)});
+ if(!en.length&&!tr.length){en.push('"people analytics"','"workforce analytics" reporting','"HR data" analysis');tr.push('"İK analitiği"','"insan kaynakları" "veri analizi"','"İK raporlama"')}
+ const blk=(t,a)=>a.length?`<div class="small ui" style="font-weight:800;margin-top:6px">${t}</div>`+a.map(q=>`<div class="row" style="margin:3px 0;flex-wrap:nowrap"><code style="flex:1;font-size:13px;overflow-wrap:anywhere">${esc(q)}</code><button class="btn ghost sm" data-cq="${esc(q)}">Kopyala</button></div>`).join(""):"";
+ $("#qGen").innerHTML=blk("İngilizce ilanlar",en)+blk("Türkçe ilanlar",tr)+(!sk.length&&!rl.length?'<div class="small">Genel öneriler gösteriliyor; envanterini doldurup unvan işaretledikçe kişiselleşir.</div>':"");
+ $$("[data-cq]").forEach(b=>b.onclick=()=>copy(b.dataset.cq))}
+const TR=[["“Tableau veya Power BI ile panolar oluşturma deneyimi”",["Veri görselleştirme araçları","Veri mühendisliği","Tematik analiz"],0,"Örtük olarak grafik türleri ve görsel tasarım ilkeleri de gerekir."],
+ ["“Raporlarda ve analizlerde veri bütünlüğünü ve doğruluğunu sağlamak”",["Hikâye anlatımı","Veri kalitesi yönetimi","Örnekleme yöntemi"],1,"Kitap bunu üç satıra böler: veri temizleme, veri kalitesi yönetimi, veri yönetişimi."],
+ ["“Workday ya da SAP SuccessFactors'tan düzenli rapor çekmek”",["Makine öğrenmesi","İKBS (HRIS) bilgisi","Örgütsel ağ analizi"],1,"Sistem adı geçiyorsa beceri “İK bilgi sistemleri” ve büyük olasılıkla SQL/elektronik tablo."],
+ ["“Bulguları üst yönetime etkileyici biçimde sunmak”",["Hikâye anlatımı","Optimizasyon modelleme","Veri temizleme"],0,"Yanında sade ve açık iletişim ile veri görselleştirme de gelir."],
+ ["“İK iş ortaklarıyla birlikte iş sorularını analitik sorulara dönüştürmek”",["Sağkalım analizi","Aktif dinleme ve şirket uzmanlığı","Veri mühendisliği"],1,"Bu, Adım 2'deki çevirmen becerilerinin ilan dilindeki karşılığı."],
+ ["“Açık uçlu anket yorumlarından temalar çıkarmak”",["Korelasyon","Nitel veri kodlama ve tematik analiz","Optimizasyon modelleme"],1,"Büyük hacimde NLP ve duygu analizi de beklenebilir."],
+ ["“Kişisel verilerin KVKK ve GDPR'a uygun işlenmesini sağlamak”",["Veri mahremiyeti","Zaman serisi analizi","Hikâye anlatımı"],0,"Bilgilendirilmiş onay ve etki değerlendirmesi de ilişkili."],
+ ["“Hangi işe alım kanallarının daha uzun süre kalan çalışanlar getirdiğini analiz etmek”",["Sağkalım analizi","Görsel tasarım ilkeleri","Ağ kurma"],0,"Karşılaştırmalı analiz ve grup karşılaştırma testleri de işe yarar."]];
+st.tr=st.tr||{};
+function trR(){$("#trans").innerHTML=TR.map((t,i)=>`<div class="gray"><div><div style="font-size:15px">${t[0]}</div>${st.tr[i]!==undefined?`<div class="small" style="margin-top:4px"><strong class="${st.tr[i]===t[2]?"ok":"wa"}">${st.tr[i]===t[2]?"Doğru çeviri.":"Daha yakın karşılık: "+t[1][t[2]]+"."}</strong> ${t[3]}</div>`:""}</div><div class="seg">${t[1].map((o,j)=>`<button data-tr="${i}" data-v="${j}" class="${st.tr[i]===j?"on":""}">${o}</button>`).join("")}</div></div>`).join("");
+ $$("[data-tr]").forEach(b=>b.onclick=()=>{st.tr[b.dataset.tr]=+b.dataset.v;save();trR()});
+ const n=Object.keys(st.tr).length,m=TR.filter((t,i)=>st.tr[i]===t[2]).length;$("#transOut").textContent=n?`${n}/${TR.length} ifade çevrildi, ${m} tanesi doğru.`:""}
+trR();
+st.posts=st.posts||[];st.pi=st.pi||0;
+const EXP={t:"İK Veri Analisti, Raporlama",co:"Sağlık sektöründe bir şirket (örnek)",url:"",want:"",lvl:"",rows:[
+ {e:"Sorumluluklar: Raporlarda ve analizlerde veri bütünlüğünü ve doğruluğunu sağlamak",k:"Veri kalitesi yönetimi",p:"i",s:"y",d:"n",note:""},
+ {e:"",k:"Veri temizleme",p:"i",s:"y",d:"n",note:""},{e:"",k:"Veri yönetişimi",p:"i",s:"n",d:"y",note:""},
+ {e:"Aranan nitelikler: Tableau ya da Power BI gibi görselleştirme araçlarına aşinalık",k:"Veri görselleştirme araçları",p:"n",s:"n",d:"y",note:""},
+ {e:"Sorumluluklar: Çeşitli projelerde insan analitiği ekibiyle iş birliği yapmak",k:"İş birliğine dayalı ekip çalışması",p:"t",s:"y",d:"n",note:""},
+ {e:"",k:"Aktif dinleme",p:"i",s:"y",d:"n",note:""}]};
+const newRow=()=>({e:"",k:"",p:"",s:"",d:"",note:""});
+const newPost=()=>({t:"",co:"",url:"",want:"",lvl:"",rows:[newRow(),newRow(),newRow()]});
+const fillFromInv=r=>{const f=invFind(r.k);if(!f)return;if(!r.p)r.p=f.i===2?"t":f.i?"i":"n";if(!r.s)r.s=f.s?"y":"n"};
+const rowsOf=p=>p.rows.filter(r=>r.k.trim());
+function metrics(p){const R=rowsOf(p);const dv=R.filter(r=>r.d);const ready=dv.length?dv.reduce((a,r)=>a+(r.d==="n"?1:r.d==="b"?.5:0),0)/dv.length:null;const pi=R.filter(r=>r.p);const int=pi.length?pi.filter(r=>r.p==="t"||r.p==="i").length/pi.length:null;return {n:R.length,ready,int}}
+const pct=v=>v==null?"—":"%"+Math.round(v*100);
+function pR(){if(st.pi>=st.posts.length)st.pi=Math.max(0,st.posts.length-1);
+ $("#pTabs").innerHTML=st.posts.map((p,i)=>`<button data-pt="${i}" class="${st.pi===i?"on":""}">${esc(p.t||"İlan "+(i+1))}<span class="c">${rowsOf(p).length}</span></button>`).join("")+(st.posts.length<5?`<span class="small" style="align-self:center">Hedef: en az 5 ilan (${st.posts.length}/5)</span>`:'<span class="small ok" style="align-self:center">✓ 5 ilan hedefi tamam</span>');
+ $$("[data-pt]").forEach(b=>b.onclick=()=>{st.pi=+b.dataset.pt;save();pR()});
+ if(!st.posts.length){$("#pBody").innerHTML='<p class="small">Henüz ilan yok. “+ Yeni ilan” ile başla ya da kitaptaki örneği ekleyerek tabloyu tanı.</p>';analyze();return}
+ const p=st.posts[st.pi],dl2=`<datalist id="skl">${[...new Set(st.inv.map(x=>x.n).concat(CAT.flatMap(c=>c[1].map(s=>s[0]))))].map(n=>`<option value="${esc(n)}">`).join("")}</datalist>`;
+ $("#pBody").innerHTML=`<div class="box">${dl2}<div class="twocol"><label class="small ui" style="font-weight:700">Unvan<input type="text" data-pf="t" value="${esc(p.t)}"></label><label class="small ui" style="font-weight:700">Kurum / sektör<input type="text" data-pf="co" value="${esc(p.co)}"></label></div>
+ <label class="small ui" style="font-weight:700;display:block;margin-top:6px">Bağlantı ya da ilanın kayıtlı kopyası nerede?<input type="text" data-pf="url" value="${esc(p.url)}" placeholder="İlanlar kısa süre yayında kalır; önemli kısımları kaydet"></label>
+ <div class="sa post" style="margin-top:10px"><table><tr><th>İş beklentisi</th><th>Beceri</th><th>Tutku / ilgi</th><th>Güç</th><th>Gelişim gerekli mi?</th><th>Not</th><th></th></tr>
+ ${p.rows.map((r,i)=>`<tr><td><input type="text" data-rf2="e" data-r="${i}" value="${esc(r.e)}" placeholder="${i?"(aynı beklenti)":"İlandan özet"}"></td><td><input type="text" list="skl" data-rf2="k" data-r="${i}" value="${esc(r.k)}" placeholder="Beceri"></td>
+ <td>${segH(`data-rp="${i}"`,[["t","Tutku"],["i","İlgi"],["n","Hayır"]],r.p)}</td><td>${segH(`data-rs2="${i}"`,[["y","Evet"],["n","Hayır"]],r.s)}</td><td>${segH(`data-rd="${i}"`,[["y","Evet"],["b","Biraz"],["n","Hayır"]],r.d)}</td>
+ <td><input type="text" data-rf2="note" data-r="${i}" value="${esc(r.note)}"></td><td><button class="del" data-rx="${i}" aria-label="Satırı sil">×</button></td></tr>`).join("")}</table></div>
+ <div class="row" style="margin-top:8px"><button class="btn ghost sm" id="rowAdd">+ Satır</button><button class="btn ghost sm" id="postDel">Bu ilanı sil</button><span class="small" id="pMet"></span></div></div>`;
+ $$("[data-pf]").forEach(e=>e.oninput=()=>{p[e.dataset.pf]=e.value;save();if(e.dataset.pf==="t"){const b=$(`[data-pt="${st.pi}"]`);if(b)b.firstChild.textContent=e.value||"İlan "+(st.pi+1)}analyze()});
+ $$("[data-rf2]").forEach(e=>{e.oninput=()=>{p.rows[e.dataset.r][e.dataset.rf2]=e.value;save();analyze()};if(e.dataset.rf2==="k")e.onchange=()=>{const r=p.rows[e.dataset.r];const b4=r.p+r.s;fillFromInv(r);save();if(r.p+r.s!==b4)pR()}});
+ const sg=(a,f)=>$$(`[${a}]`).forEach(b=>b.onclick=()=>{p.rows[b.getAttribute(a)][f]=b.dataset.v;save();pR()});sg("data-rp","p");sg("data-rs2","s");sg("data-rd","d");
+ $$("[data-rx]").forEach(b=>b.onclick=()=>{p.rows.splice(+b.dataset.rx,1);if(!p.rows.length)p.rows.push(newRow());save();pR()});
+ $("#rowAdd").onclick=()=>{p.rows.push(newRow());save();pR()};
+ $("#postDel").onclick=()=>{if(!confirm("Bu ilan silinsin mi?"))return;st.posts.splice(st.pi,1);save();pR()};
+ analyze()}
+$("#pNewPost").onclick=()=>{st.posts.push(newPost());st.pi=st.posts.length-1;save();pR()};
+$("#pExample").onclick=()=>{st.posts.push(JSON.parse(JSON.stringify(EXP)));st.pi=st.posts.length-1;save();pR();toast("Örnek ilan eklendi")};
+$("#pCsv").onclick=()=>dl("is_ilani_analizi.csv",[["İlan","Kurum","İş beklentisi","Beceri","Tutku/İlgi","Güç","Gelişim","Not"]].concat(st.posts.flatMap(p=>rowsOf(p).map(r=>[p.t,p.co,r.e,r.k,{t:"Tutku",i:"İlgi",n:"Hayır"}[r.p]||"",{y:"Evet",n:"Hayır"}[r.s]||"",{y:"Evet",b:"Biraz",n:"Hayır"}[r.d]||"",r.note]))));
+function analyze(){const m=st.posts[st.pi]?metrics(st.posts[st.pi]):null;const pm=$("#pMet");if(pm&&m)pm.textContent=`${m.n} beceri · hazırlık ${pct(m.ready)} · ilgi uyumu ${pct(m.int)}`;
+ const fq={};st.posts.forEach(p=>{const seen=new Set();rowsOf(p).forEach(r=>{const k=norm(r.k);if(seen.has(k))return;seen.add(k);fq[k]=fq[k]||{n:r.k.trim(),c:0};fq[k].c++})});
+ const F=Object.values(fq).sort((a,b)=>b.c-a.c).slice(0,12);const mx=Math.max(1,...F.map(f=>f.c));
+ $("#freq").innerHTML=F.length?F.map(f=>`<div class="b"><span>${esc(f.n)}</span><div class="tr"><div style="width:${f.c/mx*100}%"></div></div><span class="ui" style="font-weight:800">${f.c}</span></div>`).join("")+`<div class="small">Sayı: becerinin geçtiği ilan sayısı.</div>`:'<p class="small">İlan tablolarını doldurdukça burada görünecek.</p>';
+ const W=360,H=220,P=st.posts.map((p,i)=>[p.t||"İlan "+(i+1),metrics(p)]).filter(x=>x[1].n);let g="";
+ if(P.length){const bw=Math.min(36,(W-50)/P.length/2.4),gap=(W-50)/P.length;const y=v=>H-30-v*(H-50);
+  g+=`<line x1="40" x2="${W}" y1="${y(.7)}" y2="${y(.7)}" stroke="${css("--warn")}" stroke-dasharray="4 3"/><text x="${W-2}" y="${y(.7)-4}" text-anchor="end" font-size="11" fill="${css("--warn")}" font-family="Raleway" font-weight="700">%70 hedef</text>`;
+  [0,.5,1].forEach(v=>g+=`<text x="34" y="${y(v)+4}" text-anchor="end" font-size="10" fill="${css("--muted")}">%${v*100}</text><line x1="40" x2="${W}" y1="${y(v)}" y2="${y(v)}" stroke="${css("--line")}"/>`);
+  P.forEach(([t,m],i)=>{const x=45+i*gap;[[m.ready,"--navy2",0],[m.int,"--ok",1]].forEach(([v,c,o])=>{if(v==null)return;g+=`<rect x="${x+o*(bw+2)}" y="${y(v)}" width="${bw}" height="${y(0)-y(v)}" rx="3" fill="${css(c)}"><title>${esc(t)}: ${o?"ilgi":"hazırlık"} ${pct(v)}</title></rect>`});g+=`<text x="${x+bw}" y="${H-14}" text-anchor="middle" font-size="10" fill="${css("--muted")}" font-family="Raleway">${esc(t.length>12?t.slice(0,11)+"…":t)}</text>`});
+  g+=`<rect x="44" y="4" width="10" height="10" fill="${css("--navy2")}"/><text x="58" y="13" font-size="11" fill="${css("--ink")}" font-family="Raleway">Hazırlık (gelişim gerekmeyen)</text><rect x="214" y="4" width="10" height="10" fill="${css("--ok")}"/><text x="228" y="13" font-size="11" fill="${css("--ink")}" font-family="Raleway">İlgi/tutku uyumu</text>`}
+ else g=`<text x="${W/2}" y="${H/2}" text-anchor="middle" font-size="13" fill="${css("--muted")}" font-family="Raleway">Henüz doldurulmuş ilan yok</text>`;
+ $("#fitChart").innerHTML=g;$("#fitNote").textContent=P.length?"Hazırlık: “Gelişim gerekli mi?” sütununda Hayır = 1, Biraz = 0,5, Evet = 0 puanın ortalaması. Kitabın %70 önerisi bir sezgisel kural, kesin eşik değil.":"";
+ fitRoom();ikMap()}
+function fitRoom(){const P=st.posts.map((p,i)=>[p,i,metrics(p)]).filter(x=>x[2].n);
+ if(!P.length){$("#fitRoom").innerHTML='<p class="small">İlan ekledikçe her biri için bir “prova” kartı oluşur.</p>';return}
+ $("#fitRoom").innerHTML=P.map(([p,i,m])=>{const r=m.ready??0;const v=r>=.85?["wa","Neredeyse tam oturuyor: büyüme alanı az kalabilir. Bir beden büyüğünü (daha fazla sorumluluk) de dene."]:r>=.6?["ok","İyi oturuyor: %70 civarı, geri kalanı gelişim alanı."]:r>=.4?["wa","Biraz bol: gelişim gerektiren beceriler fazla. Bu becerileri geliştirmek seni mutlu eder mi?"]:["no","Şimdilik oturmuyor. Farklı bir tarz (iş türü) ya da beden (düzey) dene."];
+  const iw=m.int!=null&&m.int<.4?' <span class="small no">İlgi uyumu düşük: kitaba göre bu, rolün sana uymadığının işareti olabilir.</span>':"";
+  return `<div class="gray"><div><div class="ui" style="font-weight:800">${esc(p.t||"İlan "+(i+1))} <span class="small">· hazırlık ${pct(m.ready)} · ilgi ${pct(m.int)}</span></div><div class="small"><strong class="${v[0]}">${v[1]}</strong>${iw}</div></div>${segH(`data-fw="${i}"`,[["y","Bu yolu denerim"],["m","Belki"],["n","Rafa kaldır"]],p.want)}</div>`}).join("")+`<div class="small" style="margin-top:6px">${(()=>{const y=st.posts.filter(p=>p.want==="y").map(p=>p.t||"adsız ilan");return y.length?`Prova kabininden çıkan yollar: <strong>${y.map(esc).join(", ")}</strong>. Birden fazla yol seçmek seçenekleri artırır.`:"Birkaç yol seçmek seçeneklerini çoğaltır."})()}</div>`;
+ $$("[data-fw]").forEach(b=>b.onclick=()=>{st.posts[b.dataset.fw].want=b.dataset.v;save();fitRoom()})}
+
+// 7. ikigai haritası
+const RG=[["iki","Şimdiki ikigai","İlanlarda geçiyor, güçlü yönün ve ilgin. İşaretle, not al: bunlar özel.","--ok"],["fut","Gelecekteki ikigai","İlanlarda geçiyor ve ilgini çekiyor, ama henüz güç değil. Gelişim çabanı odaklayacağın beceriler.","--navy2"],["prof","Meslek bölgesi","Talep görüyor ve iyisin, ama ilgin yok. Sevdiğin şeylerle birleşince heyecan verici olabilir.","--warn"],["pas","Tutku bölgesi","Hem iyisin hem seviyorsun, ama incelediğin ilanlarda çıkmadı. Başka rol ya da alanlarda ara.","#9b59b6"],["dem","Yalnızca talep","İlanlarda geçiyor ama ne güç ne ilgi. Bu yolu izlersen bunları geliştirmekten mutlu olur musun?","--bad"],["oth","Yalnızca envanterde","Güç ya da ilgi ama ilanlarda yok ve iki koşulu birlikte taşımıyor.","--muted"]];
+function ikData(){const M={};
+ st.inv.forEach(x=>{const k=norm(x.n);M[k]={n:x.n,S:x.s,I:x.i>0,T:x.i===2,P:false,d:x.d}});
+ st.posts.forEach(p=>rowsOf(p).forEach(r=>{const k=norm(r.k);const m=M[k]||(M[k]={n:r.k.trim(),S:false,I:false,T:false,P:false,d:false});m.P=true;if(r.s==="y")m.S=true;if(r.p==="t"||r.p==="i")m.I=true;if(r.p==="t")m.T=true;if(r.d==="y"||r.d==="b")m.d=true}));
+ const out={iki:[],fut:[],prof:[],pas:[],dem:[],oth:[]};
+ Object.values(M).forEach(m=>{const r=m.P?(m.S&&m.I?"iki":m.I?"fut":m.S?"prof":"dem"):(m.S&&m.I?"pas":(m.S||m.I)?"oth":null);if(r)out[r].push(m)});return out}
+function ikMap(){const D=ikData();
+ $("#ikMap").innerHTML=RG.map(([k,t,d,c])=>`<div class="region" style="--c:${c.startsWith("--")?css(c):c}"><span class="n">${D[k].length}</span><div class="t">${t}</div><div class="small">${d}</div><div style="margin-top:6px">${D[k].map(m=>`<span class="tag">${m.T?"☆☆ ":""}${esc(m.n)}</span>`).join("")}</div></div>`).join("");
+ const hasPosts=st.posts.some(p=>rowsOf(p).length);let msg;
+ if(!hasPosts)msg='<span class="small">İlan tablolarını doldurduğunda beceriler “dünyanın ihtiyacı / karşılığı ödenen” boyutuna da yerleşecek.</span>';
+ else if(!D.iki.length&&!D.fut.length)msg='<strong class="ui wa">İyi haber: hangi rollerin sana uymadığını öğreniyorsun.</strong> <span class="small">İncelediğin ilanlarda şimdiki ya da gelecekteki ikigai becerisi çıkmadı. Kendini uymayan bir beceri setine zorlamak yerine bunu not al, bambaşka rol ve alanlara bakıp süreci tekrarla. Bu farkındalık sana çok zaman ve hayal kırıklığı kazandırır.</span>';
+ else msg=`<strong class="ui ok">${D.iki.length} şimdiki ve ${D.fut.length} gelecekteki ikigai becerin var.</strong> <span class="small">${D.fut.length?"Kendini geliştirme çabanı öncelikle "+D.fut.slice(0,3).map(m=>esc(m.n)).join(", ")+" üzerinde toplamayı düşün.":"Gelecekteki ikigai için ilgi duyduğun ama henüz güç olmayan becerileri içeren ilanlara bak."}</span>`;
+ $("#ikMsg").innerHTML=msg}
+$("#ikCopy").onclick=()=>{const D=ikData();copy("İkigai haritam\n"+RG.map(([k,t])=>`${t} (${D[k].length}): ${D[k].map(m=>m.n).join(", ")||"—"}`).join("\n"))};
+$("#ikPrint").onclick=()=>window.print();
+allInv();pR();
+
+// 8. test
+const Q=[
+ {q:"İkigai Venn şemasındaki dört daire hangileridir?",o:["Maaş, unvan, şirket, şehir","Sevdiğin, iyi olduğun, dünyanın ihtiyacı, para kazanabileceğin","Analitik, teknoloji, etik, iletişim","Geçmiş, şimdi, gelecek, hedef"],a:1,e:"İkigai, dördünün kesiştiği merkezdedir."},
+ {q:"Bir becerinin “güç” sayılması için yazara göre…",o:["En az “Uzman” düzeyinde olması gerekir","Asgari bir düzey yoktur; bağlama göre düşük düzey bile güç olabilir","Sertifikayla belgelenmesi gerekir","İş ilanında geçmesi gerekir"],a:1,e:"Bir arkadaşına bu konuda işe yarar destek verebiliyorsan güç olarak işaretle."},
+ {q:"“Gelişim” sütununu işaretlerken ölçüt nedir?",o:["Zayıf olduğun her beceri","Öğrenmek istediğin beceriler; zaten güçlü olduğun alanlarda derinleşmek de dahil","Yalnızca işverenin istediği beceriler","Yalnızca teknik beceriler"],a:1,e:"Ustalaşma ve derin uzmanlık da en az yeni beceri kadar heyecan vericidir."},
+ {q:"Yazarın “mutluluk avantajı” bölümündeki temel tutumu nedir?",o:["Önce eksiklerini düzelt","Önce güçlü yönlerini ve ilgilerini başkalarını düşünmeden gözden geçir","Yalnızca maaşa odaklan","Tek bir role odaklan"],a:1,e:"Yazar eksiklere odaklanma eğiliminin hayranı değil."},
+ {q:"Kitaba göre iş arayanların zorlanmasının temel nedeni genellikle nedir?",o:["Yeterince iş olmaması","Kurumların aradığıyla doğru kişileri eşleştirmenin zorluğu","Aday olmaması","Ücretlerin düşüklüğü"],a:1,e:"Açık pozisyonlar var; zorluk eşleştirmede."},
+ {q:"İş aramıyorsan ilan inceleme etkinliği için yazar ne öneriyor?",o:["Atla","Yine de yap: alanı anlamanı, becerilerini kıyaslamanı ve yeni fikirler bulmanı sağlar","Yalnızca yöneticin isterse yap","Yalnızca bir ilana bak"],a:1,e:"Mevcut işinden mutlu olsan bile değerli bir farkındalık ve gelişim aracı."},
+ {q:"İlanda “Tableau uzmanlığı” görürsen ne yaparsın?",o:["Görmezden gelirim","Tableau'nun ne olduğunu araştırır, “veri görselleştirme araçları” becerisine çevirir, örtük görselleştirme becerilerini de varsayarım","Yalnızca Tableau kursu alırım","İlanı elerim"],a:1,e:"Çevirmen becerilerini ilanları okurken de kullanırsın."},
+ {q:"“Gelecekteki ikigai” becerisi hangisidir?",o:["İlanlarda geçen, güç ve ilgi olan","İlanlarda geçen, ilgi duyduğun ama henüz güç olmayan","Ne ilanda ne envanterde olan","Güç olan ama ilgi duymadığın"],a:1,e:"Gelişim yolculuğunun sonunda ikigai seni bekliyor."},
+ {q:"Kıyafet alışverişi benzetmesinde önerilen uyum oranı yaklaşık kaçtır?",o:["%30","%50","%70","%100"],a:2,e:"Kalan kısım gelişme ve büyüme alanı bırakır."},
+ {q:"İncelediğin ilanlarda hiç ikigai becerisi çıkmazsa?",o:["İnsan analitiği sana göre değildir","Hangi rollerin sana uymadığını öğrenmişsindir; farklı rol ve alanlarla süreci tekrarla","Kendini o becerilere zorla","Etkinliği bırak"],a:1,e:"Kendini uymayan bir kalıba zorlamak yerine başka yollara bak."}];
+st.quiz=st.quiz||{};
+function quiz(){$("#quiz").innerHTML=Q.map((x,i)=>`<div class="card" style="margin:12px 0"><div class="ui" style="font-weight:700">${i+1}. ${x.q}</div>${x.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("")}<div class="fb" id="qe${i}" style="display:none">${x.e}</div></div>`).join("");
+ $$("#quiz .opt").forEach(b=>b.onclick=()=>{st.quiz[b.dataset.q]=+b.dataset.o;save();paint()});paint()}
+function paint(){let sc=0,n=0;Q.forEach((x,i)=>{const ch=st.quiz[i];if(ch===undefined)return;n++;if(ch===x.a)sc++;
+ $$(`#quiz .opt[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.o;b.classList.toggle("right",j===x.a);b.classList.toggle("wrong",j===ch&&ch!==x.a);b.disabled=true});$("#qe"+i).style.display="block"});
+ $("#score").innerHTML=n?`Skor: ${sc} / ${Q.length}${n===Q.length?' <button class="btn ghost" id="reset" style="margin-left:8px">Yeniden dene</button>':""}`:"";const r=$("#reset");if(r)r.onclick=()=>{st.quiz={};save();quiz()}}
+quiz();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>

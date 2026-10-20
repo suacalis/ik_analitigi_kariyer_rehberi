@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adım 5: Gelişim Planı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--bad:#c0392b;--shadow:0 2px 14px rgba(11,58,140,.08)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1040px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:740px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:100px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+.quote{background:var(--soft);border-radius:12px;padding:16px 22px;margin:16px 0;font-style:italic;text-align:center}
+.quote b{display:block;font-style:normal;font-family:Raleway;font-size:14px;color:var(--muted);margin-top:6px}
+.story{border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0;background:color-mix(in srgb,var(--soft) 40%,var(--card))}
+.story .h{font-family:Raleway;font-weight:800;color:var(--navy2);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn.sm{padding:4px 10px;font-size:12px}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,.chip:focus-visible,.seg button:focus-visible,.opt:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chip{font-family:Raleway;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--card);color:var(--muted);font-family:Raleway;font-weight:700;font-size:12px;padding:6px 11px;cursor:pointer}
+.seg button.on{background:var(--navy2);color:#fff}
+.seg button.on[data-v="g"]{background:var(--ok)}
+.seg button.on[data-v="y"]{background:var(--warn)}
+.seg button.on[data-v="r"]{background:var(--bad)}
+input[type=text],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+textarea{min-height:56px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.ok{color:var(--ok)}.no{color:var(--bad)}.wa{color:var(--warn)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.twocol{grid-template-columns:1fr}}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.fb{font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.opt.mid{border-color:var(--navy2);background:color-mix(in srgb,var(--navy2) 10%,var(--card))}
+.check{padding-left:0}.check li{list-style:none;margin:6px 0}
+.check input{width:17px;height:17px;accent-color:var(--navy2);vertical-align:-2px;margin-right:6px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tabs button{font-family:Raleway;font-weight:700;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;padding:7px 12px;cursor:pointer}
+.tabs button.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.tabs button .c{font-size:11px;margin-left:4px;opacity:.85}
+.meter{height:12px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0}
+.meter>div{height:100%;width:0;transition:width .3s,background .3s}
+.gray{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;background:var(--card);display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+@media (max-width:640px){.gray{grid-template-columns:1fr}}
+.kt{overflow-x:auto}
+.kt table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+.kt th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:6px 8px;border:1px solid var(--line);text-align:left}
+.kt td{border:1px solid var(--line);padding:5px 8px}
+.kt tr.risk td{background:color-mix(in srgb,var(--bad) 14%,var(--card))}
+.prin{display:flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--card)}
+.prin span{flex:1}
+.sa{overflow-x:auto}
+.sa table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+.sa th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.sa td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.sa td.sk{font-family:Raleway;font-weight:700;width:180px}
+.sa select{font-size:13px;padding:5px}
+.sa .gap{font-family:Raleway;font-size:11px;font-weight:800;color:var(--warn);display:block;margin-top:4px}
+.sa .met{font-family:Raleway;font-size:11px;font-weight:800;color:var(--ok);display:block;margin-top:4px}
+.sa tr.custom input{font-size:14px;padding:5px 7px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+@media (max-width:700px){.scale{grid-template-columns:1fr 1fr}}
+.scale .card{padding:10px}.scale .lv{font-family:Raleway;font-weight:800;font-size:12px;color:var(--navy2)}
+.map{display:grid;grid-template-columns:1fr 24px 1fr;gap:6px 8px;align-items:center;font-size:15px}
+.map .a{font-family:Raleway;font-weight:800;color:var(--muted);text-align:center}
+.map .l{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--card);font-family:Raleway;font-weight:700}
+.map .r{border:1px solid var(--ok);border-radius:10px;padding:8px 10px;background:color-mix(in srgb,var(--ok) 8%,var(--card))}
+.map .r.hid{border-style:dashed;border-color:var(--line);background:var(--card);color:var(--muted);cursor:pointer}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+a{color:var(--navy2)}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+.pb{display:inline-block;font-family:Raleway;font-weight:800;font-size:11px;border-radius:999px;padding:3px 9px;color:#fff;white-space:nowrap}
+.p1{background:var(--ok)}.p2{background:var(--navy2)}.p3{background:var(--warn)}.px{background:var(--muted)}
+.pri td{vertical-align:middle}.pri .seg button{padding:4px 7px;font-size:11px}
+.pri input[type=number]{width:54px;font:inherit;font-size:14px;padding:4px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.prio-col{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--card);border-top:5px solid var(--c)}
+.prio-col .t{font-family:Raleway;font-weight:800}
+.goal{border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0;background:var(--card);border-left:5px solid var(--navy2)}
+.goal h4{font-family:Raleway;margin:0 0 6px;color:var(--navy);font-size:17px}
+.smart{display:grid;grid-template-columns:38px 1fr;gap:6px 10px;align-items:center;margin:8px 0}
+.smart .k{font-family:Raleway;font-weight:800;font-size:20px;color:var(--navy2);text-align:center;border-radius:8px;background:var(--soft)}
+.smart .k.ok2{background:var(--ok);color:#fff}
+.task{display:grid;grid-template-columns:22px 1fr 130px 26px;gap:6px;align-items:center;margin:4px 0}
+@media (max-width:600px){.task{grid-template-columns:22px 1fr 26px}.task .dd{grid-column:2}}
+.task input[type=checkbox]{width:17px;height:17px;accent-color:var(--ok)}
+.task.done input[type=text]{text-decoration:line-through;color:var(--muted)}
+.mmwrap{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;touch-action:none}
+#mm{width:100%;height:auto;display:block;user-select:none}
+#mm .nd{cursor:grab}
+#mm .nd text{font-family:Raleway;font-weight:700;pointer-events:none}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-family:Raleway;font-size:12px;font-weight:700;color:var(--muted);margin:8px 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-2px;margin-right:4px}
+.linkbar{font-family:Raleway;font-weight:700;font-size:13px;color:#fff;background:var(--warn);padding:6px 10px;border-radius:8px;display:none;margin:8px 0}
+.finale{text-align:center;padding:20px 0}
+.finale .big{font-family:Raleway;font-weight:800;font-size:clamp(32px,7vw,58px);color:var(--navy);line-height:1.05}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Adım 5 (devam)</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">Önceliklendir</a>
+      <a href="#s2" data-s="s2">Eylem planı</a>
+      <a href="#s3" data-s="s3">İş şekillendirme</a>
+      <a href="#s4" data-s="s4">Kariyer haritası</a>
+      <a href="#s5" data-s="s5">Başardın!</a>
+      <a href="#s6" data-s="s6">Test</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema" aria-label="Açık/koyu tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">Kariyerini tasarla · Kitap s. 358–381</div>
+  <h1>Öncelikten eyleme: gelişim planın ve kariyer haritan</h1>
+  <p>Önceki etkinlikler sana muhtemelen bir anda odaklanabileceğinden çok daha uzun bir gelişim listesi bıraktı. Bu son bölümde listeyi ikigai mantığıyla önceliklendirecek, SMART hedeflere ve eylem planına dönüştürecek, mevcut ya da hayalindeki işi şekillendirmenin yollarını arayacak ve doğrusal olmayan bir kariyer haritası çizeceksin.</p>
+  <p class="note">Heather Whiteman'ın insan analitiği kariyer rehberinin son bölümünün Türkçe, etkileşimli bir uyarlamasıdır; metin özetlenmiş ve yeniden yazılmıştır. Örnek veriler kurgusaldır. Girdiklerin yalnızca bu tarayıcıda saklanır.</p>
+</div>
+
+<!-- 1 -->
+<section class="ch" id="s1">
+  <h2>Kendini keşfet: geliştireceğin becerileri önceliklendir</h2><hr>
+  <p>Listenin uzunluğu önemli değil; herkes farklı. Kimi şimdi odaklanacağı birkaç maddelik kısa bir plan yapıp bu etkinliğe ileride geri döner, kimi tüm becerileri gözden geçirip uzun süre yol gösterecek uzun bir liste çıkarır. Aşağıdaki adımlar ikigai odaklı bir önceliklendirme stratejisi sunuyor; liste sana yeterince uzun geldiğinde istediğin yerde durabilirsin.</p>
+  <div class="grid">
+    <div class="prio-col" style="--c:var(--ok)"><div class="t">Öncelik 1 · İlham veren, büyüten, kapı açan</div><div class="small">İlan tablolarında hem <strong>ilgi/tutku</strong> işaretlediğin hem de <strong>gelişim gerekli</strong> dediğin beceriler. Zaten çekildiğin, geliştirmeyi kişisel olarak istediğin ve geliştikçe daha çok kariyer fırsatı açacak beceriler.</div></div>
+    <div class="prio-col" style="--c:var(--navy2)"><div class="t">Öncelik 2 · Seni mutlu eden ve/veya kazandıran</div><div class="small"><strong>Tutku etkinleştiriciler:</strong> envanterde “tutku” ve “gelişim” işaretlediklerin (yalnızca genel ilgi olanlar değil). <strong>Kariyer etkinleştiriciler:</strong> kendi başına pek ilgini çekmeyen ama tutkulu olduğun rolleri ve projeleri elde etmek için kritik olan, talep gören beceriler.</div></div>
+    <div class="prio-col" style="--c:var(--warn)"><div class="t">Öncelik 3 · Olsa iyi olur</div><div class="small"><strong>İlgi becerileri:</strong> envanterde “ilgi” ve “gelişim” işaretleyip yukarıda yer almayanlar. <strong>İş becerileri:</strong> ilanlarda gelişim gerekli dediğin, nefret etmediğin geri kalanlar. Bunlar için doğrudan fırsat arama; fırsat önüne çıktığında kaçırmamak için farkında ol.</div></div>
+  </div>
+  <div class="story">
+    <div class="h">Oyuncağı oynamadan önce kurmak</div>
+    <p style="margin:0">Mükemmel bir dünyada yalnızca tutkulu olduğun becerileri geliştirirdin. Ama en iyi işlerde bile pek heyecan duymadığımız görevler ve kendi başımıza geliştirmeyi seçmeyeceğimiz beceriler vardır. Tutkulu olduğun işi yapabileceğin rollere giden ilanların hepsi aynı “tutku dışı” beceriyi istiyorsa, onu bir <em>tutku etkinleştirici</em>, ikigai diliyle bir <em>uğraş becerisi</em> olarak düşün. Bu beceriler sıkıcı görevleri daha hızlı yapmanı sağlar, eğlenceli olana daha çok zaman bırakır ve asıl istediğin işe kapı açar. Dünyaya ihtiyacı olanı vermek, hele karşılığı ödeniyorsa, bazen tutkun olmasa da değer.</p>
+  </div>
+
+  <div class="box">
+    <div class="lbl">Beceri listeni oluştur</div>
+    <p class="small" style="margin-top:0">Bir önceki sayfadaki (Adım 5: İkigai) envanterini ve ilan tablolarını aynı tarayıcıda doldurduysan içe aktarabilirsin. Yoksa becerileri elle ekle ya da örnek veriyle dene.</p>
+    <div class="row"><button class="btn" id="imp">Önceki sayfadan içe aktar</button><button class="btn ghost" id="demo">Örnek veriyle doldur</button><button class="btn ghost sm" id="skClr">Listeyi temizle</button></div>
+    <div class="row" style="margin-top:10px"><input type="text" id="skNew" placeholder="Beceri adı" style="flex:1;min-width:200px"><button class="btn" id="skAdd">Ekle</button></div>
+  </div>
+  <p class="small"><strong>Kariyer etkinleştirici mi?</strong> Kitap bunun öznel olduğunu söylüyor ve üç soru öneriyor: Becerinin bağlı olduğu iş hakkında ne hissediyorsun (şimdi ya da gelecekte çok istediğin bir role bağlıysa neredeyse kesin kariyer etkinleştiricidir)? Ne kadar talep görüyor (birden çok ilanda çıktı mı)? Beceri hakkında ne hissediyorsun (gerçekten nefret ediyorsan zorlama; nasıl hissettiğin ne kadar iyi öğreneceğini etkiler)? Tablo bu yanıtlarla bir öneri üretir; “Öncelik” sütunundan elle değiştirebilirsin.</p>
+  <div class="sa pri"><table id="skTab"></table></div>
+  <div class="grid" id="prioSum" style="margin-top:14px"></div>
+  <div class="box">
+    <div class="lbl">İsteğe bağlı: derinlik mi, genişlik mi?</div>
+    <p class="small" style="margin-top:0">Zaten güçlü olduğun bir beceriyi geliştirmek <strong>uzmanlaşmadır</strong> (derinlik, ustalık); güçlü olmadığın bir beceriyi geliştirmek <strong>genişlemedir</strong> (beceri setini ve uzmanlık genişliğini büyütür). İkisi de değerli; dengeli bir plan ikisini de içerir.</p>
+    <svg id="depth" viewBox="0 0 360 60" style="width:100%;max-width:520px" role="img" aria-label="Uzmanlaşma ve genişleme dengesi"></svg>
+    <div class="fb" id="depthOut"></div>
+  </div>
+  <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 2 -->
+<section class="ch" id="s2">
+  <h2>Keşfet ve harekete geç: gelişim eylem planı</h2><hr>
+  <p>Önceliklendirilmiş bir listen var; ama harekete geçmeden gelişemezsin. Şimdi listeyi gelişim hedeflerine ve bir eylem planına dönüştürelim.</p>
+  <h3>1 · Önce odaklanacağın 3–5 beceriyi seç</h3>
+  <p class="small">Seçim senin. Yalnızca Öncelik 1'den seçmek zorunda değilsin: içinde bulunduğun durumu da hesaba kat. Belirli bir işe başvuruyorsan şu an bir Öncelik 2 kariyer becerisi daha mantıklı olabilir; iş yerindeki bir proje yakında bir Öncelik 3 becerisini gerektirebilir. Yazar en az 3 (çeşitlilik için) en fazla 5 (dağılmamak ve bunalmamak için) hedef ve teknik ile teknik olmayan becerilerin karışımını öneriyor: ruh hâline ve hayatında olanlara göre yapabileceğin farklı türde gelişim etkinliklerin olur.</p>
+  <div class="chips" id="focusPick"></div>
+  <div class="result" id="focusOut"></div>
+  <div class="row" style="margin-top:8px"><button class="btn ghost sm" id="exGoal">Kitaptaki örnek hedefi ekle (topluluk oluşturma)</button></div>
+  <div id="goals"></div>
+  <div class="grid">
+    <div class="card"><div class="t">Gerçekçi ol, heyecanı koru</div><div class="small">Aynı anda çok fazla hedefle kendini yükleme: 3 ile 5 arası.</div></div>
+    <div class="card"><div class="t">Önceliklendir ama esnek ol</div><div class="small">Yeni fırsatlar, yeni ilgiler ya da değişen öncelikler ortaya çıktıkça planını ayarla.</div></div>
+    <div class="card"><div class="t">İlerlemeni izle ve kutla</div><div class="small">Düzenli kontrollerle yolunda olup olmadığına bak. Bir ödül sistemi kur; her kilometre taşını kutla.</div></div>
+  </div>
+  <div class="row"><button class="btn ghost sm" id="planCopy">Planı metin olarak kopyala</button><button class="btn ghost sm" id="planCsv">Planı CSV indir</button><button class="btn ghost sm" id="planPrint">Yazdır / PDF</button></div>
+  <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 3 -->
+<section class="ch" id="s3">
+  <h2>Keşfet ve harekete geç: iş şekillendirme</h2><hr>
+  <p>Sahip olduğun ya da istediğin iş tutkulu olduğun becerileri kullanmıyorsa? Bu çok sık olur; her iş mükemmel uymaz. Ama rolünü sandığından çok daha fazla biçimde şekillendirebilirsin. <strong>İş şekillendirme</strong> (job crafting), işini tutkularına, becerilerine ve hedeflerine daha iyi uyacak biçimde etkin olarak yeniden biçimlendirmektir. İş istediğin fırsatları hemen içermese bile onları işin içine katmanın ya da kendini gelecekteki fırsatlar için konumlandırmanın yolları vardır.</p>
+  <div class="row"><span class="ui small" style="font-weight:800">Durumun:</span><div class="seg" id="sit"></div></div>
+  <div class="result small" id="sitOut"></div>
+
+  <h3>1 · “Olması gerekenleri” bul</h3>
+  <p class="small">Bazen yapmak istediğin iş rolün bir parçası <em>olmalıdır</em>; kurum yalnızca bunu henüz fark etmemiştir. İlanlardaki ya da sana verilen görevler yalnızca başkalarının farkında olduğu ihtiyaçları gösterir. Bu, henüz kimsenin istemediği ihtiyacı fark eden düşünce lideri olma fırsatın. Kitabın önerdiği dört adımı izle:</p>
+  <div class="box">
+    <div class="twocol">
+      <label class="small ui" style="font-weight:700">1. Eğilim / iyi uygulama (veri tüketicisi ve ağ becerilerin)<input type="text" id="shTrend" placeholder="Örn. diğer kurumlar çalışan sesini yapay zekâ destekli tema analiziyle izliyor"></label>
+      <label class="small ui" style="font-weight:700">2. Kurumundaki karşılığı (çevirmen becerilerin)<input type="text" id="shChal" placeholder="Örn. çıkış görüşmesi yorumları hiç okunmadan arşivleniyor"></label>
+      <label class="small ui" style="font-weight:700">3. Getireceği değer (iş zekâsı)<input type="text" id="shVal" placeholder="Örn. ayrılma nedenlerini üç ay önce görmek"></label>
+      <label class="small ui" style="font-weight:700">4. İlk küçük adım<input type="text" id="shStep" placeholder="Örn. son 6 ayın yorumlarıyla bir pilot analiz"></label>
+    </div>
+    <div class="lbl" style="margin-top:10px">Öneri taslağın (iletişim becerin)</div>
+    <div class="result" id="shOut"></div>
+    <button class="btn ghost sm" id="shCopy" style="margin-top:8px">Kopyala</button>
+  </div>
+
+  <h3>2 · Tutku projelerini savun</h3>
+  <p class="small">Temsil edilmediğini hissettiğin yalnızca ilgilerin değil, tutkuların ya da değerlerinse? İş şekillendirme işine anlam katmanın da harika bir yoludur.</p>
+  <div class="story">
+    <div class="h">Yazarın deneyimi</div>
+    <p style="margin:0">Yazar insan verisindeki önyargıyı azaltmak ve iş yerine daha adil uygulamalar getirmek konusunda tutkulu; ama bu iş için nadiren doğrudan talep alıyor ve ilanlarda da pek görmüyor. Bu yüzden her danışmanlık fırsatında bunu uzmanlık alanı olarak öne çıkarıyor, çalışmasının adaleti artırmaya odaklandığını anlatıyor ve müşterilere istedikleri projeleri teslim ederken bu yaklaşımı katmasına açık olup olmadıklarını soruyor. Yanıt çok olumlu: iyi olduğu ve karşılığı ödenen işi yaparken, dünyanın ihtiyacı olduğuna inandığı ve tutku duyduğu şeyi de içine katıyor. Kendi ikigaisine böyle ulaşıyor. Getirdiğin her ekstra şey, aynı zamanda ekstra değer demek.</p>
+  </div>
+  <label class="small ui" style="font-weight:700;display:block">Benim tutku projem / değerim ve onu mevcut işime nasıl katabilirim?<textarea id="passProj" placeholder="Örn. Erişilebilirlik: tüm raporlarımı renk körlüğüne uygun tasarlayıp bunu ekip standardı olarak önermek"></textarea></label>
+
+  <h3>3 · Küçük mü başlasan, büyük mü?</h3>
+  <p class="small">Küçük başlamak daha kolaydır ve desteklenip desteklenmeyeceğinden emin değilsen daha iyi bir seçim olabilir. Büyük değişiklikler daha uzun sürer ama mutlaka ertelenmemeli. Önerilerin hemen benimsenmezse cesaretin kırılmasın: yeni yöntemler çoğu yerde doğal olarak dirençle karşılanır, ama tohumu ekmiş olursun. İhtiyaç belirginleştiğinde akla ilk gelen kişi sen olursun. İş şekillendirme incelikli bir sanattır; büyük bir dönüşüm değil, rolünde küçük kaymalar.</p>
+  <div class="chips" id="craftIdeas"></div>
+  <div class="row"><input type="text" id="crNew" placeholder="Kendi şekillendirme fikrin" style="flex:1;min-width:200px"><div class="seg" id="crSize"></div><button class="btn" id="crAdd">Ekle</button></div>
+  <div id="crList"></div>
+  <div class="fb" id="crOut"></div>
+  <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 4 -->
+<section class="ch" id="s4">
+  <h2>Keşfet ve harekete geç: kariyer haritanı oluştur</h2><hr>
+  <p>Yazar kariyer rehberliğinde <strong>yol tarifi değil, harita</strong> öneriyor. Yol tarifi tek bir en iyi yol ve tek bir varış noktası olduğunu varsayar. Oysa bugün bir kişinin tüm kariyeri boyunca tek bir alanda ya da rolde kalması nadirdir; bir iş genellikle tek bir sonraki işe çıkmaz. Kariyerler birçok biçim alır, aktarılabilir becerilerle örtüşür ve bizi hiç planlamadığımız heyecan verici yerlere götürebilir. Doğrusal kariyer haritaları bu yüzden yetersiz kalır. Yazar yalnızca unvanlara dayalı bir harita yapmamanı, bunun yerine <strong>ilgi alanlarına</strong> dayalı bir harita kurmanı öneriyor: işler, projeler, gelişim fırsatları ve bağlantılar bütüncül biçimde yer alabilsin.</p>
+  <p>En sevdiği yöntem <strong>zihin haritası</strong>: merkezde sen ve kariyerin, etrafında doğrusal olmayan ilişkilerle bağlı pek çok kavram. Her dal sabit bir rota değil, olası bir yöndür. Ve haritanın bir köşesinden ötekine çizgi çekmenin neredeyse her zaman bir yolu vardır; sınırlar sandığından azdır.</p>
+  <div class="tabs" id="mmSteps"></div>
+  <div class="result small" id="mmHelp"></div>
+  <div class="box" id="mmCtl"></div>
+  <div class="linkbar" id="linkBar">Bağlantı modu: bağlamak istediğin ikinci düğüme tıkla (iptal için Esc ya da boş alana tıkla).</div>
+  <div class="mmwrap"><svg id="mm" viewBox="0 0 800 560" role="img" aria-label="Kariyer zihin haritası"></svg></div>
+  <div class="legend" id="mmLeg"></div>
+  <div id="selPanel"></div>
+  <div class="row" style="margin-top:8px"><button class="btn ghost sm" id="mmSvg">SVG indir</button><button class="btn ghost sm" id="mmPng">PNG indir</button><button class="btn ghost sm" id="mmJson">Yedekle (JSON)</button><label class="btn ghost sm" style="cursor:pointer">Yedekten yükle<input type="file" id="mmLoad" accept=".json" style="display:none"></label><button class="btn ghost sm" id="mmClr">Haritayı temizle</button></div>
+  <h3>5 · Analiz et</h3>
+  <div class="result" id="mmAna"></div>
+  <p class="small">Tebrikler, bir haritan var! Düzgün bir coğrafya haritasına benzemeyecek; daha çok bir eğlence parkının fantastik haritası gibi: nereye gideceğini söylemez, ama tüm eğlenceli yerlerin nerede olduğunu gösterir. Eksik bir şey var mı? Çıkarmak istediğin? Bazı şeyleri birbirine yaklaştırmak ya da uzaklaştırmak ister misin? İlk denemeni kaba bir taslak say. Bir kopyasını sakla, sık sık bak ve biraz ilhama ihtiyaç duyduğunda yeniden aç.</p>
+  <label class="readmark"><input type="checkbox" data-read="s4"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 5 -->
+<section class="ch" id="s5">
+  <div class="finale"><div class="big">Başardın!</div><p class="small">Kitabın sonuna ulaştın.</p></div>
+  <p>Yazar, rehberin senin için bir kitaptan fazlası olmasını umuyor: yeni fikirleri ve etkinlikleri keşfetme, kendin hakkında bir şeyler öğrenme ve seni bağlı ve ilhamlı tutacak bir kariyer yolu tasarlama fırsatı. İnsan verisi dünyası sürekli değişiyor; merakını ve gelişim zihniyetini uygulamak için ideal bir yer. Zorlukları öğrenme fırsatı olarak kucakla, her küçük kazanımı kutla ve keşfetmeyi asla bırakma. Sürekli gelişim için <strong>etkinlikleri tekrarla</strong>.</p>
+  <div class="box">
+    <div class="lbl">Yolculuğun özeti</div>
+    <div id="journey"></div>
+  </div>
+  <div class="box">
+    <div class="lbl">Bir sonraki tekrar</div>
+    <p class="small" style="margin-top:0">Etkinlikleri ne zaman yeniden yapacaksın? Bir tarih belirle ve takvimine ekle.</p>
+    <div class="row"><select id="rep" style="max-width:220px"><option value="">Seç…</option><option value="3">3 ay sonra</option><option value="6">6 ay sonra</option><option value="12">1 yıl sonra</option></select><span class="ui" id="repOut" style="font-weight:700"></span></div>
+  </div>
+  <p>Yazar okurlarını kendi insan analitiği topluluğunun parçası sayıyor ve kariyer yolculuklarını duymak istiyor:</p>
+  <ul>
+    <li>Etkinlikler, dersler ve bülten: <a href="https://heatherwhiteman.com" target="_blank" rel="noopener">heatherwhiteman.com</a></li>
+    <li>LinkedIn: <a href="https://www.linkedin.com/in/heatherwhiteman" target="_blank" rel="noopener">linkedin.com/in/heatherwhiteman</a> · okur grubu: <a href="https://www.linkedin.com/groups/14487429/" target="_blank" rel="noopener">linkedin.com/groups/14487429</a></li>
+    <li>YouTube: <a href="https://youtube.com/heatherwhiteman" target="_blank" rel="noopener">youtube.com/heatherwhiteman</a></li>
+  </ul>
+  <label class="readmark"><input type="checkbox" data-read="s5"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 6 -->
+<section class="ch" id="s6">
+  <h2>Mini test</h2><hr>
+  <div id="quiz"></div>
+  <div class="ui" id="score" style="font-weight:800;color:var(--navy)"></div>
+  <label class="readmark"><input type="checkbox" data-read="s6"> Bu bölümü tamamladım</label>
+</section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><a class="pv" href="insan_analitigi_adim5_ikigai_kariyer.html"><small>← Önceki</small><b>Adım 5: İkigai ve kariyer</b></a><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><span class="ph"></span></nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+const KEY="pa_adim5_plan_v1";
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const dlBlob=(name,blob)=>{const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)};
+const dl=(name,rows)=>{const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';dlBlob(name,new Blob(["﻿"+rows.map(r=>r.map(q).join(";")).join("\n")],{type:"text/csv;charset=utf-8"}))};
+const copy=v=>{(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast("Kopyalandı")).catch(()=>toast("Kopyalanamadı"))};
+const bind=(id,key,cb)=>{const el=$("#"+id);el.value=st[key]??el.value;el.oninput=()=>{st[key]=el.value;save();cb&&cb()}};
+const norm=s=>String(s||"").trim().toLocaleLowerCase("tr-TR").replace(/\s+/g," ");
+const segH=(attr,opts,cur)=>`<div class="seg">${opts.map(([v,l])=>`<button ${attr} data-v="${v}" class="${String(cur)===v?"on":""}">${l}</button>`).join("")}</div>`;
+const uid=()=>Math.random().toString(36).slice(2,9);
+
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$("#theme").onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";st.theme=d.dataset.theme;save();mmR();depth()};
+st.read=st.read||{};const N=6;
+function prog(){const n=Object.values(st.read).filter(Boolean).length;$("#progbar").style.width=(n/N*100)+"%";$$("#nav a").forEach(a=>a.classList.toggle("done",!!st.read[a.dataset.s]))}
+$$("[data-read]").forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();journey();if(cb.checked)toast("Bir bölüm daha tamam!")}});prog();
+
+// ---------- 1. önceliklendirme
+const NONTECH=["sektör uzmanlığı","şirket uzmanlığı","yetenek yönetimi uzmanlığı","aktif dinleme","sade ve açık iletişim","hikâye anlatımı","analitik ve eleştirel düşünme","sistem düşüncesi","merak ve yaratıcılık","güven inşası","iş birliğine dayalı ekip çalışması","ağ kurma","ilişkileri besleme","topluluk oluşturma","etki değerlendirmesi","bilgilendirilmiş onay"];
+st.sk=st.sk||[];
+const mk=n=>({id:uid(),n,s:false,i:0,d:false,pc:0,pi:false,feel:"",job:false,ov:"",tech:""});
+const isTech=x=>x.tech?x.tech==="1":!NONTECH.includes(norm(x.n));
+function prio(x){if(x.ov)return x.ov;
+ if(x.pc>0&&x.pi)return "1";
+ if(x.i===2&&x.d)return "2t";
+ if(x.pc>0&&x.feel!=="hate"&&(x.job||x.pc>=2))return "2k";
+ if(x.i>=1&&x.d)return "3i";
+ if(x.pc>0&&x.feel!=="hate")return "3j";
+ return "x"}
+const PL={"1":["p1","Öncelik 1"],"2t":["p2","Öncelik 2 · tutku"],"2k":["p2","Öncelik 2 · kariyer"],"3i":["p3","Öncelik 3 · ilgi"],"3j":["p3","Öncelik 3 · iş"],"x":["px","Liste dışı"]};
+const WHY={"1":"İlanlarda geçiyor, ilgini çekiyor ve gelişim gerekiyor.","2t":"Tutku duyduğun ve geliştirmek istediğin bir beceri.","2k":"Tutkun değil ama istediğin rollere kapı açıyor (istediğin bir role bağlı ya da birden çok ilanda çıktı).","3i":"İlgini çekiyor ve geliştirmek istiyorsun; fırsat çıkınca değerlendir.","3j":"İlanlarda gelişim gerekiyor, nefret etmiyorsun; kritik değil ama işe yarayabilir.","x":"Listeye girmesi için ya gelişim isteği ya da ilanlarda gelişim ihtiyacı gerekir; nefret ettiğin beceriler bu kadar yukarı alınmaz."};
+function skR(){const t=$("#skTab");if(!st.sk.length){t.innerHTML='<tr><td class="small">Liste boş. İçe aktar, örnek veriyle doldur ya da beceri ekle.</td></tr>';prioSum();return}
+ t.innerHTML=`<tr><th>Beceri</th><th>Güç?</th><th>İlgi</th><th>Gelişim isteği (envanter)</th><th>Gelişim gerektiren ilan sayısı</th><th>İlanlarda ilgi işaretledin mi?</th><th>Beceri hakkında hissim</th><th>Çok istediğim bir role bağlı mı?</th><th>Öncelik</th><th></th></tr>`+
+ st.sk.map((x,i)=>{const p=prio(x);return `<tr><td class="sk">${esc(x.n)}</td>
+ <td>${segH(`data-ks="${i}"`,[["1","Evet"],["0","Hayır"]],x.s?"1":"0")}</td>
+ <td>${segH(`data-ki="${i}"`,[["0","—"],["1","İlgi"],["2","Tutku"]],String(x.i))}</td>
+ <td>${segH(`data-kd="${i}"`,[["1","Evet"],["0","Hayır"]],x.d?"1":"0")}</td>
+ <td><input type="number" min="0" max="20" data-kp="${i}" value="${x.pc}" aria-label="İlan sayısı"></td>
+ <td>${segH(`data-kpi="${i}"`,[["1","Evet"],["0","Hayır"]],x.pi?"1":"0")}</td>
+ <td>${segH(`data-kf="${i}"`,[["like","İlgi duyabilirim"],["neutral","Nötr"],["hate","Hiç istemem"]],x.feel)}</td>
+ <td>${segH(`data-kj="${i}"`,[["1","Evet"],["0","Hayır"]],x.job?"1":"0")}</td>
+ <td><span class="pb ${PL[p][0]}" title="${esc(WHY[p])}">${PL[p][1]}</span><select data-ko="${i}" style="margin-top:4px;font-size:12px;padding:3px"><option value="">Otomatik</option>${Object.entries(PL).map(([k,v])=>`<option value="${k}" ${x.ov===k?"selected":""}>${v[1]}</option>`).join("")}</select></td>
+ <td><button class="del" data-kx="${i}" aria-label="Sil">×</button></td></tr>`}).join("");
+ const sg=(a,f,conv)=>$$(`[${a}]`).forEach(b=>b.onclick=()=>{st.sk[b.getAttribute(a)][f]=conv(b.dataset.v);save();allSk()});
+ sg("data-ks","s",v=>v==="1");sg("data-ki","i",v=>+v);sg("data-kd","d",v=>v==="1");sg("data-kpi","pi",v=>v==="1");sg("data-kf","feel",v=>v);sg("data-kj","job",v=>v==="1");
+ $$("[data-kp]").forEach(e=>e.onchange=()=>{st.sk[e.dataset.kp].pc=Math.max(0,+e.value||0);save();allSk()});
+ $$("[data-ko]").forEach(e=>e.onchange=()=>{st.sk[e.dataset.ko].ov=e.value;save();allSk()});
+ $$("[data-kx]").forEach(b=>b.onclick=()=>{const x=st.sk.splice(+b.dataset.kx,1)[0];st.focus=(st.focus||[]).filter(id=>id!==x.id);save();allSk()});
+ prioSum()}
+function prioSum(){const g={};st.sk.forEach(x=>{const p=prio(x);(g[p]=g[p]||[]).push(x)});
+ $("#prioSum").innerHTML=Object.entries(PL).map(([k,v])=>`<div class="prio-col" style="--c:var(${v[0]==="p1"?"--ok":v[0]==="p2"?"--navy2":v[0]==="p3"?"--warn":"--muted"})"><div class="t">${v[1]} <span class="small">(${(g[k]||[]).length})</span></div><div class="small" style="margin:4px 0">${WHY[k]}</div><div>${(g[k]||[]).map(x=>`<span class="tag" style="display:inline-block;font-family:Raleway;font-size:12px;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin:2px;background:var(--soft)">${esc(x.n)} <span style="color:var(--muted)">${x.s?"· derinlik":"· genişlik"}</span></span>`).join("")}</div></div>`).join("");depth()}
+function depth(){const L=st.sk.filter(x=>prio(x)!=="x");const sp=L.filter(x=>x.s).length,ex=L.length-sp;const W=360,w=L.length?sp/L.length*W:W/2;
+ $("#depth").innerHTML=L.length?`<rect x="0" y="10" width="${w}" height="26" rx="4" fill="${css("--navy2")}"/><rect x="${w}" y="10" width="${W-w}" height="26" rx="4" fill="${css("--warn")}"/><text x="6" y="54" font-size="12" font-family="Raleway" font-weight="700" fill="${css("--ink")}">Uzmanlaşma ${sp}</text><text x="${W-6}" y="54" text-anchor="end" font-size="12" font-family="Raleway" font-weight="700" fill="${css("--ink")}">Genişleme ${ex}</text>`:`<text x="180" y="30" text-anchor="middle" font-size="12" fill="${css("--muted")}" font-family="Raleway">Liste oluştukça denge burada görünecek</text>`;
+ $("#depthOut").textContent=!L.length?"":sp===0?"Planında hiç uzmanlaşma yok: güçlü olduğun bir alanda derinleşmeyi düşün.":ex===0?"Planında hiç genişleme yok: yeni bir alana adım atmayı düşün.":`Dengeli bir karışım: %${Math.round(sp/L.length*100)} derinlik, %${Math.round(ex/L.length*100)} genişlik. İstediğin dengeyle örtüşüyor mu?`}
+function allSk(){skR();focusR();goalsR();journey()}
+$("#skAdd").onclick=()=>{const v=$("#skNew").value.trim();if(!v)return;if(st.sk.some(x=>norm(x.n)===norm(v))){toast("Zaten listede");return}st.sk.push(mk(v));$("#skNew").value="";save();allSk()};
+$("#skNew").addEventListener("keydown",e=>{if(e.key==="Enter")$("#skAdd").click()});
+$("#skClr").onclick=()=>{if(!st.sk.length||!confirm("Beceri listesi silinsin mi?"))return;st.sk=[];st.focus=[];save();allSk()};
+$("#imp").onclick=()=>{let p=null;try{p=JSON.parse(localStorage.getItem("pa_adim5_ikigai_v1")||"null")}catch(e){}
+ if(!p||(!(p.inv||[]).length&&!(p.posts||[]).length)){toast("Önceki sayfada kayıt bulunamadı");$("#imp").insertAdjacentHTML("afterend",'<span class="small" id="impMsg" style="margin-left:6px">Önceki sayfa bu tarayıcıda aynı konumdan açılmamış olabilir. Elle ekleyebilir ya da örnek veriyle deneyebilirsin.</span>');setTimeout(()=>{const m=$("#impMsg");if(m)m.remove()},6000);return}
+ const M={};st.sk.forEach(x=>M[norm(x.n)]=x);let n=0;const get=name=>{const k=norm(name);if(!M[k]){M[k]=mk(name.trim());st.sk.push(M[k]);n++}return M[k]};
+ (p.inv||[]).forEach(v=>{if(!v.n)return;const x=get(v.n);x.s=!!v.s||x.s;x.i=Math.max(x.i,v.i||0);x.d=!!v.d||x.d});
+ (p.posts||[]).forEach(po=>{const seen=new Set();(po.rows||[]).forEach(r=>{if(!r.k||!r.k.trim())return;const x=get(r.k);const k=norm(r.k);if((r.d==="y"||r.d==="b")&&!seen.has(k)){x.pc++;seen.add(k)}if(r.p==="t"||r.p==="i")x.pi=true;if(r.s==="y")x.s=true;if(po.want==="y")x.job=true})});
+ save();allSk();toast(`${n} yeni beceri içe aktarıldı`)};
+$("#demo").onclick=()=>{const D=[["Veri görselleştirme araçları",0,0,0,3,1,"like",1],["Veri yönetişimi",0,1,0,2,1,"like",0],["Kök neden analizi",0,1,1,1,1,"like",1],["Regresyon analizi",1,2,1,0,0,"like",0],["Örgütsel ağ analizi",0,2,1,0,0,"like",0],["SQL",0,0,0,2,0,"neutral",1],["Python",0,1,1,0,0,"like",0],["Hikâye anlatımı",1,1,1,1,1,"like",0],["İKBS (HRIS) bilgisi",0,0,0,1,0,"neutral",0],["Ücret eşitliği analizi",0,0,0,1,0,"hate",0],["Ağ kurma",0,1,1,0,0,"neutral",0]];
+ D.forEach(([n,s,i,d,pc,pi,feel,job])=>{if(st.sk.some(x=>norm(x.n)===norm(n)))return;Object.assign(st.sk[st.sk.push(mk(n))-1],{s:!!s,i,d:!!d,pc,pi:!!pi,feel,job:!!job})});save();allSk();toast("Örnek veri eklendi (kurgusal)")};
+
+// ---------- 2. eylem planı
+st.focus=st.focus||[];st.goals=st.goals||{};
+const POrd={"1":0,"2t":1,"2k":2,"3i":3,"3j":4,"x":5};
+function focusR(){st.focus=st.focus.filter(id=>st.sk.some(x=>x.id===id)||String(id).startsWith("ex"));
+ const L=st.sk.filter(x=>prio(x)!=="x").sort((a,b)=>POrd[prio(a)]-POrd[prio(b)]);
+ $("#focusPick").innerHTML=L.length?L.map(x=>`<button class="chip ${st.focus.includes(x.id)?"on":""}" data-fp="${x.id}"><span class="pb ${PL[prio(x)][0]}" style="font-size:10px;padding:1px 6px">${prio(x).replace("t","").replace("k","").replace("i","").replace("j","")}</span> ${esc(x.n)}</button>`).join(""):'<span class="small">Önce yukarıda önceliklendirilmiş bir liste oluştur.</span>';
+ $$("[data-fp]").forEach(b=>b.onclick=()=>{const id=b.dataset.fp;if(st.focus.includes(id))st.focus=st.focus.filter(x=>x!==id);else{if(st.focus.length>=5){toast("En fazla 5 hedef önerilir");return}st.focus.push(id)}save();focusR();goalsR();journey()});
+ const F=st.focus.map(id=>st.sk.find(x=>x.id===id)).filter(Boolean);const n=st.focus.length;const t=F.filter(isTech).length,nt=F.length-t;
+ const msgs=[];msgs.push(n<3?`<span class="wa">${n} hedef seçtin; çeşitlilik için en az 3 öneriliyor.</span>`:`<span class="ok">${n} hedef: 3–5 aralığında.</span>`);
+ if(F.length)msgs.push(t&&nt?`<span class="ok">Teknik (${t}) ve teknik olmayan (${nt}) karışımı var.</span>`:`<span class="wa">Hepsi ${t?"teknik":"teknik olmayan"}; diğer türden bir beceri eklemeyi düşün.</span>`);
+ $("#focusOut").innerHTML=`<div class="small">${msgs.join(" ")}</div><div class="small" style="margin-top:4px">Teknik / teknik olmayan sınıflaması otomatik; hedef kartından değiştirebilirsin.</div>`}
+const G=id=>st.goals[id]=st.goals[id]||{why1:"",why2:"",why3:"",S:"",M:"",A:"",R:"",T:"",tasks:[],res:{zaman:"",para:"",materyal:"",destek:""},obs:"",strat:"",reward:""};
+const SM=[["S","Belirli","Neyi başarmak istediğini açıkça tanımla.","Örn. Power BI ile çalışan devri panosu hazırlayabilmek"],["M","Ölçülebilir","İlerlemeni nasıl izleyeceksin?","Örn. 2 eğitim modülü + yayınlanmış 1 pano"],["A","Ulaşılabilir","Kaynakların ve zamanınla gerçekçi mi?","Örn. haftada 3 saat ayırabilirim"],["R","İlgili","Genel hedeflerinle örtüşüyor mu?","Örn. hedeflediğim İK veri analisti ilanlarının çoğunda isteniyor"],["T","Zamana bağlı","Bitiş tarihi","gg.aa.yyyy"]];
+const smartOk=(k,v)=>{v=(v||"").trim();if(!v)return false;if(k==="M")return /\d/.test(v);if(k==="T")return /\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}|\d{4}|ay|hafta|yıl|ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık/i.test(v);return v.length>=8};
+function goalItems(){const F=st.focus.map(id=>id.startsWith("ex")?{id,n:"Topluluk oluşturma",ex:true}:st.sk.find(x=>x.id===id)).filter(Boolean);return F}
+function goalsR(){const F=goalItems();
+ $("#goals").innerHTML=F.map(x=>{const g=G(x.id);const done=g.tasks.filter(t=>t.d).length;const sOk=SM.filter(([k])=>smartOk(k,g[k])).length;
+ return `<div class="goal" data-gid="${x.id}"><div class="row" style="justify-content:space-between"><h4>${esc(x.n)}</h4><div class="row">${x.ex?'<span class="small">kitaptaki örnek</span>':`<span class="pb ${PL[prio(x)][0]}">${PL[prio(x)][1]}</span>${segH(`data-gt="${x.id}"`,[["1","Teknik"],["0","Teknik değil"]],isTech(x)?"1":"0")}`}</div></div>
+ <div class="lbl" style="margin-top:8px">2 · Nedenine odaklan</div>
+ <div class="twocol"><label class="small ui" style="font-weight:700">Bu beceriyi neden geliştirmek istiyorum?<input type="text" data-gf="why1" value="${esc(g.why1)}"></label><label class="small ui" style="font-weight:700">Kişisel ya da mesleki olarak bana ne kazandırır?<input type="text" data-gf="why2" value="${esc(g.why2)}"></label></div>
+ <label class="small ui" style="font-weight:700;display:block;margin-top:6px">Hedefe ulaşmanın olası ödülleri neler?<input type="text" data-gf="why3" value="${esc(g.why3)}"></label>
+ <div class="lbl" style="margin-top:10px">3 · SMART hedef <span class="small" style="text-transform:none;letter-spacing:0">(${sOk}/5 ölçüt dolu görünüyor)</span></div>
+ <div class="smart">${SM.map(([k,l,q,ph])=>`<div class="k ${smartOk(k,g[k])?"ok2":""}" title="${l}">${k}</div><label class="small ui" style="font-weight:700">${l}: <span style="font-weight:400">${q}</span><input type="text" data-gf="${k}" value="${esc(g[k])}" placeholder="${ph}"></label>`).join("")}</div>
+ <div class="result small" data-sum="${x.id}">${smartSum(x,g)}</div>
+ <div class="lbl" style="margin-top:10px">4 · Eylem planı · görevlere böl <span class="small" style="text-transform:none;letter-spacing:0">(${done}/${g.tasks.length} tamam)</span></div>
+ <div class="meter"><div style="width:${g.tasks.length?done/g.tasks.length*100:0}%;background:var(--ok)"></div></div>
+ ${g.tasks.map((t,i)=>`<div class="task ${t.d?"done":""}"><input type="checkbox" data-tk="${i}" ${t.d?"checked":""} aria-label="Tamamlandı"><input type="text" data-tt="${i}" value="${esc(t.t)}" placeholder="Görev"><input type="text" class="dd" data-tdl="${i}" value="${esc(t.dl)}" placeholder="Son tarih"><button class="del" data-tx="${i}" aria-label="Sil">×</button></div>`).join("")}
+ <button class="btn ghost sm" data-tadd>+ Görev</button>
+ <div class="lbl" style="margin-top:10px">Kaynaklar</div>
+ <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">${[["zaman","Zaman"],["para","Para"],["materyal","Materyal"],["destek","Destek"]].map(([k,l])=>`<label class="small ui" style="font-weight:700">${l}<input type="text" data-gr="${k}" value="${esc(g.res[k])}"></label>`).join("")}</div>
+ <div class="twocol" style="margin-top:6px"><label class="small ui" style="font-weight:700">Olası engel<input type="text" data-gf="obs" value="${esc(g.obs)}"></label><label class="small ui" style="font-weight:700">Aşma stratejim<input type="text" data-gf="strat" value="${esc(g.strat)}"></label></div>
+ <label class="small ui" style="font-weight:700;display:block;margin-top:6px">Kilometre taşı ödülüm<input type="text" data-gf="reward" value="${esc(g.reward)}" placeholder="Örn. ilk pano yayında → sevdiğim kafede kutlama"></label>
+ </div>`}).join("")||'<p class="small">Hedef kartları seçtiğin becerilere göre burada oluşacak.</p>';
+ $$(".goal").forEach(card=>{const id=card.dataset.gid,g=G(id);const x=F.find(f=>f.id===id);
+  card.querySelectorAll("[data-gf]").forEach(e=>e.oninput=()=>{g[e.dataset.gf]=e.value;save();if("SMART".includes(e.dataset.gf)){const k=e.closest("label").previousElementSibling;k.classList.toggle("ok2",smartOk(e.dataset.gf,e.value));card.querySelector("[data-sum]").innerHTML=smartSum(x,g)}});
+  card.querySelectorAll("[data-gr]").forEach(e=>e.oninput=()=>{g.res[e.dataset.gr]=e.value;save()});
+  card.querySelectorAll("[data-tt]").forEach(e=>e.oninput=()=>{g.tasks[e.dataset.tt].t=e.value;save()});
+  card.querySelectorAll("[data-tdl]").forEach(e=>e.oninput=()=>{g.tasks[e.dataset.tdl].dl=e.value;save()});
+  card.querySelectorAll("[data-tk]").forEach(e=>e.onchange=()=>{g.tasks[e.dataset.tk].d=e.checked;save();if(e.checked&&g.tasks.every(t=>t.d))toast("Tüm görevler tamam: ödül zamanı!");goalsR();journey()});
+  card.querySelectorAll("[data-tx]").forEach(b=>b.onclick=()=>{g.tasks.splice(+b.dataset.tx,1);save();goalsR()});
+  card.querySelector("[data-tadd]").onclick=()=>{g.tasks.push({t:"",dl:"",d:false});save();goalsR()};
+  card.querySelectorAll("[data-gt]").forEach(b=>b.onclick=()=>{const s=st.sk.find(z=>z.id===id);if(s){s.tech=b.dataset.v;save();focusR();goalsR()}})})}
+function smartSum(x,g){const miss=SM.filter(([k])=>!smartOk(k,g[k])).map(s=>s[1]);return g.S?`<strong>Hedef:</strong> ${esc(g.S)}${g.M?"; ölçüt: "+esc(g.M):""}${g.T?"; bitiş: "+esc(g.T):""}.${miss.length?` <span class="wa">Güçlendir: ${miss.join(", ")}${miss.includes("Ölçülebilir")?" (ölçülebilir bir sayı ekle)":""}.</span>`:' <span class="ok">SMART görünüyor.</span>'}`:'<span class="small">Belirli (S) alanını doldurdukça hedef cümlen burada oluşur.</span>'}
+$("#exGoal").onclick=()=>{const id="ex1";if(!st.focus.includes(id)){if(st.focus.length>=5){toast("En fazla 5 hedef");return}st.focus.push(id)}
+ const g=G(id);Object.assign(g,{why1:g.why1||"İnsan analitiği alanındaki insanlardan öğrenmek ve görünür olmak",S:g.S||"İnsan analitiği topluluğumu genişletmek",M:g.M||"3 webinar, 1 buluşma, 3 anlamlı yorum, 1 online kahve sohbeti",A:g.A||"Ayda yaklaşık 4 saat",R:g.R||"Kariyer haritamdaki danışmanlık dalına bağlı",T:g.T||"3 ay içinde",obs:g.obs||"İçe dönüğüm ve yüz yüze sosyal etkinliklerden kaçınma eğilimindeyim",strat:g.strat||"İlişkileri önce çevrim içi kurmaya odaklanacağım"});
+ if(!g.tasks.length)g.tasks=[{t:"Bu yıl yapılacak canlı insan analitiği webinarlarını bul ve kaydol",dl:"",d:false},{t:"Society for People Analytics'e katıl ve bir buluşmaya git",dl:"",d:false},{t:"Bu ay en az 3 içgörülü insan analitiği paylaşımına anlamlı yorum yap",dl:"",d:false},{t:"[İsim] ile insan analitiği üzerine online kahve sohbeti ayarla",dl:"",d:false}];
+ save();focusR();goalsR();journey();toast("Örnek hedef eklendi")};
+function planText(){return goalItems().map(x=>{const g=G(x.id);return `■ ${x.n}\nNeden: ${[g.why1,g.why2,g.why3].filter(Boolean).join(" / ")||"—"}\nSMART: S: ${g.S||"—"} | M: ${g.M||"—"} | A: ${g.A||"—"} | R: ${g.R||"—"} | T: ${g.T||"—"}\nGörevler:\n${g.tasks.map(t=>`  [${t.d?"x":" "}] ${t.t}${t.dl?" ("+t.dl+")":""}`).join("\n")||"  —"}\nKaynaklar: ${Object.entries(g.res).filter(([,v])=>v).map(([k,v])=>k+": "+v).join("; ")||"—"}\nEngel: ${g.obs||"—"} → ${g.strat||"—"}\nÖdül: ${g.reward||"—"}`}).join("\n\n")}
+$("#planCopy").onclick=()=>copy("Gelişim eylem planım\n\n"+planText());
+$("#planCsv").onclick=()=>dl("gelisim_eylem_plani.csv",[["Beceri","Görev","Son tarih","Durum","Belirli","Ölçülebilir","Ulaşılabilir","İlgili","Zamana bağlı","Engel","Strateji","Ödül"]].concat(goalItems().flatMap(x=>{const g=G(x.id);const base=[g.S,g.M,g.A,g.R,g.T,g.obs,g.strat,g.reward];return (g.tasks.length?g.tasks:[{t:"",dl:"",d:false}]).map(t=>[x.n,t.t,t.dl,t.d?"Tamam":"Açık"].concat(base))})));
+$("#planPrint").onclick=()=>window.print();
+
+// ---------- 3. iş şekillendirme
+st.sit=st.sit||"";
+const SIT={has:"Rolün varsa: HER rol öğrenmek ve iş şekillendirmeye başlamak için bir yerdir. Mevcut rolün hedeflediğin insan analitiği kariyerinden çok farklı olsa bile, bu rehberdeki becerilerin bazılarını işine katma fırsatları olacaktır. Bugünkü rolün yüzünden kendini iş şekillendirmenin dışında bırakma.",none:"Bugün bir rolün yoksa: çabanı, tutkulu olduğun becerileri başvurabileceğin rollere kattığında getireceğin değeri başkalarına göstermeyi pratik etmeye odakla. Başvurduğunda diğer adayların sunmadığı benzersiz bir şey sunmuş olursun."};
+function sitR(){$("#sit").innerHTML=[["has","Bir rolüm var"],["none","Şu an rolüm yok"]].map(([k,l])=>`<button data-st="${k}" class="${st.sit===k?"on":""}">${l}</button>`).join("");$$("[data-st]").forEach(b=>b.onclick=()=>{st.sit=b.dataset.st;save();sitR()});$("#sitOut").textContent=st.sit?SIT[st.sit]:"Durumunu seç; öneri ona göre değişir."}
+function shR(){const a=[st.shTrend,st.shChal,st.shVal,st.shStep].map(v=>(v||"").trim());
+ $("#shOut").textContent=a.some(Boolean)?`${a[0]?"Son dönemde "+a[0].replace(/\.$/,"")+". ":""}${a[1]?"Bizde ise "+a[1].replace(/\.$/,"")+". ":""}${a[2]?"Bu yaklaşımı uyarlarsak "+a[2].replace(/\.$/,"")+" mümkün olabilir. ":""}${a[3]?"Önerim, küçük bir adımla başlamak: "+a[3].replace(/\.$/,"")+". Sonuçları birlikte değerlendirip devam edip etmeyeceğimize karar verebiliriz.":""}`:"Dört alanı doldurdukça öneri metnin burada oluşur.";return $("#shOut").textContent}
+const CI=[["Tutkuma uyan bir göreve gönüllü olmak (iş tanımımda olmasa da)","s"],["Boş anlarda rolümle örtüşen bir tutku projesi yürütmek","s"],["Sıkıcı aylık özeti metin yerine veri görselleştirmeleriyle sunmak","s"],["Rutin bir raporu otomatikleştirip kazandığım zamanı analize ayırmak","s"],["Ekibe yeni bir analitik yaklaşım için pilot proje önermek","b"],["Rolüme resmî olarak yeni bir sorumluluk alanı eklenmesini talep etmek","b"]];
+st.cr=st.cr||[];st.crs=st.crs||"s";
+function crR(){$("#craftIdeas").innerHTML=CI.map(([t,s],i)=>`<button class="chip" data-ci="${i}">+ ${t} <span class="small">(${s==="s"?"küçük":"büyük"})</span></button>`).join("");
+ $$("[data-ci]").forEach(b=>b.onclick=()=>{const [t,s]=CI[b.dataset.ci];if(st.cr.some(c=>c.t===t))return;st.cr.push({t,s,st:"plan"});save();crR()});
+ $("#crSize").innerHTML=[["s","Küçük"],["b","Büyük"]].map(([k,l])=>`<button data-cs="${k}" class="${st.crs===k?"on":""}">${l}</button>`).join("");$$("[data-cs]").forEach(b=>b.onclick=()=>{st.crs=b.dataset.cs;save();crR()});
+ $("#crList").innerHTML=st.cr.map((c,i)=>`<div class="gray"><div><span class="pb ${c.s==="s"?"p1":"p2"}">${c.s==="s"?"Küçük":"Büyük"}</span> ${esc(c.t)}</div><div class="row">${segH(`data-cst="${i}"`,[["plan","Planlandı"],["try","Denendi"],["wait","Tohum ekildi"],["ok","Benimsendi"]],c.st)}<button class="del" data-cx="${i}" aria-label="Sil">×</button></div></div>`).join("");
+ $$("[data-cst]").forEach(b=>b.onclick=()=>{st.cr[b.dataset.cst].st=b.dataset.v;save();crR();journey()});$$("[data-cx]").forEach(b=>b.onclick=()=>{st.cr.splice(+b.dataset.cx,1);save();crR()});
+ const w=st.cr.filter(c=>c.st==="wait").length,o=st.cr.filter(c=>c.st==="ok").length;
+ $("#crOut").textContent=st.cr.length?`${st.cr.length} fikir · ${o} benimsendi · ${w} tohum ekildi.${w?" Benimsenmeyenler kayıp değil: ihtiyaç belirginleştiğinde ilk aranan kişi olabilirsin; sabırlı ve tutarlı ol.":""}`:""}
+$("#crAdd").onclick=()=>{const v=$("#crNew").value.trim();if(!v)return;st.cr.push({t:v,s:st.crs,st:"plan"});$("#crNew").value="";save();crR()};
+
+// ---------- 4. kariyer haritası
+const TY={skill:["Beceri","#1f5fd1"],role:["Rol / iş","#1d8a5b"],area:["Alan","#8e44ad"],app:["Uygulama / etkinlik","#d35400"],person:["Kişi","#c0392b"],word:["İlham","#b7950b"],act:["Eylem (geleceğe taşı)","#5b6578"]};
+st.mm=st.mm||{me:"",stat:"",nodes:[],links:[]};st.mmStep=st.mmStep||"c";
+const MS=[["c","1 · Merkezde sen","Merkezdeki daireye adını ya da baş harflerini ve kariyer durumunu kısaca yaz (unvanın, öğrenci olduğun, iş aradığın ya da rolünden memnun olduğun…). Bu, haritandaki “Buradasın” işaretidir."],
+ ["b","2 · Beyin fırtınası","Etrafına bu rehberde ilgini çeken her şeyi ekle: beceriler, rol türleri, çalışmak istediğin alanlar, denemek istediğin uygulamalar; hatta hayran olduğun kişiler ve ilham veren kelimeler. Fazla düşünme, akışına bırak. Düğümleri sürükleyerek aralarında boşluk bırak."],
+ ["m","3 · Haritala","Bir düğüme tıkla: bugün zaten bağlı olduğun öğeler için “Bugün bağlıyım”ı aç (merkezden düz çizgi). Birbirine bağlı öğeleri (örn. bir rol türüne bağlı beceriler) “Başka düğüme bağla” ile farklı stilde bir çizgiyle birleştir. Dağınık görünmesi sorun değil; amaç yaratıcı düşünmek, güzel resim değil."],
+ ["f","4 · Geleceğe taşı","Bir düğümü seç ve yanına bağlantıları güçlendirecek eylemler ekle: bu bölümde belirlediğin gelişim fırsatları, seni bir rolden ötekine taşıyacak işler, alacağın bir ders, okuyacağın bir kitap, bilgi almak ya da bağlantı kurmak için gideceğin bir yer. Bir şeyi iki kez yazmana gerek yok; kesinlik değil eylem önemli."],
+ ["o","6 · Düzenle ve sırala","Eksik ya da fazla olanı düzelt, düğümlerin yakınlığını değiştir. Planlamayı seviyorsan biraz yapı ekle: önemli öğelere sıra numarası ver, “hızlı kazanım” (kolay ulaşılır) ya da “yüksek etki” (birden çok alanla örtüşen ya da kariyerini hızlandıran) etiketi koy."]];
+let sel=null,linkFrom=null;
+function mmSteps(){$("#mmSteps").innerHTML=MS.map(([k,l])=>`<button data-ms="${k}" class="${st.mmStep===k?"on":""}">${l}</button>`).join("");$$("[data-ms]").forEach(b=>b.onclick=()=>{st.mmStep=b.dataset.ms;save();mmSteps()});
+ $("#mmHelp").textContent=MS.find(m=>m[0]===st.mmStep)[2];
+ const c=$("#mmCtl");
+ if(st.mmStep==="c")c.innerHTML=`<div class="twocol"><label class="small ui" style="font-weight:700">Adın / baş harflerin<input type="text" id="mmMe" value="${esc(st.mm.me)}" maxlength="18"></label><label class="small ui" style="font-weight:700">Kariyer durumun<input type="text" id="mmStat" value="${esc(st.mm.stat)}" maxlength="28" placeholder="Örn. İK uzmanı · iş arıyorum"></label></div>`;
+ else if(st.mmStep==="b"){const sug=[...new Set(st.sk.filter(x=>prio(x)!=="x").map(x=>x.n))].filter(n=>!st.mm.nodes.some(d=>norm(d.label)===norm(n)));
+  c.innerHTML=`<div class="row"><input type="text" id="mmNew" placeholder="İlgini çeken bir şey" style="flex:1;min-width:180px" maxlength="40"><select id="mmType" style="max-width:190px">${Object.entries(TY).filter(([k])=>k!=="act").map(([k,v])=>`<option value="${k}">${v[0]}</option>`).join("")}</select><button class="btn" id="mmAdd">Ekle</button></div>${sug.length?`<div class="small ui" style="font-weight:700;margin-top:8px">Önceliklendirdiğin becerilerden:</div><div class="chips">${sug.slice(0,12).map(n=>`<button class="chip" data-sg="${esc(n)}">+ ${esc(n)}</button>`).join("")}</div>`:""}<div class="small ui" style="font-weight:700;margin-top:6px">Fikir:</div><div class="chips">${[["İnsan analitiği danışmanı","role"],["Adil ücret","word"],["Çalışan dinleme","app"],["Teknoloji rolleri","area"],["Ağ analizi","skill"],["Bir mentor","person"]].filter(([n])=>!st.mm.nodes.some(d=>d.label===n)).map(([n,t])=>`<button class="chip" data-sg="${n}" data-sgt="${t}">+ ${n}</button>`).join("")}</div>`;
+  const add=(l,t)=>{l=l.trim();if(!l)return;addNode(l,t);mmSteps()};
+  $("#mmAdd").onclick=()=>add($("#mmNew").value,$("#mmType").value);$("#mmNew").addEventListener("keydown",e=>{if(e.key==="Enter")$("#mmAdd").click()});
+  $$("[data-sg]").forEach(b=>b.onclick=()=>add(b.dataset.sg,b.dataset.sgt||"skill"))}
+ else c.innerHTML=`<span class="small">${sel?"Seçili düğümün ayarları haritanın altında.":"Haritada bir düğüme tıkla; ayarları haritanın altında açılır."}</span>`;
+ const me=$("#mmMe");if(me){me.oninput=()=>{st.mm.me=me.value;save();mmR()};$("#mmStat").oninput=e=>{st.mm.stat=e.target.value;save();mmR()}}}
+function addNode(label,type,parent){const ns=st.mm.nodes;let x,y;
+ if(parent){const p=ns.find(n=>n.id===parent);const a=Math.atan2(p.y-280,p.x-400)+(ns.filter(n=>n.par===parent).length*0.55-0.3);x=p.x+Math.cos(a)*95;y=p.y+Math.sin(a)*80}
+ else{const k=ns.filter(n=>!n.par).length;const a=k*2.399-Math.PI/2;const r=165+(k%2)*55;x=400+Math.cos(a)*r*1.25;y=280+Math.sin(a)*r*.9}
+ x=Math.max(50,Math.min(750,x));y=Math.max(40,Math.min(520,y));
+ const n={id:uid(),label,type,x,y,today:false,tag:"",ord:"",par:parent||""};ns.push(n);save();mmR();return n}
+const wrap=(t,m=13)=>{const w=t.split(" ");const L=[""];w.forEach(x=>{if((L[L.length-1]+" "+x).trim().length>m&&L[L.length-1])L.push(x);else L[L.length-1]=(L[L.length-1]+" "+x).trim()});if(L.length>3){L.length=3;L[2]=L[2].slice(0,m-1)+"…"}return L};
+function mmR(){const s=$("#mm"),ns=st.mm.nodes,byId=Object.fromEntries(ns.map(n=>[n.id,n]));const ink=css("--ink"),muted=css("--muted"),card=css("--card"),line=css("--line"),navy=css("--navy2"),warn=css("--warn");
+ let g=`<rect x="0" y="0" width="800" height="560" fill="${card}"/>`;
+ ns.filter(n=>n.today&&!n.par).forEach(n=>g+=`<line x1="400" y1="280" x2="${n.x}" y2="${n.y}" stroke="${navy}" stroke-width="3"/>`);
+ ns.filter(n=>!n.today&&!n.par).forEach(n=>g+=`<line x1="400" y1="280" x2="${n.x}" y2="${n.y}" stroke="${line}" stroke-width="1"/>`);
+ st.mm.links.forEach(([a,b])=>{const A=byId[a],B=byId[b];if(A&&B)g+=`<path d="M${A.x},${A.y} Q${(A.x+B.x)/2+(A.y-B.y)*.15},${(A.y+B.y)/2+(B.x-A.x)*.15} ${B.x},${B.y}" fill="none" stroke="${warn}" stroke-width="2.5" stroke-dasharray="7 5"/>`});
+ ns.filter(n=>n.par).forEach(n=>{const p=byId[n.par];if(p)g+=`<line x1="${p.x}" y1="${p.y}" x2="${n.x}" y2="${n.y}" stroke="${muted}" stroke-width="1.5" stroke-dasharray="2 4"/>`});
+ g+=`<circle cx="400" cy="280" r="58" fill="${navy}"/><text x="400" y="${st.mm.stat?272:286}" text-anchor="middle" fill="#fff" font-family="Raleway" font-weight="800" font-size="17">${esc(st.mm.me||"SEN")}</text>${st.mm.stat?wrap(st.mm.stat,16).slice(0,2).map((l,i)=>`<text x="400" y="${292+i*13}" text-anchor="middle" fill="#fff" font-family="Raleway" font-size="10.5">${esc(l)}</text>`).join(""):""}<text x="400" y="352" text-anchor="middle" fill="${muted}" font-family="Raleway" font-weight="700" font-size="10">BURADASIN</text>`;
+ ns.forEach(n=>{const c=TY[n.type][1],L=wrap(n.label,n.par?14:12),on=sel===n.id||linkFrom===n.id;const isA=!!n.par;
+  g+=`<g class="nd" data-nd="${n.id}" transform="translate(${n.x},${n.y})" tabindex="0" role="button" aria-label="${esc(n.label)}">`+
+  (isA?`<rect x="-52" y="-${10+L.length*6}" width="104" height="${20+L.length*12}" rx="8" fill="${card}" stroke="${c}" stroke-width="${on?3:1.5}"/>`:`<circle r="40" fill="${c}" opacity=".92" stroke="${on?ink:"none"}" stroke-width="3"/>`)+
+  L.map((l,i)=>`<text y="${(i-(L.length-1)/2)*12+4}" text-anchor="middle" font-size="${isA?10.5:11}" fill="${isA?ink:"#fff"}">${esc(l)}</text>`).join("")+
+  (n.tag?`<g transform="translate(${isA?46:30},-${isA?14:30})"><circle r="11" fill="${n.tag==="qw"?css("--ok"):"#e0457b"}"/><text y="4" text-anchor="middle" font-size="12" fill="#fff">${n.tag==="qw"?"⚡":"★"}</text></g>`:"")+
+  (n.ord?`<g transform="translate(-${isA?46:30},-${isA?14:30})"><circle r="10" fill="${ink}"/><text y="4" text-anchor="middle" font-size="11" fill="${card}">${esc(n.ord)}</text></g>`:"")+`</g>`});
+ if(!ns.length)g+=`<text x="400" y="420" text-anchor="middle" fill="${muted}" font-family="Raleway" font-size="13">“2 · Beyin fırtınası” sekmesinden ilgi alanlarını ekle</text>`;
+ s.innerHTML=g;
+ $$("#mm .nd").forEach(el=>{const n=byId[el.dataset.nd];let start=null,moved=false;
+  el.addEventListener("pointerdown",e=>{start={x:e.clientX,y:e.clientY,nx:n.x,ny:n.y};moved=false;try{el.setPointerCapture(e.pointerId)}catch(_){}});
+  el.addEventListener("pointermove",e=>{if(!start)return;const k=800/(s.getBoundingClientRect().width||800);const dx=(e.clientX-start.x)*k,dy=(e.clientY-start.y)*k;if(Math.abs(dx)+Math.abs(dy)>4)moved=true;if(moved){n.x=Math.max(30,Math.min(770,start.nx+dx));n.y=Math.max(25,Math.min(535,start.ny+dy));el.setAttribute("transform",`translate(${n.x},${n.y})`)}});
+  el.addEventListener("pointerup",()=>{if(start&&moved){save();setTimeout(mmR,0)}start=null});
+  el.addEventListener("click",e=>{e.stopPropagation();if(moved){moved=false;return}pick(n.id)});
+  el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(n.id)}})});
+ $("#mmLeg").innerHTML=Object.values(TY).map(([l,c])=>`<span><i style="background:${c}"></i>${l}</span>`).join("")+`<span>— merkezden düz koyu çizgi: bugün bağlı</span><span>- - turuncu: öğeler arası bağlantı</span><span>⚡ hızlı kazanım · ★ yüksek etki</span>`;
+ selR();ana();journey()}
+function pick(id){if(linkFrom){if(linkFrom!==id){const L=st.mm.links;const i=L.findIndex(([a,b])=>(a===linkFrom&&b===id)||(a===id&&b===linkFrom));if(i>=0){L.splice(i,1);toast("Bağlantı kaldırıldı")}else{L.push([linkFrom,id]);toast("Bağlandı")}save()}linkFrom=null;$("#linkBar").style.display="none";sel=id;mmR();return}sel=sel===id?null:id;mmR();mmSteps()}
+$("#mm").addEventListener("click",()=>{if(linkFrom){linkFrom=null;$("#linkBar").style.display="none"}if(sel){sel=null;mmR();mmSteps()}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&linkFrom){linkFrom=null;$("#linkBar").style.display="none";mmR()}});
+function selR(){const n=st.mm.nodes.find(x=>x.id===sel);const p=$("#selPanel");if(!n){p.innerHTML="";return}
+ const isA=!!n.par;
+ p.innerHTML=`<div class="box"><div class="lbl">Seçili: ${esc(n.label)} · ${TY[n.type][0]}</div>
+ <div class="row"><input type="text" id="snL" value="${esc(n.label)}" style="flex:1;min-width:160px" maxlength="40">${isA?"":`<select id="snT" style="max-width:180px">${Object.entries(TY).filter(([k])=>k!=="act").map(([k,v])=>`<option value="${k}" ${n.type===k?"selected":""}>${v[0]}</option>`).join("")}</select>`}</div>
+ <div class="row" style="margin-top:8px">${isA?"":`<label class="ui small" style="font-weight:700"><input type="checkbox" id="snToday" ${n.today?"checked":""} style="width:17px;height:17px;vertical-align:-3px"> Bugün bağlıyım</label><button class="btn ghost sm" id="snLink">Başka düğüme bağla</button>`}
+ ${segH('data-tg',[["","Etiket yok"],["qw","⚡ Hızlı kazanım"],["hi","★ Yüksek etki"]],n.tag)}
+ <label class="small ui" style="font-weight:700">Sıra <input type="number" id="snOrd" min="1" max="99" value="${esc(n.ord)}" style="width:56px;font:inherit;font-size:14px;padding:3px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)"></label>
+ <button class="btn ghost sm" id="snDel">Sil</button></div>
+ ${isA?"":`<div class="row" style="margin-top:8px"><input type="text" id="snAct" placeholder="Bu bağlantıyı güçlendirecek eylem (ders, kitap, iş, kişi, etkinlik…)" style="flex:1;min-width:200px" maxlength="40"><button class="btn" id="snActAdd">Eylem ekle</button></div>`}</div>`;
+ $("#snL").oninput=e=>{n.label=e.target.value;save();const t=$$(`#mm .nd[data-nd="${n.id}"] text`);if(t.length){clearTimeout(selR.t);selR.t=setTimeout(mmR,500)}};
+ if(!isA){$("#snT").onchange=e=>{n.type=e.target.value;save();mmR()};$("#snToday").onchange=e=>{n.today=e.target.checked;save();mmR()};
+  $("#snLink").onclick=()=>{linkFrom=n.id;$("#linkBar").style.display="block";mmR()};
+  $("#snActAdd").onclick=()=>{const v=$("#snAct").value.trim();if(!v)return;addNode(v,"act",n.id);sel=n.id;mmR()}}
+ $$("[data-tg]").forEach(b=>b.onclick=()=>{n.tag=b.dataset.v;save();mmR()});
+ $("#snOrd").onchange=e=>{n.ord=e.target.value;save();mmR()};
+ $("#snDel").onclick=()=>{const kill=new Set([n.id].concat(st.mm.nodes.filter(x=>x.par===n.id).map(x=>x.id)));st.mm.nodes=st.mm.nodes.filter(x=>!kill.has(x.id));st.mm.links=st.mm.links.filter(([a,b])=>!kill.has(a)&&!kill.has(b));sel=null;save();mmR();mmSteps()}}
+function ana(){const ns=st.mm.nodes.filter(n=>!n.par);if(!ns.length){$("#mmAna").innerHTML='<span class="small">Haritan doldukça analiz burada görünecek.</span>';return}
+ const deg={};ns.forEach(n=>deg[n.id]=0);st.mm.links.forEach(([a,b])=>{if(a in deg)deg[a]++;if(b in deg)deg[b]++});
+ const acts=n=>st.mm.nodes.filter(x=>x.par===n.id).length;
+ const today=ns.filter(n=>n.today),iso=ns.filter(n=>!n.today&&!deg[n.id]&&!acts(n));const hub=ns.slice().sort((a,b)=>deg[b.id]-deg[a.id])[0];
+ const noAct=ns.filter(n=>!n.today&&!acts(n));const qw=st.mm.nodes.filter(n=>n.tag==="qw"),hi=st.mm.nodes.filter(n=>n.tag==="hi");
+ const types={};ns.forEach(n=>types[n.type]=(types[n.type]||0)+1);
+ const L=[`<strong>${ns.length}</strong> ilgi alanı, <strong>${st.mm.links.length}</strong> öğeler arası bağlantı, <strong>${st.mm.nodes.length-ns.length}</strong> eylem.`,
+  `Bugün bağlı olduğun: ${today.length?today.map(n=>esc(n.label)).join(", "):"henüz işaretlemedin"} (${ns.length?Math.round(today.length/ns.length*100):0}%).`];
+ if(hub&&deg[hub.id]>0)L.push(`En çok bağlantılı öğe: <strong>${esc(hub.label)}</strong> (${deg[hub.id]} bağlantı). Birden çok alana açılan bir kavşak; “yüksek etki” etiketine aday.`);
+ if(noAct.length)L.push(`Henüz bağlı olmadığın ve yanında eylem olmayan ${noAct.length} öğe: ${noAct.slice(0,5).map(n=>esc(n.label)).join(", ")}. Bunlara ulaşmanın bir yolunu “Geleceğe taşı” adımında ekle.`);
+ if(iso.length)L.push(`Hiçbir şeye bağlanmamış ${iso.length} öğe var; başka bir öğeyle ilişkisi olabilir mi?`);
+ if(!types.role&&ns.length>3)L.push("Haritanda hiç rol yok; bu sorun değil, yazar zaten yalnızca unvanlara dayalı haritalardan kaçınmanı öneriyor.");
+ if(types.role&&types.role/ns.length>.6)L.push("Haritanın çoğu unvanlardan oluşuyor; becerileri, uygulamaları ve ilham kaynaklarını da eklemeyi düşün.");
+ if(qw.length||hi.length)L.push(`⚡ ${qw.length} hızlı kazanım · ★ ${hi.length} yüksek etki.`);
+ $("#mmAna").innerHTML=L.map(l=>`<div style="margin:3px 0">${l}</div>`).join("")}
+function svgStr(){const s=$("#mm").cloneNode(true);s.setAttribute("xmlns","http://www.w3.org/2000/svg");s.setAttribute("width","1600");s.setAttribute("height","1120");return new XMLSerializer().serializeToString(s)}
+$("#mmSvg").onclick=()=>dlBlob("kariyer_haritam.svg",new Blob([svgStr()],{type:"image/svg+xml"}));
+$("#mmPng").onclick=()=>{try{const img=new Image();img.onload=()=>{const c=document.createElement("canvas");c.width=1600;c.height=1120;const x=c.getContext("2d");x.drawImage(img,0,0,1600,1120);c.toBlob(b=>b&&dlBlob("kariyer_haritam.png",b))};img.onerror=()=>toast("PNG oluşturulamadı; SVG'yi dene");img.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svgStr())}catch(e){toast("PNG oluşturulamadı; SVG'yi dene")}};
+$("#mmJson").onclick=()=>dlBlob("kariyer_haritam.json",new Blob([JSON.stringify(st.mm,null,1)],{type:"application/json"}));
+$("#mmLoad").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const m=JSON.parse(r.result);if(!Array.isArray(m.nodes))throw 0;st.mm={me:m.me||"",stat:m.stat||"",nodes:m.nodes,links:m.links||[]};sel=null;save();mmR();mmSteps();toast("Harita yüklendi")}catch(_){toast("Geçersiz dosya")}};r.readAsText(f)};
+$("#mmClr").onclick=()=>{if(!st.mm.nodes.length||!confirm("Harita silinsin mi?"))return;st.mm={me:st.mm.me,stat:st.mm.stat,nodes:[],links:[]};sel=null;save();mmR();mmSteps()};
+
+// ---------- 5. final
+function journey(){const el=$("#journey");if(!el)return;const P=st.sk.filter(x=>prio(x)!=="x");const F=goalItems();const tk=F.flatMap(x=>G(x.id).tasks);
+ const items=[[P.length>0,`Önceliklendirilmiş liste: ${P.length} beceri (Ö1: ${st.sk.filter(x=>prio(x)==="1").length})`],[F.length>=3&&F.length<=5,`Odak hedefleri: ${F.length} (öneri 3–5)`],[F.some(x=>smartOk("S",G(x.id).S)&&smartOk("T",G(x.id).T)),"En az bir SMART hedef yazıldı"],[tk.length>0,`Eylem planı: ${tk.filter(t=>t.d).length}/${tk.length} görev tamam`],[st.cr.length>0,`İş şekillendirme fikirleri: ${st.cr.length}`],[st.mm.nodes.length>=5,`Kariyer haritası: ${st.mm.nodes.length} öğe`]];
+ el.innerHTML=`<ul class="check">${items.map(([ok,t])=>`<li><span class="${ok?"ok":"wa"}" style="font-weight:800">${ok?"✓":"○"}</span> ${t}</li>`).join("")}</ul>`}
+const rep=$("#rep");rep.value=st.rep||"";const repR=()=>{if(!st.rep){$("#repOut").textContent="";return}const d=new Date(st.repFrom||Date.now());d.setMonth(d.getMonth()+ +st.rep);$("#repOut").textContent="Tekrar tarihi: "+d.toLocaleDateString("tr-TR",{day:"numeric",month:"long",year:"numeric"})};
+rep.onchange=()=>{st.rep=rep.value;st.repFrom=Date.now();save();repR()};repR();
+
+// ---------- 6. test
+const Q=[
+ {q:"Öncelik 1 becerileri hangileridir?",o:["Envanterde güç olarak işaretlenenler","İlan tablolarında hem ilgi/tutku hem de gelişim gerekli işaretlenenler","Nefret edilen ama talep görenler","Yalnızca teknik beceriler"],a:1,e:"İlham veren, büyüten ve kapı açan beceriler."},
+ {q:"Öncelik 2 “tutku etkinleştirici” listesine hangileri girer?",o:["Genel ilgi duyulan tüm beceriler","Envanterde “tutku” işaretlenip gelişim istenenler","Tüm ilan becerileri","Güçlü olunan beceriler"],a:1,e:"Genel ilgiler bu sırayı almaz; yalnızca en tutkulu olunanlar."},
+ {q:"Bir beceriden gerçekten nefret ediyorsan yazar ne öneriyor?",o:["Öncelik 1 yap","Kendini zorla","Listede bu kadar yukarı koyma; nasıl hissettiğin ne kadar iyi öğreneceğini etkiler","Hemen bir kursa kaydol"],a:2,e:"Kendini zorlama."},
+ {q:"Öncelik 3 becerileri için önerilen yaklaşım nedir?",o:["Hemen yoğun eğitim almak","Doğrudan fırsat aramadan farkında olmak ve önüne çıkan fırsatı kaçırmamak","Listeden silmek","Yöneticiye devretmek"],a:1,e:"Örneğin bir konferansta oturum seçerken ya da bir projeye yaklaşırken."},
+ {q:"Güçlü olduğun bir beceriyi geliştirmek…",o:["genişlemedir","uzmanlaşmadır (derinlik)","gereksizdir","yalnızca Öncelik 3'tür"],a:1,e:"Güçlü olmadığın bir beceriyi geliştirmek ise genişlemedir; dengeli plan ikisini de içerir."},
+ {q:"Eylem planında aynı anda kaç hedef öneriliyor?",o:["1","3–5","8–10","Sınırsız"],a:1,e:"En az 3 çeşitlilik için, en fazla 5 dağılmamak için."},
+ {q:"SMART'taki “R” neyi ifade eder?",o:["Kaynak (Resource)","İlgili (Relevant): genel hedeflerinle örtüşme","Ödül (Reward)","Risk"],a:1,e:"Belirli, Ölçülebilir, Ulaşılabilir, İlgili, Zamana bağlı."},
+ {q:"İş şekillendirmede “olması gerekenleri bulmak” ne demektir?",o:["Yalnızca ilandaki görevleri yapmak","Kurumun henüz fark etmediği ama rolün parçası olması gereken işi fark edip değerini göstermek","İş değiştirmek","Yöneticiyi atlamak"],a:1,e:"Eğilimleri izle, kurumuna çevir, değeri anlat."},
+ {q:"Önerin hemen benimsenmezse?",o:["Bir daha öneri yapma","Cesaretin kırılmasın: tohumu ektin, ihtiyaç belirginleştiğinde ilk aranan sen olabilirsin","İstifa et","Öneriyi gizlice uygula"],a:1,e:"Sabırlı ve tutarlı ol; anlatma becerin de gelişir."},
+ {q:"Yazar kariyer haritası için neyi önermiyor?",o:["İlgi alanlarına dayalı bir zihin haritası","Yalnızca iş unvanlarına dayalı doğrusal bir harita","Öğeler arasında bağlantı çizmek","Eylem eklemek"],a:1,e:"Yol tarifi değil harita; unvan değil ilgi alanları."}];
+st.quiz=st.quiz||{};
+function quiz(){$("#quiz").innerHTML=Q.map((x,i)=>`<div class="card" style="margin:12px 0"><div class="ui" style="font-weight:700">${i+1}. ${x.q}</div>${x.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("")}<div class="fb" id="qe${i}" style="display:none">${x.e}</div></div>`).join("");
+ $$("#quiz .opt").forEach(b=>b.onclick=()=>{st.quiz[b.dataset.q]=+b.dataset.o;save();paint()});paint()}
+function paint(){let sc=0,n=0;Q.forEach((x,i)=>{const ch=st.quiz[i];if(ch===undefined)return;n++;if(ch===x.a)sc++;
+ $$(`#quiz .opt[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.o;b.classList.toggle("right",j===x.a);b.classList.toggle("wrong",j===ch&&ch!==x.a);b.disabled=true});$("#qe"+i).style.display="block"});
+ $("#score").innerHTML=n?`Skor: ${sc} / ${Q.length}${n===Q.length?' <button class="btn ghost" id="reset" style="margin-left:8px">Yeniden dene</button>':""}`:"";const r=$("#reset");if(r)r.onclick=()=>{st.quiz={};save();quiz()}}
+
+// init
+allSk();sitR();bind("shTrend","shTrend",shR);bind("shChal","shChal",shR);bind("shVal","shVal",shR);bind("shStep","shStep",shR);shR();$("#shCopy").onclick=()=>copy(shR());
+bind("passProj","passProj");crR();mmSteps();mmR();quiz();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>

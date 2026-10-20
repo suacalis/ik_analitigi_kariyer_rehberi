@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analitik Beceri Öz Değerlendirmesi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--bad:#c0392b;--shadow:0 2px 14px rgba(11,58,140,.08);--c1:#1f5fd1;--c2:#1d8a5b;
+--g1:#3d7a1f;--g2:#6a3fb5;--g3:#8a7a12;--g4:#0f8aa8;--g5:#b5452d;--g6:#5b6578}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--c1:#6c9cff;--c2:#4cc38a;--g1:#7fc45a;--g2:#a98bf0;--g3:#d6c64a;--g4:#4fc6e3;--g5:#ff8f73;--g6:#b4bdd0}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--c1:#6c9cff;--c2:#4cc38a;--g1:#7fc45a;--g2:#a98bf0;--g3:#d6c64a;--g4:#4fc6e3;--g5:#ff8f73;--g6:#b4bdd0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1040px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:740px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:100px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn.sm{padding:4px 10px;font-size:12px}
+.btn:hover{filter:brightness(1.08)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+input[type=text],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+textarea{min-height:52px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.ok{color:var(--ok)}.no{color:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.fb{font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+/* ipucu kartları */
+.tip{border:1px solid var(--line);border-radius:12px;margin:10px 0;background:var(--card);overflow:hidden}
+.tip summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;gap:12px;align-items:center}
+.tip summary::-webkit-details-marker{display:none}
+.tip .n{flex:0 0 32px;height:32px;border-radius:50%;background:var(--soft);color:var(--navy);font-family:Raleway;font-weight:800;display:grid;place-items:center}
+.tip.done .n{background:var(--ok);color:#fff}
+.tip .tt{font-family:Raleway;font-weight:800;color:var(--navy);flex:1}
+.tip .st{font-family:Raleway;font-size:11px;font-weight:700;color:var(--muted)}
+.tip .bd{padding:0 16px 14px 58px}
+@media (max-width:560px){.tip .bd{padding:0 14px 14px}}
+.tip label.chk{display:flex;gap:8px;align-items:center;font-family:Raleway;font-weight:700;font-size:13px;color:var(--muted);margin-top:8px}
+.tip label.chk input{width:17px;height:17px;accent-color:var(--ok)}
+.warnbox{border:2px solid var(--bad);border-radius:12px;padding:12px 16px;margin:10px 0}
+.warnbox strong{font-family:Raleway;color:var(--bad)}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+/* yol haritası */
+.path{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:700px){.path{grid-template-columns:1fr}}
+.lane .lt{font-family:Raleway;font-weight:800;font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.stepb{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--card);cursor:pointer;font-size:15px}
+.stepb .b{flex:0 0 24px;height:24px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-family:Raleway;font-size:12px;font-weight:800;color:var(--muted)}
+.stepb.on .b{background:var(--ok);border-color:var(--ok);color:#fff}
+.stepb.next{border-color:var(--navy2);box-shadow:0 0 0 2px color-mix(in srgb,var(--navy2) 30%,transparent)}
+.arrow{text-align:center;color:var(--muted);font-size:13px;line-height:1}
+/* ölçek */
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+@media (max-width:700px){.scale{grid-template-columns:1fr 1fr}}
+.scale .card{padding:10px}
+.scale .lv{font-family:Raleway;font-weight:800;font-size:12px;color:var(--navy2)}
+/* öz değerlendirme tabloları */
+.gtabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.gtabs button{font-family:Raleway;font-weight:700;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;padding:7px 12px;cursor:pointer;display:flex;gap:6px;align-items:center}
+.gtabs button.on{color:#fff}
+.gtabs .cnt{font-size:11px;opacity:.85}
+.sa{overflow-x:auto}
+.sa table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+.sa th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.sa td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.sa td.sk{font-family:Raleway;font-weight:700;width:190px}
+.sa select{font-size:13px;padding:5px}
+.sa tr.custom input{font-size:14px;padding:5px 7px}
+.sa .gap{font-family:Raleway;font-size:11px;font-weight:800;color:var(--warn);display:block;margin-top:4px}
+.sa .met{font-family:Raleway;font-size:11px;font-weight:800;color:var(--ok);display:block;margin-top:4px}
+.hm{overflow-x:auto}
+.hm table{border-collapse:separate;border-spacing:3px;font-size:13px;font-family:Raleway;min-width:520px;width:100%}
+.hm td{padding:6px 8px;border-radius:6px}
+.hm td.nm{font-weight:700}
+.hm td.v{text-align:center;font-weight:800;width:72px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0}
+.stat{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--card)}
+.stat b{display:block;font-family:Raleway;font-size:20px;color:var(--navy)}
+.stat span{font-size:12px;color:var(--muted);font-family:Raleway}
+.gapl li{margin:4px 0}
+svg text{font-family:Raleway}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+@media print{header.top,.btn,.readmark,.noprint,.gtabs{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}.grpblk{display:block!important}}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Adım 3</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">Keşfet ve katıl</a>
+      <a href="#s2" data-s="s2">Veri güvenliği</a>
+      <a href="#s3" data-s="s3">Öğrenme yolu</a>
+      <a href="#s4" data-s="s4">Öz değerlendirme</a>
+      <a href="#s5" data-s="s5">Özet ve plan</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker">Adım 3 · Teknik beceriler</div>
+    <h1>Analitik Becerileri: Keşfet, Katıl, Kendini Değerlendir</h1>
+    <p>Veri ve istatistik olsa bile içgörüler kendiliğinden ortaya çıkmaz. Bu sayfa, analitik becerilerini geliştirmek için yedi pratik yolu ve rehberdeki altı öz değerlendirme tablosunu (betimleyici, tanılayıcı, öngörücü, kural koyucu, nitel ve ileri analitik) tek bir etkileşimli araçta topluyor.</p>
+    <p class="note">Kaynak: Heather Whiteman'ın insan analitiği kariyer rehberinin 120–144. sayfaları. Metin birebir çeviri değil; içerik Türkçe olarak özetlenip uyarlanmıştır. Yanıtların yalnızca bu tarayıcıda saklanır.</p>
+  </div>
+
+  <!-- 1 -->
+  <section class="ch" id="s1">
+    <h2>Keşfet ve Katıl: Analitik Beceriler</h2><hr>
+    <p>Betimleyici analitik becerilerini aşağıdaki tekniklerle eşleştir. Her kartı aç, kendine uygun bir sonraki adımı yaz ve uyguladığında işaretle.</p>
+    <div id="tips"></div>
+    <div class="result" id="tipSum"></div>
+    <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 2 -->
+  <section class="ch" id="s2">
+    <h2>Denerken Dikkat: Veri Güvenliği</h2><hr>
+    <div class="warnbox"><strong>Yazarın üç ünlemle vurguladığı kural:</strong> Yeni araç ve teknikleri denemekten korkma; ama denediğin araçlara ne koyduğuna dikkat et. Şirket ya da çalışan verisini, İK verisi mahremiyeti için açıkça tasarlanmamış hiçbir teknoloji aracına (özellikle de üretken yapay zekâ araçlarına) ASLA koyma!!!</div>
+    <p>Aşağıdaki durumlarda ne yapardın? Yanıtlar genel bir yol göstericidir; kurumunun veri yönetişimi politikaları ve ilgili mevzuat her zaman önceliklidir.</p>
+    <div id="safe"></div>
+    <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 3 -->
+  <section class="ch" id="s3">
+    <h2>Küçük ve Belirli Başla, Sonra Büyüt</h2><hr>
+    <p>Analitiği önce çok belirli bir insan analitiği sorununa uygula. Örneğin nicel anket verisi üzerinde temel betimleyici analizle başla, ilerledikçe tanılayıcı, öngörücü, kural koyucu ya da bilişsel yaklaşımları dene. Aynı anketin açık uçlu yanıtlarını da önce duygu (duygu analizi), sonra birden çok tema türüyle (tematik analiz) kodlamayı öğrenebilirsin. Daha ileri doğal dil işleme yaklaşımlarına geçmeden önce basit metin analitiğini kavramış olmak istersin.</p>
+    <div class="box">
+      <div class="lbl">Yol haritam · Tek bir anketle iki paralel yol</div>
+      <input type="text" id="pathTopic" placeholder="Hangi belirli sorunla başlayacaksın? (örn. yıllık bağlılık anketi)" style="margin-bottom:10px">
+      <div class="path" id="path"></div>
+      <div class="small" id="pathOut" style="margin-top:8px"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 4 -->
+  <section class="ch" id="s4">
+    <h2>Kendini Keşfet: Analitik Becerilerini Değerlendir</h2><hr>
+    <p>Bu bir beceri listesinden çok bir öz değerlendirme olarak tasarlandı, çünkü insan analitiği bütün teknik becerilere ve hepsine aynı derinlikte sahip olmanı gerektirmez. Kariyerinde ne yapmak istediğine göre bazı becerilerin yalnızca farkında olman yeterli olabilir, bazılarında ileri ya da uzman düzeyde olman gerekebilir. Teknik uzmanlığını nasıl uygulayacağın da büyük ölçüde kişisel tercih: bazı teknikler ilgini çekecek ve onları uzman düzeyine taşımak isteyeceksin; bazılarında “Öğrenen” ya da “Yetkin” düzeyinde durmaktan mutlu olabilirsin. Her tablonun altında, duyduğun ve denemek istediğin ek beceri ya da teknikleri eklemek için boş satırlar var.</p>
+    <h3>Tablolar nasıl kullanılır?</h3>
+    <p><strong>1.</strong> Her becerinin açıklamasını oku ve şu ölçeğe göre bugünkü düzeyini en iyi tahminle işaretle:</p>
+    <div class="scale">
+      <div class="card"><div class="lv">1 · FARKINDA</div><div class="small">Beceride yenisin; kavramsal olarak biliyor olabilirsin ama işi henüz kendin yapmadın.</div></div>
+      <div class="card"><div class="lv">2 · ÖĞRENEN</div><div class="small">Beceriyi öğrenmeye yeni başladın ya da hâlâ ayrıntılı yönergelere dayanıyorsun.</div></div>
+      <div class="card"><div class="lv">3 · YETKİN</div><div class="small">Bir ölçüde yeteneklisin ama bazı ya da ileri kısımlarda yardıma ihtiyaç duyuyorsun.</div></div>
+      <div class="card"><div class="lv">4 · UZMAN</div><div class="small">Bu alandaki zorlukları güvenle çözüyorsun, desteğe ihtiyacın yok, kavramları başkalarına açık ve sade anlatabiliyorsun.</div></div>
+      <div class="card"><div class="lv">5 · STRATEJİST</div><div class="small">Tekniği yeni biçimlerde uyguluyor, yeni yöntemler yaratıyor; orta ve ileri düzeydekilere mentorluk yapabiliyorsun.</div></div>
+    </div>
+    <p><strong>2. (İsteğe bağlı)</strong> Gelecekte farklı bir düzeyde olmak istediğin beceriler için hedef düzeyini belirt. Hedeflerin zamanla ve farklı kariyer seçeneklerini düşündükçe değişebilir; bu tabloya muhtemelen birçok kez döneceksin.</p>
+    <p class="small"><strong>Not:</strong> Kendini nereye koyduğun konusunda fazla kaygılanma; bunun “gerçek” bir puanı ya da ölçümü yok. Ölçek yalnızca genel bir yön ve düşündürücü bir egzersiz sunuyor.</p>
+
+    <div class="gtabs noprint" id="gtabs"></div>
+    <div id="tables"></div>
+    <div class="row noprint" style="margin-top:12px">
+      <button class="btn ghost" id="showAll">Tüm tabloları göster</button>
+      <button class="btn ghost" id="csv">CSV indir</button>
+      <button class="btn ghost" id="jsonOut">Yedek al (JSON)</button>
+      <label class="btn ghost" style="display:inline-block">Yedekten yükle<input type="file" id="jsonIn" accept="application/json" style="display:none"></label>
+      <button class="btn ghost" id="print">Yazdır / PDF</button>
+      <button class="btn ghost" id="clearAll">Temizle</button>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s4"> Öz değerlendirmeyi tamamladım</label>
+  </section>
+
+  <!-- 5 -->
+  <section class="ch" id="s5">
+    <h2>Özet ve Gelişim Planı</h2><hr>
+    <div class="stats" id="stats"></div>
+    <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start" id="sumGrid">
+      <div><div class="lbl">Grup ortalamaları</div><svg id="radar" viewBox="0 0 380 340" style="width:100%;max-width:440px"></svg>
+        <div class="small"><span style="color:var(--c1)">■</span> Bugün &nbsp; <span style="color:var(--c2)">■</span> Hedef</div></div>
+      <div><div class="lbl">Isı haritası (bugün → hedef)</div><div class="hm" id="hm"></div></div>
+    </div>
+    <h3>En büyük açıklar</h3>
+    <p class="small">Hedef düzeyi bugünkü düzeyinden yüksek olan beceriler, açık büyüklüğüne göre sıralandı. Rehberin önerdiği sıra gereği, betimleyici temeli eksik olan ileri beceriler ayrıca işaretlenir.</p>
+    <ol class="gapl" id="gaps"></ol>
+    <div class="box">
+      <div class="lbl">Bu çeyrekteki odağım</div>
+      <textarea id="focus" placeholder="En fazla 2–3 beceri seç ve her biri için somut bir adım yaz (örn. Kaggle'daki açık İK veri setinde t-testi ve ANOVA alıştırması; bir veri bilimciyle haftalık 30 dakika)."></textarea>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s5"> Planımı yazdım</label>
+  </section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><a class="pv" href="insan_analitigi_adim3_nitel_analitik.html"><small>← Önceki</small><b>Adım 3: Nitel analitik</b></a><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><a class="nx" href="insan_analitigi_adim3_veri_gorsellestirme.html"><small>Sonraki →</small><b>Adım 3: Veri görselleştirme</b></a></nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+const KEY="pa_adim3_analitik_oz_v1";
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt=(x,d=1)=>Number.isFinite(x)?x.toLocaleString("tr-TR",{minimumFractionDigits:d,maximumFractionDigits:d}):"–";
+const dlBlob=(name,blob)=>{const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href)};
+const dl=(name,rows)=>{const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';dlBlob(name,new Blob(["﻿"+rows.map(r=>r.map(q).join(";")).join("\n")],{type:"text/csv;charset=utf-8"}))};
+
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$("#theme").onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";st.theme=d.dataset.theme;save();summary()};
+
+st.read=st.read||{};const N=5;
+function prog(){const n=Object.values(st.read).filter(Boolean).length;$("#progbar").style.width=(n/N*100)+"%";$$("#nav a").forEach(a=>a.classList.toggle("done",!!st.read[a.dataset.s]))}
+$$("[data-read]").forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();if(cb.checked)toast("Bir bölüm daha tamam!")}});prog();
+
+// 1. ipuçları
+const TIPS=[
+ ["Temel metrikleri belirle","Verinle hangi sorulara yanıt aramak istediğini anla. Farklı istatistikler çalıştırmaya başlamadan önce kendine sor: Ne bilmek istiyorum? En iyi metrikler hangileri? İyi bir yol, seçtiğin konuda yaygın kullanılan analitikleri araştırmak: çalışan sayısı, ayrılma, iyi oluş, iş birliği, inovasyon, işe alım gibi konular daha önce analiz edildi; başkalarının örneklerini bul ve tekrarlamaya çalış. Neyi betimlemek istediğine dair bir hedefle başla, sonra net bir yanıtın olduğunu hissedene kadar analitik teknikleri uygula.","Örn. “Ayrılma” konusunda yaygın metrikleri (gönüllü ayrılma oranı, ilk yıl ayrılması) araştırıp birini kendi verimde tekrarlamak."],
+ ["Yorumlamayı öğren","Bir istatistik hesaplamak ya da grafik üretmek tek başına eyleme götürmez. Öğrendiğin her analitik becerinin nasıl hesaplandığının ötesine geç; onu etkili biçimde yorumlamayı ve açıklamayı öğren. Analitiğin anlamlı olması için bağlama uygun bir çeviri gerekir.","Örn. Her hesapladığım istatistik için iki cümlelik “Bu ne demek, neden önemli?” açıklaması yazmak."],
+ ["Gerçek veriyle çalış","İnsan veri dosyalarına erişimin varsa bütün öğrenme ve pratiğini onlarla yap! Yoksa Kaggle gibi platformlarda ve pek çok üniversitenin açık veri depolarında sahte ya da anonimleştirilmiş insan verisi içeren İK ve iş konulu açık veri setleri bulabilirsin.","Örn. Açık bir İK ayrılma veri setini indirip betimleyici istatistiklerini çıkarmak."],
+ ["İş birliği anahtardır","Kurumundaki analistler, nitel araştırmacılar, görselleştirme uzmanları, veri bilimciler ya da yapay zekâ uzmanlarıyla ortaklık kur. Onların uzmanlığından öğren ve içgörülerinden yararlanarak insan analitiği yetkinliğini güçlendir.","Örn. Bir veri bilimciden bir modelini bana 30 dakikada anlatmasını istemek."],
+ ["Temeli öğren, eğilimleri izle","Analitik alanı uzun süredir değişmeyen istatistiksel temellere dayanır; bu, sağlam bir temel kurmanı mümkün kılar. Ama temel yaklaşımların nasıl uygulandığı açısından hızla gelişiyor ve yeni yaklaşım ve teknikler hızla ortaya çıkıyor. Öncü kalmak için sektör yayınlarına abone ol ya da düşünce liderlerini sosyal medyada takip et.","Örn. İki sektör bültenine abone olup haftada bir yazı okumak."],
+ ["Denemeyi kucakla","Yeni araç ve teknikleri denemekten korkma. Ama denediğin araçlara ne koyduğuna dikkat et: şirket ya da çalışan verisini, İK verisi mahremiyeti için açıkça tasarlanmamış hiçbir teknoloji aracına (özellikle üretken yapay zekâ araçlarına) ASLA koyma!!!","Örn. Yeni bir görselleştirme aracını yalnızca açık/kurgusal veriyle denemek."],
+ ["Küçük ve belirli başla, sonra büyüt","Analitiği önce çok belirli bir insan analitiği sorununa uygula; temel betimleyici analizden başlayıp adım adım ileri yaklaşımlara geç. Nitel tarafta da duygu analizinden tematik analize, basit metin analitiğinden ileri doğal dil işlemeye doğru ilerle. (Ayrıntılı yol haritası aşağıda.)","Örn. Yalnızca son bağlılık anketiyle başlamak."]];
+st.tips=st.tips||{};
+function tipsR(){$("#tips").innerHTML=TIPS.map((t,i)=>{const s=st.tips[i]||{};return `<details class="tip ${s.done?"done":""}" ${s.open?"open":""} data-ti="${i}"><summary><span class="n">${s.done?"✓":i+1}</span><span class="tt">${t[0]}</span><span class="st">${s.done?"uygulandı":s.plan?"planlandı":""}</span></summary><div class="bd"><p style="margin-top:0">${t[1]}</p><textarea data-tp="${i}" placeholder="${esc(t[2])}">${esc(s.plan||"")}</textarea><label class="chk"><input type="checkbox" data-td="${i}" ${s.done?"checked":""}> Bunu uyguladım</label></div></details>`}).join("");
+ $$("[data-ti]").forEach(d=>d.ontoggle=()=>{const i=d.dataset.ti;st.tips[i]=st.tips[i]||{};st.tips[i].open=d.open;save()});
+ $$("[data-tp]").forEach(t=>t.oninput=()=>{const i=t.dataset.tp;st.tips[i]=st.tips[i]||{};st.tips[i].plan=t.value;save();tipSum()});
+ $$("[data-td]").forEach(c=>c.onchange=()=>{const i=c.dataset.td;st.tips[i]=st.tips[i]||{};st.tips[i].done=c.checked;st.tips[i].open=true;save();tipsR()});tipSum()}
+function tipSum(){const p=TIPS.filter((_,i)=>(st.tips[i]||{}).plan).length,d=TIPS.filter((_,i)=>(st.tips[i]||{}).done).length;$("#tipSum").innerHTML=`<strong class="ui">${p}/7 planlandı · ${d}/7 uygulandı.</strong> <span class="small">Hepsini aynı anda yapman gerekmiyor; bir ya da iki tanesiyle başla.</span>`}
+tipsR();
+
+// 2. veri güvenliği
+const SAFE=[
+ {q:"Yöneticin, 300 çalışanın adı, ücreti ve performans puanını içeren bir Excel dosyasının özetini çıkarmanı istiyor. Kişisel hesabınla kullandığın genel amaçlı bir sohbet yapay zekâsına yüklemek işini hızlandıracak.",o:["Yüklerim; araç zaten güvenli görünüyor","İsimleri silip yüklerim","Yüklemem; kurumun onayladığı, İK verisi mahremiyeti için tasarlanmış bir araç ya da yöntem kullanırım"],a:2,e:"Yalnızca ad silmek yeterli değildir; ücret ve performans gibi alanlar kişiyi yeniden tanınabilir kılabilir. Yazarın kuralı nettir: İK verisi mahremiyeti için açıkça tasarlanmamış araçlara şirket ya da çalışan verisi konmaz."},
+ {q:"Yeni bir açık kaynak görselleştirme aracını öğrenmek istiyorsun.",o:["Kaggle'daki açık ve anonimleştirilmiş bir İK veri setiyle denerim","Gerçek çalışan verisiyle denerim, daha gerçekçi olur","Hiç denemem, risk almamak en iyisi"],a:0,e:"Denemeyi kucakla, ama güvenli veriyle. Açık ya da kurgusal veri setleri öğrenmek için idealdir."},
+ {q:"Kurumun BT ve hukuk birimlerinin onayladığı, İK verisi için sözleşmesi ve veri işleme şartları olan bir analitik platformu var.",o:["Bu platformda, erişim yetkim ve onaylı amaçlar dahilinde çalışırım","Platform onaylı diye her veriyi her amaçla kullanırım","Yine de verileri kişisel bilgisayarıma indirip orada çalışırım"],a:0,e:"Onaylı bir araç bile erişim yetkileri ve onaylı kullanım amaçlarıyla sınırlıdır (bkz. veri yönetişimi bölümü)."},
+ {q:"Açık uçlu anket yorumlarını hızlıca temalandırmak için çevrimiçi ücretsiz bir “metin analizi” sitesi buldun.",o:["Yorumlar anonim olduğu için yapıştırırım","Önce kurum politikasını ve aracın veri işleme şartlarını kontrol eder, onay yoksa kullanmam","Yorumların yarısını yapıştırıp sonucu görürüm"],a:1,e:"Açık uçlu yorumlar çoğu zaman isim, birim ya da olay ayrıntısıyla kişiyi tanıtabilir. Önce politika ve onay."}];
+function scen(sel,items){$(sel).innerHTML=items.map((it,k)=>`<div class="card" style="margin:10px 0"><div style="font-size:15px">${it.q}</div>${it.o.map((o,j)=>`<button class="opt" data-k="${k}" data-j="${j}">${o}</button>`).join("")}<div class="fb" id="${sel.slice(1)}fb${k}"></div></div>`).join("");
+ $$(sel+" .opt").forEach(b=>b.onclick=()=>{const it=items[b.dataset.k];$$(`${sel} .opt[data-k="${b.dataset.k}"]`).forEach(x=>x.classList.remove("right","wrong"));const ok=+b.dataset.j===it.a;b.classList.add(ok?"right":"wrong");$(`${sel}fb${b.dataset.k}`).innerHTML=`<span class="${ok?"ok":"no"}">${ok?"Doğru":"Tekrar düşün"}:</span> ${it.e}`})}
+scen("#safe",SAFE);
+
+// 3. yol haritası
+const LANES=[["Nicel yol (kapalı uçlu sorular)",["Temel betimleyici analiz: frekans, ortalama, dağılım","Tanılayıcı: grupları karşılaştır, anlamlılığı sına","Öngörücü: örn. bağlılığı öngören etkenler","Kural koyucu: hangi müdahale en çok fayda sağlar?","Bilişsel: etik ve yanlılık değerlendirmesinden sonra"]],
+ ["Nitel yol (açık uçlu yanıtlar)",["Duygu analizi: olumlu/nötr/olumsuz kodla","Kodlama: nesne, yapısal, duygusal","Tematik analiz: birden çok tema türü","Basit metin analitiği: kelime frekansı, birlikte geçenler","İleri doğal dil işleme (NLP)"]]];
+st.path=st.path||{};$("#pathTopic").value=st.pathTopic||"";$("#pathTopic").oninput=e=>{st.pathTopic=e.target.value;save();pathR()};
+function pathR(){$("#path").innerHTML=LANES.map((l,li)=>{let nextSet=false;return `<div class="lane"><div class="lt">${l[0]}</div>${l[1].map((s,si)=>{const k=li+"_"+si,on=!!st.path[k];let nx="";if(!on&&!nextSet){nx="next";nextSet=true}return `${si?'<div class="arrow">↓</div>':""}<div class="stepb ${on?"on":""} ${nx}" data-ps="${k}"><span class="b">${on?"✓":si+1}</span><span>${s}</span></div>`}).join("")}</div>`}).join("");
+ $$("[data-ps]").forEach(b=>b.onclick=()=>{const k=b.dataset.ps;st.path[k]=!st.path[k];save();pathR()});
+ const tot=LANES.reduce((a,l)=>a+l[1].length,0),n=Object.values(st.path).filter(Boolean).length;
+ const skip=LANES.some((l,li)=>l[1].some((_,si)=>st.path[li+"_"+si]&&si>0&&!st.path[li+"_"+(si-1)]));
+ $("#pathOut").innerHTML=`${st.pathTopic?`<strong>${esc(st.pathTopic)}</strong> üzerinde `:""}${n}/${tot} adım tamam. Mavi çerçeveli adım her yolda sıradaki önerilen adım.`+(skip?` <span class="no">Bir adımı atlamış görünüyorsun; rehber, ileri yaklaşımlardan önce temeli kavramayı öneriyor.</span>`:"")}
+pathR();
+
+// 4. öz değerlendirme
+const LV=["Farkında","Öğrenen","Yetkin","Uzman","Stratejist"];
+const G=[
+ {k:"g1",n:"Betimleyici",s:[["Sayım, toplam, frekans, yüzdelik","Bir veri setinde belirli bir olayın ya da kategorinin kaç kez göründüğünü ve değerlerin frekansının nasıl dağıldığını belirlemek."],["Merkez ölçüleri (ortalama, ortanca, tepe değer)","Bir veri setindeki çeşitli “merkez” ölçülerini hesaplamayı ve yorumlamayı anlamak."],["Dağılım ölçüleri (en küçük, en büyük, varyans, std. sapma)","Bir veri setindeki verinin yayılımını hesaplamayı ve yorumlamayı anlamak."],["Oranlar, oransal karşılaştırmalar, olasılık oranları (odds)","Bir olayın belirli bir dönemdeki sıklığını ölçmek, sayıların ya da miktarların göreli büyüklüklerini karşılaştırmak ve olayların olma olasılıklarını ifade etmek."],["Korelasyon","İki değişken arasındaki doğrusal ilişkileri belirlemeyi, ölçmeyi ve yorumlamayı anlamak."]]},
+ {k:"g2",n:"Tanılayıcı",s:[["İstatistiksel anlamlılık testi","İstenen güven düzeylerini belirleyip bulguların istatistiksel olarak anlamlı mı yoksa tesadüf mü olduğunu değerlendirmek."],["Grup karşılaştırma testleri (t-testi, ki-kare, ANOVA)","Farklılıkları ya da örüntüleri belirlemek için farklı gruplar arasında veriyi karşılaştırmak."],["Regresyon analizi (tanılayıcı)","Bir değişkenin diğerini ne ölçüde etkilediğini belirlemek ve açıklamak için değişkenler arasındaki doğrusal ilişkileri modellemek."],["Keşifsel analiz","Verideki örüntüleri ve ilişkileri belirlemek için keşfe yönelik analitik yaklaşımlar kullanmak."],["Kök neden analizi","Belirli sonuçların ardındaki temel nedenleri ortaya çıkarmak için sistematik incelemeler yürütmek."],["Ayrıntıya inme (drill-down) analizi","Birleşik sonuçların içinde gizlenmiş içgörüleri bulmak için veriye ayrıntılı düzeyde derinlemesine bakmak."],["Karşılaştırmalı analiz","Gruplar, alt kümeler ya da dönemler arasındaki örüntüleri ve farkları belirlemek için veri setlerini karşılaştırmak."]]},
+ {k:"g3",n:"Öngörücü",s:[["Regresyon analizi (öngörücü)","Regresyonu ilişki belirlemenin ötesinde, bir ya da birkaç değişkenin olası gelecek değerleri ne ölçüde öngördüğünü belirlemek ve açıklamak için kullanmak."],["Nedensel çıkarım","Değişkenler arasında neden-sonuç ilişkileri kurmayı öğrenmek."],["Karar ağaçları (öngörücü)","Çeşitli etkenlere göre sınıflandırmak ve sonuçları öngörmek için karar ağacı modellerini kullanmak."],["Zaman serisi analizi","Gelecekteki eğilimleri tahmin etmek için zamana bağlı veriyi analiz etmek."],["Sağkalım analizi","Olayların olasılığını ve zamanlamasını öngörmeyi anlamak."],["Makine öğrenmesi (ML)","Örüntüleri belirlemek ve tahmin yapmak için makine öğrenmesi algoritmalarını kullanmak."]]},
+ {k:"g4",n:"Kural koyucu",s:[["Optimizasyon modelleme","Karmaşık kararlarda en iyi çözümleri belirlemek için matematiksel modellerle “optimizasyon ölçütleri” oluşturmayı anlamak."],["Karar ağaçları (kural koyucu)","Karar ağaçlarını sınıflandırmanın ötesinde, farklı senaryoları analiz edip en elverişli eylem yolunu önermek için kullanmak."],["Simülasyonlar","Çeşitli stratejilerin olası etkisini test etmek için simülasyon kurmayı ve kullanmayı anlamak."]]},
+ {k:"g5",n:"Nitel",s:[["Nitel veri kodlama","Veriyi düzenlemek ve analiz etmek için nitel verinin parçalarına kod atayabilmek."],["Duygu analizi","Verinin duygusunu ve içeriğini analiz etmek için veriye duygusal puanlar atayabilmek."],["Tematik analiz","Tema kodlanmış verinin düşünceli ve sistematik incelenmesiyle nitel verideki tekrar eden örüntüleri ve temaları belirleyebilmek, analiz edebilmek ve yorumlayabilmek."],["Nitel araştırma yöntemsel yaklaşımları","Anlatı analizi, fenomenoloji, söylem analizi, gömülü kuram, konuşma analizi gibi nitel araştırma yöntemlerini anlamak, aralarında seçim yapabilmek ve uygulayabilmek."]]},
+ {k:"g6",n:"İleri analitik",s:[["Örgütsel ağ analizi","Örüntüleri belirlemek için örgütsel sistemlerdeki insanları, görevleri, grupları, bilgiyi ve kaynakları istatistiksel ve grafiksel modellerle haritalamayı öğrenmek."],["Otomasyon","Analitik görevlerin verimliliğini ve doğruluğunu artırmak için otomasyonu uygulamayı öğrenmek."],["İleri modelleme (ML, derin öğrenme vb.)","Denetimli ve denetimsiz öğrenme, sınıflandırma ve regresyon algoritmaları gibi makine öğrenmesi kavramlarının ya da karmaşık görevler için sinir ağları gibi derin öğrenmenin daha ileri uygulamalarını kullanmak."],["Doğal dil işleme (NLP)","Metin verisini analiz etmek için NLP tekniklerini kullanmak (kelime frekansları, duygu analizi ve konu modelleme gibi daha önce anılan teknikleri içerebilir ama bunlarla sınırlı değildir)."],["Bilgisayarlı görü","Görüntü ve videolardan içgörü çıkarmak için bilgisayar destekli teknikler kullanmak (görüntü tanıma, nesne algılama gibi)."]]}];
+st.cur=st.cur||{};st.des=st.des||{};st.cust=st.cust||{};G.forEach(g=>{if(!st.cust[g.k])st.cust[g.k]=[{n:"",d:""},{n:"",d:""},{n:"",d:""}]});
+st.gtab=st.gtab||"g1";let showAll=false;
+const allSkills=()=>G.flatMap(g=>g.s.map((s,i)=>({g,id:g.k+"_"+i,n:s[0],d:s[1]})).concat(st.cust[g.k].map((c,i)=>({g,id:g.k+"_c"+i,n:c.n,d:c.d,custom:true})).filter(x=>x.n.trim())));
+const opts=v=>'<option value="">—</option>'+LV.map((l,i)=>`<option value="${i+1}" ${+v===i+1?"selected":""}>${i+1} · ${l}</option>`).join("");
+function gtabs(){$("#gtabs").innerHTML=G.map(g=>{const ids=g.s.map((_,i)=>g.k+"_"+i);const n=ids.filter(id=>st.cur[id]).length;const on=st.gtab===g.k&&!showAll;return `<button data-g="${g.k}" class="${on?"on":""}" style="${on?`background:var(--${g.k});border-color:var(--${g.k})`:""}">${g.n} <span class="cnt">${n}/${ids.length}</span></button>`}).join("");
+ $$("[data-g]").forEach(b=>b.onclick=()=>{st.gtab=b.dataset.g;showAll=false;save();gtabs();tables()})}
+function gapTag(c,d){if(!c||!d)return"";return d>c?`<span class="gap">+${d-c} düzey hedef</span>`:`<span class="met">hedefe ulaşıldı</span>`}
+function tables(){$("#tables").innerHTML=G.map(g=>`<div class="grpblk" data-blk="${g.k}" style="display:${showAll||st.gtab===g.k?"block":"none"}"><h3 style="color:var(--${g.k})">${g.n} analitik becerileri</h3><div class="sa"><table><tr><th>Beceri</th><th>Açıklama</th><th style="width:150px">Bugünkü düzey</th><th style="width:150px">Hedef düzey</th></tr>`+
+ g.s.map((s,i)=>{const id=g.k+"_"+i;return `<tr><td class="sk">${s[0]}</td><td>${s[1]}</td><td><select data-cur="${id}">${opts(st.cur[id])}</select></td><td><select data-des="${id}">${opts(st.des[id])}</select>${gapTag(st.cur[id],st.des[id])}</td></tr>`}).join("")+
+ st.cust[g.k].map((c,i)=>{const id=g.k+"_c"+i;return `<tr class="custom"><td><input type="text" data-cn="${g.k}|${i}" value="${esc(c.n)}" placeholder="Ek beceri"></td><td><input type="text" data-cd="${g.k}|${i}" value="${esc(c.d)}" placeholder="Açıklama (isteğe bağlı)"></td><td><select data-cur="${id}">${opts(st.cur[id])}</select></td><td><select data-des="${id}">${opts(st.des[id])}</select>${gapTag(st.cur[id],st.des[id])}</td></tr>`}).join("")+
+ `</table></div><button class="btn ghost sm noprint" data-addrow="${g.k}" style="margin-top:6px">+ Satır ekle</button></div>`).join("");
+ $$("[data-cur]").forEach(s=>s.onchange=()=>{st.cur[s.dataset.cur]=s.value?+s.value:undefined;save();tables();gtabs();summary()});
+ $$("[data-des]").forEach(s=>s.onchange=()=>{st.des[s.dataset.des]=s.value?+s.value:undefined;save();tables();summary()});
+ $$("[data-cn]").forEach(i=>i.onchange=()=>{const [g,k]=i.dataset.cn.split("|");st.cust[g][k].n=i.value;save();summary()});
+ $$("[data-cd]").forEach(i=>i.onchange=()=>{const [g,k]=i.dataset.cd.split("|");st.cust[g][k].d=i.value;save()});
+ $$("[data-addrow]").forEach(b=>b.onclick=()=>{st.cust[b.dataset.addrow].push({n:"",d:""});save();tables()})}
+$("#showAll").onclick=()=>{showAll=!showAll;$("#showAll").textContent=showAll?"Sekmeli görünüme dön":"Tüm tabloları göster";gtabs();tables()};
+$("#csv").onclick=()=>dl("analitik_beceri_oz_degerlendirme.csv",[["Grup","Beceri","Açıklama","Bugünkü düzey","Hedef düzey","Açık"]].concat(allSkills().map(s=>{const c=st.cur[s.id],d=st.des[s.id];return [s.g.n,s.n,s.d,c?c+" · "+LV[c-1]:"",d?d+" · "+LV[d-1]:"",c&&d?d-c:""]})));
+$("#jsonOut").onclick=()=>dlBlob("analitik_oz_degerlendirme_yedek.json",new Blob([JSON.stringify({cur:st.cur,des:st.des,cust:st.cust,focus:st.focus||""},null,1)],{type:"application/json"}));
+$("#jsonIn").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o.cur||!o.des)throw 0;st.cur=o.cur;st.des=o.des;if(o.cust)st.cust=o.cust;st.focus=o.focus||"";$("#focus").value=st.focus;save();tables();gtabs();summary();toast("Yedek yüklendi")}catch(err){toast("Dosya okunamadı")}};r.readAsText(f);e.target.value=""};
+$("#print").onclick=()=>{const prev=showAll;showAll=true;tables();setTimeout(()=>{window.print();showAll=prev;tables()},50)};
+$("#clearAll").onclick=()=>{if(!confirm("Tüm düzeyler ve ek satırlar silinsin mi?"))return;st.cur={};st.des={};st.cust={};G.forEach(g=>st.cust[g.k]=[{n:"",d:""},{n:"",d:""},{n:"",d:""}]);save();tables();gtabs();summary()};
+
+// 5. özet
+function avg(ids,src){const v=ids.map(id=>src[id]).filter(Boolean);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null}
+function summary(){const sk=allSkills();const rated=sk.filter(s=>st.cur[s.id]);const goals=sk.filter(s=>st.des[s.id]&&st.cur[s.id]&&st.des[s.id]>st.cur[s.id]);
+ const strong=sk.filter(s=>st.cur[s.id]>=4);
+ $("#stats").innerHTML=`<div class="stat"><b>${rated.length}/${sk.length}</b><span>Değerlendirilen beceri</span></div><div class="stat"><b>${goals.length}</b><span>Hedef açığı olan</span></div><div class="stat"><b>${strong.length}</b><span>Uzman ya da üstü</span></div><div class="stat"><b>${fmt(avg(sk.map(s=>s.id),st.cur))}</b><span>Ortalama bugünkü düzey</span></div>`;
+ // radar
+ const cx=190,cy=165,R=115,n=G.length;const pt=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/n;return[cx+Math.cos(a)*R*v/5,cy+Math.sin(a)*R*v/5]};let s="";
+ for(let l=1;l<=5;l++)s+=`<polygon points="${G.map((_,i)=>pt(i,l).join(",")).join(" ")}" fill="none" stroke="${css("--line")}"/>`;
+ G.forEach((g,i)=>{const[x,y]=pt(i,5);const[lx,ly]=pt(i,6.15);s+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="${css("--line")}"/><text x="${lx}" y="${ly}" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="middle" fill="${css("--"+g.k)}">${g.n}</text>`});
+ const gv=(src)=>G.map(g=>avg(sk.filter(x=>x.g===g).map(x=>x.id),src)||0);
+ [[st.des,"--c2"],[st.cur,"--c1"]].forEach(([src,c])=>{const v=gv(src);if(!v.some(Boolean))return;s+=`<polygon points="${v.map((x,i)=>pt(i,x).join(",")).join(" ")}" fill="${css(c)}" fill-opacity=".18" stroke="${css(c)}" stroke-width="2"/>`});
+ $("#radar").innerHTML=s;
+ // ısı haritası
+ const col=v=>v?`background:color-mix(in srgb,var(--navy2) ${15+v*15}%,var(--card));color:${v>=3?"#fff":"var(--ink)"}`:"background:var(--bg);color:var(--muted)";
+ $("#hm").innerHTML=`<table>${G.map(g=>`<tr><td colspan="3" style="font-weight:800;color:var(--${g.k});padding-top:10px">${g.n}</td></tr>`+sk.filter(x=>x.g===g).map(x=>`<tr><td class="nm">${esc(x.n)}</td><td class="v" style="${col(st.cur[x.id])}">${st.cur[x.id]||"–"}</td><td class="v" style="${col(st.des[x.id])}">${st.des[x.id]?"→ "+st.des[x.id]:"–"}</td></tr>`).join("")).join("")}</table>`;
+ // açıklar
+ const baseWeak=G[0].s.some((_,i)=>(st.cur["g1_"+i]||0)<2);
+ const gl=goals.sort((a,b)=>(st.des[b.id]-st.cur[b.id])-(st.des[a.id]-st.cur[a.id]));
+ $("#gaps").innerHTML=gl.length?gl.slice(0,10).map(x=>`<li><strong>${esc(x.n)}</strong> <span class="small">(${x.g.n})</span>: ${LV[st.cur[x.id]-1]} → ${LV[st.des[x.id]-1]}${baseWeak&&x.g.k!=="g1"&&x.g.k!=="g5"?' <span class="small no">· önce betimleyici temeli güçlendir</span>':""}</li>`).join(""):'<li class="small">Bugünkü ve hedef düzeyleri işaretledikçe açıklar burada listelenecek.</li>'}
+st.focus=st.focus||"";$("#focus").value=st.focus;$("#focus").oninput=e=>{st.focus=e.target.value;save()};
+gtabs();tables();summary();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>

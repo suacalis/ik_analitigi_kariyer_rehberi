@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adım 3: Nicel Analitik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--bad:#c0392b;--shadow:0 2px 14px rgba(11,58,140,.08);
+--k1:#3d7a1f;--k2:#6a3fb5;--k3:#8a9a12;--k4:#0f8aa8;--k5:#5b6578}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--k1:#7fc45a;--k2:#a98bf0;--k3:#c9d64a;--k4:#4fc6e3;--k5:#b4bdd0}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--k1:#7fc45a;--k2:#a98bf0;--k3:#c9d64a;--k4:#4fc6e3;--k5:#b4bdd0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1000px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:720px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:100px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+.quote{background:var(--soft);border-radius:12px;padding:16px 22px;margin:16px 0;font-style:italic;text-align:center}
+.quote b{display:block;font-style:normal;font-family:Raleway;font-size:14px;color:var(--muted);margin-top:6px}
+.story{border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0;background:color-mix(in srgb,var(--soft) 40%,var(--card))}
+.story .h{font-family:Raleway;font-weight:800;color:var(--navy2);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.callout{border:2px solid var(--warn);border-radius:12px;padding:14px 18px;margin:16px 0}
+.callout strong{font-family:Raleway;color:var(--warn)}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{font-family:Raleway;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+input[type=text],input[type=number],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+input[type=range]{width:100%;accent-color:var(--navy2)}
+textarea{min-height:60px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.ok{color:var(--ok)}.no{color:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:700px){.twocol{grid-template-columns:1fr}}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.fb{font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+/* merdiven */
+.ladder{display:flex;align-items:flex-end;gap:6px;height:230px;margin:10px 0 0}
+.step{flex:1;border-radius:12px 12px 0 0;color:#fff;padding:10px 8px;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-start;font-family:Raleway;font-weight:800;font-size:13px;line-height:1.2;border:0;text-align:left;transition:transform .15s,opacity .15s;opacity:.8}
+.step small{display:block;font-weight:600;font-size:11px;opacity:.95;margin-top:4px}
+.step.on{opacity:1;transform:translateY(-6px);box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.step.cog{background:var(--card)!important;color:var(--ink);border:2px dashed var(--k5)}
+.stepdesc{border:1px solid var(--line);border-radius:0 0 12px 12px;padding:14px;background:var(--card);min-height:110px}
+/* sınıflandır */
+.cls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}
+.q-card{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--card);text-align:center;font-size:18px;min-height:76px;display:flex;align-items:center;justify-content:center}
+/* tablolar */
+.dt{overflow-x:auto}
+.dt table{border-collapse:collapse;width:100%;font-size:14px}
+.dt th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:6px 8px;border:1px solid var(--line);text-align:left}
+.dt td{border:1px solid var(--line);padding:4px 6px}
+.dt td input{border:0;padding:4px;background:transparent;width:100%;min-width:60px}
+.dt tr.out td{background:color-mix(in srgb,var(--warn) 16%,var(--card))}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:10px 0}
+.stat{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--card)}
+.stat b{display:block;font-family:Raleway;font-size:20px;color:var(--navy)}
+.stat span{font-size:12px;color:var(--muted);font-family:Raleway}
+svg text{font-family:Raleway}
+.bars .row2{display:grid;grid-template-columns:120px 1fr 52px;gap:8px;align-items:center;margin:5px 0;font-family:Raleway;font-size:13px}
+.bars .tr{height:16px;background:var(--line);border-radius:6px;overflow:hidden}
+.bars .tr>div{height:100%;background:var(--navy2);transition:width .4s}
+.bars .row2.hi .tr>div{background:var(--warn)}
+/* karar ağacı */
+.tree{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--card)}
+.tree .path{font-size:14px;color:var(--muted);margin-bottom:8px}
+.risk{display:inline-block;font-family:Raleway;font-weight:800;padding:6px 14px;border-radius:999px;color:#fff}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.check{padding-left:0}.check li{list-style:none;margin:6px 0}
+.check input{width:17px;height:17px;accent-color:var(--navy2);vertical-align:-2px;margin-right:6px}
+.benef{display:grid;grid-template-columns:auto 1fr auto auto;gap:6px 10px;align-items:center;font-size:14px}
+.benef .h{font-family:Raleway;font-weight:800;font-size:12px;color:var(--muted)}
+.benef .pick{font-family:Raleway;font-weight:800;color:var(--ok)}
+.sk{overflow-x:auto}
+.sk table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+.sk th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.sk td{border:1px solid var(--line);padding:6px 8px}
+.sk tr.grp td{font-family:Raleway;font-weight:800;background:var(--bg);color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:var(--card);color:var(--muted);font-family:Raleway;font-weight:700;font-size:12px;padding:5px 10px;cursor:pointer}
+.seg button.on{background:var(--navy2);color:#fff}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+a{color:var(--navy2)}
+@media (max-width:560px){.ladder{height:200px}.step{font-size:11px;padding:8px 5px}.step small{display:none}}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Adım 3</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">Giriş</a>
+      <a href="#s2" data-s="s2">Nicel analitik</a>
+      <a href="#s3" data-s="s3">Betimleyici</a>
+      <a href="#s4" data-s="s4">Tanılayıcı</a>
+      <a href="#s5" data-s="s5">Öngörücü</a>
+      <a href="#s6" data-s="s6">Kural koyucu</a>
+      <a href="#s7" data-s="s7">Bilişsel</a>
+      <a href="#s8" data-s="s8">Beceri haritam</a>
+      <a href="#s9" data-s="s9">Test</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker">Bilgiyi içgörüye dönüştür · Adım 3</div>
+    <h1>Teknik Becerilerini Geliştir: Nicel İnsan Analitiği</h1>
+    <p>Adım 2'de içgörüleri tüketmeyi ve çevirmeyi öğrendik; şimdi kolları sıvayıp “veri yapıcı” becerilerine geçiyoruz. Bu bölüm betimleyici, tanılayıcı, öngörücü, kural koyucu ve bilişsel analitiği; her birinde hangi becerilerin gerektiğini, küçük laboratuvarlar ve simülasyonlarla anlatıyor.</p>
+    <p class="note">Kaynak: Heather Whiteman'ın insan analitiği kariyer rehberinin 61–100. sayfaları. Metin birebir çeviri değil; içerik Türkçe olarak özetlenip uyarlanmıştır. Sayfadaki veri setleri ve simülasyonlar kurgusaldır.</p>
+  </div>
+
+  <!-- 1 -->
+  <section class="ch" id="s1">
+    <h2>Veri Yapıcı Becerileri</h2><hr>
+    <p>Veri yapıcı, ham insan bilgisini eyleme dönük içgörülere dönüştürendir: veri toplar, analiz eder, yönetir, yorumlar ve içgörüleri paylaşır. Bu yolda kullanılan teknik beceriler sayısızdır; bu bölüm hepsini derinlemesine öğretmeyi değil, sağlam bir temel kurabileceğin ana alanları göstermeyi amaçlıyor. Bazı şeyler sırayla öğrenilmeli (örneğin ileri istatistikten önce temel istatistik), bazıları ise herhangi bir sırayla (güvenlik ve veri mahremiyetini öğrenmenin kötü bir zamanı yoktur!).</p>
+    <p>Bu bir ders kitabı değil ve analitik teknikleri öğretmeye çalışmıyor; aynı nedenle kavramları zaman zaman sadeleştiriyor. Amaç, hangi becerileri keşfetmek isteyebileceğine, hangilerinde zaten güçlü olduğuna ve hangilerini geliştirmek isteyebileceğine karar vermene yardım etmek. Ayrıntılı teknik kaynaklar için yazar <a href="https://heatherwhiteman.com/pa-career-guide" target="_blank" rel="noopener">heatherwhiteman.com/pa-career-guide</a> adresini öneriyor; ama bir arama motoru kullanabiliyorsan buradaki her konuda bol kaynak bulursun.</p>
+    <h3>Beş beceri kategorisi</h3>
+    <div class="grid">
+      <div class="card"><div class="t">1 · Analitik</div><div class="small">Bu sayfanın konusu</div></div>
+      <div class="card"><div class="t">2 · Veri görselleştirme</div></div>
+      <div class="card"><div class="t">3 · Veri yönetimi</div></div>
+      <div class="card"><div class="t">4 · Araştırma yöntemleri</div></div>
+      <div class="card"><div class="t">5 · Araçlar ve teknoloji</div></div>
+    </div>
+    <details class="small"><summary class="ui" style="cursor:pointer;font-weight:700">Yazarın uyarı notu</summary>
+      <p>Yazar beceri, bilgi ve yetkinlik taksonomilerini sevdiğini, bu yüzden bir uyarı eklemeden edemediğini söylüyor: Bu sınıflandırma analitik, araştırma ya da bilgi yönetimi alanlarını (ki birbirinin ayrılmaz parçalarıdır) temsil etmiyor; yazarın kişisel taksonomi görüşü de değil. Kategoriler yalnızca rehberdeki içerik miktarına göre, uzun bir bölümü okunabilir parçalara bölmek için seçilmiş.</p>
+    </details>
+    <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 2 -->
+  <section class="ch" id="s2">
+    <h2>Nicel İnsan Analitiği</h2><hr>
+    <p>İnsan analitiğinin adındaki beceriyle başlayalım: analitik. Bazıları için en korkutucu kısım budur; özellikle analitik geçmişi olmayanlar için. “Matematikte iyi olmak gerekir” ya da “kariyerin ilerleyen döneminde analitik öğrenmek çok zordur” diye yaygın bir yanılgı var. İkisi de doğru değil.</p>
+    <p>Yazar bir itirafta bulunuyor: temel matematikte oldukça kötü (lütfen ondan hızlıca sayı toplamasını ya da bir şeyi 8 ile çarpmasını isteme!), istatistikten ilk denemesinde neredeyse kalıyordu. Ama sonunda istatistiğe âşık oldu, insan analitiğinde doyurucu bir kariyer kurdu ve şimdi istatistik dersi veriyor. Sayılar ve hesaplar, iş yerinde ihtiyaç duyup onlarla ne <em>yapabileceğini</em> görene kadar hiç anlam kazanmamış. Hesapları ezberlemeyi bırakıp hangi analitik türünün hangi soruya yanıt verdiğine odaklanınca her şey “oturmaya” başlamış.</p>
+
+    <h3>Mutfak aletleri benzetmesi</h3>
+    <p>Analitik yapmak pasta yapmaya benzer; “matematik” kısmı ise mutfak aletlerini (blender, mikser, fırın) kullanmak gibidir. Aletlerin iç mekaniğini bilmek şart değil, ama ne işe yaradıklarını ve güvenle nasıl kullanılacaklarını bilmek kritik. Fırının nasıl yapıldığını bilmen gerekmez; ama pasta yapacaksan fırının ekmek kızartma makinesinden daha iyi bir seçim olduğunu ve doğru sıcaklık ile süreyi nasıl ayarlayacağını bilmelisin. Derinleşip usta şef olabilir ya da temel düzeyde kalıp ayrıntılı tarifleri izleyebilirsin. Öğrenmeye istekli olduğun sürece başlamak için yeterli “matematik” becerin var.</p>
+    <div class="box">
+      <div class="lbl">Etkinlik · Doğru aleti seç</div>
+      <p class="small">Her soru için hangi “alet” (analiz) daha uygun?</p>
+      <div id="tools"></div>
+    </div>
+
+    <div class="story"><div class="h">İnsan analitiğinden hikâyeler ve öneriler</div>
+      Poisson dağılımının p-değerini bilerek doğmuş gibi görünen birinden öğrenmeye çalıştın mı? Matematik ve istatistik derslerini çoğunlukla ya ilk denemede “kapan” ya da konuyu o kadar uzun zamandır bilen kişiler anlatır ki, biz sıradan ölümlülere anlatmakta pek iyi değillerdir. Bir öğrenme kaynağı sana anlamsız geliyorsa, “anlamayan” sen değilsin; onlar iyi açıklamıyor. Başka bir kaynağa geç. Her biri farklı tasarlanmış neredeyse sınırsız kaynak var; biri senin düşünme ve öğrenme biçimine daha uygun olacaktır. Farklı kişilerden farklı biçimlerde duymak da konuyu daha derin kavramanı sağlar. Merak etme, o “aha!” anı bir yerde seni bekliyor.
+    </div>
+
+    <h3>Analitik ≠ sayıların analizi</h3>
+    <p>Oxford Sözlüğü'ne göre “analiz etmek”, bir şeyin (özellikle bilginin) yapısını açıklama ve yorumlama amacıyla yöntemli ve ayrıntılı biçimde incelemektir. Tanımda sayı geçmiyor; analiz her tür bilgi üzerinde yapılabilir.</p>
+    <div class="twocol">
+      <div class="card"><div class="t">Nicel veri</div><div>Sayılar ve ölçümler: çalışan sayısı, ücretler, performans puanları gibi sayılabilen ya da ölçülebilen şeyler.</div></div>
+      <div class="card"><div class="t">Nitel veri</div><div>Kelimeler ve gözlemler: çalışan duyguları, iş tatmini, ayrılma nedenleri gibi. İşin yapıldığı duygu, deneyim ve bağlamın kritik olduğu insan analitiğinde en az nicel veri kadar önemli.</div></div>
+    </div>
+    <p><strong>Analitik</strong>, verideki özetleri, örüntüleri ya da eğilimleri belirlemeyi içerir. İlişkiler bulunduğunda bilinçli kararlar vermek, süreçleri iyileştirmek ya da gelecekteki sonuçları öngörmek için kullanılabilir. Analitiği amacına göre dört kategoride düşünmek yararlıdır; yazar beşinci bir basamak da ekliyor (aşağıda “Bilişsel” bölümünde).</p>
+
+    <div class="box">
+      <div class="lbl">Analitik merdiveni · Bir basamağa tıkla</div>
+      <div class="ladder" id="ladder"></div>
+      <div class="stepdesc" id="stepdesc"></div>
+    </div>
+    <p>Bu soruların hepsi hem nicel hem nitel veriyle sorulup yanıtlanabilir; ama kullanılacak beceri ve teknikler iki veri türü için oldukça farklıdır. Bu sayfa nicel analitik becerilerle başlıyor.</p>
+
+    <div class="box">
+      <div class="lbl">Etkinlik · Bu soru hangi analitik türü?</div>
+      <div class="q-card" id="cq"></div>
+      <div class="cls" id="cbtn"></div>
+      <div class="fb" id="cfb" style="text-align:center"></div>
+      <div class="small" id="cscore" style="text-align:center"></div>
+    </div>
+    <div class="quote">“Sayıların anlatacak önemli bir hikâyesi var; ona açık ve ikna edici bir ses vermek sana kalıyor.”<b>— Stephen Few</b></div>
+    <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 3 -->
+  <section class="ch" id="s3">
+    <h2>Betimleyici İnsan Analitiği</h2><hr>
+    <p>Betimleyici analitik, geçmiş veriyi özetler, örüntüler, eğilimler ve ilişkilerle inceleyerek ne olduğunu belirler. Veri birleştirme (aggregation), temel istatistiksel analiz ve veri görselleştirme gibi yöntemlerle “Ne oldu?” sorusunu yanıtlar.</p>
+    <p>Örnek: Bir şirket bu yıl ne kadar <strong>çalışan kaybı (attrition)</strong> yaşadığını bilmek istiyor. Her kurum bu soruyu yanıtlamaya yarayan veriyi tutar: çalışan sayıları, iş bilgileri, işe giriş ve çıkış tarihleri, hatta ayrılanların seçtiği ayrılma nedenleri. Bu veriyle yıllık <strong>ayrılma oranı</strong> hesaplanabilir. Analiz burada durabilir; ama Adım 2'de gördüğümüz gibi başarılı profesyoneller meraklıdır: bu yılın oranını önceki yıllarla karşılaştırıp eğilimleri görebilir, kurumun farklı grupları arasında karşılaştırıp yüksek ya da düşük ayrılma olan alanları bulabilir, işe giriş ile çıkış arasındaki süreden tipik kıdemi hesaplayabilir, ayrılmaları nedenlere göre sınıflandırıp elde tutmayı iyileştirecek alanları belirleyebilirsin.</p>
+
+    <div class="box">
+      <div class="lbl">Hesaplayıcı · Yıllık ayrılma oranı</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+        <label class="small">Dönem başı çalışan<input type="number" id="aStart" value="480"></label>
+        <label class="small">Dönem sonu çalışan<input type="number" id="aEnd" value="520"></label>
+        <label class="small">Dönemde ayrılan<input type="number" id="aLeft" value="62"></label>
+        <label class="small">Geçen yılın oranı (%)<input type="number" id="aPrev" value="9.8" step="0.1"></label>
+      </div>
+      <div class="result" id="aOut"></div>
+      <p class="small">Burada yaygın formül kullanıldı: ayrılan ÷ ortalama çalışan sayısı. Kurumlar gönüllü/gönülsüz ayrılma ya da dönem tanımlarında farklı yaklaşımlar kullanabilir; yöntemi rapora yazmak önemlidir.</p>
+    </div>
+
+    <h3>Betimleyici analitik becerileri</h3>
+    <p>Temel <strong>istatistiksel kavramlarla</strong> başla: <strong>merkezî eğilim ölçüleri</strong> (ortalama, ortanca, tepe değer), <strong>frekanslar</strong>, <strong>yüzdelikler</strong>, <strong>dağılım ölçüleri</strong> (en küçük, en büyük, varyans, standart sapma) ve <strong>korelasyon</strong>. Pek çok çevrimiçi kaynak ücretsiz kurs ve alıştırma sunuyor; her birini rahat kullandığın bir araçta kolayca yapabilene kadar öğreticilerle çalış. Matematiğini öğrenip elle hesaplayabilirsin ama yazar bunu kesinlikle önermiyor: Excel, Tableau, R, Python gibi araçlardaki hazır fonksiyonları kullan; zamanını hangi istatistiği çalıştıracağını ve nasıl yorumlayacağını öğrenmeye ayır.</p>
+
+    <div class="box">
+      <div class="lbl">Laboratuvar · Yeni pozisyon için ücret kararı</div>
+      <p class="small">Bir yönetici X pozisyonuna ek bir ekip üyesi almak istiyor ama ücretin ne olması gerektiğinden emin değil. Aşağıdaki kurgusal veriyi düzenleyebilirsin (aylık brüt, bin ₺).</p>
+      <div class="twocol">
+        <div class="dt"><table id="salTab"></table>
+          <div class="row" style="margin-top:6px"><button class="btn ghost" id="salAdd">+ Satır</button><button class="btn ghost" id="salReset">Örnek veriye dön</button></div></div>
+        <div>
+          <div class="stats" id="salStats"></div>
+          <label class="small">Değerlendirilen teklif (bin ₺): <strong id="offV"></strong></label>
+          <input type="range" id="offer" min="30" max="110" step="1" value="52">
+          <div class="result" id="salOut"></div>
+          <svg id="salSvg" viewBox="0 0 320 180" style="width:100%;margin-top:8px"></svg>
+        </div>
+      </div>
+      <p class="small">Ortanca, pozisyon için tipik “orta” ücreti; en küçük ve en büyük değer aralığı ve <strong>uç değerleri</strong>; korelasyon, deneyim arttıkça ücretin artıp artmadığını; yüzdelik ise teklifin mevcut dağılımda nereye düştüğünü gösterir. Bütün bunlarla donanmış bir yönetici daha bilinçli karar verir.</p>
+    </div>
+
+    <div class="story"><div class="h">Hikâye · “2006'da burada değildin, nereden biliyorsun?”</div>
+      Yazar, yeni bir insan analitiği işi için ülkenin öbür ucuna taşındığında şirketi hakkında mülakatlarda duyduklarından ve internette bulabildiklerinden fazlasını bilmiyordu. Veri mahremiyeti ve erişim eğitimini tamamladıktan sonra ilk iş çalışan veri dosyalarına göz attı. İlk haftasındaki bir toplantıda birinin yorumuna “Evet, 2006'da işe alınan yeni çalışan sayısını düşününce mantıklı” diye yanıt verince karşısındaki kişi ona sihirli güçleri varmış ya da casusmuş gibi baktı. Aşağıdaki histogramda yazarın ne gördüğünü bulmaya çalış.
+    </div>
+    <div class="box">
+      <div class="lbl">Etkinlik · Kıdem frekanslarında ne göze çarpıyor?</div>
+      <p class="small">Kurgusal bir şirketin (yıl 2024) çalışanlarının kıdem yılı dağılımı. Dikkat çeken çubuğa tıkla.</p>
+      <svg id="tenSvg" viewBox="0 0 640 220" style="width:100%"></svg>
+      <div class="result" id="tenOut">Henüz bir çubuk seçilmedi.</div>
+    </div>
+    <p>Yazar o işteki ilk haftalarının çoğunu olabildiğince çok betimleyici istatistik çıkararak geçirdi. Bu hem şirketi tanımasını sağladı hem de meslektaşlarıyla diyalog fırsatları yarattı. Belirgin biçimde farklı ama nedenini çözemediği bir şey bulduğunda, “2010'da eğitim saatleri neden birden arttı? Yeni bir öğrenme girişimi ya da zorunlu eğitim mi vardı?” gibi sorular sormak için bahanesi oluyordu. Bu, iş zekâsını yeni yollarla geliştirdi ve eğitim ve gelişim gibi alanlardaki meslektaşlarla bilgiye dayalı meraka dayanan ilişkiler kurdu; oradaki en iyi iş birliklerinin çoğu bu ilk veriye dayalı diyaloglardan doğdu. Üstelik başkalarının emeğini tanımanın bir yolunu da keşfetti: onlara çabalarının verideki görünür izlerini gösterebiliyordu.</p>
+    <p class="small"><strong>Not:</strong> 2006 işe alımlarını fark ettiğinde haberleri taradı ve birkaç kişiye o yıl bir satın alma ya da büyük bir olay olup olmadığını sordu. Bu, veri tüketicisi becerilerini iş zekâsını geliştirmek için kullanmanın bir örneği.</p>
+    <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 4 -->
+  <section class="ch" id="s4">
+    <h2>Tanılayıcı İnsan Analitiği</h2><hr>
+    <p>Bazen yalnızca ne olduğunu değil, neden olduğunu da bilmek istersin. Tanılayıcı analitik, belirli sonuçlar ya da eğilimlerle ilişkili olası nedenleri veya etkenleri bulmaya odaklanır. Çoğunlukla aynı temel istatistiksel analizlerle yapılır; ama “Neden oldu?” sorusunu yanıtlamak için betimleyici analitiği nasıl ve hangi yollarla keşfedeceğine dair biraz daha gelişmiş bir yaklaşım ister.</p>
+    <p>Betimleyici analitik ayrılma oranının çarpıcı biçimde arttığını gösterdi diyelim. Doğal sonraki soru: “Neden arttı?” Kullanılan analizler genellikle daha “zor” değildir; asıl emek nereden başlayacağının belli olmamasından gelir. Artık “Ayrılma oranımız ne?” gibi gerekli analizi kendi içinde ima eden basit bir soru yok. Ayrılmayla ilişkili olabilecek bütün olası etkenleri düşünmen ve demografi, performans değerlendirmeleri, ücret, bağlılık anketi sonuçları, çıkış görüşmesi yorumları gibi pek çok konuda veri derlemen gerekir. Bulunabilecekler:</p>
+    <ul>
+      <li>Düşük performans puanları ile yüksek ayrılma arasında bir bağ</li>
+      <li>Piyasa ücretlerinin altında ücret alanların ayrılma olasılığının daha yüksek olması</li>
+      <li>Ayrılanlar arasında düşük bağlılık puanları</li>
+      <li>Çıkış görüşmelerinde sınırlı ilerleme fırsatı, etkisiz liderlik ve iş-yaşam dengesi sorunları gibi tekrar eden temalar</li>
+    </ul>
+    <p>Hangi etkenlerin ortaya çıkacağını önceden bilmek zordur; birden çok analiz yapıp hiçbirinin anlamlı bir içgörüye işaret etmediğini görmek de mümkün. Umutlu ama gerçekçi beklentilerle gir: altın aramaya benzer. Büyük olasılıkla çok çalışıp toz ve topraktan ibaret çıkan çok analiz yapacaksın; hepsi birkaç parlak külçe uğruna. Veri bir sorunu teşhis etmeye yardım ettiğinde ise gerçekten dönüştürücü bir şey yakalamışsındır: güçlü tanılayıcı analizler kurumun hedefli müdahaleler yapmasını ve kök sorunları hedefli biçimde ele almasını sağlar.</p>
+
+    <div class="callout"><strong>Analiz felcine dikkat!</strong> Her olası değişkeni analiz etme isteği cazip gelebilir ama ilerlemeyi engelleyen bir aşırı düşünme hâline yol açabilir: proje hiç bitmeyebilir ya da harcanan emek bulguların faydasını aşabilir. İnsan analitiği profesyonelleri doğası gereği meraklıdır ve HER ŞEYİ değerlendirmek ister. Çözüm: insan analitiğinin işgücünün ihtiyaçlarına uygun karar almayı desteklemekle ilgili olduğunu hatırla ve yalnızca eyleme dönük bir karara götürebilecek analizlere öncelik ver. Bazı bulgular eyleme dönük değildir.</div>
+
+    <div class="box">
+      <div class="lbl">Etkinlik · Nitelikli aday bulamıyoruz: neyi analiz etmeli?</div>
+      <p class="small">Kurumun nitelikli aday bulmakta zorlandığını ve senden teşhis istendiğini düşün. Her etkeni “kurumun üzerinde işlem yapabileceği” ya da “kurumun pek etkileyemeyeceği” olarak işaretle.</p>
+      <div id="act"></div>
+      <div class="result" id="actOut" style="display:none"></div>
+    </div>
+
+    <h3>Tanılayıcı analitik becerileri</h3>
+    <p>Tanılayıcı analizlerin çoğu betimleyici tekniklerle yapılabilir; ama bulduğun ilişkilerin hata ya da tesadüf değil, gerçekten bir örüntü olduğunu göstermek istiyorsan istatistik bilgini biraz genişletmelisin:</p>
+    <ul>
+      <li><strong>İstatistiksel anlamlılık</strong> testleri (örneğin korelasyonun anlamlı mı?): gözlenen ilişki anlamlı mı, yoksa tesadüf mü?</li>
+      <li><strong>Grupları karşılaştıran</strong> testler: t-testi, ki-kare, ANOVA</li>
+      <li><strong>Doğrusal ilişkileri</strong> değerlendiren analizler: bir şeyin diğerine yol açtığını ya da ondan önce geldiğini varsaydığında (örneğin regresyon)</li>
+      <li><strong>Araştırma yöntemleri ve hipotez testi:</strong> bir şeyin başka bir şeye neden olduğunu ima ediyorsan</li>
+      <li>Kullanılan verinin <strong>güvenirlik ve geçerlik</strong> ölçümleri</li>
+    </ul>
+    <div class="box">
+      <div class="lbl">Araç · Hangi teste bakmalıyım?</div>
+      <p class="small">Soruna göre seç; öneri genel bir yol göstericidir, varsayımların kontrolü ayrıca gerekir.</p>
+      <div class="twocol">
+        <label class="small">Ne yapmak istiyorsun?
+          <select id="tGoal"><option value="cmp">Grupları karşılaştırmak</option><option value="rel">İki değişken arasındaki ilişkiye bakmak</option><option value="pred">Bir sonucu başka değişkenlerle açıklamak</option></select></label>
+        <label class="small" id="tOutL">Sonuç değişkeni türü
+          <select id="tOut"><option value="num">Sayısal (ücret, bağlılık puanı)</option><option value="cat">Kategorik (ayrıldı / kaldı)</option></select></label>
+        <label class="small" id="tGrpL">Kaç grup?
+          <select id="tGrp"><option value="2">2 grup</option><option value="3">3 veya daha fazla</option></select></label>
+      </div>
+      <div class="result" id="tRes"></div>
+    </div>
+
+    <h3>Yaygın tanılayıcı teknikler</h3>
+    <div class="grid">
+      <div class="card"><div class="t">Keşifsel veri analizi</div><div class="small">Çeşitli kaynaklardan ilgili veriyi topla ya da oluştur, sonra bütün betimleyici becerilerini kullan. Yalnızca önceden belirlenmiş sorularla yetinme; örüntü, gruplanma ya da fark arayarak veride keşfe çık ve oyna.</div></div>
+      <div class="card"><div class="t">Ayrıntıya inme (drill-down)</div><div class="small">Birleşik sonuçların içinde gizlenmiş ayrıntılı içgörüleri çıkarmak için veriyi ince düzeyde inceleme: örneğin performans puanlarını iş rolü, departman, lokasyon gibi kırılımlara bölüp segmentler içinde ve arasında ilginç farklar aramak.</div></div>
+      <div class="card"><div class="t">Kök neden analizi</div><div class="small">Belirli sonuçların ardındaki nedenleri ortaya çıkarmak için yöntemli yaklaşım: bağlılık puanlarında endişe verici bir düşüş fark eden İK ekibi, olası bütün “kök nedenlerle” ilgili veriyi toplayıp her birini sistematik olarak değerlendirir, bazı olasılıkları eler ve hedefli bir çözüm için sorumlu konuları belirler.</div></div>
+    </div>
+
+    <div class="box">
+      <div class="lbl">Laboratuvar · Ayrıntıya inme</div>
+      <p class="small">Kurgusal şirkette ortalama performans puanı (1–5) birleşik düzeyde sıradan görünüyor. Bir kırılım seç ve neyin gizlendiğine bak.</p>
+      <div class="row" style="margin-bottom:8px"><div class="seg" id="ddSeg"></div><span class="small" id="ddTot"></span></div>
+      <div class="bars" id="ddBars"></div>
+      <div class="fb" id="ddFb"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s4"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 5 -->
+  <section class="ch" id="s5">
+    <h2>Öngörücü İnsan Analitiği</h2><hr>
+    <p>Öngörücü analitik, gerçekleşmiş olaylara ait veriyi kullanarak gelecekteki olaylar ya da sonuçlar hakkında tahminler üretir. Bunun için istatistiksel modelleme, makine öğrenmesi algoritmaları ve/veya veri madenciliği yaklaşımlarıyla gelecekteki davranışı tahmin etmeye yarayacak bağlar ve örüntüler arar. Yanıtladığı soru çoğunlukla şudur: “Ne olması muhtemel?”</p>
+    <p>Bir şirket önümüzdeki altı ayda ne kadar ayrılma olacağını tahmin etmek istesin. Çalışanların demografisi, performans göstergeleri, ücret ve yan haklar, eğitim miktarı ve ayrılma oranları gibi geçmiş verileri derleyip makine öğrenmesi, regresyon ya da karar ağaçlarıyla kıdem, iş tatmini, performans, eğitim geçmişi ve ücret gibi etkenleri hesaba katan bir “öngörücü model” kurabilir. Model, bir çalışanın (ya da belirli sayıda çalışanın) belirli bir sürede ayrılma olasılığını gösteren bir olasılık puanı üretebilir. Örneğin alınan ücret artışı yüzdesi ayrılmayı anlamlı biçimde “öngörüyorsa”, bu hem beklenen ayrılmayı tahmin etmeye yarar hem de ücret artışlarının (ya da yokluğunun) ayrılma kararında önemli olduğunu gösterir.</p>
+    <p>Öngörücü modelleme yaklaşımları çok farklıdır: bazıları bireyler için olasılık tanımlar, bazıları olasılığı düşük/orta/yüksek risk grupları olarak sınıflandırır, bazıları işgücü planlaması için ayrılma hacmini tahmin eder. Modelin tasarımı kurumun amacına uymalı ve tahmin yapmanın <strong>gerçek insanlar üzerindeki gerçek etkilerini</strong> hesaba katmalıdır. Öngörülerle şirket elde tutma girişimleri, kalma görüşmeleri (stay interview) ve gelişim fırsatları gibi stratejileri proaktif olarak uygulayabilir. Ama bir modelin bir şeyin olabileceğini söylemesi, olacağı anlamına gelmez.</p>
+    <p>Öngörücü analitik büyük bir ilgi ve beklenti yaratıyor; ancak pratik uygulamaları ve etkinliği hâlâ gelişiyor. Veriyle insan kararları vermeye yeni olanlar “öngörücü” kelimesinin vaadine kapılıp sonuçların gerçekten ne olacağını gösterdiğine inanabilir. Hiçbir tahmin tam doğru olmaz ve öngörücü model aslında gelecekle değil <strong>geçmişle</strong> ilgilidir: geçmiş veriyle, işler eski örüntüleri izlemeye devam ederse ne olabileceğine dair en iyi tahmini yapar. Yazara göre buna “belki analitiği” demek daha doğru olabilir. Ayrıca tahminler genellikle karar ve eylemi yönlendirmek için kullanılır; tahminlere dayanarak yapılan değişiklikler geleceği etkileyip ilk tahminleri yanlış çıkarabilir.</p>
+
+    <div class="story"><div class="h">Kişisel görüş · En iyi tahminler yanlış çıkanlardır</div>
+      Yazar, kariyerinde en çok utandığı öngörücü modelin, gerçekten ne olacağını öngörür gibi görünen yıllık bir ayrılma modeli olduğunu söylüyor. İstatistiksel olarak harikaydı: çok düşük p-değeri, yüksek düzeltilmiş R-kare, düşük hata tahminleri, güzel düşük yanlış tahmin oranları; o yıl gerçekten ayrılanların sayısı tahmin ettiği sayının %99'u çıktı. Matematiksel olarak daha iyi bir model kuramazdı ve o zaman kendisiyle gurur duydu. Ama geriye bakınca bunu kariyerindeki en utanç verici işlerden biri sayıyor: neyin, nerede, ne zaman olacağını aşağı yukarı biliyordu ama bu konuda hiçbir şey <em>yapmadı</em>. O yıl, yetenek kazanım ekibini boşalacak pozisyonlar için hazırlamakla, bilgi aktarımı fırsatları yaratmakla ve elde tutma ya da alternatif çalışma stratejileri geliştirmekle geçmeliydi. En çok gurur duyduğu modeller ise istatistiksel olarak sağlam (ve başka yollarla doğrulanabilen) ama sonunda tahminden çok uzak çıkanlar; “yanlış” oldukları için değil, içgörüler eyleme dönüştürüldüğü ve öğrenilenlerle daha olumlu gelecekler gerçekleştiği için.
+    </div>
+
+    <div class="box">
+      <div class="lbl">Simülasyon · Eyleme geçersen tahmin “yanlış” çıkar</div>
+      <p class="small">1.000 kişilik kurgusal bir kurumda model bu yıl 140 ayrılma öngörüyor. Elde tutma önlemlerinin etkisini ayarla.</p>
+      <label class="small">Önlemlerin, risk altındaki ayrılmaları önleme oranı: <strong id="actV">0</strong>%</label>
+      <input type="range" id="actR" min="0" max="50" value="0">
+      <svg id="actSvg" viewBox="0 0 400 150" style="width:100%;max-width:520px"></svg>
+      <div class="result" id="actRes"></div>
+    </div>
+
+    <h3>Öngörücü analitik becerileri</h3>
+    <div class="grid">
+      <div class="card"><div class="t">Regresyon analizi</div><div class="small">Değişkenler arasındaki ilişkileri kurarak gelecekteki değerleri tahmin eder. Deneyim yılı, eğitim saati, performans puanı ve kıdemin ücret artışı üzerindeki etkisini belirleyip adil ve hakkaniyetli ücret yapıları kurmaya yardım edebilir.</div></div>
+      <div class="card"><div class="t">Nedensel çıkarım</div><div class="small">Korelasyon ya da regresyonla ilişki bulmanın bir adım ötesine geçip nedensel ilişkiler kurar: yeni bir eğitim programı ya da sağlık girişimi gibi uygulamalar bağlılık ya da performansta gerçekten iyileşmeye yol açıyor mu?</div></div>
+      <div class="card"><div class="t">Karar ağaçları</div><div class="small">En basit biçimiyle bir akış şeması gibidir; evet/hayır sorularıyla belirli bir sonuca ulaşır, ama soruları ve sonuçları geçmiş veriden öğrenir. En büyük avantajı yorumlanabilirliktir: mantığı görselleştirmesi ve başkalarına anlatması kolaydır.</div></div>
+      <div class="card"><div class="t">Zaman serisi analizi</div><div class="small">Zamana bağlı veriyle gelecekteki eğilimleri tahmin eder: birkaç yıllık devamsızlık verisindeki mevsimsel örüntüleri bulup yoğun dönemlerde kadro düzeyini yönetecek stratejiler geliştirmek gibi.</div></div>
+      <div class="card"><div class="t">Sağkalım analizi</div><div class="small">Bir olayın (ayrılma gibi) olup olmayacağının ötesine geçip olmasına <em>ne kadar süre</em> kaldığına odaklanır: 100 yeni çalışanın şirkette ortalama ne kadar kalacağını tahmin etmek gibi.</div></div>
+    </div>
+
+    <div class="twocol">
+      <div class="box">
+        <div class="lbl">Etkileşimli · Basit bir karar ağacı</div>
+        <p class="small">Rehberdeki örnek sorulardan esinlenen, tamamen kurgusal ve öğretim amaçlı bir ağaç. Gerçek ağaçlar bu soruları veriden öğrenir.</p>
+        <div class="tree" id="tree"></div>
+      </div>
+      <div class="box">
+        <div class="lbl">Etkileşimli · Sağkalım eğrisi</div>
+        <p class="small">100 yeni çalışan; her ay aynı oranda ayrılma olduğunu varsayan basitleştirilmiş bir model.</p>
+        <label class="small">Aylık ayrılma oranı: <strong id="hzV"></strong>%</label>
+        <input type="range" id="hz" min="0.5" max="6" step="0.1" value="2">
+        <svg id="survSvg" viewBox="0 0 320 170" style="width:100%"></svg>
+        <div class="result" id="survOut"></div>
+      </div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s5"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 6 -->
+  <section class="ch" id="s6">
+    <h2>Kural Koyucu (Preskriptif) İnsan Analitiği</h2><hr>
+    <p>Kural koyucu analitik, farklı olası sonuçlara dayanarak eylem “reçete eder” ve çözüme yönelik rehberlik sunar; “Bunu nasıl gerçekleştirebiliriz?” ve “Ne yapmalıyız?” sorularını yanıtlar. Geçmiş veriyi ve öngörücü modelleri optimizasyon yöntemleri ve iş ilkeleriyle birleştirerek karar almayı yönlendiren eyleme dönük bilgi sağlar.</p>
+    <p>Örnek: Bir şirket yan hak paketine yeni seçenekler eklemek istiyor ve bütçesini aşmadan çalışanların en çok beğenip kullanacağı seçenekleri belirlemekte yardıma ihtiyacı var. Kural koyucu analitikle çalışan kullanımını ve farklı seçeneklerin etkisini tahmin edip çeşitli maliyet senaryolarını modelleyebilir. Daha çalışan odaklı bir kullanım da mümkün: çalışanların geçmiş beceri ve deneyimlerini kariyer hedefleriyle birleştirerek olası kariyer yolları ya da en uygun öğrenme kaynakları için kişiselleştirilmiş öneriler geliştirmek.</p>
+
+    <div class="box">
+      <div class="lbl">Laboratuvar · Yan hak paketi optimizasyonu</div>
+      <p class="small">Kurgusal seçenekler: kişi başı yıllık maliyet (bin ₺) ve tahmini kullanım oranına dayalı beklenen fayda puanı. Bütçeyi ayarla; araç tüm kombinasyonları deneyip bütçe içinde en yüksek toplam faydayı veren paketi bulur.</p>
+      <label class="small">Kişi başı yıllık bütçe: <strong id="budV"></strong> bin ₺</label>
+      <input type="range" id="bud" min="5" max="60" step="1" value="25">
+      <div class="benef" id="benef" style="margin-top:10px"></div>
+      <div class="result" id="budOut"></div>
+      <p class="small">Bu en basit hâliyle bir optimizasyon problemi (sırt çantası problemi). Gerçekte fayda tahminleri öngörücü modellerden ya da anketlerden gelir ve belirsizlik içerir.</p>
+    </div>
+
+    <h3>Kural koyucu analitik becerileri</h3>
+    <div class="grid">
+      <div class="card"><div class="t">Karar ağaçları</div><div class="small">Farklı senaryolara göre en elverişli eylemleri önermek için karar yollarını analiz etmek: örneğin pasif adayları niteliklerine ve deneyimlerine göre sınıflandırarak işe alım uzmanlarının kritik yetenek açıkları için doğru adaylara ulaşmasını sağlamak.</div></div>
+      <div class="card"><div class="t">Optimizasyon modelleme</div><div class="small">Karmaşık vardiya planlaması, kaynak dağıtımı ve yetenek yönetimi problemlerinde en iyi çözümü bulmak: iş yükü dağılımını ve çalışan tercihlerini gözeterek verimliliği en üst düzeye çıkaran çalışma takvimleri gibi. Yazar <em>sezgisel yöntemleri</em> (heuristics) de öğrenmeyi öneriyor: tam optimize olmasa da “yeterince iyi” bir çözüm bulan pratik problem çözme yaklaşımları.</div></div>
+      <div class="card"><div class="t">Simülasyonlar</div><div class="small">Çeşitli stratejileri test edip olası etkilerini değerlendirmek için benzetim modelleri kurmak; elle ya da programlamayla yapılabilir ve yeni programların etkinliğini uygulamadan önce görmeyi sağlar. (Bu sayfadaki simülasyonlar da bunun küçük örnekleri.)</div></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s6"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 7 -->
+  <section class="ch" id="s7">
+    <h2>Bilişsel İnsan Analitiği</h2><hr>
+    <p>Betimleyici, tanılayıcı, öngörücü ve kural koyucu analitik yaygın terimlerdir. Yazar bir adım öteye gidip bir basamak daha ekliyor (“bu benim rehberim” diyerek :) ): <strong>bilişsel analitik</strong>. Bu tür, “Bir insan bu bilgiyi nasıl değerlendirirdi?” sorusunu yanıtlar.</p>
+    <p>Henüz gevşek ve resmî olmayan bir terim; yazar onu, geleneksel veri analizinin ötesine geçen ve ya insan benzeri zekâyı taklit etmeye çalışan ya da hesaplamada izlenecek formüllerin ve ilişkilerin açıkça programlanmasını gerektirmeyen bütün yaklaşımları kapsayacak şekilde kullanıyor. Yapay zekâ (YZ), makine öğrenmesi (ML) ve doğal dil işleme (NLP) gibi kavramlarla büyük miktarda yapılandırılmış ve yapılandırılmamış veriyi (sayı, metin, görüntü, ses) analiz edip geleneksel yöntemlerin kaçırabileceği örüntüleri arar.</p>
+    <p>İnsan analitiği geleneksel olarak anketler ve nicel performans değerlendirmeleri gibi yapılandırılmış veriye dayandı. Oysa çalışan duyguları, özgeçmişler, iş tanımları, performans değerlendirme metinleri, çıkış görüşmeleri, öğrenme ilerlemesi gibi zaten var olan büyük bir bilgi; çok fazla ve yapılandırılmamış olduğu, geleneksel yöntemler incelikli örüntüleri yakalayamadığı için çoğunlukla göz ardı ediliyordu. Bilişsel yaklaşımlar, uygun biçimde ve <strong>(ciddi) sınırlılıkları</strong> anlaşılarak uygulanırsa, daha fazlasını yapmamızı sağlar: kurumun nasıl gittiğini çalışan duygularından öğrenmek; mevcut iş, öğrenme ve performans verisinden zahmetli değerlendirmeler olmadan beceri açıklarını bulmak; bağlılık, elde tutma ve iyi oluşu yalnızca temel demografi ya da güvenilmez anket sonuçlarıyla değil, daha bütüncül biçimde anlamak; ve geçmişte insanlara sunulan sınırlı fırsatların yanlılığını taşıyabilen özgeçmişlerin ötesine bakıp özgün deneyimleri, aktarılabilir becerileri ve düşünce çeşitliliğini görmek.</p>
+
+    <h3>İleri insan analitiği becerileri</h3>
+    <p>YZ'nin temel kavramlarını kavramak, bilişsel analitiği daha geniş bir bağlamda görmeni ve doğru yaklaşımı seçmeni sağlar. Bu analizleri kendin yapmayı öğrenmesen bile kullanmak istediğin veri türüne göre farklı alanları tanıman gerekir: çok metinle çalışacaksan NLP, çok fotoğraf ya da videoyla çalışacaksan bilgisayarlı görü.</p>
+    <div class="grid">
+      <div class="card"><div class="t">NLP temelleri</div><div class="small">Metin verisinin anlamını kavramaya yarayan teknikler: kelime frekansları, duygu analizi, konu modelleme.</div></div>
+      <div class="card"><div class="t">Makine öğrenmesi</div><div class="small">Bilgisayarların açık programlama olmadan veriden öğrenmesini sağlayan algoritmalar; örneğin karmaşık ilişkileri yakalayan destek vektör regresyonu ya da rastgele orman regresyonu. Denetimli/denetimsiz öğrenme, sınıflandırma ve regresyon kavramları kritik.</div></div>
+      <div class="card"><div class="t">Derin öğrenme</div><div class="small">Her proje için şart değil; ama sinir ağı mimarilerini tanımak seni görüntü ve metin analizi gibi karmaşık görevlerde kullanılan ileri tekniklerle tanıştırır.</div></div>
+      <div class="card"><div class="t">Bilgisayarlı görü</div><div class="small">Görüntü tanıma ve sınıflandırma, videoda nesne algılama ve izleme. <strong>Dikkat:</strong> Fabrikada güvenlik risklerini bulmak için hareket örüntüsü analizi gibi gerçek olanakları var; ama çoğu çalışan hareketlerinin izlenmesini ya da fotoğraflarının kataloglanmasını ürkütücü bulacaktır. Temkinli kullanılmalı.</div></div>
+      <div class="card"><div class="t">YZ etiği ve yanlılık</div><div class="small">İnsan analitiğinde gerçek insanlardan ve hayatlarını etkileyen iş kararlarından söz ediyoruz. Algoritmalardaki etik kaygıları ve olası yanlılıkları anlamak sorumlu geliştirme ve kullanım için şart. <strong>Önce etik ve yanlılık değerlendirmesi yapmadan hiçbir bilişsel analitik yapma.</strong></div></div>
+    </div>
+
+    <div class="box">
+      <div class="lbl">Laboratuvar · Çıkış görüşmesi yorumlarında mini metin analizi</div>
+      <p class="small">Yazarın kuralına uygun olarak: analiz düğmesi, aşağıdaki etik ve yanlılık kontrollerinin tamamı işaretlenmeden açılmaz.</p>
+      <ul class="check" id="eth"></ul>
+      <textarea id="nlpIn" style="min-height:130px"></textarea>
+      <div class="row" style="margin:8px 0"><button class="btn" id="nlpRun" disabled>Analiz et</button><button class="btn ghost" id="nlpEx">Örnek yorumları yükle</button></div>
+      <div class="twocol">
+        <div><div class="lbl">En sık kelimeler</div><div class="bars" id="nlpW"></div></div>
+        <div><div class="lbl">Temalar (sözlük tabanlı)</div><div class="bars" id="nlpT"></div><div class="small" id="nlpS" style="margin-top:8px"></div></div>
+      </div>
+      <p class="small">Bu, basit bir sözlük ve frekans yaklaşımı; gerçek NLP modellerinin yerini tutmaz, ironi ve bağlamı kaçırır. Kurgusal örnek yorumlar rehberin andığı temalardan (ilerleme fırsatı, liderlik, iş-yaşam dengesi, ücret) türetilmiştir. Metinler bu tarayıcıda işlenir, hiçbir yere gönderilmez.</p>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s7"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 8 -->
+  <section class="ch" id="s8">
+    <h2>Beceri Haritam</h2><hr>
+    <p>Bu sayfada sayılan analitik becerilerin her biri için durumunu işaretle. Ölçek kesin bir puan değil; hangi becerileri keşfetmek, hangilerinde güçlü olduğunu görmek ve hangilerini geliştirmek istediğine karar vermek için bir yol göstericidir. Bazıları sırayla öğrenilmeli: önce betimleyici becerileri, sonra üst basamakları düşün.</p>
+    <div class="sk"><table id="skTab"></table></div>
+    <div class="stats" id="skSum" style="margin-top:12px"></div>
+    <div class="result" id="skNext"></div>
+    <div class="row noprint" style="margin-top:10px">
+      <button class="btn ghost" id="skCsv">CSV indir</button>
+      <button class="btn ghost" id="skPrint">Yazdır / PDF</button>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s8"> Beceri haritamı doldurdum</label>
+  </section>
+
+  <!-- 9 -->
+  <section class="ch" id="s9">
+    <h2>Mini Test</h2><hr>
+    <div id="quiz"></div>
+    <p class="ui" id="score" style="font-weight:700;color:var(--navy)"></p>
+    <label class="readmark"><input type="checkbox" data-read="s9"> Testi tamamladım</label>
+  </section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><a class="pv" href="insan_analitigi_adim2_teknik_olmayan_beceriler.html"><small>← Önceki</small><b>Adım 2: Teknik olmayan beceriler</b></a><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><a class="nx" href="insan_analitigi_adim3_nitel_analitik.html"><small>Sonraki →</small><b>Adım 3: Nitel analitik</b></a></nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+const KEY="pa_adim3_nicel_v1";
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt=(x,d=1)=>Number.isFinite(x)?x.toLocaleString("tr-TR",{minimumFractionDigits:d,maximumFractionDigits:d}):"–";
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const dl=(name,rows)=>{const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';const b=new Blob(["﻿"+rows.map(r=>r.map(q).join(";")).join("\n")],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href)};
+const redraws=[];
+
+// tema
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$("#theme").onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";st.theme=d.dataset.theme;save();redraws.forEach(f=>f())};
+
+// ilerleme
+st.read=st.read||{};const N=9;
+function prog(){const n=Object.values(st.read).filter(Boolean).length;$("#progbar").style.width=(n/N*100)+"%";$$("#nav a").forEach(a=>a.classList.toggle("done",!!st.read[a.dataset.s]))}
+$$("[data-read]").forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();if(cb.checked)toast("Bir bölüm daha tamam!")}});prog();
+
+// senaryo / soru yardımcısı
+function scen(sel,items){$(sel).innerHTML=items.map((it,k)=>`<div class="card" style="margin:10px 0"><div class="ui" style="font-weight:700;font-size:15px">${it.q}</div>${it.o.map((o,j)=>`<button class="opt" data-k="${k}" data-j="${j}">${o}</button>`).join("")}<div class="fb" id="${sel.slice(1)}fb${k}"></div></div>`).join("");
+ $$(sel+" .opt").forEach(b=>b.onclick=()=>{const it=items[b.dataset.k];$$(`${sel} .opt[data-k="${b.dataset.k}"]`).forEach(x=>x.classList.remove("right","wrong"));const ok=+b.dataset.j===it.a;b.classList.add(ok?"right":"wrong");$(`${sel}fb${b.dataset.k}`).innerHTML=`<span class="${ok?"ok":"no"}">${ok?"Doğru":"Tekrar düşün"}:</span> ${it.e}`})}
+
+// 2. alet seçimi
+scen("#tools",[
+ {q:"Pozisyondaki “tipik” ücret nedir? (Birkaç çok yüksek ücret var.)",o:["Ortalama","Ortanca (medyan)","Standart sapma"],a:1,e:"Uç değerler ortalamayı çeker; ortanca tipik orta değeri daha iyi gösterir."},
+ {q:"Deneyimi fazla olanlar daha yüksek ücret mi alıyor?",o:["Frekans tablosu","Korelasyon","Tepe değer (mod)"],a:1,e:"İki sayısal değişkenin birlikte değişip değişmediğini korelasyon gösterir."},
+ {q:"İki departmanın ortalama bağlılık puanı arasındaki fark tesadüf olabilir mi?",o:["t-testi","Yüzdelik","En küçük–en büyük değer"],a:0,e:"İki grubun ortalamasını karşılaştırmak ve anlamlılığı sınamak için t-testi kullanılır."}]);
+
+// merdiven
+const L=[
+ {k:"k1",n:"Betimleyici",q:"Ne oldu?",d:"Ne olduğunu <em>betimler</em>. Örnek sorular: Kaç çalışan ayrıldı? Çalışanların bağlılık düzeyi ne?",h:68},
+ {k:"k2",n:"Tanılayıcı",q:"Neden oldu?",d:"Neden olduğunu <em>teşhis etmeye</em> çalışır. Örnek sorular: Çalışanlar neden ayrıldı? Çalışan memnuniyeti hangi yönlerle ilişkili?",h:100},
+ {k:"k3",n:"Öngörücü",q:"Ne olabilir?",d:"Ne olabileceğini <em>tahmin etmeye</em> çalışır. Örnek sorular: Bu yıl kaç çalışan ayrılabilir? Belirli bir yönü iyileştirirsek memnuniyet nasıl artabilir?",h:132},
+ {k:"k4",n:"Kural koyucu",q:"Ne olmalı?",d:"Atılacak en iyi adımı <em>reçete etmeye</em> çalışır. Örnek: X tutarında elde tutma primi verilirse ayrılma %10'a kadar azalabilir; hedefli bir bağlılık programı puanları %X artırabilir.",h:164},
+ {k:"k5",n:"Bilişsel",q:"Bir insan bu bilgiyi nasıl değerlendirirdi?",d:"Yazarın eklediği beşinci basamak: insan benzeri zekâyı taklit eden ya da formüllerin açıkça programlanmasını gerektirmeyen YZ, ML, NLP gibi yaklaşımlar.",h:196}];
+st.lad=st.lad??0;
+function ladder(){$("#ladder").innerHTML=L.map((s,i)=>`<button class="step ${i===4?"cog":""} ${i===st.lad?"on":""}" data-i="${i}" style="height:${s.h}px;background:var(--${s.k})">${s.n}<small>${s.q}</small></button>`).join("");
+ $$("#ladder .step").forEach(b=>b.onclick=()=>{st.lad=+b.dataset.i;save();ladder()});
+ const s=L[st.lad];$("#stepdesc").innerHTML=`<div class="ui" style="font-weight:800;color:var(--${s.k})">${s.n} analitik · “${s.q}”</div><p style="margin:.4em 0 0">${s.d}</p>`}
+ladder();
+
+// sınıflandırma
+const CQ=[["Geçen yıl kaç kişi işe alındı?",0],["Satış ekibinde bağlılık neden düştü?",1],["Önümüzdeki altı ayda kaç mühendis ayrılabilir?",2],["Bütçe içinde hangi yan hak paketi en çok faydayı sağlar?",3],["Binlerce açık uçlu anket yorumunda çalışanlar neyi dert ediniyor?",4],["Ortalama kıdem departmanlara göre nasıl dağılıyor?",0],["Düşük ücret ile ayrılma arasında anlamlı bir ilişki var mı?",1],["Yeni çalışanlar ortalama ne kadar süre kalacak?",2],["Vardiya planı verimliliği ve tercihleri birlikte nasıl en iyi hâle getirilir?",3],["Özgeçmişlerdeki aktarılabilir beceriler nasıl tanınabilir?",4]];
+let cqO=shuffle(CQ),cqI=0,cqOk=0;
+$("#cbtn").innerHTML=L.map((s,i)=>`<button class="btn" data-c="${i}" style="background:var(--${s.k});border-color:var(--${s.k})">${s.n}</button>`).join("");
+function cqShow(){if(cqI>=cqO.length){$("#cq").innerHTML=`<span class="ui"><strong>Bitti: ${cqOk}/${cqO.length} doğru</strong></span>`;$("#cscore").innerHTML='<button class="btn ghost" id="cqRe">Yeniden</button>';$("#cqRe").onclick=()=>{cqO=shuffle(CQ);cqI=0;cqOk=0;$("#cfb").textContent="";cqShow()};return}
+ $("#cq").textContent=cqO[cqI][0];$("#cscore").textContent=`${cqI+1} / ${cqO.length} · doğru: ${cqOk}`}
+$$("#cbtn [data-c]").forEach(b=>b.onclick=()=>{if(cqI>=cqO.length)return;const a=cqO[cqI][1],c=+b.dataset.c;if(a===c)cqOk++;$("#cfb").innerHTML=a===c?`<span class="ok">Doğru:</span> ${L[a].n} — “${L[a].q}”`:`<span class="no">Yanlış:</span> bu bir ${L[a].n.toLowerCase()} soru (“${L[a].q}”).`;cqI++;cqShow()});
+cqShow();
+
+// 3. ayrılma oranı
+function attr(){const s=+$("#aStart").value,e=+$("#aEnd").value,l=+$("#aLeft").value,p=+$("#aPrev").value;const avg=(s+e)/2;const r=avg>0?l/avg*100:NaN;const d=r-p;
+ $("#aOut").innerHTML=`<strong class="ui">Yıllık ayrılma oranı: %${fmt(r)}</strong> (ortalama çalışan ${fmt(avg,0)})<br>Geçen yıla göre ${Number.isFinite(d)?(d>0?`<span class="no">${fmt(d)} puan artış</span>`:`<span class="ok">${fmt(-d)} puan azalış</span>`):"–"}. <span class="small">Sırada betimleyici sorular var: hangi birimlerde daha yüksek? Tipik kıdem ne? Ayrılma nedenleri neler?</span>`}
+["#aStart","#aEnd","#aLeft","#aPrev"].forEach(s=>$(s).oninput=attr);attr();
+
+// ücret laboratuvarı
+const SAL0=[[2,42],[3,45],[4,47],[4,48],[5,50],[6,52],[7,55],[8,58],[10,61],[9,95]];
+st.sal=st.sal||SAL0.map(r=>r.slice());st.off=st.off||52;
+const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
+const median=a=>{const s=a.slice().sort((x,y)=>x-y),m=Math.floor(s.length/2);return s.length%2?s[m]:(s[m-1]+s[m])/2};
+const mode=a=>{const c={};a.forEach(x=>c[x]=(c[x]||0)+1);const mx=Math.max(...Object.values(c));return mx<2?null:Object.keys(c).filter(k=>c[k]===mx).map(Number)};
+const variance=a=>{const m=mean(a);return a.reduce((s,x)=>s+(x-m)**2,0)/(a.length-1)};
+const corr=(x,y)=>{const mx=mean(x),my=mean(y);let n=0,dx=0,dy=0;x.forEach((v,i)=>{n+=(v-mx)*(y[i]-my);dx+=(v-mx)**2;dy+=(y[i]-my)**2});return n/Math.sqrt(dx*dy)};
+const q=(a,p)=>{const s=a.slice().sort((x,y)=>x-y),pos=(s.length-1)*p,lo=Math.floor(pos);return s[lo]+(s[Math.ceil(pos)]-s[lo])*(pos-lo)};
+function salTab(){$("#salTab").innerHTML="<tr><th>#</th><th>Deneyim (yıl)</th><th>Ücret (bin ₺)</th><th></th></tr>"+st.sal.map((r,i)=>`<tr data-row="${i}"><td>${i+1}</td><td><input type="number" data-sr="${i}" data-sc="0" value="${r[0]}"></td><td><input type="number" data-sr="${i}" data-sc="1" value="${r[1]}"></td><td><button class="btn ghost" style="padding:2px 8px" data-sd="${i}">×</button></td></tr>`).join("");
+ $$("[data-sr]").forEach(inp=>inp.oninput=()=>{st.sal[inp.dataset.sr][inp.dataset.sc]=parseFloat(inp.value);save();salCalc()});
+ $$("[data-sd]").forEach(b=>b.onclick=()=>{if(st.sal.length<=3){toast("En az 3 satır gerekli");return}st.sal.splice(b.dataset.sd,1);save();salTab()});salCalc()}
+function salCalc(){const rows=st.sal.filter(r=>Number.isFinite(r[0])&&Number.isFinite(r[1]));const s=rows.map(r=>r[1]),x=rows.map(r=>r[0]);if(s.length<3)return;
+ const q1=q(s,.25),q3=q(s,.75),iqr=q3-q1,lo=q1-1.5*iqr,hi=q3+1.5*iqr;const md=mode(s);
+ $$("#salTab tr[data-row]").forEach(tr=>{const r=st.sal[tr.dataset.row];tr.classList.toggle("out",r&&(r[1]<lo||r[1]>hi))});
+ const S=[["Ortalama",fmt(mean(s))],["Ortanca",fmt(median(s))],["Tepe değer",md?md.join(", "):"yok"],["En küçük",fmt(Math.min(...s),0)],["En büyük",fmt(Math.max(...s),0)],["Std. sapma",fmt(Math.sqrt(variance(s)))],["Korelasyon (deneyim–ücret)",fmt(corr(x,s),2)],["Uç değer sınırı",`${fmt(lo,0)}–${fmt(hi,0)}`]];
+ $("#salStats").innerHTML=S.map(([a,b])=>`<div class="stat"><b>${b}</b><span>${a}</span></div>`).join("");
+ const off=+st.off;$("#offV").textContent=off;$("#offer").value=off;const pr=s.filter(v=>v<off).length/s.length*100;const outs=rows.filter(r=>r[1]<lo||r[1]>hi);
+ $("#salOut").innerHTML=`Mevcut ücretlerin <strong>%${fmt(pr,0)}</strong> kadarı ${off} bin ₺'nin altında; teklif yaklaşık ${fmt(pr,0)}. yüzdelikte. `+(outs.length?`<br><span class="small">Uç değer: ${outs.map(r=>r[1]+" bin ₺ ("+r[0]+" yıl)").join(", ")} ortalamayı ${fmt(mean(s)-median(s))} bin ₺ yukarı çekiyor; tipik ücret için ortanca daha güvenilir.</span>`:"")+(Math.abs(corr(x,s))>.5?`<br><span class="small">Deneyim ile ücret arasında ${corr(x,s)>0?"pozitif":"negatif"} ve güçlü bir ilişki var; ilanda deneyim şartı ücretle tutarlı olmalı. (Korelasyon nedensellik değildir.)</span>`:"");
+ // dağılım grafiği
+ const W=320,H=180,p=30,xmax=Math.max(...x,1)+1,ymin=Math.min(...s,off)-5,ymax=Math.max(...s,off)+5;const X=v=>p+(v/xmax)*(W-p-10),Y=v=>H-p+((ymin-v)/(ymax-ymin))*(H-p-10);
+ let g=`<line x1="${p}" y1="${H-p}" x2="${W-10}" y2="${H-p}" stroke="${css("--line")}"/><line x1="${p}" y1="10" x2="${p}" y2="${H-p}" stroke="${css("--line")}"/>`;
+ g+=`<line x1="${p}" x2="${W-10}" y1="${Y(off)}" y2="${Y(off)}" stroke="${css("--ok")}" stroke-dasharray="4 3"/><text x="${W-12}" y="${Y(off)-4}" font-size="10" text-anchor="end" fill="${css("--ok")}">teklif</text>`;
+ g+=`<line x1="${p}" x2="${W-10}" y1="${Y(median(s))}" y2="${Y(median(s))}" stroke="${css("--muted")}" stroke-dasharray="2 3"/><text x="${p+4}" y="${Y(median(s))-4}" font-size="10" fill="${css("--muted")}">ortanca</text>`;
+ rows.forEach(r=>{const o=r[1]<lo||r[1]>hi;g+=`<circle cx="${X(r[0])}" cy="${Y(r[1])}" r="5" fill="${o?css("--warn"):css("--navy2")}"/>`});
+ g+=`<text x="${(W+p)/2}" y="${H-6}" font-size="10" text-anchor="middle" fill="${css("--muted")}">deneyim (yıl)</text><text x="10" y="${H/2}" font-size="10" fill="${css("--muted")}" transform="rotate(-90 10 ${H/2})" text-anchor="middle">ücret</text>`;
+ $("#salSvg").innerHTML=g}
+$("#offer").oninput=e=>{st.off=+e.target.value;save();salCalc()};
+$("#salAdd").onclick=()=>{st.sal.push([5,50]);save();salTab()};
+$("#salReset").onclick=()=>{st.sal=SAL0.map(r=>r.slice());save();salTab()};
+salTab();redraws.push(salCalc);
+
+// kıdem histogramı (deterministik kurgusal veri)
+const TEN=[];for(let y=0;y<=25;y++){let v=Math.round(34*Math.exp(-y/6)+3+((y*7)%5));if(y===18)v=41;TEN.push(v)}
+function tenDraw(sel){const W=640,H=220,p=28,bw=(W-p-10)/TEN.length,mx=Math.max(...TEN);let g="";
+ TEN.forEach((v,i)=>{const h=v/mx*(H-p-20);const x=p+i*bw;const on=sel===i;g+=`<rect data-t="${i}" x="${x+1}" y="${H-p-h}" width="${bw-2}" height="${h}" fill="${on?(i===18?css("--ok"):css("--warn")):css("--navy2")}" style="cursor:pointer" rx="2"/>`;if(i%5===0)g+=`<text x="${x+bw/2}" y="${H-p+14}" font-size="10" text-anchor="middle" fill="${css("--muted")}">${i}</text>`});
+ g+=`<text x="${(W+p)/2}" y="${H-2}" font-size="10" text-anchor="middle" fill="${css("--muted")}">kıdem (yıl)</text>`;
+ $("#tenSvg").innerHTML=g;$$("#tenSvg rect").forEach(r=>r.onclick=()=>{st.ten=+r.dataset.t;save();tenDraw(st.ten);tenTxt()})}
+function tenTxt(){const i=st.ten;if(i==null)return;$("#tenOut").innerHTML=i===18?`<span class="ok"><strong>Buldun!</strong></span> 18 yıllık kıdemde ${TEN[18]} çalışan var; komşu yıllardaki ${TEN[17]} ve ${TEN[19]} kişiye göre belirgin bir sıçrama. Hepsi aşağı yukarı aynı zamanda, yani 2006 civarında işe alınmış ve o günden beri kalmış olmalı. Yazarın “sihirli gücü” buydu: betimleyici analitik. Sıradaki adım veri tüketicisi becerileri: o yıl bir satın alma ya da büyük bir olay var mıydı?`:`${i} yıllık kıdemde ${TEN[i]} çalışan var. Bu çubuk dağılımın genel eğilimine uyuyor; daha belirgin bir sıçrama ara.`}
+tenDraw(st.ten);tenTxt();redraws.push(()=>tenDraw(st.ten));
+
+// 4. eyleme dönüklük
+const ACT=[["Düşük işsizlik oranı ve sıkı işgücü piyasası",0,"Doğru ve hatta ana neden olabilir, ama kurum genel işgücü ekonomisini pek değiştiremez."],["Rakiplere göre ücret düzeyi (örneğin aynı pozisyon için %80'i)",1,"Kurum ücret konusunda karar alabilir; bu, liderlerin değerlendirebileceği olası bir çözüm alanı."],["İlan metinlerinin ve gereken niteliklerin uygunluğu",1,"İlanlar ve şartlar kurumun kontrolünde; değiştirilebilir."],["Sektörün genel imajı",0,"Uzun vadede etkilenebilir ama kısa vadede kurumun tek başına değiştirebileceği bir şey değil."],["İşe alım sürecinin uzunluğu ve adaylara dönüş süresi",1,"Süreç adımları kurumun elinde; kısaltılabilir."],["Ülkedeki ilgili bölümlerden mezun olan kişi sayısı",0,"Kurum bunu kısa vadede etkileyemez (uzun vadede üniversite iş birlikleri düşünülebilir)."]];
+st.act=st.act||{};
+function actR(){$("#act").innerHTML=ACT.map((a,i)=>`<div class="card" style="margin:8px 0"><div style="font-size:15px">${a[0]}</div><div class="row" style="margin-top:6px"><button class="chip ${st.act[i]===1?"on":""}" data-a="${i}" data-v="1">Üzerinde işlem yapılabilir</button><button class="chip ${st.act[i]===0?"on":""}" data-a="${i}" data-v="0">Pek etkilenemez</button></div>${st.act[i]!=null?`<div class="fb"><span class="${st.act[i]===a[1]?"ok":"no"}">${st.act[i]===a[1]?"Katılıyorum":"Bir daha düşün"}:</span> ${a[2]}</div>`:""}</div>`).join("");
+ $$("[data-a]").forEach(b=>b.onclick=()=>{st.act[b.dataset.a]=+b.dataset.v;save();actR()});
+ const n=Object.keys(st.act).length;if(n===ACT.length){const ok=ACT.filter((a,i)=>st.act[i]===a[1]).length;$("#actOut").style.display="block";$("#actOut").innerHTML=`<strong class="ui">${ok}/${ACT.length} uyum.</strong> Zamanın kısıtlıysa onu eyleme geçirilebilecek etkenlere (${ACT.filter(a=>a[1]).length} tane) harca. İnsan analitiğinin karar almayı desteklemek için var olduğunu akılda tutmak analiz felcini azaltır.`}}
+actR();
+
+// test seçici
+function tsel(){const g=$("#tGoal").value,o=$("#tOut").value,k=$("#tGrp").value;$("#tGrpL").style.display=g==="cmp"?"":"none";$("#tOutL").style.display=g==="rel"?"none":"";
+ let r;if(g==="cmp"){r=o==="cat"?["Ki-kare testi","Kategorik bir sonucun (ayrıldı/kaldı) gruplara göre dağılımı farklı mı? Örnek: ayrılma oranı lokasyonlara göre farklılaşıyor mu?"]:k==="2"?["Bağımsız örneklem t-testi","İki grubun ortalaması farklı mı? Örnek: uzaktan ve ofisten çalışanların bağlılık puanı."]:["ANOVA (varyans analizi)","Üç veya daha fazla grubun ortalaması farklı mı? Örnek: departmanlara göre bağlılık puanı."]}
+ else if(g==="rel")r=["Korelasyon (ve anlamlılık testi)","İki sayısal değişken birlikte değişiyor mu? Örnek: kıdem ile ücret. Korelasyon nedensellik değildir."];
+ else r=o==="cat"?["Lojistik regresyon","İkili bir sonucun (ayrıldı/kaldı) olasılığını birden çok etkenle açıklar; öngörücü modellemenin de yaygın aracıdır."]:["Doğrusal regresyon","Sayısal bir sonucu (ücret artışı gibi) birden çok etkenle açıklar; bir şeyin diğerinden önce geldiği/ona yol açtığı varsayımı vardır."];
+ $("#tRes").innerHTML=`<strong class="ui">${r[0]}</strong><br>${r[1]}<br><span class="small">Nedensellik iddia ediyorsan araştırma tasarımı ve hipotez testi gerekir; verinin güvenirlik ve geçerliğini de kontrol et.</span>`}
+["#tGoal","#tOut","#tGrp"].forEach(s=>$(s).onchange=tsel);tsel();
+
+// ayrıntıya inme
+const DD={"Toplam":[["Tüm şirket",3.42,612]],"Departman":[["Satış",3.48,180],["Üretim",3.44,240],["Ar-Ge",3.51,96],["Finans",3.40,48],["Müşteri hizmetleri",3.12,48]],"Lokasyon":[["İstanbul",3.50,260],["Kocaeli",3.47,210],["Ankara",3.46,96],["İzmir şubesi",2.86,46]],"Rol":[["Uzman",3.45,330],["Kıdemli uzman",3.52,150],["Takım lideri",3.38,72],["Yönetici",3.31,60]]};
+st.dd=st.dd||"Toplam";
+function ddR(){$("#ddSeg").innerHTML=Object.keys(DD).map(k=>`<button class="${st.dd===k?"on":""}" data-dd="${k}">${k}</button>`).join("");$$("[data-dd]").forEach(b=>b.onclick=()=>{st.dd=b.dataset.dd;save();ddR()});
+ const rows=DD[st.dd];const minV=Math.min(...rows.map(r=>r[1]));$("#ddTot").textContent="Birleşik ortalama: 3,42";
+ $("#ddBars").innerHTML=rows.map(r=>`<div class="row2 ${rows.length>1&&r[1]===minV&&r[1]<3.2?"hi":""}"><div>${r[0]} <span class="small">(n=${r[2]})</span></div><div class="tr"><div style="width:${r[1]/5*100}%"></div></div><div>${fmt(r[1],2)}</div></div>`).join("");
+ $("#ddFb").innerHTML={Toplam:"Birleşik düzeyde göze çarpan bir şey yok. Bir kırılım seç.",Departman:"Müşteri hizmetleri biraz düşük; ama asıl fark başka bir kırılımda olabilir.",Lokasyon:"<span class=\"no\"><strong>İzmir şubesi belirgin biçimde düşük.</strong></span> Birleşik ortalamada gizlenen bu fark, kök neden analizi için iyi bir başlangıç noktası: orada yönetim, iş yükü ya da süreçlerle ilgili ne farklı? Küçük gruplarda (n=46) farkın anlamlılığını da test etmeyi unutma.",Rol:"Rol düzeyinde farklar küçük; bu kırılım bir şey açıklamıyor gibi."}[st.dd]}
+ddR();
+
+// 5. eylem simülasyonu
+function actSim(){const e=+$("#actR").value;$("#actV").textContent=e;const pred=140,actual=Math.round(pred*(1-e/100)),err=Math.abs(pred-actual)/pred*100;
+ const W=400,H=150,mx=160,bh=36;const bar=(y,v,c,l)=>`<rect x="110" y="${y}" width="${v/mx*(W-150)}" height="${bh}" rx="4" fill="${c}"/><text x="104" y="${y+bh/2+4}" font-size="12" text-anchor="end" fill="${css("--ink")}">${l}</text><text x="${116+v/mx*(W-150)}" y="${y+bh/2+4}" font-size="12" fill="${css("--ink")}">${v}</text>`;
+ $("#actSvg").innerHTML=bar(20,pred,css("--muted"),"Tahmin")+bar(76,actual,e?css("--ok"):css("--navy2"),"Gerçekleşen");
+ $("#actRes").innerHTML=e===0?"Hiçbir şey yapılmadı: gerçekleşen ayrılma tahmine çok yakın; model “mükemmel” görünüyor ama içgörü kullanılmadı.":`Önlemlerle ${pred-actual} kişi kaldı. Tahminin sapması %${fmt(err,0)}; istatistiksel olarak model “yanlış” görünüyor, ama yazarın deyişiyle en iyi tahminler bunlardır: içgörü eyleme dönüştü ve daha iyi bir gelecek gerçekleşti.`}
+$("#actR").oninput=actSim;actSim();redraws.push(actSim);
+
+// karar ağacı
+const TREE={q:"Çalışanın iki yıldan az deneyimi var mı?",y:{q:"Son yıl ücret artışı ortalamanın altında mı kaldı?",y:{r:"Yüksek"},n:{r:"Orta"}},n:{q:"Son yıl çok sayıda performans görüşmesi (sık geri bildirim) aldı mı?",y:{r:"Düşük"},n:{q:"Bağlılık anketi puanı düşük mü?",y:{r:"Orta"},n:{r:"Düşük"}}}};
+let tPath=[];
+function treeR(){let node=TREE;tPath.forEach(a=>node=node[a]);const steps=[];let n=TREE;tPath.forEach(a=>{steps.push(`${n.q} → <strong>${a==="y"?"Evet":"Hayır"}</strong>`);n=n[a]});
+ const col={Yüksek:css("--bad"),Orta:css("--warn"),Düşük:css("--ok")};
+ $("#tree").innerHTML=(steps.length?`<div class="path">${steps.join("<br>")}</div>`:"")+(node.r?`<div class="ui">Ayrılma riski: <span class="risk" style="background:${col[node.r]}">${node.r}</span></div><p class="small">Bir olasılık bir kesinlik değildir; risk sınıflaması bireyler hakkında karar vermek için değil, destekleyici eylemler planlamak için kullanılmalı.</p><button class="btn ghost" id="trRe">Baştan başla</button>`:`<div class="ui" style="font-weight:700;margin-bottom:8px">${node.q}</div><div class="row"><button class="btn" data-tr="y">Evet</button><button class="btn" data-tr="n">Hayır</button></div>`);
+ $$("[data-tr]").forEach(b=>b.onclick=()=>{tPath.push(b.dataset.tr);treeR()});const r=$("#trRe");if(r)r.onclick=()=>{tPath=[];treeR()}}
+treeR();redraws.push(treeR);
+
+// sağkalım
+function surv(){const h=+$("#hz").value/100;$("#hzV").textContent=fmt(h*100);const W=320,H=170,p=30,T=60;const pts=[];for(let t=0;t<=T;t++)pts.push([t,100*Math.pow(1-h,t)]);
+ const X=t=>p+t/T*(W-p-10),Y=v=>H-p-(v/100)*(H-p-12);const med=Math.log(.5)/Math.log(1-h);const mean=(1-h)/h;
+ let g=`<line x1="${p}" y1="${H-p}" x2="${W-10}" y2="${H-p}" stroke="${css("--line")}"/><line x1="${p}" y1="8" x2="${p}" y2="${H-p}" stroke="${css("--line")}"/>`;
+ [0,12,24,36,48,60].forEach(t=>g+=`<text x="${X(t)}" y="${H-p+13}" font-size="9" text-anchor="middle" fill="${css("--muted")}">${t}</text>`);
+ g+=`<text x="${p-4}" y="${Y(100)+3}" font-size="9" text-anchor="end" fill="${css("--muted")}">100</text><text x="${p-4}" y="${Y(50)+3}" font-size="9" text-anchor="end" fill="${css("--muted")}">50</text>`;
+ g+=`<polyline fill="none" stroke="${css("--navy2")}" stroke-width="2.5" points="${pts.map(([t,v])=>X(t)+","+Y(v)).join(" ")}"/>`;
+ if(med<=T)g+=`<line x1="${X(med)}" x2="${X(med)}" y1="${Y(50)}" y2="${H-p}" stroke="${css("--warn")}" stroke-dasharray="3 3"/><circle cx="${X(med)}" cy="${Y(50)}" r="4" fill="${css("--warn")}"/>`;
+ g+=`<text x="${(W+p)/2}" y="${H-3}" font-size="10" text-anchor="middle" fill="${css("--muted")}">ay</text>`;
+ $("#survSvg").innerHTML=g;$("#survOut").innerHTML=`Kalan çalışan: 12. ayda <strong>${fmt(100*Math.pow(1-h,12),0)}</strong>, 36. ayda <strong>${fmt(100*Math.pow(1-h,36),0)}</strong>. Grubun yarısı yaklaşık <strong>${fmt(med,0)}. ayda</strong> ayrılmış olur; beklenen ortalama kalış süresi ≈ ${fmt(mean/12,1)} yıl. <span class="small">Gerçek sağkalım analizi (ör. Kaplan–Meier) ayrılma oranının zamanla değişmesine ve henüz ayrılmamış kişilere (sansürlü veri) izin verir.</span>`}
+$("#hz").oninput=surv;surv();redraws.push(surv);
+
+// 6. yan hak optimizasyonu
+const BEN=[["Esnek çalışma günü",2,22],["Ek özel sağlık sigortası",14,38],["Yemek kartı artışı",9,30],["Spor salonu üyeliği",5,12],["Çocuk bakım desteği",12,18],["Eğitim/sertifika bütçesi",8,24],["Bireysel emeklilik katkısı",10,20],["Ruh sağlığı danışmanlık hattı",3,15]];
+st.bud=st.bud||25;
+function opt(){const B=+st.bud;$("#budV").textContent=B;$("#bud").value=B;let best={v:-1,m:0,c:0};for(let m=0;m<(1<<BEN.length);m++){let c=0,v=0;BEN.forEach((b,i)=>{if(m&(1<<i)){c+=b[1];v+=b[2]}});if(c<=B&&(v>best.v||(v===best.v&&c<best.c)))best={v,m,c}}
+ $("#benef").innerHTML=`<div class="h"></div><div class="h">Seçenek</div><div class="h">Maliyet</div><div class="h">Fayda</div>`+BEN.map((b,i)=>{const on=best.m&(1<<i);return `<div class="pick">${on?"✓":""}</div><div style="${on?"font-weight:600":"color:var(--muted)"}">${b[0]}</div><div>${b[1]}</div><div>${b[2]}</div>`}).join("");
+ const ratio=BEN.map((b,i)=>[i,b[2]/b[1]]).sort((a,b)=>b[1]-a[1]);let gc=0,gv=0;ratio.forEach(([i])=>{if(gc+BEN[i][1]<=B){gc+=BEN[i][1];gv+=BEN[i][2]}});
+ $("#budOut").innerHTML=`<strong class="ui">En iyi paket:</strong> toplam fayda ${best.v}, maliyet ${best.c}/${B} bin ₺.<br><span class="small">Sezgisel karşılaştırma: “fayda/maliyet oranı en yüksek olandan başla” kuralı ${gv} fayda buluyor${gv<best.v?" — yeterince iyi ama en iyi değil":" — bu bütçede en iyi çözümle aynı"}.</span>`}
+$("#bud").oninput=e=>{st.bud=+e.target.value;save();opt()};opt();
+
+// 7. NLP
+const ETH=["Çalışanlar yorumlarının bu amaçla analiz edileceğini biliyor (onaylı amaç).","Metinlerden ad, birim gibi kişiyi tanıtacak bilgiler çıkarıldı.","Sonuçlar bireyler hakkında değil, yalnızca toplu düzeyde raporlanacak.","Yöntemin sınırlılıkları ve olası yanlılıkları (ör. dil, ironi, belirli grupların yorumlarının az temsil edilmesi) değerlendirildi."];
+st.eth=st.eth||{};
+$("#eth").innerHTML=ETH.map((t,i)=>`<li><label><input type="checkbox" data-eth="${i}" ${st.eth[i]?"checked":""}>${t}</label></li>`).join("");
+function ethOk(){const ok=ETH.every((_,i)=>st.eth[i]);$("#nlpRun").disabled=!ok;$("#nlpRun").title=ok?"":"Önce etik ve yanlılık kontrollerini tamamla"}
+$$("[data-eth]").forEach(c=>c.onchange=()=>{st.eth[c.dataset.eth]=c.checked;save();ethOk()});ethOk();
+const EX="Burada ilerleme fırsatı yoktu, üç yıl aynı pozisyonda kaldım ve terfi konuşulmadı.\nYöneticim geri bildirim vermiyordu, ekip liderliği çok zayıftı.\nFazla mesai sürekli arttı, iş-yaşam dengesi kalmadı; ailemle vakit geçiremiyordum.\nÜcretim piyasanın altındaydı, başka bir şirketten daha iyi teklif aldım.\nEkibimi ve çalışma arkadaşlarımı çok sevdim, ama kariyer gelişimi için ayrılmam gerekti.\nYönetici değişikliğinden sonra ortam kötüleşti, kimse fikirlerimizi dinlemedi.\nEsnek çalışma imkânı olmadığı için uzun yol ve mesai beni yordu.\nEğitimler güzeldi ama terfi kriterleri belirsizdi, adil bulmadım.";
+st.nlp=st.nlp??"";$("#nlpIn").value=st.nlp;$("#nlpIn").placeholder="Her satıra bir çıkış görüşmesi yorumu yaz ya da örnek yorumları yükle.";
+$("#nlpIn").oninput=e=>{st.nlp=e.target.value;save()};
+$("#nlpEx").onclick=()=>{$("#nlpIn").value=EX;st.nlp=EX;save()};
+const STOP=new Set("ve ile ama için bir bu şu o da de çok daha en gibi kadar sonra önce her hiç ne mi mı mu mü ya veya ki çünkü olarak olan oldu olmadı olmadığı yoktu vardı var yok gerekti beni bana benim ben biz bizim sen siz onlar onun kimse aynı başka sürekli burada artık hem diye ise değil şey üç iki göre kaldım kaldı aldım".split(" "));
+const THEMES={"İlerleme / kariyer":["ilerleme","terfi","kariyer","gelişim","pozisyon","yükselme"],"Liderlik / yönetici":["yönetici","yöneticim","liderlik","lider","geri","dinlemedi","ortam"],"İş-yaşam dengesi":["mesai","denge","dengesi","esnek","aile","ailemle","yordu","yol"],"Ücret":["ücret","ücretim","maaş","teklif","piyasanın","prim"]};
+const POS=["sevdim","güzeldi","iyi","memnun","destek","harika"],NEG=["yoktu","zayıftı","kötüleşti","yordu","belirsizdi","adil","dinlemedi","altındaydı","kalmadı","vermiyordu","olmadığı"];
+$("#nlpRun").onclick=()=>{const lines=$("#nlpIn").value.split(/\n+/).map(s=>s.trim()).filter(Boolean);if(!lines.length){toast("Önce yorum ekle");return}
+ const words=lines.join(" ").toLocaleLowerCase("tr-TR").replace(/[^a-zçğıöşü\s-]/g," ").split(/\s+/).filter(w=>w.length>2&&!STOP.has(w));
+ const f={};words.forEach(w=>f[w]=(f[w]||0)+1);const top=Object.entries(f).sort((a,b)=>b[1]-a[1]).slice(0,8);const mx=top.length?top[0][1]:1;
+ $("#nlpW").innerHTML=top.map(([w,c])=>`<div class="row2"><div>${esc(w)}</div><div class="tr"><div style="width:${c/mx*100}%"></div></div><div>${c}</div></div>`).join("");
+ const tc=Object.entries(THEMES).map(([t,ks])=>[t,lines.filter(l=>{const L=l.toLocaleLowerCase("tr-TR");return ks.some(k=>L.includes(k))}).length]);const tm=Math.max(1,...tc.map(x=>x[1]));
+ $("#nlpT").innerHTML=tc.map(([t,c])=>`<div class="row2"><div>${t}</div><div class="tr"><div style="width:${c/tm*100}%"></div></div><div>${c}</div></div>`).join("");
+ let p=0,n=0;lines.forEach(l=>{const L=l.toLocaleLowerCase("tr-TR");p+=POS.filter(k=>L.includes(k)).length;n+=NEG.filter(k=>L.includes(k)).length});
+ $("#nlpS").innerHTML=`${lines.length} yorum · olumlu ifade: ${p} · olumsuz ifade: ${n}. <br>Tema sayıları, temanın geçtiği yorum sayısıdır; bir yorum birden çok temaya girebilir.`};
+
+// 8. beceri haritası
+const SK=[["Betimleyici",[["Merkezî eğilim (ortalama, ortanca, tepe değer)"],["Frekanslar ve yüzdelikler"],["Dağılım ölçüleri (en küçük/en büyük, varyans, std. sapma)"],["Korelasyon"],["Bir araçta (Excel, R, Python, Tableau…) bu istatistikleri çalıştırma"]]],
+ ["Tanılayıcı",[["İstatistiksel anlamlılık testi"],["Grup karşılaştırma (t-testi, ki-kare, ANOVA)"],["Doğrusal ilişkiler (regresyon)"],["Araştırma yöntemleri ve hipotez testi"],["Güvenirlik ve geçerlik"],["Keşifsel veri analizi, ayrıntıya inme, kök neden analizi"]]],
+ ["Öngörücü",[["Regresyon analizi"],["Nedensel çıkarım"],["Karar ağaçları"],["Zaman serisi analizi"],["Sağkalım analizi"]]],
+ ["Kural koyucu",[["Karar ağaçlarıyla eylem önerme"],["Optimizasyon modelleme ve sezgisel yöntemler"],["Simülasyonlar"]]],
+ ["Bilişsel",[["NLP temelleri"],["Makine öğrenmesi"],["Derin öğrenme"],["Bilgisayarlı görü"],["YZ etiği ve yanlılık"]]]];
+const LV=["Henüz değil","Öğreniyorum","Kullanabiliyorum","Güçlü yönüm"];
+st.sk=st.sk||{};
+function skR(){$("#skTab").innerHTML=`<tr><th>Beceri</th>${LV.map(l=>`<th style="width:110px">${l}</th>`).join("")}</tr>`+SK.map((g,gi)=>`<tr class="grp"><td colspan="5">${g[0]} analitik</td></tr>`+g[1].map((s,si)=>{const k=gi+"_"+si;return `<tr><td>${s[0]}</td>${LV.map((_,li)=>`<td style="text-align:center"><input type="radio" name="sk${k}" data-sk="${k}" value="${li}" ${st.sk[k]===li?"checked":""} style="accent-color:var(--navy2);width:17px;height:17px"></td>`).join("")}</tr>`}).join("")).join("");
+ $$("[data-sk]").forEach(r=>r.onchange=()=>{st.sk[r.dataset.sk]=+r.value;save();skSum()});skSum()}
+function skSum(){$("#skSum").innerHTML=SK.map((g,gi)=>{const v=g[1].map((_,si)=>st.sk[gi+"_"+si]).filter(x=>x!=null);const avg=v.length?v.reduce((a,b)=>a+b,0)/v.length:null;return `<div class="stat"><b style="color:var(--${L[gi].k})">${avg==null?"–":fmt(avg/3*100,0)+"%"}</b><span>${g[0]} (${v.length}/${g[1].length})</span></div>`}).join("");
+ let next=null;for(let gi=0;gi<SK.length&&!next;gi++)for(let si=0;si<SK[gi][1].length;si++){const v=st.sk[gi+"_"+si];if(v==null||v<2){next=[gi,si,v];break}}
+ $("#skNext").innerHTML=next?`<strong class="ui">Önerilen sıradaki adım:</strong> ${SK[next[0]][0]} — ${SK[next[0]][1][next[1]][0]}. <span class="small">Merdivenin alt basamaklarından başlamak, üsttekileri öğrenmeyi kolaylaştırır.</span>`:"<strong class=\"ui\">Tebrikler!</strong> Bütün becerileri en az “kullanabiliyorum” düzeyinde işaretledin. Uzmanlaşmak istediğin alanı seç ve derinleş."}
+$("#skCsv").onclick=()=>dl("analitik_beceri_haritam.csv",[["Kategori","Beceri","Düzey"]].concat(SK.flatMap((g,gi)=>g[1].map((s,si)=>[g[0],s[0],st.sk[gi+"_"+si]!=null?LV[st.sk[gi+"_"+si]]:""]))));
+$("#skPrint").onclick=()=>window.print();
+skR();
+
+// 9. test
+const Q=[
+ {q:"Yazara göre insan analitiğine başlamak için ne gerekir?",o:["İleri matematik diploması","Öğrenmeye istekli olmak; hangi “aletin” ne zaman kullanılacağını bilmek","Bütün formülleri ezberlemek","Elle hesaplama becerisi"],a:1,e:"Aletin iç mekaniğini değil, ne işe yaradığını ve nasıl kullanılacağını bilmek yeterli."},
+ {q:"Bir öğrenme kaynağı sana anlamsız geliyorsa ne yapmalısın?",o:["Konudan vazgeçmek","Başka bir kaynağa geçmek","Aynı kaynağı ezberlemek","Analitiğin sana göre olmadığını kabul etmek"],a:1,e:"Anlamayan sen değilsin; kaynak iyi açıklamıyor olabilir. Farklı anlatımlar daha derin kavrayış sağlar."},
+ {q:"“Çalışanlar neden ayrıldı?” hangi analitik türünün sorusudur?",o:["Betimleyici","Tanılayıcı","Öngörücü","Kural koyucu"],a:1,e:"Tanılayıcı analitik “Neden oldu?” sorusunu yanıtlar."},
+ {q:"Az sayıda çok yüksek ücret varken tipik ücret için en uygun ölçü hangisi?",o:["Ortalama","Ortanca","Varyans","En büyük değer"],a:1,e:"Ortanca, uç değerlerden ortalamaya göre çok daha az etkilenir."},
+ {q:"Analiz felcini azaltmak için yazarın ana önerisi nedir?",o:["Her değişkeni analiz etmek","Eyleme dönük bir karara götürebilecek analizlere öncelik vermek","Daha karmaşık modeller kullanmak","Analizi tamamen bırakmak"],a:1,e:"İnsan analitiği karar almayı desteklemek içindir; bazı bulgular eyleme dönük değildir."},
+ {q:"Yazar öngörücü modellere neden “belki analitiği” denebileceğini söylüyor?",o:["Modeller hep yanlış olduğu için","Modeller geçmiş veriye dayanır ve yalnızca örüntüler sürerse geçerlidir","Modeller nitel veri kullandığı için","Modeller yalnızca bireyler için çalıştığı için"],a:1,e:"Dünyadaki her değişiklik tahminin olası doğruluğunu değiştirir."},
+ {q:"Yazarın en çok utandığı model hangisiydi?",o:["Tahmini çok yanlış çıkan model","Neredeyse kusursuz tahmin eden ama üzerine hiçbir eylem yapılmayan model","Hiç bitirilmemiş model","Nitel veriyle kurulmuş model"],a:1,e:"Ayrılmaların %99'unu doğru tahmin etti ama içgörüler eyleme dönüştürülmedi."},
+ {q:"Bir olayın olup olmayacağından çok ne kadar sürede olacağına odaklanan teknik hangisi?",o:["Zaman serisi analizi","Sağkalım analizi","Ki-kare testi","Optimizasyon"],a:1,e:"Sağkalım analizi, örneğin yeni çalışanların ortalama ne kadar kalacağını tahmin eder."},
+ {q:"Bütçe kısıtı altında en iyi yan hak paketini seçmek hangi analitik türüne örnektir?",o:["Betimleyici","Tanılayıcı","Kural koyucu","Bilişsel"],a:2,e:"Kural koyucu analitik “Ne yapmalıyız?” sorusunu optimizasyonla yanıtlar."},
+ {q:"Yazara göre bilişsel analitik yapmadan önce ne yapılmalı?",o:["Model doğruluğunu ölçmek","Etik ve yanlılık değerlendirmesi","Bütçe onayı almak","Veriyi görselleştirmek"],a:1,e:"Gerçek insanlar ve hayatlarını etkileyen kararlar söz konusu."}];
+st.quiz=st.quiz||{};
+function quiz(){$("#quiz").innerHTML=Q.map((x,i)=>`<div class="card" style="margin:12px 0"><div class="ui" style="font-weight:700">${i+1}. ${x.q}</div>${x.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("")}<div class="fb" id="qe${i}" style="display:none">${x.e}</div></div>`).join("");
+ $$("#quiz .opt").forEach(b=>b.onclick=()=>{st.quiz[b.dataset.q]=+b.dataset.o;save();paint()});paint()}
+function paint(){let sc=0,n=0;Q.forEach((x,i)=>{const ch=st.quiz[i];if(ch===undefined)return;n++;if(ch===x.a)sc++;
+ $$(`#quiz .opt[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.o;b.classList.toggle("right",j===x.a);b.classList.toggle("wrong",j===ch&&ch!==x.a);b.disabled=true});$("#qe"+i).style.display="block"});
+ $("#score").innerHTML=n?`Skor: ${sc} / ${Q.length}${n===Q.length?' <button class="btn ghost" id="reset" style="margin-left:8px">Yeniden dene</button>':""}`:"";const r=$("#reset");if(r)r.onclick=()=>{st.quiz={};save();quiz()}}
+quiz();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>

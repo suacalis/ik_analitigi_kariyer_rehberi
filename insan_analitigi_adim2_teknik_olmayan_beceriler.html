@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adım 2: Teknik Olmayan Beceriler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--shadow:0 2px 14px rgba(11,58,140,.08);--c1:#1f5fd1;--c2:#1d8a5b;--c3:#b5651d}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--shadow:none;--c1:#6c9cff;--c2:#4cc38a;--c3:#e3a35c}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--shadow:none;--c1:#6c9cff;--c2:#4cc38a;--c3:#e3a35c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1000px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:700px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:100px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+h4{font-family:Raleway;font-size:15px;margin:1.2em 0 .3em}
+.quote{background:var(--soft);border-radius:12px;padding:16px 22px;margin:16px 0;font-style:italic;text-align:center}
+.quote b{display:block;font-style:normal;font-family:Raleway;font-size:14px;color:var(--muted);margin-top:6px}
+.caution{border:2px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0}
+.caution strong{font-family:Raleway;color:var(--navy2)}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn:hover{filter:brightness(1.08)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{font-family:Raleway;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+input[type=text],input[type=date],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+textarea{min-height:64px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.card .an{font-size:14px;color:var(--muted);margin-top:4px}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:640px){.twocol{grid-template-columns:1fr}}
+input[type=range]{width:100%;accent-color:var(--navy2)}
+.spec{display:flex;justify-content:space-between;font-family:Raleway;font-size:12px;font-weight:700;color:var(--muted)}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.acc details{border:1px solid var(--line);border-radius:12px;margin:10px 0;background:var(--card)}
+.acc summary{cursor:pointer;padding:12px 14px;font-family:Raleway;font-weight:800;color:var(--navy);list-style:none}
+.acc summary::before{content:"＋ ";color:var(--navy2)}
+.acc details[open] summary::before{content:"－ "}
+.acc .bd{padding:0 16px 12px}
+.acc .sub{font-size:15px;border-left:3px solid var(--line);padding-left:10px;margin:8px 0}
+.entry{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;background:var(--card);font-size:15px}
+.entry .h{font-family:Raleway;font-weight:700;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.entry .h button{border:0;background:none;color:var(--muted);cursor:pointer;font-size:16px}
+.tag{font-family:Raleway;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--navy)}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+.stat{flex:1;min-width:110px;border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--card)}
+.stat b{display:block;font-family:Raleway;font-size:22px;color:var(--navy)}
+.stat span{font-size:12px;color:var(--muted);font-family:Raleway}
+.check li{list-style:none;margin:6px 0}
+.check{padding-left:0}
+.check input{width:17px;height:17px;accent-color:var(--ok);vertical-align:-2px;margin-right:6px}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.fb{font-size:14px;color:var(--muted);margin-top:6px}
+mark.j{background:color-mix(in srgb,var(--warn) 30%,transparent);color:inherit;border-radius:3px;padding:0 2px}
+.jout{border:1px solid var(--line);border-radius:10px;padding:10px;min-height:40px;background:var(--card);white-space:pre-wrap;font-size:15px}
+.bars{display:flex;gap:20px;align-items:flex-end;height:160px;margin:16px 0 4px;padding:0 10px;border-bottom:1px solid var(--line)}
+.bar{flex:1;max-width:120px;background:var(--navy2);border-radius:8px 8px 0 0;position:relative;height:0;transition:height 1s}
+.bar.b2{background:var(--line)}
+.bar span{position:absolute;top:-24px;left:0;right:0;text-align:center;font-family:Raleway;font-weight:800;color:var(--ink)}
+.barlbl{display:flex;gap:20px;padding:0 10px}.barlbl div{flex:1;max-width:120px;text-align:center;font-size:13px;font-family:Raleway;color:var(--muted)}
+.rub{overflow-x:auto}
+.rub table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.rub th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.rub td{border:1px solid var(--line);padding:8px;vertical-align:top;position:relative}
+.rub td.cell{cursor:pointer}
+.rub td.cell:hover{background:color-mix(in srgb,var(--soft) 60%,transparent)}
+.rub td.now{outline:3px solid var(--c1);outline-offset:-3px;background:color-mix(in srgb,var(--c1) 10%,var(--card))}
+.rub td.goal::after{content:"🎯";position:absolute;top:4px;right:6px;font-size:14px}
+.rub tr.grp td{font-family:Raleway;font-weight:800;background:var(--bg);color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.rub td.sk{font-family:Raleway;font-weight:700;width:150px}
+.mode{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.mode button{border:0;background:var(--card);color:var(--ink);font-family:Raleway;font-weight:700;font-size:13px;padding:7px 14px;cursor:pointer}
+.mode button.on{background:var(--navy2);color:#fff}
+svg text{font-family:Raleway}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+a{color:var(--navy2)}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Adım 2</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">Giriş</a>
+      <a href="#s2" data-s="s2">3 rol</a>
+      <a href="#s3" data-s="s3">Tüketici</a>
+      <a href="#s4" data-s="s4">Öğrenme defteri</a>
+      <a href="#s5" data-s="s5">Çevirmen</a>
+      <a href="#s6" data-s="s6">İş zekâsı</a>
+      <a href="#s7" data-s="s7">İletişim</a>
+      <a href="#s8" data-s="s8">Hikâye</a>
+      <a href="#s9" data-s="s9">Öz değerlendirme</a>
+      <a href="#s10" data-s="s10">Test</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker">Her şey analitik değil · Adım 2</div>
+    <h1>Teknik Olmayan Becerilerini Geliştir</h1>
+    <p>İnsan analitiğinde en kritik becerilerin bir kısmı hiç de teknik değil. Bu bölümde veri tüketicisi, veri çevirmeni ve onları başarılı kılan iş zekâsı, iletişim ve hikâye anlatımı becerileri ele alınıyor; sonunda da kendi düzeyini değerlendiriyorsun.</p>
+    <p class="note">Kaynak: Heather Whiteman'ın insan analitiği kariyer rehberinin 29–60. sayfaları. Metin birebir çeviri değil; içerik Türkçe olarak özetlenip uyarlanmıştır.</p>
+  </div>
+
+  <!-- 1 -->
+  <section class="ch" id="s1">
+    <h2>Her Şey Analitik Değil</h2><hr>
+    <p>Kulağa tuhaf gelebilir ama insan analitiğindeki en önemli beceriler mutlaka analitik beceriler değildir; en kritiklerinden bazıları hiç teknik değildir. “Matematiğim iyi değil, bu alanda başarılı olamam” diyen pek çok kişiyle karşılaşılır; bu doğru değil. İnsan analitiği eleştirel düşünme, çeviri yapma ve stratejik olmakla da ilgilidir. Matematik ya da başka bir analiz, problemleri eleştirel biçimde düşünmenin yöntemlerinden yalnızca biridir.</p>
+    <p>Teknik beceriler tek başına yetmez. Sayılarda çok iyi olan biri, yalnızca sayılarda iyiyse fazla ilerleyemez. Doğru şeylerin analiz edilmesini, ortaya çıkan içgörülerin anlaşılmasını, uygun durumlara uygulanmasını ve karar süreçlerine yerleşmesini sağlamak için çok sayıda teknik olmayan beceri gerekir. Bunlar; kişilerarası ilişki, iletişim ve eleştirel düşünme yeteneklerinden oluşan geniş bir yelpazedir. Her kariyerde önemlidirler ama insan analitiğinde özellikle belirleyicidirler.</p>
+    <p>Teknik beceriler de önemli; Adım 3 onlara ayrılmış uzun bir bölüm. Ama insan analitiği, veriyi yalnızca analiz etmekten çok, analizi önemli sonuçlar üretecek şekilde akıllıca uygulamayı gerektirir.</p>
+    <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 2 -->
+  <section class="ch" id="s2">
+    <h2>Başarı İçin İnsan Analitiğini Uygulamak</h2><hr>
+    <p>Sağlam bir kariyer temeli için önce insan analitiğini <strong>yapabilme</strong> değil, <strong>uygulayabilme</strong> yeteneğine odaklanmak önerilir. Bir şeyi uygulamak için onu kendin üretmiş olman gerekmez.</p>
+    <h3>Boya benzetmesi</h3>
+    <p>Evindeki bir odayı, orada yaşayanların yaşam tarzına uygun ve hoş hâle getirmek için boyatmaya karar verdiğini düşün. Bunun için boyanın kimyasını, pigment bilimini, hatta boya yapmayı bilmen gerekmez; bir usta tutabilirsin. Ama odanın ne için kullanıldığını (çocuk odası mı, mutfak mı, giriş mi?) anlaman ve istediğin etkiyi (sakinleştirici mi, canlı mı, özgün mü?) yaratacak kararları vermen gerekir. Belki tek öğrenmen gereken mat, yarı parlak, saten gibi birkaç boya terimi ve sarının şaşırtıcı sayıda tonu olduğu gerçeğidir. Sonunda misafirlerin odaya bayılırsa, boyayı kendin üretip sürmemiş olman fark etmez: neyin gerektiğini bilip doğru kararları verecek kadar öğrenerek hedefine ulaştın.</p>
+    <p>İnsan analitiği kariyeri de az ya da çok teknik bir yelpaze üzerinde konumlanabilir. Yalnızca uygulamaya odaklanan bir <em>iç mimar</em> olabilirsin; veri analisti ya da veri bilimcisi gibi derinlemesine teknik rollere yönelip <em>profesyonel boyacı ya da boya üreticisi</em> olabilirsin; ya da ortada, ne boyanacağına karar veren ve işi kendi yapan bir <em>kendin-yap ustası</em> olabilirsin.</p>
+
+    <h3>Üç tarz</h3>
+    <div class="grid3">
+      <div class="card"><div class="t">Veri tüketicisi</div><div>Kendi üretmediği veri sonuçlarını kullanan herkes. Makale okurken, bilgi edinirken ve gündelik kararlarında içgörü kullanırken zaten bir veri tüketicisisin.</div><div class="an">Benzetmede: odayı boyatıp sonucu kullanan ev sahibi</div></div>
+      <div class="card"><div class="t">Veri çevirmeni</div><div>Analizi yapanlarla o analizleri kararlarda kullananlar arasındaki köprü. “Yapma” tarafını, uygulayıcıların işini anlayıp veriye yabancı tüketicilere aktaracak kadar bilir.</div><div class="an">Benzetmede: iç mimar</div></div>
+      <div class="card"><div class="t">Veri yapıcı (data doer)</div><div>Yazarın uydurduğu bir terim: belirli bir soruya, probleme ya da çıktıya yanıt vermek için veriyi toplamak, analiz etmek, yönetmek ve yorumlamak doğrudan işi olan kişi.</div><div class="an">Benzetmede: profesyonel boyacı / boya üreticisi</div></div>
+    </div>
+    <p>Hangi role yönelirsen yönel, hepsi teknik olmayan beceriler ister. Veri yapıcı bile sonuçlarının hangi amaçlarla ve hangi koşullarda kullanılacağını anlamadan işini iyi yapamaz. Bu beceriler iş önceliklerini ve fırsatları görmeni, iş ihtiyaçlarını analitik sorulara çevirmeni ve veriden sonuç üretmeni sağlar.</p>
+
+    <div class="box">
+      <div class="lbl">Etkinlik · Yelpazede neredesin?</div>
+      <p class="small">Her ifade için kaydırıcıyı sana en yakın uca getir.</p>
+      <div id="sliders"></div>
+      <div class="result" id="roleOut"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 3 -->
+  <section class="ch" id="s3">
+    <h2>İnsan Analitiği Veri Tüketicisi</h2><hr>
+    <p>İnsanlar doğal veri tüketicileridir: bilgi arar ve bildiklerini karşılaştıkları sorunlara uygularız. Ama çok az kişi bu doğal eğilimin gücünün farkındadır ya da onu bir beceri olarak geliştirmeye zaman ayırır. Ayırırsan büyük bir avantaj kazanırsın.</p>
+    <p>Veri tüketiminde uzmanlaşanlar kısa sürede ekibin “başvurulan kişisi” olur; fikirleri olgulara, içgörülere ve geniş bir dünya görüşüne dayandığı için görüşleri aranır ve saygı görür. Bir konuda fiilen uzman sayılan kişi, yeni fırsatlar ve terfiler için de ilk akla gelendir.</p>
+    <p>Bu fazla basit görünebilir: bilgi bul, tüket, bitti. Kısmen öyle. Bilgiye ulaşmak hiç olmadığı kadar kolay; ama bu yüzden iyi bilgiyi kötüsünden ayırmak hiç olmadığı kadar zor. Etkili veri tüketiciliği inşa edilmesi gereken gerçek bir beceridir.</p>
+    <h3>Kuş gözlemciliği benzetmesi</h3>
+    <p>Milyarlarca kuş var, ama birini görmek seni kuş gözlemcisi yapmaz; uzmanlık ısrarlı pratikle gelir. Başta yalnızca “bu bir kuş, mavi” dersin. Baktıkça ve çalıştıkça, ancak deneyimle görülen ayrıntıları fark edersin: “Bu bir alakarga!” Henüz hangi tür olduğunu bilmesen de eskisinden fazlasını biliyorsundur. Öğrendikçe öğrenecek ne kadar çok şey olduğunu da görürsün; alakarganın onlarca türü vardır.</p>
+    <p>İyi bir gözlemci kuşların olduğu yere gider. Bazen hiç kuş görmezsin, ama gittikçe en iyi gözlem noktalarını, yaşam alanlarını, hareket örüntülerini öğrenirsin. Veri tüketicisi de aradığı bilgiye gidip bakar; kendisi için ilgili ve kaliteli kaynakları bulması zaman alabilir. Zamanla örüntüleri tanır, kaynakları daha kolay bulursun; bilgin fark etmesen de birikir. Bir gün, nadir bir türü görür gibi, bir iş sorununu çözüme dönüştüren o nadir veri noktasını yakalayabilirsin.</p>
+    <p>İlgili bilgiye maruz kalmak ön koşuldur; ama bilgiyi yorumlayıp uygulayacak becerileri de geliştirmelisin. Odaklanabileceğin küçük bir beceri seti:</p>
+    <div class="grid3">
+      <div class="card"><div class="t">Analitik ve eleştirel düşünme</div><div class="small">Bilgiyi sorgulamak, kanıtı tartmak, çelişkileri görmek.</div></div>
+      <div class="card"><div class="t">Sistem düşüncesi</div><div class="small">Bir bulgunun örgütteki diğer süreç ve sonuçlarla bağlantısını görmek.</div></div>
+      <div class="card"><div class="t">Merak ve yaratıcılık</div><div class="small">Yeni sorular sormak, bilgiyi farklı bağlamlara taşımak.</div></div>
+    </div>
+    <p>Bunları geliştirmenin en iyi yolu onları aktif olarak kullanmak; bir sonraki bölümdeki etkinlikler bunun için.</p>
+    <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 4 -->
+  <section class="ch" id="s4">
+    <h2>Keşfet ve Katıl: İnsan Analitiği Tüketicisi Ol</h2><hr>
+    <p>Her gün bir tür insan analitiği içeriği tüketmeyi hedef edin. Odak dar ya da geniş olabilir: alana ilgini hâlâ keşfediyorsan olabildiğince çeşitli kaynak kullan; öğrenme, işe alım ya da çeşitlilik analitiği gibi belirli bir alana ilgin varsa ona odaklan. <strong>Başlamadan önce</strong> dijital ya da kâğıt bir defter edin; öğrendiklerini, gözlemlediklerini ve anlamadıklarını yazarak bilgiyi kalıcı hâle getir. Bu sayfadaki defter tam bunun için.</p>
+
+    <div class="acc">
+      <details open><summary>Eylem · Mevcut içeriği aktif tüket</summary><div class="bd">
+        <p>Yoğun dönemlerde hayatına en kolay sığdırabileceğin etkinlik. Gününün küçük bir bölümünü makale, video, podcast, eğitim, kitap gibi her biçimdeki insan analitiği içeriğine ayır.</p>
+        <div class="sub"><strong>Not al:</strong> Her içerik sırasında ve hemen sonrasında.</div>
+        <div class="sub"><strong>Özetle, karşılaştır:</strong> Her hafta sonunda tükettiklerini özetle; ortak yönlerini, farklarını, birbirini desteklediği ya da çeliştiği noktaları belirle.</div>
+      </div></details>
+      <details><summary>Eylem · İşi yaşayanlardan öğren</summary><div class="bd">
+        <p>Fırsatın varsa konferanslara, webinarlara, buluşmalara katıl. Dünyada büyük insan analitiği konferansları ve bazı şehirlerde küçük buluşma grupları var; <a href="https://www.societyforpeopleanalytics.org" target="_blank" rel="noopener">Society for People Analytics</a> gibi çevrimiçi topluluklara da katılabilirsin. Etkinlikleri önceden araştırıp planla.</p>
+        <div class="sub"><strong>Not al:</strong> Her etkinlik ya da forum incelemesinden sonra anlatılanları özetle, birden çok kişinin değindiği ortak temaları ve aklına takılan soruları yaz.</div>
+        <div class="sub"><strong>İpucu:</strong> Tanıştığın ya da bir şey öğrendiğin kişilerin adını ve iletişim bilgisini kaydet; gelecekte birer öğrenme kaynağıdırlar.</div>
+      </div></details>
+      <details><summary>Eylem · Sihri canlı izle</summary><div class="bd">
+        <p>Analiz ya da verinin konuşulduğu her toplantıya veya proje sunumuna davet edilmeye çalış. İnsan analitiğiyle ilgili olmak zorunda değil; her konu ve veri türü öğrenme fırsatıdır.</p>
+        <div class="sub"><strong>Not al:</strong> Hangi analiz kullanıldı, nasıl sunuldu, hangi soruya yanıt verdi, dinleyenler nasıl tepki verdi, sence ne iyi ya da kötü yapıldı?</div>
+        <div class="sub"><strong>Özetle:</strong> Her 3–5 toplantıda bir notlarını gözden geçir ve örüntüleri listele: Bazı analizler daha mı iyi karşılanıyor? Sunuculara hep aynı tür sorular mı soruluyor?</div>
+      </div></details>
+      <details><summary>Eylem · Araştır</summary><div class="bd">
+        <p>Bir sorun olduğunda ya da üzerinde çalıştığın şey için bilgi gerektiğinde, beş dakika da olsa araştır; bir konuda tavır almadan önce dışarıdan bir bilgi tüketmeyi alışkanlık hâline getir. Bazen işe yarar bir şey bulamazsın, bazen harika şeyler bulursun.</p>
+        <div class="sub"><strong>İpucu:</strong> Kaynakları her zaman çift kontrol et. Arama sonuçlarının büyük kısmı artık üretken yapay zekâdan geliyor; çoğu zaman inandırıcı görünür ama her zaman doğru değildir.</div>
+      </div></details>
+    </div>
+
+    <div class="caution"><strong>Dikkat:</strong> Bir şeyin yayımlanmış, sunulmuş ya da bir toplantıya girmiş olması doğru ya da iyi yapılmış olduğu anlamına gelmez. Not alırken çelişkileri aramayı alışkanlık edin ve o konuda daha fazla bakış açısı toplamak için ek bilgi tüket.</div>
+
+    <h3>Ne tüketmeli?</h3>
+    <ul>
+      <li>Yeni başlıyorsan, kurumların ne yaptığını anlatan vaka çalışmalarına, açıklayıcı yazılara ve insan analitiğinde kullanılan analizlerin tanıtımlarına odaklan; bunlar görüş yazılarından daha yararlıdır.</li>
+      <li>Zamanın mı kısıtlı? Kısa içerikleri önceliklendir ya da içeriği parçalara böl (örneğin her gün bir kitaptan 10 dakika). Gerekirse haftada bir makale gibi daha küçük bir hedef seç.</li>
+      <li>İçerik bolluğu gözünü korkutmasın; hepsine yetişemezsin. Birkaç güvenilir kaynağı ya da içeriği senin için derleyen yerleri takip et (örneğin Insight222, MyHRFuture blogunda her ay en iyi insan analitiği yazılarını derliyor).</li>
+    </ul>
+    <p><strong>Bonus eylem: tükettiğini kullanmaya başla.</strong> Biri sana soru sorduğunda, bir karar vereceğinde, bir sunum ya da mülakat yaklaştığında defterine dön ve konuyla ilgili kullanabileceğin içgörüleri ara. Ne kadar proaktif tüketirsen ihtiyaç anında o kadar hazır olursun; bir toplantıda ya da mülakatta daha önce okuduğun bir şeyin işe yaradığı anlar seni şaşırtacak sıklıkta gelir.</p>
+
+    <div class="box">
+      <div class="lbl">Araç · Öğrenme defterim</div>
+      <div class="stats">
+        <div class="stat"><b id="stTotal">0</b><span>Toplam kayıt</span></div>
+        <div class="stat"><b id="stWeek">0</b><span>Son 7 gün</span></div>
+        <div class="stat"><b id="stStreak">0</b><span>Gün serisi</span></div>
+        <div class="stat"><b id="stApply">0</b><span>Uygulama fikri</span></div>
+      </div>
+      <div class="twocol">
+        <select id="nType">
+          <option>Makale</option><option>Video</option><option>Podcast</option><option>Kitap</option><option>Eğitim</option>
+          <option>Etkinlik / webinar</option><option>Toplantı gözlemi</option><option>Araştırma (5 dk)</option>
+        </select>
+        <input type="text" id="nSrc" placeholder="Kaynak / başlık">
+      </div>
+      <div id="meetFields" style="display:none;margin-top:8px">
+        <div class="twocol">
+          <input type="text" id="mAnal" placeholder="Hangi analiz kullanıldı?">
+          <input type="text" id="mShow" placeholder="Nasıl sunuldu / gösterildi?">
+          <input type="text" id="mQ" placeholder="Hangi soruya yanıt verdi?">
+          <input type="text" id="mReact" placeholder="Dinleyenler nasıl tepki verdi?">
+        </div>
+      </div>
+      <div class="twocol" style="margin-top:8px">
+        <textarea id="nLearn" placeholder="Öğrendiklerim / gözlemlerim"></textarea>
+        <textarea id="nQ" placeholder="Anlamadıklarım / sorularım"></textarea>
+      </div>
+      <textarea id="nApply" style="margin-top:8px" placeholder="Uygulama fikri: bunu bugünkü işimde ya da gelecekte nasıl kullanabilirim? (çevirmen adımı)"></textarea>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="nAdd">Kaydet</button>
+        <button class="btn ghost" id="nWeek">Haftalık özet</button>
+        <button class="btn ghost" id="nCsv">CSV indir</button>
+        <input type="text" id="nSearch" placeholder="Defterde ara (örn. mülakat öncesi)" style="flex:1;min-width:180px">
+      </div>
+      <div id="weekOut"></div>
+      <div id="entries"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s4"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 5 -->
+  <section class="ch" id="s5">
+    <h2>İnsan Analitiği Çevirmeni</h2><hr>
+    <p>İnsan analitiği tüketmeye alıştıkça, bu bilgiyi kurumuna ya da kariyerine uygulanabilir biçimlere çevirme yeteneğini doğal olarak kazanırsın. Çevirmenler karmaşık veri ve içgörüleri açık, eyleme dönük içgörülere dönüştürür. Yazarın atıf yaptığı bir makale veri çevirmenini, analitik yapmayı gerektirmediği hâlde, analitiğin en güçlü rollerinden biri olarak tanımlar.</p>
+    <p>İşe alım yöneticilerinin yeni ekip üyesinde en sık aradığı şey de bu: Gereken teknik beceri ne olursa olsun, istedikleri kişi bir insan analitiği çevirmenidir. Yalnızca analitik becerisi olan ya da yalnızca işin insan tarafını bilen biri değil, veriye dayalı içgörüleri kurumun ihtiyaçlarına bağlayabilen biri.</p>
+    <p>Etkili bir çevirmen olmanın ilk ve en iyi adımı etkili bir tüketici olmak; her tükettiğin içerik bilgi tabanını genişletiyor. Ama çeviri bilgiyi emmenin ötesine geçer:</p>
+    <div class="grid3">
+      <div class="card"><div class="t">Eleştirel tüketici</div><div class="small">Soru sorar, sınırlılıkları değerlendirir; bilginin kurumun sorun ve fırsatlarına uygunluğunu tartar.</div></div>
+      <div class="card"><div class="t">Usta iletişimci</div><div class="small">Gücü veri ile eylem arasındaki boşluğu kapatmasından gelir.</div></div>
+      <div class="card"><div class="t">İlişki kurucu</div><div class="small">Başkalarının içgörülerini tüketir, veri uzmanlarıyla ilişki kurar ve içgörüleri karar vericilere ulaştırır.</div></div>
+      <div class="card"><div class="t">Hikâye anlatıcısı</div><div class="small">Bunu eyleme ve değişime ilham veren, ikna edici veri hikâyeleriyle yapar.</div></div>
+    </div>
+
+    <h3>Tüketiciden çevirmene: üç strateji</h3>
+    <ul class="check" id="strat">
+      <li><label><input type="checkbox" data-k="st1"><strong>Tüketici yolculuğunu kaz.</strong> Tüketici becerilerini çalışırken aldığın notlar paha biçilmez. Her makale, video, toplantı ya da sunum notunu yeniden aç; bugünkü durumun ya da gelecekteki senaryolar için olası uygulamaları düşün. Uygulama aradıkça daha çok yol görürsün. <span class="small">(Defterdeki “uygulama fikri” alanı bunun için.)</span></label></li>
+      <li><label><input type="checkbox" data-k="st2"><strong>Veri yapıcılarla dost ol.</strong> İş birliğinin gücünü küçümseme; çoğu analist emeğinin kullanıldığını görmek ister. Bir “veri arkadaşı” bul, hedeflerini ve bilgi ihtiyaçlarını paylaş. Seni ilgili veri kaynaklarına yönlendirebilir, analitik yaklaşım önerebilir, hatta yardım edebilir. Onlardan işini yapmalarını istemiyorsun; kendi uzmanlığını büyütmek için onların uzmanlığından yararlanıyorsun.</label></li>
+      <li><label><input type="checkbox" data-k="st3"><strong>Analitik araç setini kur.</strong> Çevirmen olmak için veri bilimci olman gerekmez; ama veri toplama, analiz ve görselleştirmenin temelleri seni daha iyi bir tüketici, talep eden ve çevirmen yapar (ayrıntılar Adım 3'te). Neyin mümkün olduğunu bilmek daha bilinçli sorular sormanı sağlar.</label></li>
+    </ul>
+    <p>Bu adımlar seni pasif bir bilgi tüketicisinden yetkin bir çevirmene taşır ve çevirmenin üç temel becerisini (iş zekâsı, iletişim, hikâye anlatımı) geliştirme fırsatı yaratır.</p>
+    <label class="readmark"><input type="checkbox" data-read="s5"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 6 -->
+  <section class="ch" id="s6">
+    <h2>Çevirmen Becerileri I: İş Zekâsı</h2><hr>
+    <p>Veriye dayalı içgörülerden iş sonucuna bağlı içgörülere, oradan da gerçekten eyleme yol açan içgörülere nasıl geçilir? İş zekâsı (business acumen), iletişim ve hikâye anlatımıyla. Bunlar olmadan en iyi çeviri bile etkisiz kalabilir.</p>
+    <p>İnsan analitiği, veriye dayalı içgörüleri iş sonuçlarına bağlamaktır. İçgörüleri tüketerek denklemin bir yarısını, iş zekânı geliştirerek diğer yarısını kazanırsın; ancak ondan sonra ikisini birbirine bağlayabilirsin. İş zekâsı tek bir beceri değil, deneyimle beslenen bilgi ve beceriler bileşimidir. Üç türü özellikle yararlıdır:</p>
+
+    <h3>1 · Sektör ve şirket uzmanlığı</h3>
+    <p>Temel budur. Sektörün dinamiklerini, rekabet ortamını ve operasyonel zorluklarını; şirketinin kültürünü, hedeflerini ve stratejik önceliklerini bilmek, işini liderliğe anlamlı gelecek ve büyük resimle uyumlu bir dile çevirmeni sağlar.</p>
+    <div class="box">
+      <div class="lbl">Hızlı kontrol · Bunları kolayca yanıtlayabiliyor musun?</div>
+      <ul class="check" id="acumen"></ul>
+      <div class="small" id="acumenOut"></div>
+    </div>
+    <p><strong>Geliştirmek için:</strong> şirket raporlarını, finansalları ve stratejik planları incele; farklı departmanlardan meslektaşlarla tanışıp önceliklerini ve sorunlarını öğren; sektör yayınlarını tara, konferanslara katıl, alanındaki profesyonellerle bağlantı kur.</p>
+
+    <h3>2 · Yetenek yönetimi uzmanlığı</h3>
+    <p>İnsan analitiğinde çalışan herkes için İK kavram ve uygulamalarını anlamak pazarlık konusu değildir; İK'da çalışmasan ve çalışmak istemesen bile. Yetenek yönetimi süreçlerinin, çalışan bağlılığının ve performans yönetiminin nasıl işlediğini bilmelisin. Pek çok analist “matematik doğruysa analiz de iyidir” varsayımı yüzünden kariyerinde tıkanır. Oysa insan verisini etkileyen örüntüleri, eğilimleri ve örgütsel kısıtları bilmiyorsan, matematik asla doğru olmaz.</p>
+    <div class="box">
+      <div class="lbl">Senaryo · Bağlamı bilmeyen analist</div>
+      <p class="small">Bir analist, ayrılmaların her yıl mart ayında sıçradığını bulup “mart ayında bağlılık düşüyor” sonucuna varıyor. Hangi İK bilgisi bu yorumu değiştirebilir?</p>
+      <div id="ctxQ"></div>
+    </div>
+    <p><strong>Geliştirmek için:</strong> İK profesyonellerini gölgele ve süreçlerin nasıl uygulandığını gözlemle; çalışanları süreçlere dahil etmek isteyen İK birimlerine gönüllü ol; İK kursları ve atölyelerine katıl; analitik dışındaki genel İK yayın ve bloglarını da okuma listene ekle.</p>
+
+    <h3>3 · Özgün uzmanlık bilgin</h3>
+    <p>Eğitiminden, işinden ya da iş dışındaki uğraşlarından gelen bir uzmanlık alanın mutlaka vardır: öğrenme ve gelişim, eğitim tasarımı, ürün yönetimi, pazarlama ya da topluluğuna destek verirken edindiğin bilgi. Bunu sektör, şirket ve yetenek yönetimi bilgisiyle birleştirmek seni öne çıkaran ve etkini artıran benzersiz bir bileşim yaratır.</p>
+    <div class="box">
+      <div class="lbl">Etkinlik · Uzmanlık köprüm</div>
+      <div class="twocol">
+        <input type="text" id="spArea" placeholder="Uzmanlık alanım (örn. pazarlama)">
+        <input type="text" id="spHow" placeholder="İnsan analitiğine nasıl uygulanır?">
+      </div>
+      <input type="text" id="spOpp" style="margin-top:8px" placeholder="Bunu yaratıcı biçimde kullanabileceğim bir fırsat">
+      <div class="result" id="spOut" style="display:none"></div>
+    </div>
+    <p>İş zekâsı birkaç ek beceri edinmekten ibaret değil; işin dilini konuşmak, bağlamı anlamak ve uzmanlığını kuruma anlamlı katkı sağlayan somut sonuçlara çevirmektir.</p>
+    <label class="readmark"><input type="checkbox" data-read="s6"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 7 -->
+  <section class="ch" id="s7">
+    <h2>Çevirmen Becerileri II: İletişim</h2><hr>
+    <p>İnsan analitiği hiçbir zaman yalnızca sayı işlemek olmadı; içgörüleri farklı paydaşlara anlam ifade edecek biçimde aktarmayı içerir. Veri yapıcı olmayı hedefleyenler için bile zorunlu bir beceridir. İyi iletilemeyen harika bir analiz, hiç yapılmamış bir analizle aynı etkiye sahiptir. Önce odaklanılacak iki beceri:</p>
+
+    <h3>Aktif dinleme</h3>
+    <p>Etkili iletişimin ilk adımının ağzını açmak olduğunu düşünüyorsan yeniden düşün. Aktif dinleme; söyleneni tam dikkatle dinlemek, anlamak, yanıt vermek ve akılda tutmaktır. Çalışan kaygılarının, ekip dinamiklerinin ve örgütsel zorlukların inceliklerini kavramanı sağlar. İnsan analitiği ihtiyacı çoğu zaman bir şikâyet, bir soru ya da tanımlanması güç bir sorun olarak ortaya çıkar; senin işin dinlemek, soru sormak ve gerçek ihtiyacı duyduğundan emin olmak.</p>
+    <div class="box">
+      <div class="lbl">Senaryo · Basit görünen bir veri talebi</div>
+      <p>Bir yönetici soruyor: <em>“Bu yıl kaç kişi işten ayrıldı?”</em> Nasıl yanıt verirsin?</p>
+      <div id="listenQ"></div>
+    </div>
+    <p><strong>Geliştirmek için:</strong> anladığından emin olmak için ana noktaları kendi sözlerinle tekrar et ve özetle; konuşanın bakış açısını derinleştirmek için açıklayıcı sorular sor.</p>
+
+    <h3>Basit ve açık iletişim</h3>
+    <p>Veri önemlidir, ama onu yorumlayıp açıkça sunabilmen daha önemlidir. Süslü görselleştirmeler ya da karmaşık istatistiksel açıklamalar yerine sadeliğe ve açıklığa odaklan. Mesajın analitik geçmişi olmayan biri tarafından hızla anlaşılabilmeli ve gereksiz ayrıntı içermemeli. Üç hafta veri temizleyip analiz çalıştırmış olabilirsin; dinleyicin bu emeği değil, içgörüleri ve onların konuyla ilgisini duymak ister.</p>
+    <ul>
+      <li><strong>Karmaşık kavramları basitleştir:</strong> girift analizleri kolay anlaşılır açıklamalara böl.</li>
+      <li><strong>Açık dil kullan:</strong> analitik olmayan paydaşlarla jargon ve teknik terimlerden kaçın.</li>
+      <li><strong>Bağlam ver:</strong> içgörünün büyük resimle ilgisini açıklayarak noktaları birleştirmelerine yardım et.</li>
+      <li><strong>Tüm çalışmanı gösterme:</strong> yalnızca en önemli ve kritik kısımları paylaş; ayrıntıyı doğrudan isteyene ver.</li>
+    </ul>
+    <div class="box">
+      <div class="lbl">Araç · Jargon dedektörü</div>
+      <p class="small">Bir yöneticiye göndereceğin bulgu metnini yapıştır; yaygın teknik terimler işaretlenir ve sade öneriler listelenir.</p>
+      <textarea id="jIn" style="min-height:90px">Lojistik regresyon modelimizde p &lt; 0.05 düzeyinde anlamlı çıkan katsayılara göre, yönetici değişimi yaşayan çalışanların ayrılma olasılığı daha yüksek; ayrıca kohort analizinde medyan kıdem sapması dikkat çekiyor.</textarea>
+      <div class="row" style="margin:8px 0"><button class="btn" id="jRun">Tara</button><span class="small" id="jScore"></span></div>
+      <div class="jout" id="jOut"></div>
+      <ul id="jTips" class="small"></ul>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s7"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 8 -->
+  <section class="ch" id="s8">
+    <h2>Çevirmen Becerileri III: Hikâye Anlatımı</h2><hr>
+    <p>Etkili iletişim yalnızca ilgili bilgiyi kısaca aktarmak değil, eyleme götüren ortak bir anlayış yaratmaktır. Hikâye anlatımı, ham bilgiyi dinleyicide karşılık bulan etkileyici bir anlatıya dönüştürme sanatıdır.</p>
+    <p><em>Made to Stick</em> kitabının yazarı Stanford'lu Chip Heath'in çalışmasına göre, bilgi bir hikâye içinde sunulduğunda insanların hatırladığı oran %63, yalnızca istatistik olarak sunulduğunda %5 oldu. Hikâye biçiminde bilgi alanlar eyleme de daha yatkındı: bağış istendiğinde bağış yapma olasılıkları %200 daha yüksekti.</p>
+    <div class="bars"><div class="bar" id="barA"><span>%63</span></div><div class="bar b2" id="barB"><span>%5</span></div></div>
+    <div class="barlbl"><div>Hikâye ile sunum</div><div>Yalnızca istatistik</div></div>
+    <p class="small" style="margin-top:4px">Bilgiyi hatırlayanların oranı (rehberde aktarılan çalışmaya göre)</p>
+
+    <h3>Veri hikâyesi becerilerini geliştirmek</h3>
+    <ul>
+      <li><strong>Dinleyicini tanı:</strong> hikâyeyi onların insan analitiğine aşinalığına göre uyarla; onlar için en anlamlı yönleri öne çıkar. (Aktif dinleme burada işe yarar.)</li>
+      <li><strong>Açık bir anlatı kur:</strong> başı, ortası ve sonu olan geleneksel bir yapı; içgörülerin sorunları nasıl çözdüğünü ya da hedeflere nasıl katkı sağladığını gösteren problem çözme yaklaşımı.</li>
+      <li><strong>Görselleri stratejik kullan:</strong> anlatıyı tamamlayan, anlamayı kolaylaştıran, gereksiz karmaşıklıktan arınmış grafikler (Adım 3'te ayrıntılı).</li>
+      <li><strong>İnsan unsuruna odaklan:</strong> gerçek örnekler ve anekdotlarla bilgiyi yakın kıl; veriyi çalışanlar, ekipler ve kurum üzerindeki etkisine bağla.</li>
+      <li><strong>Eyleme dönük içgörüleri vurgula:</strong> dinleyiciyi anlam aramak zorunda bırakma; öneriler ve pratik sonuçlar sun.</li>
+      <li><strong>Pratik yap, yinele:</strong> hikâyeni farklı ortamlarda anlat; güvendiğin bir meslektaşından geri bildirim iste.</li>
+      <li><strong>Ömür boyu bir yolculuk planla:</strong> kitap, video ve kurs bol; ama ustalaşmak zaman ve pratik ister. Bir gecede usta anlatıcı olmayı bekleme, ama bu beceriyi geliştirmeden etkili iletişimci olmayı da bekleme.</li>
+    </ul>
+
+    <div class="box">
+      <div class="lbl">Araç · Veri hikâyesi kurucu</div>
+      <div class="twocol">
+        <select id="sbAud">
+          <option value="üst yönetim">Dinleyici: Üst yönetim</option>
+          <option value="birim yöneticileri">Dinleyici: Birim yöneticileri</option>
+          <option value="İK ekibi">Dinleyici: İK ekibi</option>
+          <option value="çalışanlar">Dinleyici: Çalışanlar</option>
+        </select>
+        <input type="text" id="sbGoal" placeholder="Bağlı olduğu kurumsal hedef">
+      </div>
+      <textarea id="sbBeg" style="margin-top:8px" placeholder="BAŞ — Sorun / durum: ne oluyor ve neden önemli?"></textarea>
+      <textarea id="sbMid" style="margin-top:8px" placeholder="ORTA — Veri ne gösteriyor? (en kritik 1–2 bulgu)"></textarea>
+      <textarea id="sbHum" style="margin-top:8px" placeholder="İNSAN UNSURU — Bir örnek, anekdot ya da çalışanlar üzerindeki etki"></textarea>
+      <textarea id="sbEnd" style="margin-top:8px" placeholder="SON — Öneri: ne yapılmalı, kim, ne zaman?"></textarea>
+      <div class="row" style="margin-top:8px"><button class="btn" id="sbMake">Hikâyeyi oluştur</button><button class="btn ghost" id="sbCopy">Kopyala</button></div>
+      <div class="result" id="sbOut" style="display:none;white-space:pre-wrap"></div>
+    </div>
+
+    <p>Hikâye anlatımı karmaşık analitiği yalnızca bilgilendiren değil, eyleme ilham veren bir anlatıya dönüştürür; dinleyicinin veriyi anlamasını ve gerçek dünyadaki sonuçlarını görmesini sağlar.</p>
+    <div class="quote">“Bilgi aktarma, bir deneyim yarat.”<b>— Nancy Duarte</b></div>
+    <div class="quote">“Sayıların anlatacak önemli bir hikâyesi var; ona açık ve ikna edici bir ses vermek sana kalıyor.”<b>— Stephen Few, veri görselleştirme uzmanı</b></div>
+    <label class="readmark"><input type="checkbox" data-read="s8"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 9 -->
+  <section class="ch" id="s9">
+    <h2>Kendini Keşfet: Bugün Neredesin?</h2><hr>
+    <p>Bu alanlardaki beceri düzeyini değerlendir. <strong>Bugünkü düzey</strong> modunda sana uyan hücreye tıkla. <strong>Bonus:</strong> <strong>Hedef düzey</strong> moduna geçip her beceride ulaşmak istediğin düzeyi seç ve gelişim adımlarını yaz.</p>
+    <div class="row noprint" style="margin:10px 0">
+      <div class="mode"><button id="mNow" class="on">● Bugünkü düzey</button><button id="mGoal">🎯 Hedef düzey</button></div>
+      <button class="btn ghost" id="rCsv">CSV indir</button>
+      <button class="btn ghost" id="rPrint">Yazdır / PDF</button>
+    </div>
+    <div class="rub"><table id="rub"></table></div>
+    <div class="twocol" style="margin-top:16px;align-items:start">
+      <div><svg id="radar" viewBox="0 0 360 340" style="width:100%;max-width:420px"></svg>
+        <div class="small"><span style="color:var(--c1)">■</span> Bugün &nbsp; <span style="color:var(--c2)">■</span> Hedef</div></div>
+      <div id="gaps"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s9"> Öz değerlendirmeyi tamamladım</label>
+  </section>
+
+  <!-- 10 -->
+  <section class="ch" id="s10">
+    <h2>Mini Test</h2><hr>
+    <div id="quiz"></div>
+    <p class="ui" id="score" style="font-weight:700;color:var(--navy)"></p>
+    <label class="readmark"><input type="checkbox" data-read="s10"> Testi tamamladım</label>
+  </section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><a class="pv" href="insan_analitigi_adim1_hemen_basla.html"><small>← Önceki</small><b>Adım 1: Hemen başla</b></a><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><a class="nx" href="insan_analitigi_adim3_nicel_analitik.html"><small>Sonraki →</small><b>Adım 3: Nicel analitik</b></a></nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+const KEY='pa_adim2_v1';
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)};
+const copy=v=>{(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast('Kopyalandı')).catch(()=>toast('Kopyalanamadı'))};
+const dl=(name,rows)=>{const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const b=new Blob(['\ufeff'+rows.map(r=>r.map(q).join(';')).join('\n')],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href)};
+
+// tema
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$('#theme').onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');d.dataset.theme=cur==='dark'?'light':'dark';st.theme=d.dataset.theme;save();drawRadar()};
+
+// ilerleme
+st.read=st.read||{};const N=10;
+function prog(){const n=Object.values(st.read).filter(Boolean).length;$('#progbar').style.width=(n/N*100)+'%';$$('#nav a').forEach(a=>a.classList.toggle('done',!!st.read[a.dataset.s]))}
+$$('[data-read]').forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();if(cb.checked)toast('Bir bölüm daha tamam!')}});prog();
+
+// 2. rol kaydırıcıları
+const SL=[
+ ['Veriyi kendim çekip temizlemek beni heyecanlandırmaz','Veriyi kendim çekip temizlemekten keyif alırım'],
+ ['Kod/istatistik öğrenmeye çok zaman ayırmak istemem','Kod/istatistik öğrenmeye bolca zaman ayırırım'],
+ ['Paydaşlarla konuşup ihtiyaçlarını anlamayı severim','Paydaş toplantıları yerine analize odaklanmayı tercih ederim'],
+ ['Sonuçları sunmak ve ikna etmek bana göre','Sonuçları başkasının sunmasını tercih ederim']];
+st.sl=st.sl||SL.map(()=>50);
+$('#sliders').innerHTML=SL.map((s,i)=>`<div style="margin:12px 0"><input type="range" min="0" max="100" value="${st.sl[i]}" data-sl="${i}"><div class="spec"><span>${s[0]}</span><span style="text-align:right">${s[1]}</span></div></div>`).join('');
+function role(){const tech=st.sl.reduce((a,b)=>a+b,0)/st.sl.length;let r,d;
+ if(tech<38){r='Veri tüketicisi → çevirmen yönelimi';d='İç mimar gibisin: kararı ve sonucu yönetmek sana daha yakın. Çevirmen becerileri (iş zekâsı, iletişim, hikâye) en güçlü kaldıracın.'}
+ else if(tech<62){r='Veri çevirmeni / kendin-yap ustası';d='Hem ne boyanacağına karar verip hem de fırçayı tutmak istiyorsun. Temel analitik araç setin ile çeviri becerilerin birlikte gelişmeli.'}
+ else{r='Veri yapıcı yönelimi';d='Profesyonel boyacı ya da boya üreticisi gibisin. Unutma: veri yapıcı da sonuçlarının hangi amaçla ve koşulda kullanılacağını anlamadan işini iyi yapamaz.'}
+ $('#roleOut').innerHTML=`<strong class="ui">${r}</strong> <span class="small">(teknik yönelim: %${Math.round(tech)})</span><br>${d}`}
+$$('[data-sl]').forEach(x=>x.oninput=()=>{st.sl[x.dataset.sl]=+x.value;save();role()});role();
+
+// 4. defter
+st.notes=st.notes||[];
+$('#nType').onchange=()=>{$('#meetFields').style.display=$('#nType').value==='Toplantı gözlemi'?'block':'none'};
+const dayKey=d=>new Date(d).toISOString().slice(0,10);
+function stats(){const n=st.notes;$('#stTotal').textContent=n.length;const wk=Date.now()-7*864e5;$('#stWeek').textContent=n.filter(x=>x.t>wk).length;
+ $('#stApply').textContent=n.filter(x=>x.apply&&x.apply.trim()).length;
+ const days=new Set(n.map(x=>dayKey(x.t)));let s=0,d=new Date();if(!days.has(dayKey(d)))d.setDate(d.getDate()-1);while(days.has(dayKey(d))){s++;d.setDate(d.getDate()-1)}$('#stStreak').textContent=s}
+function renderNotes(){const q=$('#nSearch').value.toLowerCase().trim();
+ const list=st.notes.filter(n=>!q||JSON.stringify(n).toLowerCase().includes(q)).sort((a,b)=>b.t-a.t);
+ $('#entries').innerHTML=list.length?list.map(n=>`<div class="entry"><div class="h"><span><span class="tag">${esc(n.type)}</span> ${new Date(n.t).toLocaleDateString('tr-TR')} · ${esc(n.src)}</span><button data-dn="${n.t}" title="Sil">×</button></div>
+ ${n.meet?`<div class="small">Analiz: ${esc(n.meet[0])} · Sunum: ${esc(n.meet[1])} · Soru: ${esc(n.meet[2])} · Tepki: ${esc(n.meet[3])}</div>`:''}
+ ${n.learn?`<div>📘 ${esc(n.learn)}</div>`:''}${n.q?`<div>❓ ${esc(n.q)}</div>`:''}${n.apply?`<div>🔁 <em>${esc(n.apply)}</em></div>`:''}</div>`).join(''):'<p class="small">Henüz kayıt yok. İlk içeriğini bugün tüket ve buraya yaz.</p>';
+ $$('[data-dn]').forEach(b=>b.onclick=()=>{st.notes=st.notes.filter(n=>n.t!=b.dataset.dn);save();renderNotes()});stats()}
+$('#nAdd').onclick=()=>{const n={t:Date.now(),type:$('#nType').value,src:$('#nSrc').value.trim(),learn:$('#nLearn').value.trim(),q:$('#nQ').value.trim(),apply:$('#nApply').value.trim()};
+ if(n.type==='Toplantı gözlemi')n.meet=['#mAnal','#mShow','#mQ','#mReact'].map(s=>$(s).value.trim());
+ if(!n.src&&!n.learn){toast('Kaynak ya da öğrendiğin bir şey yaz');return}
+ st.notes.push(n);save();['#nSrc','#nLearn','#nQ','#nApply','#mAnal','#mShow','#mQ','#mReact'].forEach(s=>$(s).value='');renderNotes();toast('Deftere eklendi')};
+$('#nSearch').oninput=renderNotes;
+$('#nWeek').onclick=()=>{const wk=st.notes.filter(x=>x.t>Date.now()-7*864e5);const by={};wk.forEach(x=>by[x.type]=(by[x.type]||0)+1);
+ $('#weekOut').innerHTML=`<div class="result"><strong class="ui">Son 7 gün: ${wk.length} kayıt</strong> ${Object.entries(by).map(([k,v])=>`<span class="tag">${esc(k)}: ${v}</span>`).join(' ')}
+ <p class="small" style="margin:8px 0 4px">Haftalık özet soruları: Bu içeriklerin ortak noktası ne? Nerede ayrışıyorlar? Birbirini destekleyen ya da çelişen noktalar hangileri? ${st.notes.filter(n=>n.type==='Toplantı gözlemi').length>=3?'Toplantı notlarında bir örüntü var mı: hangi analizler daha iyi karşılandı, sunuculara hep aynı sorular mı soruldu?':''}</p>
+ <textarea id="wkSum" placeholder="Haftalık özetim">${esc(st.wk||'')}</textarea></div>`;$('#wkSum').oninput=e=>{st.wk=e.target.value;save()}};
+$('#nCsv').onclick=()=>dl('ogrenme_defteri.csv',[['Tarih','Tür','Kaynak','Öğrendiklerim','Sorularım','Uygulama fikri','Toplantı: analiz','sunum','soru','tepki']].concat(st.notes.map(n=>[new Date(n.t).toLocaleDateString('tr-TR'),n.type,n.src,n.learn,n.q,n.apply].concat(n.meet||['','','','']))));
+renderNotes();
+
+// 5. stratejiler
+st.ck=st.ck||{};
+$$('#strat input').forEach(c=>{c.checked=!!st.ck[c.dataset.k];c.onchange=()=>{st.ck[c.dataset.k]=c.checked;save()}});
+
+// 6. iş zekâsı kontrol
+const AQ=['Kurumun vizyonunu ve misyonunu açıklayabilirim.','Şirketin nasıl para kazandığını, harcadığını ve tasarruf ettiğini anlatabilirim.','Rakipleri ve sektördeki başlıca eğilimleri sayabilirim.','Çalıştığım fonksiyonun genel kurumsal hedefleri nasıl desteklediğini açıklayabilirim.'];
+st.aq=st.aq||{};
+$('#acumen').innerHTML=AQ.map((q,i)=>`<li><label><input type="checkbox" data-aq="${i}" ${st.aq[i]?'checked':''}>${q}</label></li>`).join('');
+function aq(){const n=Object.values(st.aq).filter(Boolean).length;$('#acumenOut').textContent=n===4?'Harika: temel iş zekâsı soruları sana kolay geliyor.':`${4-n} soru henüz kolay gelmiyor. Bulunduğun kurumu (ya da girmek istediğin sektörü) tanımaya zaman ayır.`}
+$$('[data-aq]').forEach(c=>c.onchange=()=>{st.aq[c.dataset.aq]=c.checked;save();aq()});aq();
+
+// senaryo helper
+function scen(sel,opts){$(sel).innerHTML=opts.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}</button>`).join('')+'<div class="fb"></div>';
+ $$(sel+' .opt').forEach(b=>b.onclick=()=>{const o=opts[b.dataset.i];$$(sel+' .opt').forEach(x=>x.classList.remove('right','wrong'));b.classList.add(o[1]?'right':'wrong');$(sel+' .fb').textContent=o[2]})}
+scen('#ctxQ',[
+ ['Hiçbir şey; veri açıkça bağlılığın düştüğünü gösteriyor.',false,'Matematik doğru olabilir ama bağlamı bilmeden yorum anlamsız kalabilir.'],
+ ['Primlerin şubat sonunda ödenmesi ve çalışanların prim alıp ayrılmayı beklemesi.',true,'Evet. Ücret ve yan hakların ne zaman ödendiği, performans değerlendirme dönemleri ve örgüt yapısı gibi yetenek yönetimi uygulamaları insan verisini doğrudan şekillendirir.'],
+ ['Mart ayında hava durumunun değişmesi.',false,'Olası ama zayıf bir açıklama; önce kurumun kendi İK takvimine bakmak gerekir.']]);
+scen('#listenQ',[
+ ['Hemen İK sisteminden sayıyı çekip gönderirim.',false,'Sıradan bir analist böyle yapar; ama gerçek ihtiyacı kaçırma riski var.'],
+ ['“Elbette. Ayrılmalarla ilgili özellikle daha iyi anlamak istediğin bir şey var mı?” diye sorarım.',true,'İstisnai bir insan analitiği profesyonelinin yanıtı. Belki asıl kaygı ayrılmanın sektör ortalamasının üstünde olup olmadığıdır (o zaman karşılaştırma verisi toplarsın) ya da belirli bir departman veya lokasyondur (o zaman o sayıları sunarsın).'],
+ ['Tüm ayrılma verisini 40 sayfalık bir raporla sunarım.',false,'Bağlamı ve hedefi bilmeden fazla ayrıntı, sade ve açık iletişime ters düşer.']]);
+
+// uzmanlık köprüsü
+st.sp=st.sp||{};['spArea','spHow','spOpp'].forEach(id=>{$('#'+id).value=st.sp[id]||'';$('#'+id).oninput=()=>{st.sp[id]=$('#'+id).value;save();sp()}});
+function sp(){const s=st.sp;if(!s.spArea){$('#spOut').style.display='none';return}$('#spOut').style.display='block';
+ $('#spOut').innerHTML=`<strong class="ui">Benzersiz bileşimin:</strong> ${esc(s.spArea)} + sektör/şirket bilgisi + yetenek yönetimi bilgisi${s.spHow?` → ${esc(s.spHow)}`:''}${s.spOpp?`<br><span class="small">İlk fırsat: ${esc(s.spOpp)}</span>`:''}`}sp();
+
+// 7. jargon
+const JG={'regresyon':'ilişki modeli','lojistik regresyon':'olasılık modeli','katsayı':'etki büyüklüğü','p <':'anlamlılık ifadesi → “tesadüf olma ihtimali düşük”','p<':'“tesadüf olma ihtimali düşük”','anlamlı':'“tesadüf değil” / “güvenilir fark”','istatistiksel olarak':'(çoğu zaman çıkarılabilir)','korelasyon':'birlikte değişme','varyans':'dağılım / farklılık','standart sapma':'ortalamadan tipik uzaklık','medyan':'ortanca değer','kohort':'aynı dönem grubu','sapma':'fark','model':'yöntem','değişken':'etken','veri seti':'veri','outlier':'uç değer','aykırı değer':'olağan dışı değer','güven aralığı':'olası aralık','hipotez':'varsayım','churn':'ayrılma','attrition':'ayrılma','dashboard':'gösterge paneli','granüler':'ayrıntılı','normalize':'karşılaştırılabilir hâle getirilmiş','segmentasyon':'gruplara ayırma','eta':'(teknik terim)','r²':'açıklama gücü','r2':'açıklama gücü','olasılık':'şans'};
+$('#jRun').onclick=()=>{let t=$('#jIn').value;const found=new Set();const keys=Object.keys(JG).sort((a,b)=>b.length-a.length);
+ let h=esc(t);keys.forEach(k=>{const re=new RegExp('('+esc(k).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');if(re.test(h)){found.add(k);h=h.replace(re,'<mark class="j">$1</mark>')}});
+ $('#jOut').innerHTML=h;const words=t.split(/\s+/).filter(Boolean).length;
+ $('#jScore').textContent=`${found.size} teknik terim · ${words} kelime ${found.size===0?'— sade görünüyor 👍':found.size>3?'— yönetici için fazla teknik':''}`;
+ $('#jTips').innerHTML=[...found].map(k=>`<li><strong>${esc(k)}</strong> → ${esc(JG[k])}</li>`).join('')+(words>40?'<li>Metin uzun: yalnızca en kritik bulguyu ve neden önemli olduğunu bırak.</li>':'')};
+
+// 8. hikâye
+const obs=new IntersectionObserver(e=>{if(e[0].isIntersecting){$('#barA').style.height='126px';$('#barB').style.height='10px'}},{threshold:.4});obs.observe($('.bars'));
+st.sb=st.sb||{};['sbAud','sbGoal','sbBeg','sbMid','sbHum','sbEnd'].forEach(id=>{if(st.sb[id])$('#'+id).value=st.sb[id];$('#'+id).oninput=$('#'+id).onchange=()=>{st.sb[id]=$('#'+id).value;save()}});
+function story(){const g=id=>$('#'+id).value.trim();return `Dinleyici: ${g('sbAud')}${g('sbGoal')?` · Hedef: ${g('sbGoal')}`:''}\n\n1) Durum: ${g('sbBeg')||'…'}\n\n2) Veri ne söylüyor: ${g('sbMid')||'…'}\n\n3) İnsan boyutu: ${g('sbHum')||'…'}\n\n4) Önerimiz: ${g('sbEnd')||'…'}`}
+$('#sbMake').onclick=()=>{const miss=['sbBeg','sbMid','sbHum','sbEnd'].filter(id=>!$('#'+id).value.trim()).length;$('#sbOut').style.display='block';$('#sbOut').textContent=story()+(miss?`\n\n⚠ ${miss} bölüm boş: başı, ortası ve sonu olan bir anlatı, insan unsuru ve net bir öneri hikâyeyi güçlendirir.`:'')};
+$('#sbCopy').onclick=()=>copy(story());
+
+// 9. rubrik
+const LV=['1 · Farkında','2 · Yetkin','3 · Uzman','4 · Stratejist'];
+const RB=[
+ ['İş zekâsı becerileri',[
+  ['Sektör uzmanlığı',['Sektör eğilimlerini ve başlıca oyuncuları temel düzeyde bilir.','Pazar dinamiklerini ve rakip stratejilerini analiz edebilir.','Belirli sektör segmentleri ve şirketler hakkında derin bilgiye sahiptir.','Sektördeki değişimlere yön vermek için uzun vadeli vizyon ve strateji geliştirir.']],
+  ['Şirket uzmanlığı',['Temel iş terim ve kavramlarını tanır; şirketin değer önerisini anlatabilir.','Şirketteki farklı birimlerin birlikte nasıl çalıştığını anlar.','Finansal tabloları ve temel performans göstergelerini (KPI) yorumlayıp işin sağlığını değerlendirir; kendi işini şirket hedefleriyle aktif olarak hizalar.','Kritik iş sorunlarını belirler; kârlılık ve büyüme için veriye dayalı çözümler önerir.']],
+  ['Yetenek yönetimi uzmanlığı',['Temel işe alım ve eğitim uygulamalarını anlar.','Kanıtlanmış yetenek yönetimi yöntemlerini etkili biçimde uygular.','Yetenek kazanımı ve gelişim programları tasarlar, yenilikler getirir.','Yetenek stratejisi aracılığıyla kurumda işin geleceğini şekillendirir.']],
+  ['Özgün uzmanlık bilgin',['Belirli bir alana ilgisi vardır ama deneyimi sınırlıdır.','Bilgisini pratik sorunları çözmek için yetkin biçimde uygular.','Derin kuramsal ve pratik uzmanlığıyla alanında tanınan bir otoritedir.','Alanında yeni bilginin geliştirilmesine ve uygulanmasına öncülük eder.']]]],
+ ['İletişim becerileri',[
+  ['Aktif dinleme',['Ağırlıklı olarak kendi düşünce ve tepkilerine odaklanır.','Konuşanın sözlerine ve sözsüz işaretlerine yakından dikkat eder.','Anladığından emin olmak için aktif olarak yeniden ifade eder ve açıklayıcı sorular sorar.','Konuşanın duyguları ve bakış açısıyla derin bağ kurar; ihtiyaçları önceden sezer.']],
+  ['Sade ve açık iletişim',['Fikirlerini karmaşık ve zaman zaman kafa karıştırıcı biçimde ifade eder.','Ana noktalara odaklanarak açık ve öz iletişim kurar.','Farklı dinleyiciler için etkileyici ve kolay anlaşılır mesajlar kurgular.','Kurumsal hedeflere ulaşmak için iletişim stratejileri geliştirir ve uygular.']]]],
+ ['Hikâye anlatımı becerileri',[
+  ['Veri görselleştirme ve sunum',['Temel veri görselleştirmelerini ve grafikleri yorumlayabilir.','Veriyi analiz eder, bulguları açık ve bilgilendirici raporlarla sunar.','İçgörü ve eylemi tetikleyen ilgi çekici veri temsilleri oluşturur.','Karmaşık veriyi dinleyicinin bakışını şekillendiren etkili görsellere ve hikâyelere dönüştürür.']],
+  ['Hikâye anlatımı',['Hikâyelerin gücünü fark eder; başı, ortası, sonu olan temel anlatılar kullanır.','Fikir ve kavramları açıklayan açık ve ilgi çekici hikâyeler kurar; içgörülerin sorunlara ve hedeflere katkısını gösterir.','Veriyi, duyguyu, görselleri ve dinleyici içgörüsünü eyleme götüren etkili hikâyelerde birleştirir.','Örgüt kültürünü şekillendiren, paydaşlarda derin karşılık bulan ve başkalarını eyleme motive eden anlatılar tasarlar.']]]]];
+const SK=RB.flatMap(g=>g[1].map(s=>s[0]));
+st.rb=st.rb||{now:{},goal:{},steps:{}};let mode='now';
+$('#mNow').onclick=()=>{mode='now';$('#mNow').classList.add('on');$('#mGoal').classList.remove('on')};
+$('#mGoal').onclick=()=>{mode='goal';$('#mGoal').classList.add('on');$('#mNow').classList.remove('on')};
+function rub(){$('#rub').innerHTML=`<thead><tr><th>Beceri</th>${LV.map(l=>`<th>${l}</th>`).join('')}</tr></thead><tbody>`+
+ RB.map(g=>`<tr class="grp"><td colspan="5">${g[0]}</td></tr>`+g[1].map(s=>`<tr><td class="sk">${s[0]}</td>${s[1].map((d,i)=>`<td class="cell ${st.rb.now[s[0]]===i+1?'now':''} ${st.rb.goal[s[0]]===i+1?'goal':''}" data-sk="${esc(s[0])}" data-lv="${i+1}">${d}</td>`).join('')}</tr>`).join('')).join('')+'</tbody>';
+ $$('#rub td.cell').forEach(td=>td.onclick=()=>{const k=td.dataset.sk,v=+td.dataset.lv;st.rb[mode][k]=st.rb[mode][k]===v?undefined:v;save();rub()});drawRadar();gaps()}
+function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
+function drawRadar(){const cx=180,cy=165,R=120,n=SK.length;const pt=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/n;return[cx+Math.cos(a)*R*v/4,cy+Math.sin(a)*R*v/4]};
+ let s='';for(let l=1;l<=4;l++)s+=`<polygon points="${SK.map((_,i)=>pt(i,l).join(',')).join(' ')}" fill="none" stroke="${css('--line')}"/>`;
+ SK.forEach((k,i)=>{const[x,y]=pt(i,4);const[lx,ly]=pt(i,5.1);s+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="${css('--line')}"/><text x="${lx}" y="${ly}" font-size="10" text-anchor="middle" dominant-baseline="middle" fill="${css('--muted')}">${esc(k.replace(' uzmanlığı','').replace(' bilgin',''))}</text>`});
+ [['goal','--c2'],['now','--c1']].forEach(([m,c])=>{if(!SK.some(k=>st.rb[m][k]))return;s+=`<polygon points="${SK.map((k,i)=>pt(i,st.rb[m][k]||0).join(',')).join(' ')}" fill="${css(c)}" fill-opacity=".18" stroke="${css(c)}" stroke-width="2"/>`});
+ $('#radar').innerHTML=s}
+function gaps(){const rows=SK.filter(k=>st.rb.goal[k]&&(st.rb.goal[k]>(st.rb.now[k]||0)));
+ $('#gaps').innerHTML=`<div class="lbl">Gelişim adımları</div>`+(rows.length?rows.map(k=>`<div style="margin:8px 0"><div class="ui" style="font-weight:700;font-size:14px">${esc(k)}: ${st.rb.now[k]||'?'} → ${st.rb.goal[k]}</div><input type="text" data-step="${esc(k)}" value="${esc(st.rb.steps[k]||'')}" placeholder="Bu beceriyi geliştirmek için pratik adımım"></div>`).join(''):'<p class="small">Hedef modunda bugünkü düzeyinden yüksek bir hücre seçtiğinde, beceri burada adım yazman için listelenir.</p>');
+ $$('[data-step]').forEach(i=>i.oninput=()=>{st.rb.steps[i.dataset.step]=i.value;save()})}
+$('#rCsv').onclick=()=>dl('cevirmen_becerileri_degerlendirme.csv',[['Beceri','Bugünkü düzey','Hedef düzey','Gelişim adımı']].concat(SK.map(k=>[k,st.rb.now[k]||'',st.rb.goal[k]||'',st.rb.steps[k]||''])));
+$('#rPrint').onclick=()=>window.print();
+rub();
+
+// 10. test
+const Q=[
+ {q:'Yazara göre sağlam bir kariyer temeli için önce neye odaklanmalı?',o:['İnsan analitiğini yapabilmeye','İnsan analitiğini uygulayabilmeye','İleri istatistiğe','Kodlamaya'],a:1,e:'Boya benzetmesinde olduğu gibi, sonucu elde etmek için boyayı kendin üretmen gerekmez; doğru kararları verecek kadar bilmen gerekir.'},
+ {q:'Analizi yapanlarla kararlarda kullananlar arasındaki köprü kimdir?',o:['Veri tüketicisi','Veri yapıcı','Veri çevirmeni','Veri mühendisi'],a:2,e:'Çevirmen, yapıcıların işini veriye yabancı tüketicilere aktaracak kadar “yapma” tarafını bilir.'},
+ {q:'Kuş gözlemciliği benzetmesinin ana fikri nedir?',o:['Veri her yerde olduğu için zaten anlıyoruz','Uzmanlık ısrarlı pratik, kaynaklara gitmek ve sabırla gelişir','Nadir veri noktaları önemsizdir','Yalnızca tek bir kaynak takip edilmeli'],a:1,e:'Etrafımızın veriyle dolu olması onu tükettiğimiz ya da anladığımız anlamına gelmez.'},
+ {q:'Yeni başlayan biri öncelikle ne tür içerik tüketmeli?',o:['Görüş yazıları','Vaka çalışmaları, açıklayıcı yazılar ve analiz tanıtımları','Yalnızca akademik makaleler','Sosyal medya paylaşımları'],a:1,e:'Bunlar başlangıçta görüş yazılarından daha yararlıdır.'},
+ {q:'“Bu yıl kaç kişi ayrıldı?” sorusuna istisnai bir profesyonel nasıl yaklaşır?',o:['Sayıyı hemen gönderir','Asıl merak edilenin ne olduğunu sorar ve dinler','Soruyu reddeder','Sektör raporu yollar'],a:1,e:'Aktif dinleme gerçek ihtiyacı (sektör karşılaştırması, belirli bir birim vb.) ortaya çıkarır.'},
+ {q:'Rehberde aktarılan çalışmada hikâye ile sunulan bilgiyi hatırlama oranı neydi?',o:['%5','%25','%63','%90'],a:2,e:'Yalnızca istatistik sunulduğunda oran %5 idi.'},
+ {q:'Açık iletişim için hangisi önerilmez?',o:['Bağlam vermek','Jargondan kaçınmak','Üç haftalık veri temizleme sürecini ayrıntılı anlatmak','Karmaşık kavramları basitleştirmek'],a:2,e:'Tüm çalışmanı gösterme; ayrıntıyı yalnızca doğrudan isteyenle paylaş.'}];
+st.quiz=st.quiz||{};
+function quiz(){$('#quiz').innerHTML=Q.map((x,i)=>`<div class="card" style="margin:12px 0"><div class="ui" style="font-weight:700">${i+1}. ${x.q}</div>${x.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join('')}<div class="fb" id="e${i}" style="display:none">${x.e}</div></div>`).join('');
+ $$('#quiz .opt').forEach(b=>b.onclick=()=>{st.quiz[b.dataset.q]=+b.dataset.o;save();paint()});paint()}
+function paint(){let sc=0,n=0;Q.forEach((x,i)=>{const ch=st.quiz[i];if(ch===undefined)return;n++;if(ch===x.a)sc++;
+ $$(`#quiz .opt[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.o;b.classList.toggle('right',j===x.a);b.classList.toggle('wrong',j===ch&&ch!==x.a);b.disabled=true});$('#e'+i).style.display='block'});
+ $('#score').innerHTML=n?`Skor: ${sc} / ${Q.length}${n===Q.length?' <button class="btn ghost" id="reset" style="margin-left:8px">Yeniden dene</button>':''}`:'';const r=$('#reset');if(r)r.onclick=()=>{st.quiz={};save();quiz()}}
+quiz();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>

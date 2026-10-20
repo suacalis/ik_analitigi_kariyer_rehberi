@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giriş: Neden İnsan Analitiği</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--bad:#c0392b;--shadow:0 2px 14px rgba(11,58,140,.08)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1040px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:740px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:100px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+.quote{background:var(--soft);border-radius:12px;padding:16px 22px;margin:16px 0;font-style:italic;text-align:center}
+.quote b{display:block;font-style:normal;font-family:Raleway;font-size:14px;color:var(--muted);margin-top:6px}
+.story{border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0;background:color-mix(in srgb,var(--soft) 40%,var(--card))}
+.story .h{font-family:Raleway;font-weight:800;color:var(--navy2);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn.sm{padding:4px 10px;font-size:12px}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,.chip:focus-visible,.seg button:focus-visible,.opt:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chip{font-family:Raleway;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--card);color:var(--muted);font-family:Raleway;font-weight:700;font-size:12px;padding:6px 11px;cursor:pointer}
+.seg button.on{background:var(--navy2);color:#fff}
+.seg button.on[data-v="g"]{background:var(--ok)}
+.seg button.on[data-v="y"]{background:var(--warn)}
+.seg button.on[data-v="r"]{background:var(--bad)}
+input[type=text],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+textarea{min-height:56px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.ok{color:var(--ok)}.no{color:var(--bad)}.wa{color:var(--warn)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.twocol{grid-template-columns:1fr}}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.fb{font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.opt.mid{border-color:var(--navy2);background:color-mix(in srgb,var(--navy2) 10%,var(--card))}
+.check{padding-left:0}.check li{list-style:none;margin:6px 0}
+.check input{width:17px;height:17px;accent-color:var(--navy2);vertical-align:-2px;margin-right:6px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tabs button{font-family:Raleway;font-weight:700;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;padding:7px 12px;cursor:pointer}
+.tabs button.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.tabs button .c{font-size:11px;margin-left:4px;opacity:.85}
+.meter{height:12px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0}
+.meter>div{height:100%;width:0;transition:width .3s,background .3s}
+.gray{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;background:var(--card);display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+@media (max-width:640px){.gray{grid-template-columns:1fr}}
+.kt{overflow-x:auto}
+.kt table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+.kt th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:6px 8px;border:1px solid var(--line);text-align:left}
+.kt td{border:1px solid var(--line);padding:5px 8px}
+.kt tr.risk td{background:color-mix(in srgb,var(--bad) 14%,var(--card))}
+.prin{display:flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--card)}
+.prin span{flex:1}
+.sa{overflow-x:auto}
+.sa table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+.sa th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.sa td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.sa td.sk{font-family:Raleway;font-weight:700;width:180px}
+.sa select{font-size:13px;padding:5px}
+.sa .gap{font-family:Raleway;font-size:11px;font-weight:800;color:var(--warn);display:block;margin-top:4px}
+.sa .met{font-family:Raleway;font-size:11px;font-weight:800;color:var(--ok);display:block;margin-top:4px}
+.sa tr.custom input{font-size:14px;padding:5px 7px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+@media (max-width:700px){.scale{grid-template-columns:1fr 1fr}}
+.scale .card{padding:10px}.scale .lv{font-family:Raleway;font-weight:800;font-size:12px;color:var(--navy2)}
+.map{display:grid;grid-template-columns:1fr 24px 1fr;gap:6px 8px;align-items:center;font-size:15px}
+.map .a{font-family:Raleway;font-weight:800;color:var(--muted);text-align:center}
+.map .l{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--card);font-family:Raleway;font-weight:700}
+.map .r{border:1px solid var(--ok);border-radius:10px;padding:8px 10px;background:color-mix(in srgb,var(--ok) 8%,var(--card))}
+.map .r.hid{border-style:dashed;border-color:var(--line);background:var(--card);color:var(--muted);cursor:pointer}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+a{color:var(--navy2)}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:12px 0}
+@media (max-width:700px){.tl{grid-template-columns:1fr 1fr}}
+.tl button{font-family:Raleway;font-weight:800;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:12px 8px;cursor:pointer;text-align:left;border-top:5px solid var(--c)}
+.tl button small{display:block;font-weight:700;color:var(--muted);font-size:11px}
+.tl button.on{background:var(--soft);outline:2px solid var(--navy2)}
+.use{cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+.use.on{outline:2px solid var(--navy2);background:var(--soft)}
+.blank{display:inline-block;min-width:110px;border-bottom:2px dashed var(--navy2);text-align:center;font-family:Raleway;font-weight:800;color:var(--navy2);padding:0 6px}
+.blank.okb{border-bottom-style:solid;color:var(--ok);border-color:var(--ok)}
+#trend text{font-family:Raleway}
+.steps a.card{text-decoration:none;color:var(--ink);display:block}
+.steps a.card:hover{border-color:var(--navy2)}
+.yn{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:6px 0;background:var(--card)}
+@media (max-width:600px){.yn{grid-template-columns:1fr}}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Giriş</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">Tanım</a>
+      <a href="#s2" data-s="s2">Ne için?</a>
+      <a href="#s3" data-s="s3">Neden şimdi?</a>
+      <a href="#s4" data-s="s4">Trend</a>
+      <a href="#s5" data-s="s5">Neden ben?</a>
+      <a href="#s6" data-s="s6">Rehberin haritası</a>
+      <a href="#s7" data-s="s7">Test</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema" aria-label="Açık/koyu tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">Giriş · Kitap s. 8–16</div>
+  <h1>Neden insan analitiği? Neden şimdi? Neden sen?</h1>
+  <p>Rehberin girişi üç soruya yanıt arıyor: İnsan analitiği nedir ve ne işe yarar? Neden son on yılda bir işlev ve kariyer alanı olarak yükseldi? Bu kariyer sana uygun olabilir mi?</p>
+  <p class="note">Heather Whiteman'ın insan analitiği kariyer rehberinin giriş bölümünün Türkçe, etkileşimli bir uyarlamasıdır; metin özetlenmiş ve yeniden yazılmıştır. Örnek sorular ve metrikler uyarlamaya aittir. Girdiklerin yalnızca bu tarayıcıda saklanır.</p>
+</div>
+
+<!-- 1 -->
+<section class="ch" id="s1">
+  <h2>İnsan analitiği nedir?</h2><hr>
+  <p><strong>İnsan analitiği</strong> (İK analitiği, yetenek analitiği, insan sermayesi analitiği ya da işgücü analitiği olarak da anılır), insanlar, iş ve iş hedefleriyle ilgili daha iyi kararlar aracılığıyla iş sonuçlarını iyileştirmek için veri ve içgörülerin uygulanmasıdır. İnsanlara ilişkin veriyi işe ilişkin veriyle ilişkilendirerek işin insan tarafını anlamayı, iyileştirmeyi ve optimize etmeyi amaçlar.</p>
+  <p class="small">Yazarın bu adlar arasındaki farkları anlattığı bir videosu var: <a href="https://youtu.be/Zq0tH4iaAZ4" target="_blank" rel="noopener">People Analytics v. HR Analytics v. Workforce Analytics v. Human Capital Analytics</a> (YouTube, 2020).</p>
+  <div class="box">
+    <div class="lbl">Tanımı tamamla</div>
+    <p style="margin:.2em 0">İnsan analitiği, insanlar, iş ve iş hedefleriyle ilgili daha iyi <span class="blank" id="b0">?</span> aracılığıyla iş <span class="blank" id="b1">?</span> iyileştirmek için veri ve <span class="blank" id="b2">?</span> uygulanmasıdır. İnsanlara ilişkin veriyi <span class="blank" id="b3">?</span> ilişkin veriyle bağlar.</p>
+    <div class="chips" id="words"></div>
+    <div class="fb" id="defOut"></div>
+  </div>
+  <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 2 -->
+<section class="ch" id="s2">
+  <h2>İnsan analitiği ne için kullanılır?</h2><hr>
+  <p>Kitabın listesindeki kullanım alanlarına tıkla: her biri için insan analitiğinin yanıtlayabileceği örnek bir soru ve izlenebilecek bir metrik görünür. İlgini çekenleri ☆ ile işaretle.</p>
+  <div class="grid" id="uses"></div>
+  <div class="result" id="useOut"></div>
+  <h3>Geleneksel alanların ötesinde</h3>
+  <p>İnsan analitiği yalnızca ücret ve elde tutma gibi geleneksel olarak çalışan merkezli alanlarla sınırlı değil. Artık şu konularda da kullanılıyor:</p>
+  <div class="chips" id="beyond"></div>
+  <div class="fb" id="beyondOut"></div>
+  <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 3 -->
+<section class="ch" id="s3">
+  <h2>Neden şimdi?</h2><hr>
+  <p>İnsan analitiği yeni bir olgu değil. İşteki insanı incelemek yüzlerce yıllık bir uğraş; yönetim bilimi ve endüstri-örgüt psikolojisi gibi alanlar bunu uzun süredir yapıyor. Pek çok şirket de onlarca yıldır çalışanları hakkında rapor ve metrik üretiyor. Yeni olan şunlar:</p>
+  <div class="grid">
+    <div class="card"><div class="t">Veriye erişim</div><div class="small">İnsanlara ilişkin verinin giderek daha erişilebilir olması.</div></div>
+    <div class="card"><div class="t">Araç ve teknoloji</div><div class="small">Bu veriyi işleyecek araçların ve teknolojinin yaygınlaşması.</div></div>
+    <div class="card"><div class="t">Beklentilerin değişmesi</div><div class="small">Kurumların ve çalışanların beklentilerindeki dönüşüm.</div></div>
+  </div>
+  <h3>İK işlevinin evrimi</h3>
+  <p class="small">Dönemlere tıkla. (Her dönem için verilen “tipik soru” örnekleri uyarlamaya aittir.)</p>
+  <div class="tl" id="tl"></div>
+  <div class="result" id="tlOut"></div>
+
+  <h3>Yükselişi hızlandıranlar</h3>
+  <div class="grid">
+    <div class="card"><div class="t" style="font-size:26px">4×</div><div class="small">Kurumlarda insan verisini anlamaya ayrılmış ekiplerin sayısı 2016–2019 arasında dört kattan fazla arttı (Thomsons Online Benefits araştırması, kitapta aktarıldığı biçimiyle).</div></div>
+    <div class="card"><div class="t" style="font-size:26px">2.</div><div class="small">2023'te bir LinkedIn çalışması “HR Analytics Manager” unvanını ABD'de önceki 5 yılın en hızlı büyüyen ikinci işi olarak belirledi.</div></div>
+    <div class="card"><div class="t" style="font-size:26px">%85</div><div class="small">Deloitte Küresel İnsan Sermayesi Eğilimleri anketinde katılımcıların %85'i “insan verisini” önemli ya da çok önemli buldu; üst yönetimden fonksiyonlar arası iş birliği ihtiyacıyla birlikte ilk sırada.</div></div>
+  </div>
+  <p>İnsan analitiği yalnızca İK'ya da sınırlı değil. İş ve teknoloji liderlerinin hepsi artık insanlar hakkında veriye dayalı karar verebilmek zorunda; bu da İK dışındaki unvan ve birimlerde de bu becerilere talep yaratıyor. ABD Menkul Kıymetler ve Borsa Komisyonu'nun (SEC) insan sermayesi açıklamalarına ilişkin yeni kuralları ve <strong>ISO 30414</strong> (iç ve dış insan sermayesi raporlaması kılavuzu) gibi düzenleme ve standartlar, CEO ve CFO'ların insan analitiği bilgisini her zamankinden fazla istemesine yol açtı.</p>
+  <p class="note">Uyarlama notu: ISO 30414'ün güncel sürümü 2025'te yayımlandı (ISO 30414:2025).</p>
+
+  <h3>Pandemi testi: kurumun bu soruları hızla yanıtlayabilir miydi?</h3>
+  <p class="small">Kitaba göre pandemi, liderlere işgücü hakkında ne kadar az şey bildiklerini gösterdi: uzaktan çalışma, teknoloji ihtiyaçları, çalışan iyi oluşu gibi sorular yağmaya başladığında şirketler ellerindeki bilginin azlığını şaşırtıcı biçimde fark etti. Kendi kurumunu (ya da tanıdığın bir kurumu) düşün ve hızla yanıtlanabilecek soruları işaretle.</p>
+  <ul class="check" id="pand"></ul>
+  <div class="meter"><div id="pandM"></div></div>
+  <div class="fb" id="pandOut"></div>
+  <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 4 -->
+<section class="ch" id="s4">
+  <h2>İlgideki üstel sıçrama</h2><hr>
+  <p>Kitaptaki grafik, insan analitiğiyle ilgili terimlerin Google'da dünya genelinde her yıl kaç kez arandığını gösteriyor. Aşağıdaki değerler kitaptaki grafikten <strong>yaklaşık olarak okunmuştur</strong>; kesin veri değildir.</p>
+  <div class="row"><div class="chips" id="series"></div><div class="seg" id="scale"></div></div>
+  <svg id="trend" viewBox="0 0 640 330" style="width:100%" role="img" aria-label="İnsan analitiği terimlerinin yıllık arama sayıları"></svg>
+  <div class="box">
+    <div class="lbl">Büyüme hesaplayıcı</div>
+    <div class="row"><label class="small ui" style="font-weight:700">Başlangıç yılı <select id="y0" style="width:auto"></select></label><label class="small ui" style="font-weight:700">Bitiş yılı <select id="y1" style="width:auto"></select></label></div>
+    <div class="result" id="growth"></div>
+  </div>
+  <p>Sonuç: İK profesyonellerinin rolü kalıcı olarak değişti. İK artık sayılardan ve veriden uzak bir kariyer alanı değil. İK profesyonelleri iş sorunlarını analitikle ele alınabilecek biçimde tanımlayabilmeli; insan analitiği sonuçlarını analiz edip yorumlayabilmeli ve stratejiye ve karara çevirebilmeli. Dünya her an daha veri odaklı hâle geliyor ve iş dünyası bu büyümenin dışında değil.</p>
+  <label class="readmark"><input type="checkbox" data-read="s4"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 5 -->
+<section class="ch" id="s5">
+  <h2>Neden ben?</h2><hr>
+  <p>Aşağıdaki sorulara dürüstçe yanıt ver.</p>
+  <div id="whyme"></div>
+  <div class="result" id="wmOut"></div>
+  <div class="story" id="reveal" style="display:none">
+    <div class="h">Fark ettin mi?</div>
+    <p style="margin:0">İstatistik, matematik, hatta analiz hakkında tek soru sorulmadı. İnsan analitiğinde harika olmak için kendini bir “matematik insanı” olarak görmen gerekmez. İnsan analitiği titizlik ve süreçle yaklaşılması gereken bir bilimdir ama aynı zamanda bir sanattır. Etkili insan stratejileri uygulamak ve iş sorunlarını çözmek sayılara bakmanın ötesinde beceriler gerektirir. İnsan analitiğinde önce <strong>insan</strong> kelimesi gelir: bilginin ve içgörünün gücünü takdir ederken, insanların yalnızca sayılara indirgenemeyeceğini ve indirgenmemesi gerektiğini kabul eder.</p>
+  </div>
+  <h3>Analitiğin ötesinde gereken dört şey</h3>
+  <p class="small">Kendini 1–5 arasında değerlendir. Rehberin hangi adımında bu becerinin geliştirildiği de gösteriliyor.</p>
+  <div id="four"></div>
+  <svg id="fourChart" viewBox="0 0 360 150" style="width:100%;max-width:560px" role="img" aria-label="Dört becerinin öz değerlendirmesi"></svg>
+  <div class="fb" id="fourOut"></div>
+  <p>İnsan analitiği kariyerinin sana uygun olabileceğini hissediyorsan okumaya devam et! Yazar rehberin yol boyunca fikir, ilham ve içgörü sağlamasını umuyor.</p>
+  <label class="readmark"><input type="checkbox" data-read="s5"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 6 -->
+<section class="ch" id="s6">
+  <h2>Rehberin haritası</h2><hr>
+  <p>Bu giriş, beş adımlık bir yolculuğun başlangıcı. Aynı serideki etkileşimli sayfalar aynı klasörde duruyorsa bağlantılar doğrudan açılır.</p>
+  <div class="grid steps" id="steps"></div>
+  <label class="readmark"><input type="checkbox" data-read="s6"> Bu bölümü tamamladım</label>
+</section>
+
+<!-- 7 -->
+<section class="ch" id="s7">
+  <h2>Mini test</h2><hr>
+  <div id="quiz"></div>
+  <div class="ui" id="score" style="font-weight:800;color:var(--navy)"></div>
+  <label class="readmark"><input type="checkbox" data-read="s7"> Bu bölümü tamamladım</label>
+</section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><span class="ph"></span><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><a class="nx" href="insan_analitigi_adim1_hemen_basla.html"><small>Sonraki →</small><b>Adım 1: Hemen başla</b></a></nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+const KEY="pa_giris_v1";
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt=n=>n.toLocaleString("tr-TR",{maximumFractionDigits:1});
+
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$("#theme").onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";st.theme=d.dataset.theme;save();trend();four()};
+st.read=st.read||{};const N=7;
+function prog(){const n=Object.values(st.read).filter(Boolean).length;$("#progbar").style.width=(n/N*100)+"%";$$("#nav a").forEach(a=>a.classList.toggle("done",!!st.read[a.dataset.s]))}
+$$("[data-read]").forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();if(cb.checked)toast("Bir bölüm daha tamam!")}});prog();
+
+// 1 tanım
+const ANS=["kararlar","sonuçlarını","içgörülerin","işe"];const WD=["kararlar","sonuçlarını","içgörülerin","işe","raporlar","maliyetlerini","algoritmaların","bordroya"];
+st.def=st.def||[];
+function defR(){ANS.forEach((a,i)=>{const b=$("#b"+i);b.textContent=st.def[i]||"?";b.classList.toggle("okb",st.def[i]===a)});
+ const used=st.def.filter(Boolean);$("#words").innerHTML=WD.map(w=>`<button class="chip" data-w="${w}" ${used.includes(w)?"disabled style='opacity:.4'":""}>${w}</button>`).join("")+`<button class="chip" id="defReset">↺ Sıfırla</button>`;
+ $$("[data-w]").forEach(b=>b.onclick=()=>{const i=[0,1,2,3].find(k=>!st.def[k]);if(i===undefined)return;st.def[i]=b.dataset.w;save();defR()});
+ $("#defReset").onclick=()=>{st.def=[];save();defR()};
+ const n=st.def.filter(Boolean).length,ok=ANS.filter((a,i)=>st.def[i]===a).length;
+ $("#defOut").innerHTML=n<4?`<span class="small">Boşlukları sırayla doldurmak için kelimelere tıkla (${n}/4).</span>`:ok===4?'<strong class="ok">Tam isabet!</strong> <span class="small">Odak rapor ya da algoritma değil, insan ve işle ilgili daha iyi kararlar.</span>':`<strong class="wa">${ok}/4 doğru.</strong> <span class="small">Sıfırlayıp yeniden dene.</span>`}
+defR();
+
+// 2 kullanımlar
+const US=[["Çalışan bağlılığını / elde tutmayı artırmak","Hangi ekiplerde ilk yılında ayrılanların oranı yükseliyor, neden?","İlk yıl gönüllü ayrılma oranı"],["Uygun yan haklar tasarlamak","Çalışanlar hangi yan hakları gerçekten kullanıyor ve önemsiyor?","Yan hak kullanım oranı / memnuniyet"],["İşgücü ihtiyaçlarını planlamak","Önümüzdeki iki yılda hangi rollerde açık oluşacak?","Tahmini kadro açığı"],["Adil ücretlendirmeyi desteklemek","Aynı işi yapanlar arasında açıklanamayan ücret farkı var mı?","Düzeltilmiş ücret farkı"],["Çeşitlilik, eşitlik ve kapsayıcılığı sağlamak","Terfi oranları gruplar arasında farklılaşıyor mu?","Gruplara göre terfi oranı"],["Kurum kültürünü oluşturmak ve ölçmek","Kurum değerleri günlük davranışa yansıyor mu?","Kültür anketi endeksi"],["İnsana yönelik girişimlerin yatırım getirisini ölçmek","Liderlik programı maliyetini karşılıyor mu?","Program ROI"],["Yetenek kazanımında verimlilik","Hangi kaynak kanallar daha uzun kalan çalışanlar getiriyor?","Kanala göre işe alım kalitesi"],["Çalışan gelişimini mümkün kılmak","Eğitimler performans değişimiyle ilişkili mi?","Eğitim sonrası performans değişimi"],["İşin yapısını şekillendirmek","Ekip büyüklüğü ve yönetim açıklığı verimliliği nasıl etkiliyor?","Yönetim açıklığı (span of control)"]];
+st.us=st.us||{};st.usel=st.usel??0;
+function usR(){$("#uses").innerHTML=US.map((u,i)=>`<button class="card use ${st.usel===i?"on":""}" data-u="${i}"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><span class="t" style="font-size:15px">${u[0]}</span><span class="ui" style="color:${st.us[i]?css("--warn"):css("--muted")};font-size:18px" data-us="${i}" role="button" aria-label="İşaretle">${st.us[i]?"★":"☆"}</span></div></button>`).join("");
+ $$("[data-u]").forEach(b=>b.onclick=e=>{const i=+b.dataset.u;if(e.target.dataset.us!==undefined){st.us[i]=!st.us[i]}else st.usel=i;save();usR()});
+ const u=US[st.usel];const st2=US.filter((_,i)=>st.us[i]).map(x=>x[0]);
+ $("#useOut").innerHTML=`<div class="lbl">${u[0]}</div><div><strong>Örnek soru:</strong> ${u[1]}</div><div><strong>Örnek metrik:</strong> ${u[2]}</div>${st2.length?`<div class="small" style="margin-top:6px">☆ İlgini çekenler (${st2.length}): ${st2.join(" · ")}</div>`:""}<div class="small" style="margin-top:4px">…ve çok daha fazlası.</div>`}
+usR();
+const BY=[["Çalışan memnuniyeti ve iyi oluşu","Örn. iş yükü ile tükenmişlik göstergeleri arasındaki ilişki."],["Marka imajı","Örn. işveren markası ile başvuru kalitesi arasındaki bağ."],["Küresel iş tasarımı","Örn. farklı saat dilimlerindeki ekiplerin iş birliği örüntüleri."],["Bilgi sistemi tasarımı","Örn. çalışanların İK sistemlerini nasıl kullandığından tasarım dersleri."],["Toplumsal eşitlik","Örn. kurumun bölgesel istihdama ve fırsat eşitliğine etkisi."]];
+st.by=st.by??-1;
+function byR(){$("#beyond").innerHTML=BY.map((b,i)=>`<button class="chip ${st.by===i?"on":""}" data-by="${i}">${b[0]}</button>`).join("");$$("[data-by]").forEach(b=>b.onclick=()=>{st.by=+b.dataset.by;save();byR()});$("#beyondOut").textContent=st.by>=0?BY[st.by][1]+" (örnek uyarlamaya aittir)":"Bir alana tıkla."}
+byR();
+
+// 3 zaman çizelgesi
+const TL=[["Personel hizmetleri","başlangıç","#9aa6bd","İşlev yalnızca personel hizmetleri sunuyordu: kayıt, bordro, özlük işleri.","Kaç kişi çalışıyor, bordro doğru mu?"],["Operasyonel hizmetler","1980'ler–90'lar","#e3a35c","İK operasyonel hizmetlere evrildi: süreçler, politikalar, uyum.","Süreçler verimli ve kurallara uygun mu?"],["Yetenek yönetimi","2000'ler","#1d8a5b","Odak yetenek kazanımı, gelişimi ve elde tutmaya kaydı.","Doğru insanları buluyor, geliştiriyor ve tutuyor muyuz?"],["Stratejik iş ortağı","2010'lar","#1f5fd1","İK, veri odaklı karar almayı öne çıkaran yüksek etkili stratejilere yön veren bir iş ortağı oldu. Veri, analitik ve teknolojiye ihtiyaç arttı; “insan analitiği” terimi pek çok kurumda bu dönemde ortaya çıktı.","İnsan yatırımlarımız iş sonuçlarını nasıl etkiliyor?"],["Bugün","2020'ler","#8e44ad","İnsan analitiği İK'nın ötesine taşındı; düzenlemeler, standartlar ve pandemi talebi hızlandırdı. Tüm liderlerden insanlar hakkında veriye dayalı karar bekleniyor.","İşgücümüz hakkında bilmemiz gerekeni hızla bilebiliyor muyuz?"]];
+st.tl=st.tl??3;
+function tlR(){$("#tl").innerHTML=TL.map((t,i)=>`<button style="--c:${t[2]}" class="${st.tl===i?"on":""}" data-tl="${i}"><small>${t[1]}</small>${t[0]}</button>`).join("");$$("[data-tl]").forEach(b=>b.onclick=()=>{st.tl=+b.dataset.tl;save();tlR()});
+ const t=TL[st.tl];$("#tlOut").innerHTML=`<div class="lbl">${t[0]} · ${t[1]}</div><div>${t[3]}</div><div class="small" style="margin-top:6px"><strong>Tipik soru:</strong> ${t[4]}</div>`}
+tlR();
+const PQ=["Kimler uzaktan çalışabilir, kimler çalışamaz?","Uzaktan çalışmak için kimin hangi teknolojiye (dizüstü, bağlantı, yazılım) ihtiyacı var?","Çalışanların iyi oluşu ve sağlıkla ilgili ihtiyaçları neler?","Hangi kritik roller yedeksiz?","Belirsizlik döneminde çalışanların bağlılığı nasıl değişiyor?","Farklı lokasyonlardaki çalışan verisini tek yerde hızla birleştirebiliyor muyuz?"];
+st.pq=st.pq||{};
+$("#pand").innerHTML=PQ.map((q,i)=>`<li><label><input type="checkbox" data-pq="${i}" ${st.pq[i]?"checked":""}>${q}</label></li>`).join("");
+function pq(){const n=PQ.filter((_,i)=>st.pq[i]).length,p=n/PQ.length*100;$("#pandM").style.width=p+"%";$("#pandM").style.background=p>=67?css("--ok"):p>=34?css("--warn"):css("--bad");
+ $("#pandOut").textContent=`${n}/${PQ.length} soru hızla yanıtlanabilir. `+(p>=67?"Güçlü bir başlangıç; yine de verinin güncelliğini ve kalitesini sorgula.":p>=34?"Kısmen hazır: eksik sorular insan analitiğinin katkı sağlayabileceği yerleri gösteriyor.":"Pandemideki pek çok kurum gibi: işgücü hakkında bilgi eksikliği belirgin. İşte insan analitiğine olan talebin nedeni.")}
+$$("[data-pq]").forEach(c=>c.onchange=()=>{st.pq[c.dataset.pq]=c.checked;save();pq()});pq();
+
+// 4 trend
+const YR=Array.from({length:21},(_,i)=>2004+i);
+const SR=[["People Analytics","#7b3fb5",[40,40,50,70,70,150,170,230,250,290,300,330,400,470,520,580,680,660,1000,1280,1500]],["HR Analytics","#1d9a55",[100,40,50,70,70,90,110,130,160,230,300,370,420,530,600,700,670,660,860,920,1000]],["Workforce Analytics","#5bc3e6",[70,50,40,40,30,40,50,60,70,80,90,100,110,130,140,140,130,130,130,150,170]],["Talent Analytics","#1b5fa8",[60,40,30,30,30,30,40,45,50,60,70,80,90,100,110,100,90,90,110,95,100]]];
+st.ser=st.ser||[1,1,1,1];st.sc=st.sc||"lin";st.y0=st.y0||2014;st.y1=st.y1||2024;
+function trend(){$("#series").innerHTML=SR.map((s,i)=>`<button class="chip ${st.ser[i]?"on":""}" data-sr="${i}" style="${st.ser[i]?`background:${s[1]};border-color:${s[1]}`:""}">${s[0]}</button>`).join("");
+ $$("[data-sr]").forEach(b=>b.onclick=()=>{st.ser[b.dataset.sr]=st.ser[b.dataset.sr]?0:1;save();trend()});
+ $("#scale").innerHTML=[["lin","Doğrusal"],["log","Logaritmik"]].map(([k,l])=>`<button data-sc="${k}" class="${st.sc===k?"on":""}">${l}</button>`).join("");$$("[data-sc]").forEach(b=>b.onclick=()=>{st.sc=b.dataset.sc;save();trend()});
+ const W=640,H=330,L=50,R=120,T=16,B=34;const lg=st.sc==="log";const mx=1600;const yv=v=>lg?H-B-(Math.log10(Math.max(v,10))-1)/(Math.log10(mx)-1)*(H-T-B):H-B-v/mx*(H-T-B);const xv=y=>L+(y-2004)/20*(W-L-R);
+ const ink=css("--ink"),mut=css("--muted"),ln=css("--line");let g="";
+ (lg?[10,30,100,300,1000]:[0,400,800,1200,1600]).forEach(v=>g+=`<line x1="${L}" x2="${W-R}" y1="${yv(v)}" y2="${yv(v)}" stroke="${ln}"/><text x="${L-6}" y="${yv(v)+4}" text-anchor="end" font-size="11" fill="${mut}">${fmt(v)}</text>`);
+ [2004,2008,2012,2016,2020,2024].forEach(y=>g+=`<text x="${xv(y)}" y="${H-12}" text-anchor="middle" font-size="11" fill="${mut}">${y}</text>`);
+ g+=`<rect x="${xv(st.y0)}" y="${T}" width="${Math.max(0,xv(st.y1)-xv(st.y0))}" height="${H-T-B}" fill="${css("--navy2")}" opacity=".07"/>`;
+ SR.forEach((s,i)=>{if(!st.ser[i])return;g+=`<polyline fill="none" stroke="${s[1]}" stroke-width="3" stroke-linejoin="round" points="${s[2].map((v,k)=>xv(YR[k])+","+yv(v)).join(" ")}"/>`;
+  s[2].forEach((v,k)=>g+=`<circle cx="${xv(YR[k])}" cy="${yv(v)}" r="7" fill="transparent"><title>${s[0]} · ${YR[k]}: ~${fmt(v)}</title></circle>`);
+  g+=`<text x="${W-R+6}" y="${yv(s[2][20])+4}" font-size="11" font-weight="700" fill="${s[1]}">${s[0]}</text>`});
+ $("#trend").innerHTML=g;
+ const opt=v=>YR.map(y=>`<option value="${y}" ${y===v?"selected":""}>${y}</option>`).join("");$("#y0").innerHTML=opt(st.y0);$("#y1").innerHTML=opt(st.y1);
+ const a=YR.indexOf(st.y0),b=YR.indexOf(st.y1);
+ $("#growth").innerHTML=b<=a?'<span class="wa">Bitiş yılı başlangıçtan sonra olmalı.</span>':SR.filter((_,i)=>st.ser[i]).map(s=>{const m=s[2][b]/s[2][a];const cagr=(Math.pow(m,1/(b-a))-1)*100;return `<div><strong style="color:${s[1]}">${s[0]}</strong>: ~${fmt(s[2][a])} → ~${fmt(s[2][b])} · <strong>${fmt(m)}×</strong> · yıllık ortalama büyüme ~%${fmt(cagr)}</div>`}).join("")+'<div class="small" style="margin-top:4px">Değerler grafikten yaklaşık okunduğu için hesaplar da yaklaşıktır.</div>'}
+$("#y0").onchange=e=>{st.y0=+e.target.value;save();trend()};$("#y1").onchange=e=>{st.y1=+e.target.value;save();trend()};trend();
+
+// 5 neden ben
+const WM=["Çözülecek problemleri belirlemekten keyif alıyor musun?","Doğal olarak sağlam akıl yürütmeye dayalı çözümler arar mısın?","İlginç bilgi kırıntılarını yorumlayıp pratik içgörülere çevirdiğin olur mu?","İşin insan tarafına odaklanmak ister misin?","İnsanların iç dünyası ilgini çeker mi?","Teknolojinin, devletin ya da “büyük şirketlerin” insanları sayıya dökmesinin toplumsal sonuçları seni kaygılandırır mı?","Bir şekilde başkalarının hayatını iyileştirebileceğin bir kariyer mi arıyorsun?","Bir insanın unvanından ya da eğitiminden ibaret olmadığını ve öyle görülmesi gerektiğini düşünür müsün?"];
+st.wm=st.wm||{};
+function wmR(){$("#whyme").innerHTML=WM.map((q,i)=>`<div class="yn"><div>${i+1}. ${q}</div><div class="seg">${[["y","Evet"],["n","Hayır"]].map(([v,l])=>`<button data-wm="${i}" data-v="${v}" class="${st.wm[i]===v?"on":""}">${l}</button>`).join("")}</div></div>`).join("");
+ $$("[data-wm]").forEach(b=>b.onclick=()=>{st.wm[b.dataset.wm]=b.dataset.v;save();wmR()});
+ const n=Object.keys(st.wm).length,y=Object.values(st.wm).filter(v=>v==="y").length;
+ $("#wmOut").innerHTML=n<WM.length?`<span class="small">${n}/${WM.length} soru yanıtlandı.</span>`:y?`<strong class="ui ok">${y} “evet”.</strong> Yazara göre bunlardan herhangi birine evet dediysen, insan analitiğine muhtemelen doğal olarak yatkınsın.`:'<strong class="ui wa">Hiç “evet” yok.</strong> <span class="small">Bu da değerli bir bilgi; yine de rehberdeki etkinlikler seni şaşırtabilir.</span>';
+ $("#reveal").style.display=n===WM.length?"block":"none"}
+wmR();
+const F4=[["Meraklı bir zihin","doğru soruları sormak ve tasarlamak için","Adım 2 (merak ve yaratıcılık) · Adım 3 (araştırma)"],["Eleştirel bir göz","analitik sonuçları yorumlamak ve güvenilir olduklarından emin olmak için","Adım 2 (eleştirel düşünme) · Adım 3 (analitik)"],["Etkili hikâye anlatımı","bilgiyi başkalarına çevirmek için","Adım 2 (çevirmen becerileri) · Adım 3 (görselleştirme)"],["Liderlik ve hesap verebilirlik","insan analitiği içgörülerinin sonuçlarını hayata geçirmek için","Adım 4 (büyük resim, etik)"]];
+st.f4=st.f4||{};
+function four(){$("#four").innerHTML=F4.map((f,i)=>`<div class="yn"><div><strong class="ui">${f[0]}</strong> <span class="small">· ${f[1]}</span><div class="small" style="color:var(--navy2)">${f[2]}</div></div><div class="seg">${[1,2,3,4,5].map(v=>`<button data-f4="${i}" data-v="${v}" class="${st.f4[i]===v?"on":""}">${v}</button>`).join("")}</div></div>`).join("");
+ $$("[data-f4]").forEach(b=>b.onclick=()=>{st.f4[b.dataset.f4]=+b.dataset.v;save();four()});
+ let g="";const mut=css("--muted"),ink=css("--ink");F4.forEach((f,i)=>{const v=st.f4[i]||0,y=8+i*35;g+=`<text x="0" y="${y+15}" font-size="11" font-family="Raleway" font-weight="700" fill="${ink}">${f[0]}</text><rect x="150" y="${y+3}" width="200" height="16" rx="8" fill="${css("--line")}"/><rect x="150" y="${y+3}" width="${v*40}" height="16" rx="8" fill="${v>=4?css("--ok"):v>=3?css("--navy2"):css("--warn")}"/><text x="${150+Math.max(v*40,12)-6}" y="${y+15}" text-anchor="end" font-size="11" font-weight="800" fill="#fff" font-family="Raleway">${v||""}</text>`});
+ $("#fourChart").innerHTML=g;const r=F4.map((f,i)=>[f,st.f4[i]]).filter(x=>x[1]);
+ if(r.length===4){const lo=r.slice().sort((a,b)=>a[1]-b[1])[0];$("#fourOut").innerHTML=`Gelişim için başlangıç noktası: <strong>${lo[0][0]}</strong> → ${lo[0][2]}.`}else $("#fourOut").textContent=`${r.length}/4 değerlendirildi.`}
+four();
+
+// 6 rehber haritası
+const STP=[["Adım 1","Hemen başla","Küçük başlamak, sahtekârlık sendromu, güçlü yönlerini belirlemek","insan_analitigi_adim1_hemen_basla.html"],["Adım 2","Teknik olmayan beceriler","Çevirmen ve veri tüketicisi becerileri, iş zekâsı, iletişim, hikâye","insan_analitigi_adim2_teknik_olmayan_beceriler.html"],["Adım 3","Nicel analitik","Betimleyiciden kural koyucuya analitik merdiveni","insan_analitigi_adim3_nicel_analitik.html"],["Adım 3","Nitel analitik","Kodlama, tema, duygu analizi","insan_analitigi_adim3_nitel_analitik.html"],["Adım 3","Analitik öz değerlendirme","30 analitik beceri ve öğrenme yolu","insan_analitigi_adim3_analitik_oz_degerlendirme.html"],["Adım 3","Veri görselleştirme","Grafik seçimi, erişilebilirlik, hikâye","insan_analitigi_adim3_veri_gorsellestirme.html"],["Adım 3","Veri yönetimi ve yönetişimi","Veri yaşam döngüsü, temizlik, anonimlik","insan_analitigi_veri_yonetimi_ve_yonetisimi.html"],["Adım 3","Araştırma ve teknoloji","Araştırma tasarımı, örnekleme, araç seçimi","insan_analitigi_adim3_arastirma_teknoloji.html"],["Adım 4","Büyük resim","İletişim, ağ kurma, topluluk","insan_analitigi_adim4_buyuk_resim.html"],["Adım 4","Etik","Onay, meşru kullanım, önyargı, ilkeler","insan_analitigi_adim4_etik.html"],["Adım 5","İkigai ve kariyer","Envanter, iş ilanları, ikigai haritası","insan_analitigi_adim5_ikigai_kariyer.html"],["Adım 5","Gelişim planı ve kariyer haritası","Önceliklendirme, SMART, iş şekillendirme, zihin haritası","insan_analitigi_adim5_gelisim_plani_kariyer_haritasi.html"]];
+$("#steps").innerHTML=STP.map(s=>`<a class="card" href="${s[3]}"><div class="small ui" style="font-weight:800;color:var(--navy2)">${s[0]}</div><div class="t">${s[1]}</div><div class="small">${s[2]}</div></a>`).join("");
+
+// 7 test
+const Q=[
+ {q:"Kitabın tanımına göre insan analitiğinin amacı nedir?",o:["Çalışanları izlemek","İnsanlar, iş ve iş hedefleriyle ilgili daha iyi kararlarla iş sonuçlarını iyileştirmek","Yalnızca İK raporları üretmek","Bordroyu otomatikleştirmek"],a:1,e:"İnsan verisini iş verisiyle ilişkilendirir."},
+ {q:"Hangisi insan analitiğinin yeni bir olgu olmadığını gösterir?",o:["Yönetim bilimi ve endüstri-örgüt psikolojisinin işteki insanı uzun süredir incelemesi","Terimin 2010'larda ortaya çıkması","Pandemi","Google aramaları"],a:0,e:"Yeni olan veri erişimi, araçlar ve değişen beklentiler."},
+ {q:"İK işlevinin evrim sırası hangisidir?",o:["Yetenek yönetimi → personel → operasyon","Personel hizmetleri → operasyonel hizmetler → yetenek yönetimi → stratejik iş ortağı","Stratejik ortak → personel → operasyon","Operasyon → personel → yetenek"],a:1,e:"2010'larda veri odaklı stratejik ortaklık ve “insan analitiği” terimi."},
+ {q:"Hangi standart iç ve dış insan sermayesi raporlaması için kılavuz sunar?",o:["ISO 9001","ISO 30414","ISO 27001","ISO 14001"],a:1,e:"SEC kurallarıyla birlikte CEO ve CFO'ların insan analitiği talebini artırdı."},
+ {q:"Kitaba göre pandemi liderlere neyi gösterdi?",o:["İK'nın gereksiz olduğunu","İşgücü hakkında ne kadar az şey bildiklerini","Uzaktan çalışmanın imkânsız olduğunu","Verinin önemsiz olduğunu"],a:1,e:"Uzaktan çalışma, teknoloji ve iyi oluş soruları yanıtsız kaldı."},
+ {q:"“Neden ben?” sorularında hangisi sorulmadı?",o:["İnsanların iç dünyasına ilgi","Problem belirlemekten keyif","İstatistik ve matematik becerisi","Başkalarının hayatını iyileştirme isteği"],a:2,e:"“Matematik insanı” olmak gerekmez; insan analitiği hem bilim hem sanat."},
+ {q:"Analitiğin ötesinde gerekenlere hangisi dahil değildir?",o:["Meraklı bir zihin","Eleştirel bir göz","Etkili hikâye anlatımı","Her şeyi sayılara indirgemek"],a:3,e:"İnsanlar yalnızca sayılara indirgenemez ve indirgenmemeli; dördüncüsü liderlik ve hesap verebilirlik."}];
+st.quiz=st.quiz||{};
+function quiz(){$("#quiz").innerHTML=Q.map((x,i)=>`<div class="card" style="margin:12px 0"><div class="ui" style="font-weight:700">${i+1}. ${x.q}</div>${x.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("")}<div class="fb" id="qe${i}" style="display:none">${x.e}</div></div>`).join("");
+ $$("#quiz .opt").forEach(b=>b.onclick=()=>{st.quiz[b.dataset.q]=+b.dataset.o;save();paint()});paint()}
+function paint(){let sc=0,n=0;Q.forEach((x,i)=>{const ch=st.quiz[i];if(ch===undefined)return;n++;if(ch===x.a)sc++;
+ $$(`#quiz .opt[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.o;b.classList.toggle("right",j===x.a);b.classList.toggle("wrong",j===ch&&ch!==x.a);b.disabled=true});$("#qe"+i).style.display="block"});
+ $("#score").innerHTML=n?`Skor: ${sc} / ${Q.length}${n===Q.length?' <button class="btn ghost" id="reset" style="margin-left:8px">Yeniden dene</button>':""}`:"";const r=$("#reset");if(r)r.onclick=()=>{st.quiz={};save();quiz()}}
+quiz();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>

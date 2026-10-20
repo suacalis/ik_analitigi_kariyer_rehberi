@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adım 3: Nitel Analitik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--bad:#c0392b;--shadow:0 2px 14px rgba(11,58,140,.08);
+--tO:#0f7c8a;--tS:#6a3fb5;--tE:#b5452d}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--tO:#4fc6d6;--tS:#a98bf0;--tE:#ff8f73}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--tO:#4fc6d6;--tS:#a98bf0;--tE:#ff8f73}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1000px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:720px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:100px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+.story{border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0;background:color-mix(in srgb,var(--soft) 40%,var(--card))}
+.story .h{font-family:Raleway;font-weight:800;color:var(--navy2);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.callout{border:2px solid var(--warn);border-radius:12px;padding:14px 18px;margin:16px 0}
+.callout strong{font-family:Raleway;color:var(--warn)}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn.sm{padding:4px 10px;font-size:12px}
+.btn:hover{filter:brightness(1.08)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.chip{font-family:Raleway;font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{color:#fff}
+.chip[data-t="O"].on{background:var(--tO);border-color:var(--tO)}
+.chip[data-t="S"].on{background:var(--tS);border-color:var(--tS)}
+.chip[data-t="E"].on{background:var(--tE);border-color:var(--tE)}
+.chip.sel{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;vertical-align:0}
+input[type=text],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+input[type=range]{width:100%;accent-color:var(--navy2)}
+textarea{min-height:60px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.ok{color:var(--ok)}.no{color:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:700px){.twocol{grid-template-columns:1fr}}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.fb{font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+.flipgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+.flip{perspective:900px;height:180px;cursor:pointer}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flip.open .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:14px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--line)}
+.flip .f{background:var(--card)}
+.flip .f::before{content:"YANILGI";font-family:Raleway;font-size:11px;font-weight:800;color:var(--warn);letter-spacing:.08em;margin-bottom:4px}
+.flip .f::after{content:"Çevir ↻";font-family:Raleway;font-size:11px;color:var(--muted);position:absolute;bottom:8px;right:12px}
+.flip .b{background:var(--navy2);color:#fff;transform:rotateY(180deg);font-size:15px}
+.flip .f span{font-style:italic}
+/* kodlama */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tabs button{font-family:Raleway;font-weight:700;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;padding:7px 12px;cursor:pointer}
+.tabs button.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.ex{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;background:var(--card)}
+.ex .q{font-style:italic}
+.ex .meta{font-family:Raleway;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em}
+.ex.coded{border-left:4px solid var(--ok)}
+.addcode{display:grid;grid-template-columns:1fr 150px auto;gap:8px;margin-top:8px}
+@media (max-width:560px){.addcode{grid-template-columns:1fr}}
+.cbk{overflow-x:auto}
+.cbk table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+.cbk th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:6px 8px;border:1px solid var(--line);text-align:left}
+.cbk td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.cbk select,.cbk input{font-size:13px;padding:4px 6px}
+.theme{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;background:var(--card)}
+.theme .tt{font-family:Raleway;font-weight:800;color:var(--navy);font-size:16px}
+.theme blockquote{margin:6px 0 0 0;padding-left:10px;border-left:3px solid var(--line);font-size:15px;font-style:italic;color:var(--muted)}
+.sent{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.sent button{border:0;background:var(--card);color:var(--muted);font-family:Raleway;font-weight:800;font-size:12px;padding:4px 10px;cursor:pointer}
+.sent button.on[data-v="-1"]{background:var(--bad);color:#fff}
+.sent button.on[data-v="0"]{background:var(--muted);color:#fff}
+.sent button.on[data-v="1"]{background:var(--ok);color:#fff}
+.tag{font-family:Raleway;font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--navy)}
+.tag.diff{background:color-mix(in srgb,var(--warn) 22%,var(--card));color:var(--warn)}
+.cloud{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;justify-content:center;min-height:160px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.cloud span{font-family:Raleway;font-weight:800;line-height:1.1}
+.mode{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.mode button{border:0;background:var(--card);color:var(--ink);font-family:Raleway;font-weight:700;font-size:13px;padding:7px 14px;cursor:pointer}
+.mode button.on{background:var(--navy2);color:#fff}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.check{padding-left:0}.check li{list-style:none;margin:6px 0}
+.check input{width:17px;height:17px;accent-color:var(--navy2);vertical-align:-2px;margin-right:6px}
+.flag{font-size:14px;margin:4px 0;padding-left:22px;position:relative}
+.flag::before{position:absolute;left:0;font-weight:800}
+.flag.w::before{content:"⚠";color:var(--warn)}
+.flag.g::before{content:"✓";color:var(--ok)}
+.sk{overflow-x:auto}
+.sk table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+.sk th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.sk td{border:1px solid var(--line);padding:6px 8px}
+.sk tr.grp td{font-family:Raleway;font-weight:800;background:var(--bg);color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0}
+.stat{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--card)}
+.stat b{display:block;font-family:Raleway;font-size:20px;color:var(--navy)}
+.stat span{font-size:12px;color:var(--muted);font-family:Raleway}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Adım 3</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">Nitel veri</a>
+      <a href="#s2" data-s="s2">Kodlama laboratuvarı</a>
+      <a href="#s3" data-s="s3">Tematik analiz</a>
+      <a href="#s4" data-s="s4">Metin analitiği</a>
+      <a href="#s5" data-s="s5">Yöntemler</a>
+      <a href="#s6" data-s="s6">Veri üretimi</a>
+      <a href="#s7" data-s="s7">Beceri haritam</a>
+      <a href="#s8" data-s="s8">Test</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker">Adım 3 · Teknik beceriler</div>
+    <h1>Nitel İnsan Analitiği</h1>
+    <p>İnsan verisi her zaman bir tabloya düzgünce sığmaz. Bu bölüm nitel verinin değerini, kodlama, duygu analizi ve tematik analiz becerilerini, metin analitiğinde insan ile otomatik araçların rolünü, nitel araştırma yöntemlerini ve nitel veri üretimini ele alıyor. Merkezde kurgusal çıkış görüşmesi alıntılarıyla el ile çalışabileceğin bir kodlama ve tema laboratuvarı var.</p>
+    <p class="note">Kaynak: Heather Whiteman'ın insan analitiği kariyer rehberinin 101–119. sayfaları. Metin birebir çeviri değil; içerik Türkçe olarak özetlenip uyarlanmıştır. Laboratuvardaki alıntılar kurgusaldır.</p>
+  </div>
+
+  <!-- 1 -->
+  <section class="ch" id="s1">
+    <h2>Nitel Veri Nedir, Neden Önemli?</h2><hr>
+    <p>Bilmek istediklerimizin çoğu sayıyla ölçülemez. Çoğu zaman işin ya da iş süreçlerinin niteliklerini ve ince yönlerini, insanların duygularını, hislerini ve deneyimlerini anlamak isteriz. İşte nitel veri burada devreye girer: sayıyla ölçülemeyen her türlü bilgi. Çoğunlukla <strong>yapılandırılmamıştır</strong> (belirli bir düzeni ya da örgütlenme biçimi yoktur) ve metin, ses, görüntü, gözlem gibi pek çok biçimde gelebilir.</p>
+    <div class="grid">
+      <div class="card"><div class="t">Örnek nitel veri kaynakları</div><div class="small">Mülakat sorularına sözlü yanıtlar · odak grup dökümleri · açık uçlu anket yanıtları · performans değerlendirmesindeki geri bildirim yorumları · ekip toplantılarındaki gözlemler · şirketle ilgili sosyal medya paylaşımları · çalışanların ürettiği bloglar ya da sunumlar</div></div>
+      <div class="card"><div class="t">Belirsizliği kucakla</div><div class="small">Nitel analizde sayısal yanıtların ve kolay okunan grafiklerin rahatlığını geride bırakırsın; kesin metrik ya da “doğru/yanlış” yanıt yoktur, yorumlarla çalışırsın. En iyi araştırmacılar bile aynı veriyi her zaman aynı biçimde yorumlamaz; ama bu yorumlar nitel analizin gücüdür. Belirsizlik çözülmesi gereken bir sorun değildir; değer oradadır. (Tam belirsizlikle baş edemeyenler için: veri yönetimi, araştırma yöntemleri ve doğrulama teknikleri veriye, analize ve bulgulara düzen ve güven kazandırır.)</div></div>
+    </div>
+    <p>Bazı kurumlar bugün harika nitel insan analitiği yapıyor; ama nitel verinin çoğu kullanılmadan kalıyor. Bilgi toplanıp hiçbir şey yapılmayan kaç anket, mülakat, yorum, çalıştay gördün? Bunun nedeni ilgisizlik değil; pek çok kişinin bu veriyi analiz etmenin yollarını öğrenmeye zaman ayırmamış olması. Kurumlar “çok zaman alıyor” ya da “kaynağımız yok” der; ama her analiz yönteme göre zaman alır. Bugün görüşmeler video konferansla yapılabiliyor, gözlemler kaydedilebiliyor, metin otomatik dökülebiliyor, hatta veriyi yapılandırmaya, kodlamaya ve temalandırmaya yardım eden otomatik araçlar var. Sayısal veriyi anlamak için tablo, gösterge paneli ve veritabanı yazılımlarına yatırım yapan kurumlar, nitel veriyi kataloglamak ve bağlamına oturtmak için de araçlara aynı kolaylıkla yatırım yapabilir. Nitel analiz, insanları yalnızca sayılara, kategorilere ve onay kutularına sığdırmanın yapay sınırlarını aşıp tüm insanın deneyim ve duygularını anlamayı sağlar.</p>
+
+    <div class="box">
+      <div class="lbl">Etkinlik · Yanılgıyı çevir</div>
+      <div class="flipgrid" id="flips"></div>
+    </div>
+
+    <p>Nitel veri de betimleyici, tanılayıcı, öngörücü ve kural koyucu analitik için kullanılabilir; ama özellikle bir ek soruya yanıt vermeye çok uygundur: <strong>“Ne şekilde?”</strong> Bir şeyin nitelik ve ayrıntılarını anladığımızda ne, neden ve nasıl sorularına dair kavrayışımız derinleşir. Nicel ve nitel analitik arasındaki tek gerçek fark şudur: nicel analitik betimleme ve çıkarım için <em>matematiksel</em>, nitel analitik ise <em>yorum temelli</em> yaklaşımlar kullanır.</p>
+
+    <div class="story"><div class="h">Kişisel görüş · Nitel insan analitiği üzerine</div>
+      Yazar nicel insan analitiğini sevdiğini, onun çok şey ama aynı zamanda çok az şey söylediğini anlatıyor. Bütün <strong>psikometrik</strong> tekniklere rağmen insanların sayılarla ya da kategorilerle iyi ölçülebileceğine inanmıyor: duygular, tatmin ya da performans “1–5 ölçeğinde” gerçekleşmez; deneyim yıllarla kazanılmaz ya da doğru ölçülmez; ücret değerin vekili değildir; verimlilik parça ya da süreyle ölçülemez; bağlılık bir endekste değil, bağlamda olur. İnsanları gerçekten önemsiyorsak ve işin insan tarafını gerçekten anlamak, iyileştirmek ve en iyi hâle getirmek istiyorsak, şeylerin miktarının yanında niteliğini anlamaya en az o kadar, hatta daha fazla emek vermeliyiz.
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 2 -->
+  <section class="ch" id="s2">
+    <h2>Nitel Veri Kodlama</h2><hr>
+    <p>Nitel analitikte aktif dinleme gibi teknik olmayan pek çok beceri gerekir; burada teknik becerilere odaklanıyoruz. <strong>Kodlama</strong>, veriyi düzenlemek ve analiz etmek için nitel verinin parçalarına bir kod (etiket, kategori, hatta bir “hashtag” gibi düşünebilirsin) atama sürecidir. Amaca göre farklı yaklaşımlar kullanılır:</p>
+    <div class="grid">
+      <div class="card"><div class="t"><span class="dot" style="background:var(--tO)"></span>Nesne kodlama</div><div class="small">Veride geçen belirli şeyleri, olayları ya da kişileri tanımlar. Süreç iyileştirme (çalışanların hangi sistemlerden söz ettiğini etiketlemek), hangi öğrenme kaynaklarının sunulacağına karar verme (BT yardım forumunda çok sorulan bir konu için eğitim geliştirmek) ya da liderlik gelişiminden yararlanabilecek kişileri bulma (çıkış görüşmelerinde adı geçen yöneticiler) için kullanılabilir.</div></div>
+      <div class="card"><div class="t"><span class="dot" style="background:var(--tS)"></span>Yapısal kodlama</div><div class="small">Verinin kendi yapısını ya da örgütlenmesini tanımlar. Örneğin kurumda kararların nasıl alındığını ortaya çıkarmak için kimlerin dahil olduğunu, hangi bilgilerin dikkate alındığını ve seçimde hangi ölçütlerin kullanıldığını kodlamak.</div></div>
+      <div class="card"><div class="t"><span class="dot" style="background:var(--tE)"></span>Duygusal kodlama</div><div class="small">Veride ifade edilen duyguları tanımlar ve sınıflandırır: iş yükünden kaynaklanan hayal kırıklığı, değersiz hissetme ya da yeni öğrenme girişimlerine duyulan heyecan gibi. Bağlılık ve iyi oluş anketlerindeki açık uçlu sorular için çok uygundur.</div></div>
+    </div>
+
+    <div class="box">
+      <div class="lbl">Laboratuvar · 1. adım: alıntıları kodla</div>
+      <p class="small">Aşağıda kurgusal bir şirketin 11 çıkış görüşmesi alıntısı var. Bir kodlama türü seç, her alıntıya uygun kodları işaretle. Kod kitabına yeni kod ekleyebilirsin. Bir alıntı birden fazla kod alabilir; “doğru” tek bir kodlama yok.</p>
+      <div class="tabs" id="ctabs"></div>
+      <div id="exList"></div>
+      <div class="addcode">
+        <input type="text" id="ncName" placeholder="Yeni kod adı (örn. Uzaktan çalışma)">
+        <select id="ncType"><option value="O">Nesne</option><option value="S">Yapısal</option><option value="E">Duygusal</option></select>
+        <button class="btn" id="ncAdd">Kod ekle</button>
+      </div>
+      <div class="stats" id="codeStats"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 3 -->
+  <section class="ch" id="s3">
+    <h2>Tematik Analiz</h2><hr>
+    <p>Nitel insan analitiğinin en yaygın yaklaşımlarından biri tematik analizdir: veriyi kodlamak, ardından verideki tekrar eden örüntüleri ve temaları belirlemek, analiz etmek ve yorumlamak. Kodlanmış verinin düşünceli ve sistematik biçimde incelenmesini gerektirir; bir özet ya da gördüklerin hakkındaki “içgüdüsel his” değildir! İyi yapıldığında ilk bakışta görünmeyen anlamları, bakış açılarını ve deneyimleri ortaya çıkarır.</p>
+    <p>Güçlü uygulamalarından biri, çalışanların tam dürüstlükle yanıt vermekte tereddüt edebileceği konular. Örneğin çıkış görüşmelerinde çalışanlar çoğu zaman en dürüst değil en “sosyal olarak kabul edilebilir” nedeni söyler: aslında başka bir şeyden mutsuzken “ailevi nedenler” diyebilirler. Kibar olmak, zor bir konuşmadan kaçınmak ya da şirketle iyi ilişkiyi korumak için bunu yapmak normaldir. Deneyimli yöneticiler ve İK profesyonelleri bunun “gerçek” neden olmadığını sezer ama bunu somutlaştırmak zordur. Tematik analiz bütün temaları incelemeyi, yaygın “sosyal olarak kabul gören” temaları diğerlerinden ayırmayı ve nedenlerin duygusal tepkiler, bağlam ve betimlemelerle eşleştiği örüntüleri görmeyi sağlar.</p>
+
+    <div class="box">
+      <div class="lbl">Laboratuvar · 2. adım: kodları temalara grupla</div>
+      <p class="small">Kullandığın kodları temalara ata. Önerilen temalar var; kendi temanı da ekleyebilirsin. Temalar kod sayımından değil, kodlar arasındaki anlam ilişkisinden doğar.</p>
+      <div class="row" style="margin-bottom:8px">
+        <input type="text" id="ntName" placeholder="Yeni tema adı" style="flex:1;min-width:180px">
+        <button class="btn" id="ntAdd">Tema ekle</button>
+      </div>
+      <div class="cbk"><table id="cbk"></table></div>
+    </div>
+
+    <div class="box">
+      <div class="lbl">Laboratuvar · 3. adım: temaları yorumla</div>
+      <div id="themeOut"></div>
+      <div class="result" id="maskOut" style="display:none"></div>
+      <div class="row noprint" style="margin-top:10px">
+        <button class="btn ghost" id="csvCodes">Kodlanmış veriyi CSV indir</button>
+        <button class="btn ghost" id="printBtn">Yazdır / PDF</button>
+        <button class="btn ghost" id="labReset">Laboratuvarı sıfırla</button>
+      </div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 4 -->
+  <section class="ch" id="s4">
+    <h2>Duygu Analizi ve Metin Analitiği</h2><hr>
+    <p><strong>Duygu analizi</strong>, veriye genellikle olumsuz–nötr–olumlu ölçeğinde bir duygu puanı atar; farklı duygu ölçekleri de mümkündür. Büyük bir duyurudan, yeni bir girişimden ya da eğitimden sonra çalışanların olumlu mu olumsuz mu hissettiğini hızlıca görmek için kullanılabilir. <em>Not:</em> Yazar duygu analizini gerçek bir “nitel” analiz saymıyor, çünkü duyguyu sayısallaştırıp veriyi sayılara çeviriyor; ama nitel verinin bir analizi olduğu ve nitel veriyi değerlendirme seçenekleri konuşulurken hep anıldığı için burada yer veriyor.</p>
+    <p><strong>Metin analitiği</strong>, insan analitiğinde bugün açık ara en popüler nitel analiz türüdür; ama yukarıdaki tekniklerden farklı bir şey değildir. Bu teknikleri metin verisine (görüntü, video, ses yerine kelimelere) uyguluyorsan metin analitiği yapıyorsun demektir. Teknoloji yaygınlaştıkça terim bazen özellikle teknoloji araçlarıyla yapılan metin analizini ima etmek için de kullanılıyor.</p>
+    <h3>El ile mi, otomatik araçlarla mı?</h3>
+    <p>İnsan nitel araştırmacıların çıktılarını yapay zekâ ve otomatik araçlarınkiyle karşılaştıranların çoğu, otomatik araçları basit ve daha nicel odaklı yaklaşımlarda harika, daha incelikli kavrayışta ise insanlardan çok daha zayıf bulmuştur. İnsanların en çok hangi konulardan söz ettiğini anlamak (aslında nicel bir analiz, çünkü bir sayım) için çok iyidirler. Kodlama ve tematik analiz yaptırırsan çok inandırıcı görünen sonuçlar üretirler; ama gerçek insan deneyimini, duyguyu ve inceliği yakalamakta oldukça kötüdürler. Yazara göre bugün tematik analizde hâlâ çok zayıflar (onları üreten şirketlerdeki kişiler ne derse desin). İyileri belirli kelimeleri etiketlemekte, genel duygu özetlemekte (dolayısıyla duygu analizinde) ve birlikte geçen kelimeleri etiketlemekte iyileşti; ama duyguların kişinin yaşadığı ya da anlattığı şeyin geniş bağlamında nasıl bir araya geldiğini anlamakta hâlâ zayıflar.</p>
+    <p>Yazarın görüşü: otomatik araçlar harika ama analistin <strong>yerine değil, tamamlayıcısı</strong> olarak. Nitel analizi el ile yapmayı bilen ve araçların içgörüleri ne zaman doğru yakaladığını, ne zaman kaçırdığını ayırt edebilen bir insan sürece dahil olmalı. Araçlar veri hazırlığını en aza indiren bir başlangıç noktası sunarak zaman ve kaynak sorununu çözer; ilk çerçeveleri taslaklamak ve analistin bakması gereken ek şeyleri bulmasına yardım eden kalite kontrolleri için harika bir verimlilik aracıdırlar. Ama çoğu nitel analizin amacı insan deneyiminin özüne ulaşmak olduğundan, veriyi tam anlamak ve yorumlamak hâlâ bir insan gerektirir.</p>
+
+    <div class="box">
+      <div class="lbl">Laboratuvar · Sen mi, sözlük tabanlı araç mı?</div>
+      <p class="small">Her alıntının duygusunu sen işaretle; sonra basit bir sözlük tabanlı “aracın” verdiği puanla karşılaştır.</p>
+      <div id="sentList"></div>
+      <div class="row" style="margin-top:8px"><button class="btn" id="sentCmp">Araçla karşılaştır</button></div>
+      <div class="result" id="sentOut" style="display:none"></div>
+    </div>
+
+    <h3>Kelime bulutu hakkında bir “çıkış”</h3>
+    <p>Yazar, nitel anlatıma görsel bir dayanak olarak sık kullanılsa da kelime bulutunu nitel analizi temsil etmek için yapılabilecek <em>en kötü</em> görsel seçim olarak görüyor. Birincisi, aslında niceldir: kelime frekanslarının görsel gösterimidir. İkincisi ve daha önemlisi, nitel analizin amacına aykırıdır; nitel analiz niteliği, deneyimi, duyguyu ve ince ayrıntıyı göstermeyi amaçlar. Yazar kelime bulutunu yalnızca, kelimeleri nicel bir ölçüye göre değil temaların kavramsal gücüne göre vurgulayacak şekilde el ile tasarlandığında destekliyor. Ayrıca yalnızca bir kelime bulutu yapıp buna “nitel analiz” demenin, nitel analize kötü ad kazandıran şeylerden biri olduğunu vurguluyor.</p>
+    <div class="box">
+      <div class="lbl">Karşılaştırma · Frekans bulutu ve kavramsal güç bulutu</div>
+      <div class="row" style="margin-bottom:8px"><div class="mode"><button id="cFreq" class="on">Kelime frekansı</button><button id="cTheme">Temaların kavramsal gücü</button></div></div>
+      <div class="cloud" id="cloud"></div>
+      <div id="cloudCtl" class="small" style="margin-top:8px"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s4"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 5 -->
+  <section class="ch" id="s5">
+    <h2>Nitel Araştırma Yöntemleri</h2><hr>
+    <p>Yazar, nitel analiz becerilerini geliştirmek isteyenlere hem veriyi el ile analiz etmeyi hem de bunu daha hızlı ve kaliteli yapmak için teknolojiden yararlanmayı öğrenmeyi öneriyor. Yolculuğun başındaysan <strong>kodlama, tematik analiz ve duygu analiziyle</strong> başla; sonra nitel araştırma yöntemlerinde beceri kazanarak genişle. Aşağıdaki yöntemler nitel veriye farklı bakar; veriye farklı baktığında sonuçların da özgün olur ve ek içgörüler sunar.</p>
+    <div class="grid">
+      <div class="card"><div class="t">Anlatı analizi</div><div class="small">İnsanların anlattığı hikâyelerin yapısını inceler. Çalışan deneyimini ya da işyeri kültürü algısını anlamak için çok uygun.</div></div>
+      <div class="card"><div class="t">Fenomenoloji</div><div class="small">İnsanların yaşanmış deneyimlerini kendi bakış açılarından inceler. Çalışan deneyimi için çok uygun.</div></div>
+      <div class="card"><div class="t">Söylem analizi</div><div class="small">Verinin içine gömülü daha büyük kavramları belirler; şirket iletişimlerinde güç dinamiklerini, temel değerlere, varsayımlara ya da inançlara uyumu değerlendirmek için kullanılabilir.</div></div>
+      <div class="card"><div class="t">Gömülü kuram</div><div class="small">Bulmayı umduğunu önceden belirlemek yerine kuramların ve bilgilerin verinin kendisinden ortaya çıkmasına izin verir.</div></div>
+      <div class="card"><div class="t">Konuşma analizi</div><div class="small">Gerçek sözlü etkileşimleri inceler: konuşmaların nasıl yapılandığı, sıranın nasıl alındığı, anlamın dil ve sözsüz işaretlerle nasıl kurulduğu. Kurumların nasıl işlediğine, ekiplerin nasıl birlikte çalıştığına ve uyumun nerede olup olmadığına dair karmaşık ama büyüleyici içgörüler sunar.</div></div>
+    </div>
+    <p class="small">Yazar: Bunların hepsini çalışabildiysen tebrikler, gerçekten uzmansın ve yolda başka yaklaşımlarla da karşılaşmışsındır.</p>
+    <div class="box">
+      <div class="lbl">Etkinlik · Hangi yöntem?</div>
+      <div id="meth"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s5"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 6 -->
+  <section class="ch" id="s6">
+    <h2>Nitel Veri Üretimi</h2><hr>
+    <p>Çoğu zaman yığınla kullanılmayan nitel veri olsa da, eldeki veri yanıtlamaya çalıştığın soru için her zaman işe yaramayabilir. Veri üretim süreci iyi tasarlanmamışsa bilgi amacına uygun olmayabilir ve kendi verini üretmen gerekebilir. Nitel analize odaklanan insan analitiği profesyonelleri çoğunlukla nitel veri üretim sürecinin tasarımından ve uygulanmasından da sorumludur; bu yüzden veri toplama ve üretme becerileri özellikle önemlidir.</p>
+    <h3>Etkili mülakat, açık uçlu anket ve odak grup soruları tasarlamak</h3>
+    <p>Soruların bağlama uygun olması, geçerli ve güvenilir yanıtlar üretmesi, uygun sırada olması, katılımcıyı yönlendirmemesi, yanlılığa sürüklememesi ya da kafasını karıştırmaması gerekir. Etkili veri toplama yöntemi tasarlamanın, yanıtını öğrenmek istediğin soruları yazmak kadar basit olduğunu sanma; anket, mülakat metni ve odak grup kolaylaştırma üzerine koca çalışma alanları var.</p>
+    <div class="grid">
+      <div class="card"><div class="t">Mülakat</div><div class="small">“Evet/hayır”ın ötesine geçen, içgörülü ve insan odaklı sorular sorma sanatı: aktif dinleme, takip soruları, ayrıntı için derinleşme ve davranış, tutum ve deneyimlerin ardındaki motivasyonları anlama.</div></div>
+      <div class="card"><div class="t">Açık uçlu anket sorusu</div><div class="small">Deneyimler, algılar ve öneriler hakkında ayrıntılı ve düşünceli yanıtları teşvik eden sorular; yönlendirici sorulardan ve bakış açılarını daraltan seçeneklerden kaçın.</div></div>
+      <div class="card"><div class="t">Odak grup kolaylaştırma</div><div class="small">Herkesin sesinin duyulmasını ve konuşmanın konuda kalmasını sağla; açık diyaloğu teşvik eden sorular sor, saygılı bir fikir alışverişi için grup dinamiklerini yönet ve ortaya çıkan ana temaları sentezle.</div></div>
+    </div>
+
+    <div class="box">
+      <div class="lbl">Araç · Soru denetleyicisi</div>
+      <p class="small">Bir mülakat ya da açık uçlu anket sorusu yaz; yaygın sorunlar için kaba bir kontrol yapılır. Kural tabanlıdır, son karar senin.</p>
+      <input type="text" id="qIn" value="Yeni esnek çalışma politikası harika oldu, değil mi?">
+      <div class="chips" id="qEx"></div>
+      <div id="qOut" style="margin-top:8px"></div>
+    </div>
+
+    <h3>Gözlem teknikleri</h3>
+    <p>Usta gözlem; çalışan davranışlarını, etkileşimlerini ve süreçleri izleyip kaydederek veri toplamayı sağlar. İşyeri dinamiklerini, iş süreçlerini, iletişim tarzlarını ve şirket kültürünü anlamak için özellikle yararlıdır.</p>
+    <ul>
+      <li>Toplantılarda, ekip etkileşimlerinde, hatta gayriresmî sohbetlerde beden dili, yüz ifadeleri ve genel atmosfer gibi ayrıntılara dikkat eden titiz bir gözlemci olmayı öğren.</li>
+      <li>Gözlemlerini kaydetmek için bir sistem geliştir: ayrıntılı notlar, ses kayıtları (uygun onayla) ya da belirli iş süreçlerinin video kayıtları (uygun onay ve anonimleştirmeyle).</li>
+      <li>Hem doğrudan (gözlemi senin yaptığın) hem dolaylı teknikleri düşün: örneğin katılımcıların deneyimlerini daha sonra analiz etmen için kaydettiği bir <strong>günlük çalışması</strong> (diary study).</li>
+    </ul>
+
+    <h3>Güven ilişkisi (rapport) kurmak</h3>
+    <p>Bilgi toplayacağın çalışanlarla güven ve bağ kurmak kritiktir; insanlar rahat, saygı duyulmuş ve dinlenmiş hissettiklerinde daha dürüst ve ayrıntılı bilgi paylaşır.</p>
+    <div class="box">
+      <div class="lbl">Kontrol listesi · Görüşmeden önce</div>
+      <ul class="check" id="rap"></ul>
+      <div class="small" id="rapOut"></div>
+    </div>
+
+    <div class="story"><div class="h">Nitel analizi öğrenme deneyimi üzerine</div>
+      Yazar yüzlerce kişiye nitel analiz öğretti ve deneyimin kişiden kişiye ne kadar farklı olduğuna hep şaşırıyor. Çoğu için, özellikle doğal olarak nicel analitiğe yatkın olanlar için, şimdiye dek denedikleri en tuhaf, kafa karıştırıcı ve zor analitik türüdür. Okulda bu şekilde analiz etmeyi öğrenmedik; yalnızca sayı hesaplamayı öğrendik ve eleştirel düşünmemizi soyut değil bağlama dayalı yorumlamaya uyguladık. Muhtemelen bu tür yorumlamayı hayatında ilk kez yapıyorsun; tuhaf gelecek. Yazarın tuhaf ama yerinde benzetmesi: elinle yazıyorsan, sana bir kalem verip ayağınla yazmanı istesem çok zorlanırsın; oysa pek çok insan ayağıyla ve gayet iyi yazar. Sadece sana öğretilmedi. Zorlanıyorsan devam et; çok garip hissettirecek ve bu normal.<br><br>
+      Bir de nitel analize çok daha çabuk âşık olan küçük bir grup var. Yazarın en sevdiği an, işi ilk kavradıkları an: genellikle bir şeyi yanlış yaptıklarını sanırlar. “Bu kadar basit, kolay ve <em>eğlenceli</em> olamaz, değil mi?!” İlginç olan, aslında basit ya da kolay olmaması; onlara öyle geliyor. O çıktıya ulaşmak için çok karmaşık düşünüp pek çok fikri birbirine bağladılar. İnsan beyni anlamı yorumlamak ve örüntü bulmak için özel olarak tasarlanmıştır; alışmak biraz zaman alsa da alıştığımızda keyif alırız ve zaman uçar gider. Analitik, bilgi sayısal biçimde gelsin gelmesin, bilgide içgörü bulmakla ilgilidir.
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s6"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 7 -->
+  <section class="ch" id="s7">
+    <h2>Beceri Haritam</h2><hr>
+    <p>Bu sayfadaki nitel analitik becerileri için durumunu işaretle. Yazarın önerdiği öğrenme sırası: önce kodlama, tematik analiz ve duygu analizi; sonra nitel araştırma yöntemleri.</p>
+    <div class="sk"><table id="skTab"></table></div>
+    <div class="result" id="skNext"></div>
+    <div class="row noprint" style="margin-top:10px">
+      <button class="btn ghost" id="skCsv">CSV indir</button>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s7"> Beceri haritamı doldurdum</label>
+  </section>
+
+  <!-- 8 -->
+  <section class="ch" id="s8">
+    <h2>Mini Test</h2><hr>
+    <div id="quiz"></div>
+    <p class="ui" id="score" style="font-weight:700;color:var(--navy)"></p>
+    <label class="readmark"><input type="checkbox" data-read="s8"> Testi tamamladım</label>
+  </section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><a class="pv" href="insan_analitigi_adim3_nicel_analitik.html"><small>← Önceki</small><b>Adım 3: Nicel analitik</b></a><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><a class="nx" href="insan_analitigi_adim3_analitik_oz_degerlendirme.html"><small>Sonraki →</small><b>Adım 3: Analitik öz değerlendirme</b></a></nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+const KEY="pa_adim3_nitel_v1";
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)};
+const dl=(name,rows)=>{const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';const b=new Blob(["﻿"+rows.map(r=>r.map(q).join(";")).join("\n")],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href)};
+const TN={O:"Nesne",S:"Yapısal",E:"Duygusal"};
+
+// tema
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$("#theme").onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";st.theme=d.dataset.theme;save()};
+
+// ilerleme
+st.read=st.read||{};const N=8;
+function prog(){const n=Object.values(st.read).filter(Boolean).length;$("#progbar").style.width=(n/N*100)+"%";$$("#nav a").forEach(a=>a.classList.toggle("done",!!st.read[a.dataset.s]))}
+$$("[data-read]").forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();if(cb.checked)toast("Bir bölüm daha tamam!")}});prog();
+
+// 1. yanılgılar
+const FL=[["“Nitel analiz ‘yumuşak’, gerçek analiz değil.”","Nitel analiz, sayı olmayan bilgiyi analiz ederek içgörü bulmanın sistematik ve titiz bir yoludur. Kesinlikle ‘gerçek’ analizdir."],
+ ["“Bir kelime bulutu yaptım; nitel analiz tamam.”","Kelime bulutu kelime frekansının görsel hâlidir, yani niceldir. Tek başına nitel analiz değildir."],
+ ["“İşime gelen alıntıları seçip özetlemek yeter.”","Hangi öznel bilginin paylaşılacağını seçmek ya da yanlı kişisel özetler nitel analize kötü ad kazandırır; bunlar nitel analiz değildir."],
+ ["“Nitel veri analiz etmek için çok zaman ve kaynak ister.”","Her analiz yöntemine göre zaman alır. Kayıt, otomatik döküm ve kodlamayı destekleyen araçlar emeği ve süreyi azalttı."],
+ ["“İki analist aynı sonucu bulmuyorsa analiz yanlıştır.”","En iyi araştırmacılar bile aynı veriyi her zaman aynı biçimde yorumlamaz; yorum nitel analizin gücüdür. Doğrulama teknikleri güven sağlar."]];
+$("#flips").innerHTML=FL.map(f=>`<div class="flip"><div class="in"><div class="f"><span>${f[0]}</span></div><div class="b">${f[1]}</div></div></div>`).join("");
+$$(".flip").forEach(f=>f.onclick=()=>f.classList.toggle("open"));
+
+// 2. kodlama laboratuvarı
+const EX=[
+ {id:1,t:"Ayrılma nedenim tamamen ailevi; eşimin işi nedeniyle başka bir şehre taşınıyoruz.",s:0},
+ {id:2,t:"Aile nedenleriyle ayrılıyorum diyelim... Gerçi son altı aydır toplantılarda fikirlerim hiç dikkate alınmadı.",s:-1,mask:true},
+ {id:3,t:"Yeni İK yazılımı her gün donuyor; izin talebimi üç kez girmek zorunda kaldım.",s:-1},
+ {id:4,t:"Terfi kararlarını kimin, hangi ölçüte göre verdiği hiç belli değil; bir gün duyuru geliyor, o kadar.",s:-1},
+ {id:5,t:"Kendimi değersiz hissettim; yaptığım iş kimseye görünmüyordu.",s:-1},
+ {id:6,t:"Yeni mentorluk programı gerçekten heyecan vericiydi, keşke daha önce başlasaydı.",s:1},
+ {id:7,t:"Harika, bir hafta sonu daha mesai. Tam da hayal ettiğim gibi.",s:-1,sarc:true},
+ {id:8,t:"Ekip yöneticimiz değiştikten sonra işler karıştı, kimse bize bir şey sormadı.",s:-1},
+ {id:9,t:"Ücretim fena değildi ama iş yükü sürekli arttı, nefes alamıyordum.",s:-1},
+ {id:10,t:"Kişisel nedenler. Başka söyleyecek bir şeyim yok.",s:0,mask:true},
+ {id:11,t:"Onay zinciri yüzünden basit bir satın alma bile iki hafta sürüyor; beş imza gerekiyor.",s:-1}];
+const DEF_CODES=[["İK yazılımı","O"],["Yönetici","O"],["Mentorluk programı","O"],["Satın alma süreci","O"],
+ ["Kararı kim veriyor belirsiz","S"],["Ölçütler belirsiz","S"],["Çok aşamalı onay","S"],["Katılım/söz hakkı yok","S"],
+ ["Değersiz hissetme","E"],["Hayal kırıklığı (iş yükü)","E"],["Heyecan","E"],["Bıkkınlık/yorgunluk","E"],
+ ["Ailevi neden (beyan)","S"],["Genel/kapalı yanıt","S"]];
+const DEF_THEMES=["Görülmeme ve söz hakkı","Belirsiz karar ve kariyer süreçleri","İş yükü ve dengesizlik","Hantal süreçler ve sistemler","Sosyal olarak kabul gören nedenler","Olumlu deneyimler"];
+function initLab(){st.codes=DEF_CODES.map(([n,t])=>({n,t,th:""}));st.apl={};st.themes=DEF_THEMES.slice();st.sent={};st.str={}}
+if(!st.codes)initLab();
+st.ctab=st.ctab||"O";
+function tabs(){$("#ctabs").innerHTML=["O","S","E","ALL"].map(k=>`<button class="${st.ctab===k?"on":""}" data-tab="${k}">${k==="ALL"?"Tüm kodlar":`<span class="dot" style="background:var(--t${k})"></span>${TN[k]} kodlama`}</button>`).join("");$$("[data-tab]").forEach(b=>b.onclick=()=>{st.ctab=b.dataset.tab;save();tabs();exList()})}
+function exList(){const codes=st.codes.map((c,i)=>({...c,i})).filter(c=>st.ctab==="ALL"||c.t===st.ctab);
+ $("#exList").innerHTML=EX.map(e=>{const ap=st.apl[e.id]||[];return `<div class="ex ${ap.length?"coded":""}"><div class="meta">ALINTI ${e.id} · ${ap.length} kod</div><div class="q">“${esc(e.t)}”</div><div class="chips">${codes.map(c=>`<button class="chip ${ap.includes(c.n)?"on":""}" data-t="${c.t}" data-e="${e.id}" data-c="${esc(c.n)}">${esc(c.n)}</button>`).join("")}</div></div>`}).join("");
+ $$("#exList .chip").forEach(b=>b.onclick=()=>{const e=b.dataset.e,c=b.dataset.c;const a=st.apl[e]=st.apl[e]||[];const k=a.indexOf(c);if(k<0)a.push(c);else a.splice(k,1);save();exList();codeStats();cbk();themes()});codeStats()}
+function codeStats(){const used=new Set(Object.values(st.apl).flat());const coded=EX.filter(e=>(st.apl[e.id]||[]).length).length;const byT={O:0,S:0,E:0};Object.values(st.apl).flat().forEach(n=>{const c=st.codes.find(x=>x.n===n);if(c)byT[c.t]++});
+ $("#codeStats").innerHTML=`<div class="stat"><b>${coded}/${EX.length}</b><span>Kodlanan alıntı</span></div><div class="stat"><b>${used.size}</b><span>Kullanılan kod</span></div>`+["O","S","E"].map(t=>`<div class="stat"><b style="color:var(--t${t})">${byT[t]}</b><span>${TN[t]} kod ataması</span></div>`).join("")}
+$("#ncAdd").onclick=()=>{const n=$("#ncName").value.trim();if(!n)return;if(st.codes.some(c=>c.n.toLocaleLowerCase("tr-TR")===n.toLocaleLowerCase("tr-TR"))){toast("Bu kod zaten var");return}st.codes.push({n,t:$("#ncType").value,th:""});$("#ncName").value="";save();exList();cbk();toast("Kod eklendi")};
+tabs();exList();
+
+// 3. temalar
+function cbk(){const used=st.codes.filter(c=>Object.values(st.apl).some(a=>a.includes(c.n)));
+ if(!used.length){$("#cbk").innerHTML='<tr><td class="small">Önce 1. adımda alıntıları kodla; kullanılan kodlar burada listelenecek.</td></tr>';return}
+ $("#cbk").innerHTML=`<tr><th>Kod</th><th>Tür</th><th>Kaç alıntı</th><th style="width:40%">Tema</th></tr>`+used.map(c=>{const n=EX.filter(e=>(st.apl[e.id]||[]).includes(c.n)).length;return `<tr><td>${esc(c.n)}</td><td><span class="dot" style="background:var(--t${c.t})"></span>${TN[c.t]}</td><td>${n}</td><td><select data-th="${esc(c.n)}"><option value="">— temaya ata —</option>${st.themes.map(t=>`<option ${c.th===t?"selected":""}>${esc(t)}</option>`).join("")}</select></td></tr>`}).join("");
+ $$("[data-th]").forEach(s=>s.onchange=()=>{const c=st.codes.find(x=>x.n===s.dataset.th);c.th=s.value;save();themes();cloud()})}
+$("#ntAdd").onclick=()=>{const n=$("#ntName").value.trim();if(!n||st.themes.includes(n))return;st.themes.push(n);$("#ntName").value="";save();cbk();toast("Tema eklendi")};
+function themes(){const out=st.themes.map(t=>{const cs=st.codes.filter(c=>c.th===t&&Object.values(st.apl).some(a=>a.includes(c.n)));if(!cs.length)return null;const exs=EX.filter(e=>(st.apl[e.id]||[]).some(n=>cs.some(c=>c.n===n)));return {t,cs,exs}}).filter(Boolean);
+ $("#themeOut").innerHTML=out.length?out.map(o=>`<div class="theme"><div class="tt">${esc(o.t)}</div><div class="small">${o.exs.length} alıntı · kodlar: ${o.cs.map(c=>`<span class="dot" style="background:var(--t${c.t})"></span>${esc(c.n)}`).join(", ")}</div>${o.exs.slice(0,3).map(e=>`<blockquote>“${esc(e.t)}”</blockquote>`).join("")}<textarea data-memo="${esc(o.t)}" placeholder="Yorum notu: bu tema neyi anlatıyor? Hangi duygular ve bağlamla birlikte görünüyor?" style="margin-top:8px;min-height:50px">${esc((st.memo||{})[o.t]||"")}</textarea></div>`).join(""):'<p class="small">Kodları temalara atadıkça temalar, destekleyici alıntılar ve yorum notu alanları burada görünecek.</p>';
+ $$("[data-memo]").forEach(t=>t.oninput=()=>{st.memo=st.memo||{};st.memo[t.dataset.memo]=t.value;save()});
+ // sosyal kabul gören neden içgörüsü
+ const famCode=st.codes.filter(c=>/aile|kişisel|genel|kapalı/i.test(c.n)).map(c=>c.n);const m2=st.apl[2]||[];
+ if((st.apl[2]||[]).length&&(st.apl[10]||[]).length){const other=m2.filter(n=>!famCode.includes(n));$("#maskOut").style.display="block";$("#maskOut").innerHTML=`<strong class="ui">Sosyal olarak kabul gören nedenler:</strong> Alıntı 2 “aile nedenleri” ile açılıyor ama ${other.length?`aynı cümlede <em>${other.map(esc).join(", ")}</em> olarak kodladığın başka bir deneyim var`:"devamında söz hakkı ve dikkate alınmama deneyimi var; bunu ayrıca kodlamayı düşün"}. Alıntı 10 ise kapalı bir yanıt. Ailevi nedenleri gerçek olan (alıntı 1) ile “örtü” işlevi görenleri ayırmak, nedenleri eşlik eden duygu ve bağlamla birlikte okumayı gerektirir; tematik analiz tam da bunu sağlar. Bu tür kapalı yanıtlar çoğalıyorsa çıkış görüşmesinin güven ortamı ve soru tasarımı da gözden geçirilmeli.`}else $("#maskOut").style.display="none"}
+cbk();themes();
+$("#csvCodes").onclick=()=>dl("nitel_kodlama.csv",[["Alıntı no","Alıntı","Kod","Kod türü","Tema"]].concat(EX.flatMap(e=>{const a=st.apl[e.id]||[];return a.length?a.map(n=>{const c=st.codes.find(x=>x.n===n)||{};return [e.id,e.t,n,TN[c.t]||"",c.th||""]}):[[e.id,e.t,"","",""]]})));
+$("#printBtn").onclick=()=>window.print();
+$("#labReset").onclick=()=>{if(!confirm("Kodlar, temalar ve duygu işaretlemeleri silinsin mi?"))return;initLab();st.memo={};save();exList();cbk();themes();sentR();cloud();toast("Laboratuvar sıfırlandı")};
+
+// 4. duygu karşılaştırma
+const POS=["heyecan","harika","güzel","iyi","fena değil","memnun","keşke daha önce","hayal ettiğim"],NEG=["donuyor","zorunda","belli değil","değersiz","görünmüyor","karıştı","nefes alamıyor","dikkate alınmadı","sürekli arttı","yüzünden","mesai","sormadı"];
+function lex(t){const L=t.toLocaleLowerCase("tr-TR");let s=0;POS.forEach(w=>{if(L.includes(w))s++});NEG.forEach(w=>{if(L.includes(w))s--});return s>0?1:s<0?-1:0}
+const SL={"-1":"Olumsuz","0":"Nötr","1":"Olumlu"};
+function sentR(){$("#sentList").innerHTML=EX.map(e=>`<div class="ex"><div class="meta">ALINTI ${e.id}</div><div class="q">“${esc(e.t)}”</div><div class="row" style="margin-top:6px"><div class="sent">${[-1,0,1].map(v=>`<button data-se="${e.id}" data-v="${v}" class="${st.sent[e.id]===v?"on":""}">${SL[v]}</button>`).join("")}</div><span class="small" id="tool${e.id}"></span></div></div>`).join("");
+ $$("[data-se]").forEach(b=>b.onclick=()=>{st.sent[b.dataset.se]=+b.dataset.v;save();sentR()})}
+sentR();
+$("#sentCmp").onclick=()=>{let agree=0,n=0;EX.forEach(e=>{const tool=lex(e.t),me=st.sent[e.id];const el=$("#tool"+e.id);if(me===undefined){el.innerHTML=`Araç: <span class="tag">${SL[tool]}</span>`;return}n++;if(me===tool)agree++;el.innerHTML=`Araç: <span class="tag ${me!==tool?"diff":""}">${SL[tool]}</span>${me!==tool?" ← farklı":""}`});
+ $("#sentOut").style.display="block";const t7=lex(EX[6].t);
+ $("#sentOut").innerHTML=(n?`<strong class="ui">${n} alıntıda ${agree} uyum.</strong> `:"Önce birkaç alıntıyı işaretle. ")+`Alıntı 7'de araç “harika” ve “hayal ettiğim” kelimelerine bakıp <em>${SL[t7].toLowerCase()}</em> diyor; sen büyük olasılıkla ironiyi gördün. Alıntı 2'de araç, “aile nedenleri” örtüsünün altındaki dışlanmışlık duygusunu tek bir puana indiriyor. Araçlar hızlı bir genel resim için iyi, ama bağlam, ironi ve duyguların bir aradalığı için insan gerekir.`};
+
+// kelime bulutu
+const STOP=new Set("ve ile ama için bir bu şu o da de çok daha en gibi kadar sonra her hiç ne ki gerçi diye bize bir bile kimin hangi kimse başka o kadar tam".split(" "));
+st.cmode=st.cmode||"f";
+function cloud(){$("#cFreq").classList.toggle("on",st.cmode==="f");$("#cTheme").classList.toggle("on",st.cmode==="t");
+ if(st.cmode==="f"){const f={};EX.map(e=>e.t).join(" ").toLocaleLowerCase("tr-TR").replace(/[^a-zçğıöşü\s]/g," ").split(/\s+/).filter(w=>w.length>2&&!STOP.has(w)).forEach(w=>f[w]=(f[w]||0)+1);
+  const top=Object.entries(f).sort((a,b)=>b[1]-a[1]).slice(0,28);const mx=top[0][1];
+  $("#cloud").innerHTML=top.sort(()=>.5-Math.random()).map(([w,c])=>`<span style="font-size:${13+c/mx*22}px;color:${c===mx?"var(--navy2)":"var(--muted)"}">${esc(w)}</span>`).join("");
+  $("#cloudCtl").innerHTML="En büyük kelimeler en sık geçenler; “nedenler”, “yeni”, “her” gibi kelimeler öne çıkabiliyor. Bu bir sayımdır ve deneyim, duygu ya da bağlam hakkında neredeyse hiçbir şey söylemez.";return}
+ const th=st.themes.filter(t=>st.codes.some(c=>c.th===t&&Object.values(st.apl).some(a=>a.includes(c.n))));
+ if(!th.length){$("#cloud").innerHTML='<span class="small" style="font-weight:600">Önce laboratuvarda kodları temalara ata.</span>';$("#cloudCtl").innerHTML="";return}
+ st.str=st.str||{};
+ $("#cloud").innerHTML=th.map(t=>{const v=st.str[t]??3;return `<span style="font-size:${12+v*6}px;color:var(--navy)">${esc(t)}</span>`}).join("");
+ $("#cloudCtl").innerHTML="Her temanın kavramsal gücünü sen belirle (alıntı sayısı değil, verideki anlamsal ağırlığı):"+th.map(t=>`<div style="display:grid;grid-template-columns:200px 1fr 24px;gap:8px;align-items:center;margin-top:4px"><span>${esc(t)}</span><input type="range" min="1" max="5" value="${st.str[t]??3}" data-str="${esc(t)}"><b>${st.str[t]??3}</b></div>`).join("");
+ $$("[data-str]").forEach(r=>r.oninput=()=>{st.str[r.dataset.str]=+r.value;save();cloud()})}
+$("#cFreq").onclick=()=>{st.cmode="f";save();cloud()};$("#cTheme").onclick=()=>{st.cmode="t";save();cloud()};
+cloud();
+
+// 5. yöntem eşleştirme
+function scen(sel,items){$(sel).innerHTML=items.map((it,k)=>`<div class="card" style="margin:10px 0"><div class="ui" style="font-weight:700;font-size:15px">${it.q}</div>${it.o.map((o,j)=>`<button class="opt" data-k="${k}" data-j="${j}">${o}</button>`).join("")}<div class="fb" id="${sel.slice(1)}fb${k}"></div></div>`).join("");
+ $$(sel+" .opt").forEach(b=>b.onclick=()=>{const it=items[b.dataset.k];$$(`${sel} .opt[data-k="${b.dataset.k}"]`).forEach(x=>x.classList.remove("right","wrong"));const ok=+b.dataset.j===it.a;b.classList.add(ok?"right":"wrong");$(`${sel}fb${b.dataset.k}`).innerHTML=`<span class="${ok?"ok":"no"}">${ok?"Doğru":"Tekrar düşün"}:</span> ${it.e}`})}
+const M=["Anlatı analizi","Fenomenoloji","Söylem analizi","Gömülü kuram","Konuşma analizi"];
+scen("#meth",[
+ {q:"CEO'nun yıllık mesajlarında “aile” ve “performans” vurgularının şirketin değerleriyle uyumunu ve güç ilişkilerini incelemek istiyorsun.",o:M,a:2,e:"Söylem analizi, şirket iletişimlerine gömülü büyük kavramları, güç dinamiklerini ve değer uyumunu inceler."},
+ {q:"Uzaktan çalışmaya geçen yeni annelerin bu deneyimi kendi gözlerinden nasıl yaşadığını anlamak istiyorsun.",o:M,a:1,e:"Fenomenoloji, yaşanmış deneyimi katılımcıların bakış açısından inceler."},
+ {q:"Proje toplantılarında kimin söz aldığını, sözün nasıl kesildiğini ve kararların konuşmada nasıl kurulduğunu görmek istiyorsun.",o:M,a:4,e:"Konuşma analizi, gerçek sözlü etkileşimlerin yapısını, sıra alma ve anlam kurulmasını inceler."},
+ {q:"Yeni bir alanda (ör. platform çalışanları) önceden bir çerçeve dayatmadan açıklamanın veriden çıkmasını istiyorsun.",o:M,a:3,e:"Gömülü kuramda kuram ve bilgi verinin kendisinden ortaya çıkar."},
+ {q:"Çalışanların “şirkete katılış hikâyelerinin” nasıl kurulduğunu, hangi dönüm noktalarını öne çıkardığını incelemek istiyorsun.",o:M,a:0,e:"Anlatı analizi, insanların anlattığı hikâyelerin yapısını inceler."}]);
+
+// 6. soru denetleyici
+const QEX=["Yeni esnek çalışma politikası harika oldu, değil mi?","Yöneticinizle ilişkiniz iyi mi?","Ücret ve kariyer olanaklarından ne kadar memnunsunuz?","Son altı ayda işinizde sizi en çok zorlayan bir durumu anlatır mısınız?","Sizce de iş yükü çok fazla değil mi?","Ekibinizde fikirlerinizin dikkate alındığını hissettiğiniz bir anı nasıl tarif edersiniz?"];
+$("#qEx").innerHTML=QEX.map((q,i)=>`<button class="chip" data-qx="${i}">Örnek ${i+1}</button>`).join("");
+$$("[data-qx]").forEach(b=>b.onclick=()=>{$("#qIn").value=QEX[b.dataset.qx];qChk()});
+function qChk(){const q=$("#qIn").value.trim();const L=q.toLocaleLowerCase("tr-TR");const f=[];
+ if(!q){$("#qOut").innerHTML="";return}
+ if(/değil mi|sizce de|katılmaz mısınız|öyle değil mi|siz de/.test(L))f.push(["w","Yönlendirici: katılımcıyı belirli bir yanıta itiyor. Tarafsız ifade kullan."]);
+ if(/harika|mükemmel|berbat|kötü|başarılı|sorunlu|çok fazla/.test(L))f.push(["w","Yüklü/değer içeren kelime var; katılımcının değerlendirmesini önceden belirliyor olabilir."]);
+ if(/ne kadar memnun|ne kadar iyi|ne kadar kötü/.test(L))f.push(["w","Varsayım içeriyor (ör. memnuniyetin var olduğunu varsayıyor); “… nasıl değerlendirirsiniz?” gibi açık bir ifade dene."]);
+ if(/( ve |, )/.test(L)&&/(ücret|kariyer|yönetici|iş yükü|ekip|eğitim|politika)/.test(L)&&(L.match(/ücret|kariyer|yönetici|iş yükü|ekip|eğitim|politika/g)||[]).length>=2)f.push(["w","Çift soru olabilir: iki konuyu birlikte soruyor; yanıt hangisine ait anlaşılmaz. İkiye böl."]);
+ const closed=/\b(mı|mi|mu|mü|mısınız|misiniz|musunuz|müsünüz)\?$/.test(L)||/\s(var mı|oldu mu|ister misiniz)\??$/.test(L);
+ const open=/^(nasıl|neler|ne |hangi|neden|anlatır mısınız|bir örnek|tarif)/.test(L)||/anlatır mısınız|tarif eder misiniz|nasıl tarif|örnek verir misiniz/.test(L);
+ if(closed&&!open)f.push(["w","Kapalı uçlu: “evet/hayır” yanıtına davet ediyor. “Nasıl…”, “Neler…”, “… anlatır mısınız?” ile aç."]);
+ if(open)f.push(["g","Açık uçlu: deneyim ve ayrıntı anlatımına alan açıyor."]);
+ if(/son (bir|altı|üç|[0-9]+)|bir (an|durum|örnek)/.test(L))f.push(["g","Somut bir deneyime ya da zaman dilimine bağlıyor; genellemeler yerine ayrıntı toplamaya yardım eder."]);
+ if(!f.some(x=>x[0]==="w")&&!open)f.push(["g","Belirgin bir sorun yakalanmadı; yine de bağlama uygunluk, sıra ve anlaşılırlığı kontrol et."]);
+ $("#qOut").innerHTML=f.map(x=>`<div class="flag ${x[0]}">${x[1]}</div>`).join("")}
+$("#qIn").oninput=qChk;qChk();
+
+// rapport
+const RAP=["Görüşmenin amacını ve verilerin nasıl kullanılacağını açıkça anlatacağım.","Gizliliği nasıl koruyacağımı (kimlerin göreceği, raporların toplu olacağı) açıklayacağım.","Ses/video kaydı için önceden onay alacağım.","Samimi ve ulaşılabilir bir tutum takınacağım; yargılamadan dinleyeceğim.","Aktif dinleyip takip ve derinleştirme soruları soracağım.","Yanıtların herkes için işyeri deneyimini iyileştirmek üzere etik biçimde kullanılacağını güvence altına alacağım."];
+st.rap=st.rap||{};
+$("#rap").innerHTML=RAP.map((r,i)=>`<li><label><input type="checkbox" data-rp="${i}" ${st.rap[i]?"checked":""}>${r}</label></li>`).join("");
+function rapO(){const n=RAP.filter((_,i)=>st.rap[i]).length;$("#rapOut").textContent=n===RAP.length?"Hazırsın: güven ortamı dürüst ve ayrıntılı yanıtların ön koşulu.":`${n}/${RAP.length} hazır.`}
+$$("[data-rp]").forEach(c=>c.onchange=()=>{st.rap[c.dataset.rp]=c.checked;save();rapO()});rapO();
+
+// 7. beceri haritası
+const SK=[["Temel nitel analiz (önce bunlar)",["Nesne kodlama","Yapısal kodlama","Duygusal kodlama","Tematik analiz","Duygu analizi","Otomatik metin analitiği araçlarını eleştirel kullanma"]],
+ ["Nitel araştırma yöntemleri",["Anlatı analizi","Fenomenoloji","Söylem analizi","Gömülü kuram","Konuşma analizi"]],
+ ["Nitel veri üretimi",["Mülakat tasarımı ve yürütme","Açık uçlu anket sorusu tasarımı","Odak grup kolaylaştırma","Gözlem teknikleri (doğrudan, günlük çalışması)","Güven ilişkisi kurma"]]];
+const LV=["Henüz değil","Öğreniyorum","Kullanabiliyorum","Güçlü yönüm"];
+st.sk=st.sk||{};
+function skR(){$("#skTab").innerHTML=`<tr><th>Beceri</th>${LV.map(l=>`<th style="width:105px">${l}</th>`).join("")}</tr>`+SK.map((g,gi)=>`<tr class="grp"><td colspan="5">${g[0]}</td></tr>`+g[1].map((s,si)=>{const k=gi+"_"+si;return `<tr><td>${s}</td>${LV.map((_,li)=>`<td style="text-align:center"><input type="radio" name="sk${k}" data-sk="${k}" value="${li}" ${st.sk[k]===li?"checked":""} style="accent-color:var(--navy2);width:17px;height:17px"></td>`).join("")}</tr>`}).join("")).join("");
+ $$("[data-sk]").forEach(r=>r.onchange=()=>{st.sk[r.dataset.sk]=+r.value;save();skN()});skN()}
+function skN(){let nx=null;for(let gi=0;gi<SK.length&&!nx;gi++)for(let si=0;si<SK[gi][1].length;si++){const v=st.sk[gi+"_"+si];if(v==null||v<2){nx=[gi,si];break}}
+ $("#skNext").innerHTML=nx?`<strong class="ui">Önerilen sıradaki adım:</strong> ${SK[nx[0]][1][nx[1]]} <span class="small">(${SK[nx[0]][0]})</span>`:'<strong class="ui">Tebrikler!</strong> Tüm becerileri en az “kullanabiliyorum” düzeyinde işaretledin.'}
+$("#skCsv").onclick=()=>dl("nitel_beceri_haritam.csv",[["Grup","Beceri","Düzey"]].concat(SK.flatMap((g,gi)=>g[1].map((s,si)=>[g[0],s,st.sk[gi+"_"+si]!=null?LV[st.sk[gi+"_"+si]]:""]))));
+skR();
+
+// 8. test
+const Q=[
+ {q:"Nitel veri için hangisi doğrudur?",o:["Her zaman tablo biçimindedir","Sayıyla ölçülemeyen, çoğunlukla yapılandırılmamış bilgidir","Yalnızca metinden oluşur","Yalnızca betimleyici analitikte kullanılır"],a:1,e:"Metin, ses, görüntü, gözlem gibi pek çok biçimde gelebilir."},
+ {q:"Nitel verinin özellikle iyi yanıtladığı ek soru hangisi?",o:["Kaç tane?","Ne şekilde?","Ne zaman?","Ne kadar?"],a:1,e:"Niteliği ve ayrıntıyı anlamak ne, neden ve nasıl kavrayışını derinleştirir."},
+ {q:"Nicel ve nitel analitik arasındaki tek gerçek fark nedir?",o:["Nitel analitik daha az titizdir","Nicel matematiksel, nitel yorum temelli yaklaşımlar kullanır","Nitel analitik çıkarım yapamaz","Nicel analitik veri gerektirmez"],a:1,e:"İkisi de verideki şeyi betimlemeye ya da ondan çıkarım yapmaya odaklanır."},
+ {q:"Çıkış görüşmelerinde adı geçen yöneticileri etiketlemek hangi kodlama türüdür?",o:["Nesne kodlama","Yapısal kodlama","Duygusal kodlama","Duygu analizi"],a:0,e:"Nesne kodlama belirli şeyleri, olayları ya da kişileri tanımlar."},
+ {q:"Yazar duygu analizini neden gerçek bir nitel analiz saymıyor?",o:["Çok zaman aldığı için","Duyguyu sayısallaştırıp veriyi sayılara çevirdiği için","Yalnızca İngilizce çalıştığı için","Kodlama gerektirdiği için"],a:1,e:"Yine de nitel verinin bir analizidir ve sık anılır."},
+ {q:"Çıkış görüşmesinde “ailevi nedenler” yanıtı için tematik analiz neyi sağlar?",o:["Yanıtı doğrudan gerçek neden sayar","Sosyal olarak kabul gören temaları diğerlerinden ayırıp nedenleri duygu ve bağlamla birlikte okur","Yanıtı analizden çıkarır","Yalnızca kelimeleri sayar"],a:1,e:"Böylece örtü işlevi gören yanıtlar ile gerçek nedenler ayırt edilebilir."},
+ {q:"Yazara göre otomatik nitel analiz araçlarının doğru rolü nedir?",o:["Analistin yerini almak","Analistin tamamlayıcısı olmak","Hiç kullanılmamak","Yalnızca kelime bulutu üretmek"],a:1,e:"El ile analiz yapabilen bir insan, araçların neyi doğru yakalayıp neyi kaçırdığını değerlendirmeli."},
+ {q:"Yazar kelime bulutunu ne zaman destekliyor?",o:["Her zaman","Hiçbir zaman","Kelimeler temaların kavramsal gücüne göre el ile vurgulandığında","Yalnızca 100'den fazla kelime varsa"],a:2,e:"Frekansa dayalı bulut nicel bir gösterimdir ve nitel analizin amacına aykırıdır."},
+ {q:"Kuramın önceden belirlenmeden verinin kendisinden çıkmasına izin veren yöntem hangisi?",o:["Söylem analizi","Gömülü kuram","Konuşma analizi","Fenomenoloji"],a:1,e:"Gömülü kuramda bulmayı umduğunu önceden belirlemezsin."},
+ {q:"Katılımcıların deneyimlerini kendilerinin kaydettiği dolaylı gözlem yöntemi hangisi?",o:["Odak grup","Günlük çalışması","Yapılandırılmış mülakat","Duygu analizi"],a:1,e:"Günlük çalışmasında katılımcılar deneyimlerini sonradan analiz edilmek üzere kaydeder."}];
+st.quiz=st.quiz||{};
+function quiz(){$("#quiz").innerHTML=Q.map((x,i)=>`<div class="card" style="margin:12px 0"><div class="ui" style="font-weight:700">${i+1}. ${x.q}</div>${x.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("")}<div class="fb" id="qe${i}" style="display:none">${x.e}</div></div>`).join("");
+ $$("#quiz .opt").forEach(b=>b.onclick=()=>{st.quiz[b.dataset.q]=+b.dataset.o;save();paint()});paint()}
+function paint(){let sc=0,n=0;Q.forEach((x,i)=>{const ch=st.quiz[i];if(ch===undefined)return;n++;if(ch===x.a)sc++;
+ $$(`#quiz .opt[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.o;b.classList.toggle("right",j===x.a);b.classList.toggle("wrong",j===ch&&ch!==x.a);b.disabled=true});$("#qe"+i).style.display="block"});
+ $("#score").innerHTML=n?`Skor: ${sc} / ${Q.length}${n===Q.length?' <button class="btn ghost" id="reset" style="margin-left:8px">Yeniden dene</button>':""}`:"";const r=$("#reset");if(r)r.onclick=()=>{st.quiz={};save();quiz()}}
+quiz();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>

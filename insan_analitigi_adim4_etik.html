@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adım 4: Etik Kalmak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--bad:#c0392b;--shadow:0 2px 14px rgba(11,58,140,.08)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1040px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:740px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:100px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+.quote{background:var(--soft);border-radius:12px;padding:16px 22px;margin:16px 0;font-style:italic;text-align:center}
+.quote b{display:block;font-style:normal;font-family:Raleway;font-size:14px;color:var(--muted);margin-top:6px}
+.story{border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0;background:color-mix(in srgb,var(--soft) 40%,var(--card))}
+.story .h{font-family:Raleway;font-weight:800;color:var(--navy2);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn.sm{padding:4px 10px;font-size:12px}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,.chip:focus-visible,.seg button:focus-visible,.opt:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chip{font-family:Raleway;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--card);color:var(--muted);font-family:Raleway;font-weight:700;font-size:12px;padding:6px 11px;cursor:pointer}
+.seg button.on{background:var(--navy2);color:#fff}
+.seg button.on[data-v="g"]{background:var(--ok)}
+.seg button.on[data-v="y"]{background:var(--warn)}
+.seg button.on[data-v="r"]{background:var(--bad)}
+input[type=text],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+textarea{min-height:56px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.ok{color:var(--ok)}.no{color:var(--bad)}.wa{color:var(--warn)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.twocol{grid-template-columns:1fr}}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.fb{font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.opt.mid{border-color:var(--navy2);background:color-mix(in srgb,var(--navy2) 10%,var(--card))}
+.check{padding-left:0}.check li{list-style:none;margin:6px 0}
+.check input{width:17px;height:17px;accent-color:var(--navy2);vertical-align:-2px;margin-right:6px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tabs button{font-family:Raleway;font-weight:700;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;padding:7px 12px;cursor:pointer}
+.tabs button.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.tabs button .c{font-size:11px;margin-left:4px;opacity:.85}
+.meter{height:12px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0}
+.meter>div{height:100%;width:0;transition:width .3s,background .3s}
+.gray{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;background:var(--card);display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+@media (max-width:640px){.gray{grid-template-columns:1fr}}
+.kt{overflow-x:auto}
+.kt table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+.kt th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:6px 8px;border:1px solid var(--line);text-align:left}
+.kt td{border:1px solid var(--line);padding:5px 8px}
+.kt tr.risk td{background:color-mix(in srgb,var(--bad) 14%,var(--card))}
+.prin{display:flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--card)}
+.prin span{flex:1}
+.sa{overflow-x:auto}
+.sa table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+.sa th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.sa td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.sa td.sk{font-family:Raleway;font-weight:700;width:180px}
+.sa select{font-size:13px;padding:5px}
+.sa .gap{font-family:Raleway;font-size:11px;font-weight:800;color:var(--warn);display:block;margin-top:4px}
+.sa .met{font-family:Raleway;font-size:11px;font-weight:800;color:var(--ok);display:block;margin-top:4px}
+.sa tr.custom input{font-size:14px;padding:5px 7px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+@media (max-width:700px){.scale{grid-template-columns:1fr 1fr}}
+.scale .card{padding:10px}.scale .lv{font-family:Raleway;font-weight:800;font-size:12px;color:var(--navy2)}
+.map{display:grid;grid-template-columns:1fr 24px 1fr;gap:6px 8px;align-items:center;font-size:15px}
+.map .a{font-family:Raleway;font-weight:800;color:var(--muted);text-align:center}
+.map .l{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--card);font-family:Raleway;font-weight:700}
+.map .r{border:1px solid var(--ok);border-radius:10px;padding:8px 10px;background:color-mix(in srgb,var(--ok) 8%,var(--card))}
+.map .r.hid{border-style:dashed;border-color:var(--line);background:var(--card);color:var(--muted);cursor:pointer}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+a{color:var(--navy2)}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Adım 4</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">Neden etik?</a>
+      <a href="#s2" data-s="s2">Mahremiyet ve onay</a>
+      <a href="#s3" data-s="s3">Meşru kullanım</a>
+      <a href="#s4" data-s="s4">Yaşam döngüsü</a>
+      <a href="#s5" data-s="s5">Önyargı</a>
+      <a href="#s6" data-s="s6">Sarah'nın hikâyesi</a>
+      <a href="#s7" data-s="s7">İlkelerin</a>
+      <a href="#s8" data-s="s8">Değerlendirmeler</a>
+      <a href="#s9" data-s="s9">Öz değerlendirme</a>
+      <a href="#s10" data-s="s10">Değerler ve önyargılar</a>
+      <a href="#s11" data-s="s11">Test</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema" aria-label="Açık/koyu tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker">Adım 4 · Büyük resim</div>
+    <h1>Etik Kalmak</h1>
+    <p>İnsan analitiğinde yalnızca iş kararları için sayı analiz etmiyoruz; insanların hayatlarıyla uğraşıyoruz. Bu bölüm etik becerileri (mahremiyet, onay, meşru kullanım, veri yaşam döngüsünde etik, araştırma etiği, önyargıyı azaltma), yazarın zor bir talebe karşı durduğu hikâyeyi, kendi etik ilkelerini oluşturmayı ve etik değerlendirmeleri ele alıyor.</p>
+    <p class="note">Kaynak: Heather Whiteman'ın insan analitiği kariyer rehberinin 292–322. sayfaları. Metin birebir çeviri değil; içerik Türkçe olarak özetlenip uyarlanmıştır. Bu sayfa hukuki danışmanlık değildir; mevzuat ve kurum politikaları her zaman önceliklidir.</p>
+  </div>
+
+  <!-- 1 -->
+  <section class="ch" id="s1">
+    <h2>Neden Etik?</h2><hr>
+    <div class="quote">“Her şeyi ölçebiliyor olman, ölçmen gerektiği anlamına gelmez.”<b>— W. Edwards Deming'e atfedilir (kitaptaki atıf)</b></div>
+    <p>İnsan analitiği çalışması yaparken düşünülmesi gereken sayısız etik soru var: Analizlerin adaletsiz ya da ayrımcı sonuçlara yol açabilir mi? Verinin nasıl kullanıldığı konusunda şeffaf mısın? Çalışmanın çalışanlar ve örgüt kültürü üzerindeki uzun vadeli etkisini düşünüyor musun? Bunlar kendine düzenli olarak sorman gereken sorular. Etik insan analitiği eleştirel düşünme, empati ve zor olduğunda bile doğru olanı yapma kararlılığı ister; yalnızca kurallara uymak değil, güçlü bir etik çerçeve geliştirip işinin her yönünü onunla yönlendirmektir.</p>
+    <p>Yazar insan analitiği işi için mülakat yaparken şunu sormayı seviyor: “İş analitiği ile insan analitiği arasındaki fark nedir?” İnsan analitiğinin insanlar ve onların işiyle ya da çalışma ortamıyla ilgili bilgiye özgü olduğunu, iş analitiğinin ise ekipman, finans ya da pazar eğilimleri gibi başka yönlere de bakabileceğini söylemek doğru. Ama yazarın en sevdiği yanıtlar, insana odaklanmanın ne anlama geldiğine ve işimizle gelen etik sorumluluğa inenler; ona göre temel fark bu. İkisi büyük ölçüde aynı süreçleri, araçları ve teknolojileri kullanır; ama insan analitiğinde birinin kariyerini, servetini, iyi oluşunu, ailesini ve bütün geleceğini etkileyen kararlara bilgi sağlarız. Mesele yalnızca şirket için finansal olarak en iyisini değil, işin içindeki insanlar için doğru olanı yapmaktır.</p>
+    <p>Ama insan analitiğinde “doğru”yu bilmek zor olabilir; “iyi” ve “kötü” şeylerin basit bir listesi yok. Mahremiyet ihlalleri, ürkütücü izleme ve başını hukuki belaya sokacak şeyler gibi açıkça kötü şeyler var; insanların istihdam edilmesi, ücretlerinin ödenmesi ve gözetilmesi gibi insan verisini zorunlu kılan açıkça gerekli şeyler de. Ama ölçmenin ya da analiz etmenin “ne zaman uygun” olduğu konusunda pek çok gri alan ve bunu nasıl uygun biçimde yapacağına dair sayısız incelik var. İnsan analitiğinde riskler, analitik odaklı pek çok kariyer alanından daha yüksek, belirsizlik daha büyük. İyi haber: etik karar verme öğrenilebilir; geliştirilebilecek beceriler, öğrenilecek uzmanlar ve izlenecek iyi uygulamalar var.</p>
+    <div class="box">
+      <div class="lbl">Etkinlik · Açık mı, gri mi, kırmızı mı?</div>
+      <p class="small">Her uygulamayı ilk sezgine göre işaretle; sonra kitabın ilkelerine dayalı yorumu gör. Gri alanlar bağlama, amaca, onaya ve uygulama biçimine bağlıdır.</p>
+      <div id="grayList"></div>
+      <div class="result" id="grayOut"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 2 -->
+  <section class="ch" id="s2">
+    <h2>Etik Beceriler I: Veri Mahremiyeti ve Onay</h2><hr>
+    <p>İnsan analitiğinde etik olmak; adaleti, şeffaflığı ve uygulamaların bireyler ile gruplar üzerindeki etkisini gözetmeyi, hesap verebilirliği, veri mahremiyetini sağlamayı ve olası önyargıları belirleyip önlemeyi gerektirir. Veri bütünlüğünü korumak, bireysel haklara saygı göstermek ve verinin olumlu sonuçları destekleyecek biçimde kullanılmasını sağlamakla da ilgilidir.</p>
+    <p>Bu konuda izlenecek iyi uygulamalar da var: Uluslararası Standardizasyon Örgütü'nün “İnsan Kaynakları Yönetimi: Verilerin Güvenli İşlenmesi” standardı (ISO 30439), insan verisinin oluşturulmasından kullanımına, saklanmasına ya da silinmesine kadar veri yaşam döngüsünün her aşamasında uygun biçimde işlenmesi için iyi uygulamalar sunar. <span class="small">(Yazar açıklıyor: ISO'da ABD temsilcisi ve bu standardın oluşturulmasından sorumlu küresel lider olarak tamamen gönüllü çalıştı, ISO'dan hiçbir ücret almıyor; yalnızca insan verisinin sorumlu biçimde işlenmesi konusunda tutkulu.)</span></p>
+    <div class="twocol">
+      <div class="card"><div class="t">Veri mahremiyeti</div><div class="small">Çalışan verisini yetkisiz erişim, kullanım ya da ifşaya karşı koruyan uygulamaları anlamak ve hayata geçirmek. İlgili mevzuat, etik konular ve veri işleme, saklama ve anonimleştirme iyi uygulamaları bilgisi gerektirir. Mahremiyet bir uyum kontrol listesindeki kutucukları işaretlemek değil, insanlara saygı göstermektir. <strong>Veriyi en değerli varlığınmış gibi koru. Çünkü öyle.</strong></div></div>
+      <div class="card"><div class="t">Onay</div><div class="small">Sormadan veri toplayamazsın. Onay, veriyi toplamadan ya da kullanmadan önce insanlardan açık ve bilgilendirilmiş izin almaktır. Çalışanlar neye onay verdiklerini anlamalı; bu yüzden açık ve sade anlat. Onay sonsuza dek değildir: insanlar onaylarını istedikleri zaman geri çekebilmelidir. Onay yalnızca izin alınan kullanım için geçerlidir; “her ihtimale karşı” veri toplayamazsın ve veriyi yalnızca belirtilen amaçla kullanabilirsin (en azından yeni bir meşru kullanım için yeniden onay alana kadar).</div></div>
+    </div>
+    <div class="box">
+      <div class="lbl">Araç · Onay metni denetleyicisi</div>
+      <p class="small">Bir onay metni taslağı yaz ya da örneği düzenle; kitaptaki ilkelere göre kaba bir kontrol yapılır. Kural tabanlıdır ve hukuki inceleme yerine geçmez.</p>
+      <textarea id="cIn" style="min-height:120px">Bu anket kapsamında topladığımız bilgiler şirketin ihtiyaç duyabileceği her türlü analiz için süresiz olarak saklanacak ve kullanılacaktır.</textarea>
+      <div class="row" style="margin-top:6px"><button class="btn ghost sm" id="cGood">İyi örneği yükle</button></div>
+      <div id="cOut" style="margin-top:8px"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 3 -->
+  <section class="ch" id="s3">
+    <h2>Etik Beceriler II: Meşru Kullanım Durumları</h2><hr>
+    <p>Bir şeye tutku duyduğunda bazen doğrudan dalarsın; yazar da yeni bir teknik öğrendiğinde ya da bilmediği bir veri seti keşfettiğinde böyle hissettiğini söylüyor. Ama her zaman durup sormak önemli: <em>Bu veriyi neden</em> topluyor ya da analiz ediyorum; bunun meşru ve onaylanmış bir kullanım durumu var mı? “Meşru kullanım durumu”, kullanmak için varsayımsal ya da potansiyel olarak sömürücü değil, gerçek ve geçerli bir neden olduğu anlamına gelir: tüm veri kullanımların iş ihtiyaçlarıyla uyumlu, çalışanlar üzerindeki etki önceden düşünülmüş ve gerekçesi belgelenmiş. İnsan verisinin meşru kullanımlarını önceden belirlemek verinin sorumlu ve etik kullanılmasını sağlar. <strong>“Çünkü yapabiliyoruz” geçerli bir neden <em>değildir</em>.</strong> Kullanımı gerekçelendirmek için çalışman iş ihtiyaçlarına bağlanmalı, kurumun hedeflerine ulaşmasına yardım etmeli ve işin içindeki bireylere zarar vermemeli. Ne yaptığını, neden yaptığını ve olası etkilerini her zaman belgele; bu hem yolda kalmanı hem hesap verebilirliği göstermeni sağlar.</p>
+    <div class="box">
+      <div class="lbl">Araç · Meşru kullanım testi</div>
+      <input type="text" id="luName" placeholder="Analiz ya da veri kullanımı (örn. ekip içi e-posta yoğunluğundan tükenmişlik riski analizi)">
+      <div id="luQ" style="margin-top:8px"></div>
+      <div class="result" id="luOut"></div>
+      <div class="row noprint" style="margin-top:8px"><button class="btn ghost sm" id="luCopy">Gerekçe kaydını kopyala</button></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 4 -->
+  <section class="ch" id="s4">
+    <h2>Etik Beceriler III: Veri Yaşam Döngüsünde Etik ve Araştırma Etiği</h2><hr>
+    <p>İnsan verisi her işlendiğinde, toplanmasından analizine, paylaşılmasından kullanımına kadar etik uygulamalar yerinde olmalı. Aşağıdaki soruları bir proje üzerinde düşünerek işaretle.</p>
+    <input type="text" id="lcProj" placeholder="Değerlendirdiğim proje" style="margin-bottom:8px">
+    <div class="tabs" id="lcTabs"></div>
+    <div id="lcBody"></div>
+    <div class="meter"><div id="lcMeter"></div></div>
+    <div class="result" id="lcOut"></div>
+    <h3>İnsan analitiği araştırma etiği</h3>
+    <p>Akademik dünyada insanları içeren her araştırmanın etik yürütülmesini sağlamak için inceleyen ve izleyen resmî kurullar (Kurumsal İnceleme Kurulları; Türkiye'de etik kurullar) vardır. Ne yazık ki tüm insan analitiği uygulayıcıları için böyle resmî bir yapı yok; bu yüzden araştırmanın etik tasarlanıp yürütülmesini sağlamak senin sorumluluğunda. İnsan analitiği araştırmasında etik; katılımcılara yönelik riskleri en aza indirmeyi, gizliliği sağlamayı ve nesnelliği korumayı gerektirir. Belirli çalışan gruplarına zarar verebilecek ya da onları dezavantajlı duruma düşürebilecek araştırma tasarımlarından kaçın.</p>
+    <label class="readmark"><input type="checkbox" data-read="s4"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 5 -->
+  <section class="ch" id="s5">
+    <h2>Etik Beceriler IV: Önyargıyı Azaltmak</h2><hr>
+    <p>İnsan analitiğinde önyargıyı azaltmak; verideki, algoritmalardaki, teknolojideki ve karar alma süreçlerindeki olası önyargıları belirleyip ele almanın süregiden bir sürecidir. Eleştirel düşünme, veri analizi becerisi, algoritmik önyargı bilgisi ve insan önyargılarının sonuçları nasıl etkileyebileceğine dair anlayış gerektirir. Amaç uygulamalarda adalet ve hakkaniyet için çabalamak ve kararların nesnel, yansız bilgiye dayanmasını sağlamaktır. Önyargı sürecin her aşamasına sızabilir; ama bugünkü araçlarda, süreçlerde, sistemlerde ve çalışma biçimlerinde var olabilecek daha büyük ölçekli önyargıları da aramayı unutma. İnsan analitiği yaklaşımları giderek algoritmalara aktarıldıkça algoritmik önyargı daha büyük bir sorun hâline geliyor: algoritmalar ancak eğitildikleri veri kadar iyi ve tasarlandıkları kadar denetimlidir. Tüm süreçlerini, sistemlerini ve yaklaşımlarını önyargı açısından düzenli olarak denetle; kullandığımız araçlar bile önyargı getirebilir. Son olarak insan önyargısını unutma: en iyi veri ve algoritmalarla bile insan yorumları ve kararları yanlı olabilir. Kararlarda adalet ve nesnelliği sağlayacak denge ve denetim mekanizmaları kur. Hepimizin, farkında olsak da olmasak da önyargıları var; kendi önyargılarının ve işini nasıl etkileyebileceklerinin farkında ol ve varsayımlarını sınamak için farklı bakış açıları ara.</p>
+    <div class="box">
+      <div class="lbl">Etkinlik · Önyargıyı yakala</div>
+      <p class="small">Her senaryoda hangi önyargı iş başında? (Kitapta anılan önyargılardan.)</p>
+      <div id="biasQ"></div>
+      <div class="small ui" id="biasScore" style="font-weight:700"></div>
+    </div>
+    <div class="box">
+      <div class="lbl">Etkileşimli · Anonimleştirilmiş veri bile kişiyi ele verebilir</div>
+      <p class="small">Kitap, anonimleştirilmiş ya da birleştirilmiş veride bile kişilerin yeniden tanımlanabileceğini hatırlatıyor. Kurgusal, isimsiz bir ankette hangi alanların birlikte raporlanacağını seç; her kombinasyonda kaç kişinin aynı grupta kaldığını (k-anonimlik) gör.</p>
+      <div class="chips" id="kQI"></div>
+      <div class="row" style="margin:6px 0"><label class="small">Yaşı aralığa çevir <input type="checkbox" id="kAge" style="accent-color:var(--navy2)"></label><label class="small" style="margin-left:12px">Asgari grup büyüklüğü eşiği: <select id="kMin" style="width:auto;display:inline-block"><option>3</option><option selected>5</option><option>10</option></select></label></div>
+      <div class="kt"><table id="kTab"></table></div>
+      <div class="result" id="kOut"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s5"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 6 -->
+  <section class="ch" id="s6">
+    <h2>Karşı Durmak: Sarah'nın Hikâyesi</h2><hr>
+    <div class="story"><div class="h">Yazarın deneyimi · 1. bölüm</div>
+      Yazar, kaç çalışanın şirketten ayrılabileceğini tahmin eden ve ayrılma nedenlerini belirleyen öngörücü ayrılma modelleri kuruyordu; modeller olabilecekleri öngörmekte oldukça iyiydi. Bir gün bir lider, ekibindeki her kişinin ayrılma olasılığını gösteren bir liste istedi. Olasılık üretmek kolay olurdu, ama hiçbir bireyi analiz etmeme kararı zaten alınmıştı. Yazar “Üzgünüm, birey düzeyinde tahmin sunmuyoruz; bunlar planlama amacıyla toplu düzeyde kullanılmak üzere istatistiksel eğilimler” dedi. İtiraz anında geldi: “Biliyorum, ama modelin etkenlerini her bireye uygulayıp bir olasılık hesaplayamaz mısın?” Evet, kolayca yapabilirdi.
+    </div>
+    <div class="box">
+      <div class="lbl">Durakla · Sen olsan ne yapardın?</div>
+      <div id="sarahQ"></div>
+    </div>
+    <div class="story" id="sarah2" style="display:none"><div class="h">Yazarın deneyimi · 2. bölüm</div>
+      Yazar kekelediğini ve telaşlandığını hatırlıyor. Bu kişiyle çalışan bir meslektaşını, Sarah diyelim, düşündü. Sarah “ayrılması muhtemel” diye etiketlenirse yöneticisi ona farklı davranır mıydı? Ya Sarah ayrılmayı planlamıyorsa ama bu analiz yöneticisinin ona kötü davranmasına yol açıp sonunda gerçekten ayrılmasına neden olursa? “Ayrılması muhtemel değil” etiketi bile zararlı olabilirdi: yönetici risk altındaki kişilerin elde tutulmasına öncelik verip Sarah'yı hak ettiği ödüllerde gözden kaçırabilirdi. Yazarın üretmesi istenen tek bir veri noktası Sarah'nın kariyerini haksızca etkileyebilirdi. Sarah'yı düşünerek reddetti, bunun uygunsuz olduğunu ve modelin ayrıntılarını paylaşmayacağını söyledi. Bu iyi karşılanmadı: lider öfkelendi, durum tırmandı, yazar geri adım atmadı. Lider kıdemini öne sürüp yazarın yöneticisine gitmekle tehdit etti; yazar belki fazla kendinden emin bir tavırla “Güzel. Çalışanlarımızı böyle taleplerden nasıl koruduğumu duymaktan gurur duyacaktır” deyip çıktı.<br><br>
+      Öngörücü modeller güçlü araçlardır ama sınırlılıkları vardır. Sorumlu kullanıldıklarında iyileştirme alanlarını gösterip daha iyi uygulamalara bilgi sağlayabilirler; ama bireysel kararlar için onlara dayanmak felakettir. İşe alım, performans ve terfi için öngörücü algoritmaların Sarah gibi gerçek insanlar için olumsuz sonuçlar doğurduğu sayısız örnek gördük. Etik veri kullanımını korumak insan analitiği profesyonellerine düşer. Yazar çatışmayı önermiyor ama geri adım atmadığı için gurur duyuyor: hiç arkadaş olmadılar, ama yöneticisinin saygısını kazandı (hikâyeyi o paylaştı) ve hukuk biriminin başkanı daha sonra ona bizzat teşekkür ederek fiilen hukuk ekibinin desteğini kazandırdı.
+    </div>
+    <div class="story" id="sarah3" style="display:none"><div class="h">Çıkarılan dersler</div>
+      <strong>Birincisi,</strong> şüpheli taleplere karşı çıkmak her zaman rahatsız edicidir; geri adım atmamak tatsız olabilir. Yazar kekeledi, telaşlandı, kendini kusursuz ifade edemedi ve sonrasında sarsıldı; ama bundan büyüdü ve insanları korudu (hiç haberleri olmasa bile). Gerektiğinde geri adım atma: etik bir lider olarak güven ve saygı böyle kazanılır.<br><strong>İkincisi,</strong> yanlış yaptı; onun gibi olma. Önceden belirlenmiş bir <strong>insan verisi ilkeleri</strong> seti olsaydı onlara işaret edip “Evet, matematiksel olarak mümkün, ama ne yazık ki politikamıza aykırı” diyebilirdi. Zor bir durumu tek başına çözmeye de çalıştı, <strong>topluluğundan</strong> yararlanmadı. Yöneticisinden (ki destekçiydi) ya da başka müttefiklerden destek isteyebilirdi: “Bunu daha önce bu şekilde yapmadık; yöneticime danışayım” diyerek anlık baskıdan çıkıp destekle geri dönebilirdi. Destekten emin olmasan bile, daha üst bir yetkiye danışmak sana zaman kazandırır ve müttefik bulmanı sağlayabilir.
+    </div>
+    <div class="box" id="scriptBox" style="display:none">
+      <div class="lbl">Araç · Zor talep karşısında yanıt taslağı</div>
+      <div class="twocol">
+        <label class="small">Talep<input type="text" id="scReq" value="ekibindeki her kişinin ayrılma olasılığını gösteren bir liste"></label>
+        <label class="small">Dayanacağın ilke<select id="scPri"></select></label>
+      </div>
+      <div class="msg card" id="scOut" style="white-space:pre-wrap;margin-top:8px;font-size:15px"></div>
+      <div class="row" style="margin-top:6px"><button class="btn ghost sm" id="scCopy">Kopyala</button></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s6"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 7 -->
+  <section class="ch" id="s7">
+    <h2>Keşfet ve Katıl: Kendi İlkelerini Oluştur</h2><hr>
+    <p>Etik mi doğarız, yoksa yolda mı öğreniriz? Doğa-yetiştirme sorusu uzun zamandır soruluyor; yazar yanıtı bildiğini iddia etmiyor. Ama neyi çalışacağımızı, ne yapacağımızı, işimize nasıl yaklaşacağımızı ve nasıl davranacağımızı seçebileceğimize inanıyor. Etik konular sürekli değiştiği için öz gelişimin etik bilgi ve becerilerini artıracak etkinlikleri içermeli:</p>
+    <div class="grid">
+      <div class="card"><div class="t">Etik düşünce liderlerinden öğren</div><div class="small">Dayandığın bir etik çerçeve var mı? Yoksa faydacılık, ödev etiği (deontoloji) ve erdem etiği gibi filozofların üzerine çok düşündüğü çerçevelere zaman ayırıp sana en uygun olanı bul. Ya da etik öncülerin yazılarına dal; yazar <em>Equality Machine</em>, <em>Invisible Women</em> ya da <em>Weapons of Math Destruction</em> gibi en sevdiği etik odaklı kitapların uzun listesini <a href="https://heatherwhiteman.com/pa-career-guide" target="_blank" rel="noopener">heatherwhiteman.com/pa-career-guide</a> adresinde paylaşıyor.</div></div>
+      <div class="card"><div class="t">Standartları ve yönergeleri izle</div><div class="small">IEEE Global Initiative on Ethics of Autonomous and Intelligent Systems ve Belmont Raporu gibi yerleşik etik çerçeveler; insan analitiğine özgü ISO 30439. Gelişen veri mahremiyeti düzenlemelerini (GDPR, CCPA, HIPAA; Türkiye'de KVKK) ve ISO 27001, NIST Privacy Framework gibi sektör standartlarını takip etmek seni etik (bonus olarak da uyumlu) tutar.</div></div>
+      <div class="card"><div class="t">Örneklerden öğren</div><div class="small">Veri bilimi ve insan analitiğindeki gerçek etik ihlal örneklerini ve vaka çalışmalarını incele: Ne yanlış gitti? Ne farklı yapılabilirdi? Başkalarının hatalarından öğrenmek benzer tuzaklardan kaçınmanı sağlar.</div></div>
+      <div class="card"><div class="t">Etik eğitimlere katıl</div><div class="small">Veri bilimi ve insan analitiğinde etiğe odaklanan kurs ya da atölyelere kaydol.</div></div>
+    </div>
+    <h3>Kendi insan analitiği ilkelerini oluştur</h3>
+    <p>Değerlerine ve sana uyan etik çerçevelere dayanarak işini yönlendirecek ilkeler oluştur. Ayrıntılı ya da üst düzey olabilirler, ama gündelik işinde görünmeleri için onları eyleme dönük, belirli uygulamalara bağlamaya çalış. Etik beyanın ve ilkelerin yalnızca belge değil, işinin canlı bir parçası olmalı; her projede kararlarını onlarla yönlendir. Güvendiğin meslektaşlarla, mentorlarla ya da danışmanlarla paylaşıp geri bildirim iste. Taşa kazınmış değiller; anlayışın geliştikçe ve yeni iyi uygulamalar öğrendikçe düzenli olarak gözden geçir.</p>
+    <div class="twocol">
+      <div class="box">
+        <div class="lbl">Heather'ın insan verisi ilkeleri</div>
+        <p class="small">Yazarın uzun, ayrıntılı etik beyanlarının yanında başkalarıyla paylaşabildiği kısa, akılda kalıcı bir listesi var; dilediğin gibi kullanıp uyarlayabilirsin. Eklemek için tıkla.</p>
+        <div id="hPri"></div>
+        <div class="lbl" style="margin-top:12px">Kitaptaki örnek etik beyanları</div>
+        <div id="ePri"></div>
+      </div>
+      <div class="box">
+        <div class="lbl">Benim ilkelerim</div>
+        <div id="myPri"></div>
+        <div class="row" style="margin-top:8px"><input type="text" id="pNew" placeholder="Kendi ilkeni yaz" style="flex:1;min-width:160px"><button class="btn sm" id="pAdd">Ekle</button></div>
+        <div class="row noprint" style="margin-top:8px"><button class="btn ghost sm" id="pCopy">Kopyala</button><button class="btn ghost sm" id="pPrint">Yazdır</button></div>
+        <div class="small" id="pRev" style="margin-top:6px"></div>
+      </div>
+    </div>
+    <h3>Teknik becerilerini bir üst düzeye taşı</h3>
+    <p>Analitik becerilerini geliştirirken özellikle etik ilkelerinle en uyumlu teknik ve yaklaşımları öğrenmeye odaklan. Soldaki her beceri için etik karşılığını tahmin et, sonra kutuya tıklayıp gör.</p>
+    <div class="map" id="techMap"></div>
+    <label class="readmark"><input type="checkbox" data-read="s7"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 8 -->
+  <section class="ch" id="s8">
+    <h2>Her Şeyi Değerlendir</h2><hr>
+    <p>İnsan analitiği uygulamalarının etik sonuçlarını düzenli olarak değerlendirmek herkes için kazançlıdır: olası sorunları proaktif olarak belirleyip ele almanı sağlar, etik konulara dair anlayışını derinleştirir ve karar verme becerilerini güçlendirir. Yazar tüm insan analitiği çalışmalarını mahremiyet, etki ve meşruiyet gibi açılardan değerlendirmeyi öneriyor. Aşağıdaki şablonlar kitabın tanımladığı adımları izler.</p>
+    <div class="tabs" id="asTabs"></div>
+    <div id="asBody"></div>
+    <div class="row noprint" style="margin-top:8px"><button class="btn ghost" id="asCsv">Tüm değerlendirmeleri CSV indir</button><button class="btn ghost" id="asPrint">Yazdır / PDF</button></div>
+    <div class="story"><div class="h">Yazardan bir not</div>Yazar etik insan analitiğine ve iyilik için insan analitiğine “biraz takıntılı” olduğunu söylüyor; harika fikirlerin ya da örneklerin varsa bağlantı kurmaya davet ediyor: <a href="https://heatherwhiteman.com/contact" target="_blank" rel="noopener">heatherwhiteman.com/contact</a></div>
+    <label class="readmark"><input type="checkbox" data-read="s8"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 9 -->
+  <section class="ch" id="s9">
+    <h2>Kendini Keşfet: Etik İnsan Analitiği Becerileri</h2><hr>
+    <div class="scale">
+      <div class="card"><div class="lv">1 · FARKINDA</div><div class="small">Beceride yenisin; kavramsal olarak bilsen de henüz kendin yapmadın.</div></div>
+      <div class="card"><div class="lv">2 · ÖĞRENEN</div><div class="small">Öğrenmeye yeni başladın ya da ayrıntılı yönergelere dayanıyorsun.</div></div>
+      <div class="card"><div class="lv">3 · YETKİN</div><div class="small">Bir ölçüde yeteneklisin ama bazı ya da ileri kısımlarda yardıma ihtiyaç duyuyorsun.</div></div>
+      <div class="card"><div class="lv">4 · UZMAN</div><div class="small">Zorlukları güvenle çözüyor, desteğe ihtiyaç duymuyor, kavramları sade anlatabiliyorsun.</div></div>
+      <div class="card"><div class="lv">5 · STRATEJİST</div><div class="small">Yeni biçimlerde uyguluyor, yeni yollar yaratıyor, başkalarına mentorluk yapabiliyorsun.</div></div>
+    </div>
+    <p class="small"><strong>Not:</strong> Kendini nereye koyduğun konusunda fazla kaygılanma; bunun “gerçek” bir puanı yok. Hedef düzeylerin zamanla ve farklı kariyer seçeneklerini düşündükçe değişebilir.</p>
+    <div class="sa"><table id="saTab"></table></div>
+    <div class="row noprint" style="margin-top:10px"><button class="btn ghost sm" id="saAdd">+ Satır ekle</button><button class="btn ghost" id="saCsv">CSV indir</button><button class="btn ghost" id="saPrint">Yazdır / PDF</button></div>
+    <div class="result" id="saSum"></div>
+    <label class="readmark"><input type="checkbox" data-read="s9"> Öz değerlendirmeyi tamamladım</label>
+  </section>
+
+  <!-- 10 -->
+  <section class="ch" id="s10">
+    <h2>Bonus: Değerlerini ve Önyargılarını Belirle</h2><hr>
+    <h3>Temel değerlerin</h3>
+    <p>Senin için en önemli ilkeler hangileri? İşyerinin ötesine geçip kişisel değerlerini düşün. Dürüstlük, bütünlük, adalet, şefkat, sorumluluk, saygı ve şeffaflık yaygın başlangıç noktaları. Hangileri sende en güçlü yankı uyandırıyor? Ekleyeceğin başkaları var mı? En fazla beşini seç.</p>
+    <div class="chips" id="vals"></div>
+    <div class="row"><input type="text" id="vNew" placeholder="Başka bir değer ekle" style="max-width:280px"><button class="btn sm" id="vAdd">Ekle</button></div>
+    <div class="result" id="vOut"></div>
+    <h3>Önyargıların</h3>
+    <p>Hepimizin algı ve yargılarımızı önemli ölçüde etkileyebilen bilinçli ve bilinçsiz önyargıları var. Önyargı, bir şeye karşı ya da bir şeyden yana hissetme ya da eğilim gösterme eğilimidir. İnsanlar dünyayı yaklaşık 200 farklı önyargı üzerinden işler; hepsi kötü değil, pek çoğu etkili, güvenli ve akıllı olmamıza yardım eder. Ama bazıları zarara yol açabilir ve veri toplamadan analize, yoruma ve raporlamaya kadar insan analitiği işimize sızabilir. Bu gerçeği kabul etmek ve kendi önyargılarını aktif olarak belirlemeye çalışmak kritik; eğilimlerini anlamak etkilerini azaltmanın ilk adımı. Demografiyle (ırk, cinsiyet, yaş), performansla (hale etkisi, doğrulama önyargısı) ve insan analitiğiyle ilgili diğer etkenlerle (yakınlık önyargısı, demirleme önyargısı) ilgili önyargılarını düşün.</p>
+    <p>Bilişsel önyargı türlerini öğrenerek başla; <a href="https://thedecisionlab.com/biases" target="_blank" rel="noopener">The Decision Lab</a> kapsamlı bir tanım listesi sunuyor. Belirli insan gruplarına yönelik önyargılarının farkına varmanın hızlı ve içgörülü bir yolu da Project Implicit üzerinden çeşitli Örtük İlişki Testleri (IAT) yapmak: <a href="https://implicit.harvard.edu" target="_blank" rel="noopener">implicit.harvard.edu</a>. Sonuçları üzerine düşün ve bu bilinçsiz önyargıların işini nasıl incelikle etkileyebileceğini değerlendir. <span class="small">(Bu sayfa test sonuçlarını kaydetmez; bunlar senin kişisel yansıtman içindir.)</span></p>
+    <div class="box">
+      <div class="lbl">Araç · Önyargı azaltma planım</div>
+      <p class="small">Daha yakından dikkat gerektirebilecek önyargıları seç; her biri için onları kararlarını etkilemeden önce fark etme, sızdıklarında yakalama ve gelecekte etkilerini azaltma stratejilerini yaz. Somut planlar öz farkındalığı etik eyleme çevirir.</p>
+      <div class="chips" id="bPick"></div>
+      <div id="bPlan"></div>
+      <div class="row noprint" style="margin-top:8px"><button class="btn ghost sm" id="bCsv">CSV indir</button></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s10"> Bu etkinliği tamamladım</label>
+  </section>
+
+  <!-- 11 -->
+  <section class="ch" id="s11">
+    <h2>Mini Test</h2><hr>
+    <div id="quiz"></div>
+    <p class="ui" id="score" style="font-weight:700;color:var(--navy)"></p>
+    <label class="readmark"><input type="checkbox" data-read="s11"> Testi tamamladım</label>
+  </section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><a class="pv" href="insan_analitigi_adim4_buyuk_resim.html"><small>← Önceki</small><b>Adım 4: Büyük resim</b></a><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><a class="nx" href="insan_analitigi_adim5_ikigai_kariyer.html"><small>Sonraki →</small><b>Adım 5: İkigai ve kariyer</b></a></nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+const KEY="pa_adim4_etik_v1";
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const dl=(name,rows)=>{const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';const b=new Blob(["﻿"+rows.map(r=>r.map(q).join(";")).join("\n")],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href)};
+const copy=v=>{(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast("Kopyalandı")).catch(()=>toast("Kopyalanamadı"))};
+const bind=(id,key,cb)=>{const el=$("#"+id);el.value=st[key]??el.value;el.oninput=()=>{st[key]=el.value;save();cb&&cb()}};
+
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$("#theme").onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";st.theme=d.dataset.theme;save()};
+st.read=st.read||{};const N=11;
+function prog(){const n=Object.values(st.read).filter(Boolean).length;$("#progbar").style.width=(n/N*100)+"%";$$("#nav a").forEach(a=>a.classList.toggle("done",!!st.read[a.dataset.s]))}
+$$("[data-read]").forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();if(cb.checked)toast("Bir bölüm daha tamam!")}});prog();
+
+// 1. gri alan
+const GR=[["Çalışanların ücretlerini zamanında ödemek için bordro verisi işlemek","g","Açıkça gerekli: insanların istihdam edilmesi, ücretlerinin ödenmesi ve gözetilmesi insan verisini zorunlu kılar."],
+ ["Çalışanların kişisel sosyal medya hesaplarını izleyip “ayrılma sinyali” aramak","r","Kitabın “ürkütücü izleme” dediği türden; mahremiyete saygısız, meşru ve onaylı bir amaca dayanmıyor."],
+ ["Bağlılık anketini birim düzeyinde raporlamak","y","Genellikle meşru; ama küçük birimlerde kişiler tanınabilir. Asgari grup büyüklüğü eşiği ve onaylı amaç gerekir."],
+ ["Toplantı ve e-posta meta verisinden ekip iş birliği örüntülerini analiz etmek","y","Gri alan: toplu ve onaylı yapılırsa iş birliğini iyileştirebilir; birey düzeyinde izlemeye dönüşürse ürkütücü olur. Şeffaflık ve meşru kullanım testi şart."],
+ ["Bir liderin ekibindeki her kişi için ayrılma olasılığı hesaplamak","r","Yazarın Sarah hikâyesi: bireysel etiketler kariyerleri haksızca etkileyebilir; öngörücü modeller bireysel kararlar için kullanılmamalı."],
+ ["Ücret eşitliği analizinde cinsiyete göre farkları incelemek","y","Adalet için güçlü bir meşru amaç; ama hassas veri olduğu için erişim, gizlilik ve raporlama eşikleri dikkatle tasarlanmalı."],
+ ["Anket verisini “ileride lazım olur” diye süresiz saklamak","r","Onay yalnızca izin alınan kullanım için geçerlidir; “her ihtimale karşı” veri toplanamaz, saklama ve silme politikalarına uyulmalı."]];
+st.gr=st.gr||{};
+function gray(){$("#grayList").innerHTML=GR.map((g,i)=>`<div class="gray"><div><div>${g[0]}</div>${st.gr[i]?`<div class="small" style="margin-top:4px"><strong class="${g[1]==="g"?"ok":g[1]==="y"?"wa":"no"}">Kitabın ilkelerine göre: ${g[1]==="g"?"açıkça uygun":g[1]==="y"?"gri alan":"uygun değil"}.</strong> ${g[2]}</div>`:""}</div><div class="seg">${[["g","Uygun"],["y","Gri"],["r","Uygun değil"]].map(([v,l])=>`<button data-gi="${i}" data-v="${v}" class="${st.gr[i]===v?"on":""}">${l}</button>`).join("")}</div></div>`).join("");
+ $$("[data-gi]").forEach(b=>b.onclick=()=>{st.gr[b.dataset.gi]=b.dataset.v;save();gray()});
+ const n=Object.keys(st.gr).length,m=GR.filter((g,i)=>st.gr[i]===g[1]).length;
+ $("#grayOut").innerHTML=n?`<strong class="ui">${n}/${GR.length} işaretlendi, ${m} tanesi kitabın değerlendirmesiyle örtüşüyor.</strong> <span class="small">Gri alanlarda tek bir doğru yanıt yok; önemli olan amacı, onayı, etkiyi ve uygulama biçimini sistematik olarak sorgulamak.</span>`:'<span class="small">İşaretledikçe yorumlar görünecek.</span>'}
+gray();
+
+// 2. onay denetleyici
+const GOOD="Bu ankete katılım gönüllüdür. Yanıtlarınız yalnızca çalışma koşullarını iyileştirmeye yönelik önerileri belirlemek amacıyla kullanılacak, birim düzeyinde ve en az 5 kişilik gruplar hâlinde raporlanacaktır; hiçbir yanıt tek başına yöneticilerle paylaşılmayacaktır. Veriler 12 ay sonra silinecektir. Onayınızı istediğiniz zaman ik-veri@ornek.com adresine yazarak geri çekebilirsiniz. Verilerin başka bir amaçla kullanılması gerekirse sizden yeniden onay alınacaktır.";
+function cons(){const L=$("#cIn").value.toLocaleLowerCase("tr-TR");if(!L.trim()){$("#cOut").innerHTML="";return}
+ const chk=[[/amacıyla|amaç|için kullanıl/.test(L)&&!/her türlü|ihtiyaç duyabileceği|herhangi bir amaç/.test(L),"Kullanım amacı belirli ve sınırlı","Amaç belirsiz ya da geniş (“her türlü analiz”): onay yalnızca belirtilen amaç için geçerlidir."],
+  [/geri çek|vazgeç|iptal edebilir/.test(L),"Onayı geri çekme yolu açıklanmış","Onayı geri çekme yolu yok: insanlar onaylarını istedikleri zaman geri çekebilmeli."],
+  [/gönüllü/.test(L),"Katılımın gönüllü olduğu belirtilmiş","Katılımın gönüllü olduğu belirtilmemiş; işyerindeki güç dinamikleri düşünüldüğünde bunu açıkça yaz."],
+  [/(\d+\s*(ay|yıl|gün))|silin/.test(L)&&!/süresiz/.test(L),"Saklama süresi ya da silme belirtilmiş","Saklama süresi yok ya da “süresiz”: veri saklama ve silme politikalarına uyulmalı."],
+  [/toplu|grup|birim düzeyinde|anonim|gizli/.test(L),"Bireylerin nasıl korunacağı anlatılmış","Bireylerin nasıl korunacağı anlatılmamış (toplu raporlama, gizlilik, eşikler)."],
+  [/yeniden onay|tekrar onay/.test(L),"Yeni amaç için yeniden onay taahhüdü var","Başka bir amaç doğarsa yeniden onay alınacağı belirtilmemiş."]];
+ const ok=chk.filter(c=>c[0]).length;const words=L.split(/\s+/).length;
+ $("#cOut").innerHTML=chk.map(c=>`<div class="small" style="margin:3px 0">${c[0]?'<span class="ok">✓</span> '+c[1]:'<span class="no">✗</span> '+c[2]}</div>`).join("")+`<div class="result"><strong class="ui">${ok}/${chk.length} ölçüt karşılanıyor.</strong> ${words>120?'<span class="small">Metin uzun; çalışanların neye onay verdiklerini anlamaları için açık ve sade tut.</span>':""}</div>`}
+bind("cIn","cIn",cons);$("#cGood").onclick=()=>{$("#cIn").value=GOOD;st.cIn=GOOD;save();cons()};cons();
+
+// 3. meşru kullanım
+const LU=[["need","Analiz belirli bir iş ihtiyacına ya da kurum hedefine bağlı mı?",1],["benefit","Çalışanlara olası bir fayda var mı ya da en azından zarar vermiyor mu?",1],["harm","Bireylere zarar verme ya da onları dezavantajlı duruma düşürme riski düşünüldü ve azaltıldı mı?",1],["consent","Veri toplanırken alınan onay bu kullanımı kapsıyor mu?",1],["alt","Daha az veriyle ya da daha az müdahaleci bir alternatifle aynı amaca ulaşılabilir mi diye bakıldı mı?",1],["doc","Ne yapıldığı, neden yapıldığı ve olası etkileri belgelendi mi?",1],["stake","Paydaşlar (hukuk, mahremiyet, çalışan temsilcileri) gözden geçirdi mi?",1],["can","Asıl neden “çünkü yapabiliyoruz” mu?",0]];
+st.lu=st.lu||{};
+function lu(){$("#luQ").innerHTML=LU.map(([k,q])=>`<div class="gray"><div style="font-size:15px">${q}</div><div class="seg">${[["1","Evet"],["0","Hayır"],["?","Emin değilim"]].map(([v,l])=>`<button data-lu="${k}" data-v="${v}" class="${st.lu[k]===v?"on":""}">${l}</button>`).join("")}</div></div>`).join("");
+ $$("[data-lu]").forEach(b=>b.onclick=()=>{st.lu[b.dataset.lu]=b.dataset.v;save();lu()});
+ const n=LU.filter(([k])=>st.lu[k]).length;if(n<LU.length){$("#luOut").innerHTML=`<span class="small">${n}/${LU.length} soru yanıtlandı.</span>`;return}
+ const bad=LU.filter(([k,,want])=>st.lu[k]!=="?"&&+st.lu[k]!==want);const unk=LU.filter(([k])=>st.lu[k]==="?");
+ const can=st.lu.can==="1";
+ const verdict=can?["no","Meşru değil: “Çünkü yapabiliyoruz” geçerli bir neden değildir."]:bad.length?["no",`Henüz meşru görünmüyor: ${bad.length} ölçüt karşılanmıyor.`]:unk.length?["wa",`Belirsiz: ${unk.length} soruda emin değilsin; netleştirmeden ilerleme.`]:["ok","Meşru kullanım için temel ölçütler karşılanıyor. Gerekçeyi belgele ve etki değerlendirmesiyle sürdür."];
+ $("#luOut").innerHTML=`<strong class="ui ${verdict[0]}">${verdict[1]}</strong>${bad.length&&!can?`<ul class="small" style="margin:.3em 0 0">${bad.map(b=>`<li>${b[1]}</li>`).join("")}</ul>`:""}`}
+lu();bind("luName","luName");
+$("#luCopy").onclick=()=>copy(`Meşru kullanım kaydı · ${st.luName||"[analiz]"} · ${new Date().toLocaleDateString("tr-TR")}\n`+LU.map(([k,q])=>`- ${q} ${({"1":"Evet","0":"Hayır","?":"Emin değilim"})[st.lu[k]]||"—"}`).join("\n"));
+
+// 4. yaşam döngüsü
+const LC={col:["Toplama ve saklama",["Bu veriyi toplaman gerekiyor mu?","Neden topladığın belli mi?","Meşru bir kullanım durumu için gerekli mi?","Bilgilendirilmiş onay alındı mı?","Veri toplama uygulamaları konusunda şeffaf mısın?","Yalnızca gerekli olan veriyi mi topluyorsun (veri en aza indirme)?","Kötüye kullanılabilecek hassas bilgi toplamaktan kaçındın ya da onu korudun mu?","Veri isterken işyerindeki güç dinamiklerini gözettin mi?","Toplanan veri için güvenli saklama sistemleri ve süreçleri var mı?"]],
+ ana:["Analiz ve yorum",["Uygun istatistiksel yöntemler kullanıyor musun?","Veride ve algoritmalarda olası önyargıların farkında mısın?","Veriyi sorumlu biçimde yorumluyor musun?","Net bir hipotez olmadan bulgu aramaktan (“veri tarama”) kaçınıyor musun?","Yanıltıcı sonuçlardan ve doğrulama, mevcudiyet, otomasyon, seçim gibi önyargılardan kaçınıyor musun?","Analizleri sonuçlandırırken bireylerin mahremiyetini koruyor musun (anonim ya da birleşik veride bile yeniden tanımlanma riskini düşündün mü)?"]],
+ sha:["Paylaşım ve kullanım",["Bulgularını doğru ve şeffaf biçimde iletiyor musun?","Sansasyondan ve abartıdan kaçınıyor musun?","Verinin ve analizlerin sınırlılıkları konusunda açık mısın?","Bulguları yalnızca bilmeye meşru ihtiyacı olanlarla mı paylaşıyorsun?","Raporlarında bireylerin mahremiyetini koruyor musun?","Veriyi dinleyicinin anlayabileceği biçimde, kafa karıştırıcı jargondan kaçınarak sunuyor musun?","Bulgularını adil, dengeli ve nesnel biçimde sunuyor musun?"]]};
+st.lc=st.lc||{};st.lcT=st.lcT||"col";
+function lcR(){$("#lcTabs").innerHTML=Object.entries(LC).map(([k,v])=>`<button data-lt="${k}" class="${st.lcT===k?"on":""}">${v[0]}<span class="c">${v[1].filter((_,i)=>st.lc[k+i]).length}/${v[1].length}</span></button>`).join("");
+ $$("[data-lt]").forEach(b=>b.onclick=()=>{st.lcT=b.dataset.lt;save();lcR()});
+ const v=LC[st.lcT];$("#lcBody").innerHTML=`<ul class="check">${v[1].map((q,i)=>`<li><label><input type="checkbox" data-lq="${st.lcT+i}" ${st.lc[st.lcT+i]?"checked":""}>${q}</label></li>`).join("")}</ul>`;
+ $$("[data-lq]").forEach(c=>c.onchange=()=>{st.lc[c.dataset.lq]=c.checked;save();lcR()});
+ const tot=Object.values(LC).reduce((a,v)=>a+v[1].length,0),n=Object.entries(LC).reduce((a,[k,v])=>a+v[1].filter((_,i)=>st.lc[k+i]).length,0);const p=n/tot*100;
+ $("#lcMeter").style.width=p+"%";$("#lcMeter").style.background=p>=85?css("--ok"):p>=50?css("--warn"):css("--bad");
+ const weak=Object.entries(LC).map(([k,v])=>[v[0],v[1].filter((_,i)=>!st.lc[k+i]).length,v[1].length]).filter(x=>x[1]>0);
+ $("#lcOut").innerHTML=`<strong class="ui">${st.lcProj?esc(st.lcProj)+": ":""}${n}/${tot} soru karşılandı.</strong> ${weak.length?`<span class="small">Açık kalanlar: ${weak.map(w=>`${w[0]} (${w[1]})`).join(", ")}.</span>`:'<span class="small ok">Tüm aşamalarda sorular karşılandı.</span>'}`}
+bind("lcProj","lcProj",lcR);lcR();
+
+// 5. önyargı
+const BI=["Doğrulama önyargısı","Mevcudiyet önyargısı","Otomasyon önyargısı","Seçim önyargısı","Hale etkisi","Demirleme önyargısı","Yakınlık önyargısı","Kendine hizmet eden önyargı"];
+const BQ=[[ "Yeni yan hak programının işe yaradığından emin olan analist, yalnızca katılımın arttığını gösteren tabloları raporluyor; memnuniyetin değişmediğini gösteren veriyi “gürültü” sayıyor.",0],
+ ["Bir yönetici geçen ay iki parlak çalışanın ayrıldığını hatırlayıp “yetenek kaybı krizi” olduğunu söylüyor; genel ayrılma oranı aslında düşük.",1],
+ ["İK ekibi, aday sıralama yazılımının önerdiği kısa listeyi hiç sorgulamadan mülakata çağırıyor.",2],
+ ["Uzaktan çalışmaya dair anketi yalnızca şirket içi Slack kanalının aktif üyelerine gönderip sonuçları tüm şirkete genelliyorsun.",3],
+ ["Sunumları çok etkileyici olan bir çalışan, teslim tarihlerini sık kaçırmasına rağmen performans değerlendirmesinde her boyutta yüksek puan alıyor.",4],
+ ["Ücret analizinde ilk baktığın rakam sektör ortalamasının %20 üstü olunca, sonraki tüm teklifleri bu rakama göre “düşük” ya da “yüksek” görüyorsun.",5],
+ ["Mülakatçı, kendisiyle aynı üniversiteden mezun olan ve aynı hobileri paylaşan adayı “kültüre çok uygun” bulup öne çıkarıyor.",6],
+ ["Başarılı geçen analitik projesini ekibin yeteneğine, başarısız olanı ise “verinin kötü olmasına” bağlıyorsun.",7]];
+st.bq=st.bq||{};
+function biasR(){$("#biasQ").innerHTML=BQ.map((q,i)=>`<div class="card" style="margin:8px 0"><div style="font-size:15px">${q[0]}</div><select data-bq="${i}" style="margin-top:6px"><option value="">— önyargıyı seç —</option>${BI.map((b,j)=>`<option value="${j}" ${st.bq[i]===j?"selected":""}>${b}</option>`).join("")}</select>${st.bq[i]!=null?`<div class="fb">${st.bq[i]===q[1]?'<span class="ok">Doğru.</span>':`<span class="no">Tekrar düşün:</span> bu daha çok <strong>${BI[q[1]]}</strong>.`}</div>`:""}</div>`).join("");
+ $$("[data-bq]").forEach(s=>s.onchange=()=>{st.bq[s.dataset.bq]=s.value===""?undefined:+s.value;save();biasR()});
+ const n=BQ.filter((_,i)=>st.bq[i]!=null).length,c=BQ.filter((q,i)=>st.bq[i]===q[1]).length;$("#biasScore").textContent=n?`${c}/${n} doğru`:""}
+biasR();
+
+// k-anonimlik
+const KD=[];(function(){let s=3;const r=()=>{s=(s*16807)%2147483647;return(s-1)/2147483646};const D=["Satış","Üretim","Ar-Ge","Finans"],G=["Kadın","Erkek"],L=["İstanbul","Kocaeli","İzmir"];
+ for(let i=0;i<60;i++){const d=r()<.45?0:r()<.6?1:r()<.6?2:3;KD.push({Birim:D[d],Cinsiyet:G[r()<.5?0:1],Yaş:22+Math.floor(r()*38),Lokasyon:L[d===3?0:Math.floor(r()*3)],Kıdem:Math.floor(r()*15)})}})();
+const QI=["Birim","Cinsiyet","Yaş","Lokasyon","Kıdem"];st.kq=st.kq||["Birim","Cinsiyet"];
+function kR(){$("#kQI").innerHTML=QI.map(q=>`<button class="chip ${st.kq.includes(q)?"on":""}" data-kq="${q}">${q}</button>`).join("");
+ $$("[data-kq]").forEach(b=>b.onclick=()=>{const q=b.dataset.kq;st.kq=st.kq.includes(q)?st.kq.filter(x=>x!==q):st.kq.concat(q);save();kR()});
+ const ageB=$("#kAge").checked,min=+$("#kMin").value;st.kA=ageB;st.kM=min;save();
+ const val=(r,q)=>q==="Yaş"&&ageB?(r.Yaş<30?"22–29":r.Yaş<40?"30–39":r.Yaş<50?"40–49":"50+"):q==="Kıdem"&&ageB?(r.Kıdem<3?"0–2":r.Kıdem<8?"3–7":"8+"):r[q];
+ if(!st.kq.length){$("#kTab").innerHTML="";$("#kOut").innerHTML='<span class="small">Bir ya da daha fazla alan seç.</span>';return}
+ const g={};KD.forEach(r=>{const k=st.kq.map(q=>val(r,q)).join(" · ");g[k]=(g[k]||0)+1});const rows=Object.entries(g).sort((a,b)=>a[1]-b[1]);
+ const risky=rows.filter(r=>r[1]<min);const k=rows[0][1];const people=risky.reduce((a,r)=>a+r[1],0);
+ $("#kTab").innerHTML=`<tr><th>${st.kq.join(" · ")}</th><th style="width:90px">Kişi</th></tr>`+rows.slice(0,14).map(r=>`<tr class="${r[1]<min?"risk":""}"><td>${esc(r[0])}</td><td>${r[1]}</td></tr>`).join("")+(rows.length>14?`<tr><td colspan="2" class="small">… ve ${rows.length-14} grup daha</td></tr>`:"");
+ $("#kOut").innerHTML=`<strong class="ui ${k>=min?"ok":"no"}">k = ${k}</strong> · ${rows.length} grup · eşiğin altındaki gruplarda <strong>${people}</strong> kişi (60 kişiden). ${k===1?"En az bir kişi seçtiğin alanların birleşimiyle tek başına kalıyor; adı olmasa da kim olduğu bilinebilir.":k<min?"Bazı gruplar eşikten küçük; bu grupları birleştir, alanları azalt ya da değerleri genelleştir (örn. yaşı aralığa çevir).":"Tüm gruplar eşiği karşılıyor."} <span class="small">k-anonimlik tek başına yeterli değildir; l-çeşitlilik, t-yakınlık ve diferansiyel mahremiyet gibi teknikler de var (aşağıdaki teknik beceriler eşleştirmesine bak).</span>`}
+$("#kAge").checked=!!st.kA;if(st.kM)$("#kMin").value=st.kM;$("#kAge").onchange=kR;$("#kMin").onchange=kR;kR();
+
+// 6. Sarah
+const SO=[["Hesaplayıp listeyi veririm; lider zaten ekibini tanıyor.","w","Kitaptaki tehlike tam bu: bireysel bir etiket, yöneticinin o kişiye davranışını değiştirebilir ve kendini gerçekleştiren bir kehanete dönüşebilir."],
+ ["Reddeder, tek başıma sonuna kadar tartışırım.","m","Yazar geri adım atmadı ve insanları korudu; ama bunu tek başına, hazırlıksız yaptı ve kendi deyişiyle “yanlış yaptı”. Çatışmayı önermiyor."],
+ ["Önceden belirlenmiş insan verisi ilkelerimize işaret eder, “Yöneticime danışayım” diyerek baskıdan çıkıp destekle dönerim.","r","Yazarın sonradan çıkardığı ders tam bu: ilkelere dayan ve topluluğundan (yöneticin, hukuk, müttefikler) destek al."]];
+function sarah(){$("#sarahQ").innerHTML=SO.map((o,i)=>`<button class="opt ${st.so===i?(o[1]==="r"?"right":o[1]==="m"?"mid":"wrong"):""}" data-so="${i}">${o[0]}</button>`).join("")+(st.so!=null?`<div class="fb">${SO[st.so][2]}</div>`:"");
+ $$("[data-so]").forEach(b=>b.onclick=()=>{st.so=+b.dataset.so;save();sarah()});
+ const show=st.so!=null;["#sarah2","#sarah3","#scriptBox"].forEach(s=>$(s).style.display=show?"block":"none")}
+sarah();
+const PRI_H=["İnsan verisi iyilik için","İnsan verisi özel veridir","İnsan verisi diğer veriler gibi değildir","İnsanlar hakkında ya da üzerinde değil, insanlar için ve insanlarla birlikte veri","Ürkütücü olma; kişiselleştirme/optimizasyon ile insanlıktan çıkarma arasında ince bir çizgi var"];
+const PRI_E=["Tüm projelerimde veri mahremiyetine ve güvenliğine öncelik veririm.","Adalet: Adil ve hakkaniyetli sonuçlar için veride, analizlerde, algoritmalarda, iletişimde ve karar almada önyargıları belirler ve azaltırım.","Veri kaynaklarım, yöntemlerim ve sınırlılıklarım konusunda şeffafım; bulgularımı açık ve dürüst biçimde iletirim.","Çalışmamın başkaları üzerindeki olumlu ve olumsuz olası etkisini dikkatle düşünürüm.","Çalışmamın etik sonuçlarının sorumluluğunu üstlenirim; çalışmamın başkaları üzerindeki etkisinden hesap veririm."];
+function sc(){const opts=(st.pr&&st.pr.length?st.pr:PRI_H.concat(["Birey düzeyinde öngörü sunmayız; modeller toplu planlama içindir."]));$("#scPri").innerHTML=opts.map((p,i)=>`<option value="${i}" ${+st.scP===i?"selected":""}>${esc(p)}</option>`).join("");
+ const p=opts[+st.scP||0]||opts[0];const req=st.scR||$("#scReq").value;
+ $("#scOut").textContent=`Talebini anlıyorum ve amacının ekibini korumak olduğunu biliyorum. ${req.charAt(0).toLocaleUpperCase("tr-TR")+req.slice(1)} matematiksel olarak hazırlanabilir, ama ne yazık ki ilkelerimize aykırı: “${p}”\n\nBunu daha önce bu şekilde yapmadık; yöneticime ve ilgili birimlerle danışıp sana döneyim. Bu arada ekibin için toplu düzeyde ayrılma eğilimlerini ve elde tutma için neler yapabileceğimizi birlikte konuşmak isterim.`}
+$("#scPri").onchange=()=>{st.scP=+$("#scPri").value;save();sc()};bind("scReq","scR",sc);sc();$("#scCopy").onclick=()=>copy($("#scOut").textContent);
+
+// 7. ilkeler
+st.pr=st.pr||[];
+function prR(){$("#hPri").innerHTML=PRI_H.map((p,i)=>`<div class="prin"><span>${p}</span><button class="btn ghost sm" data-ah="${i}" ${st.pr.includes(p)?"disabled":""}>${st.pr.includes(p)?"Eklendi":"+ Ekle"}</button></div>`).join("");
+ $("#ePri").innerHTML=PRI_E.map((p,i)=>`<div class="prin"><span class="small" style="color:var(--ink)">${p}</span><button class="btn ghost sm" data-ae="${i}" ${st.pr.includes(p)?"disabled":""}>${st.pr.includes(p)?"Eklendi":"+ Ekle"}</button></div>`).join("");
+ $$("[data-ah]").forEach(b=>b.onclick=()=>{st.pr.push(PRI_H[b.dataset.ah]);save();prR()});$$("[data-ae]").forEach(b=>b.onclick=()=>{st.pr.push(PRI_E[b.dataset.ae]);save();prR()});
+ $("#myPri").innerHTML=st.pr.length?st.pr.map((p,i)=>`<div class="prin"><span class="ui" style="font-weight:800;color:var(--navy2)">${i+1}</span><span>${esc(p)}</span><button class="btn ghost sm" data-pu="${i}" ${i?"":"disabled"} aria-label="Yukarı">↑</button><button class="btn ghost sm" data-px="${i}" aria-label="Sil">×</button></div>`).join(""):'<p class="small">Soldan ilke ekle ya da kendininkini yaz.</p>';
+ $$("[data-pu]").forEach(b=>b.onclick=()=>{const i=+b.dataset.pu;[st.pr[i-1],st.pr[i]]=[st.pr[i],st.pr[i-1]];save();prR()});$$("[data-px]").forEach(b=>b.onclick=()=>{st.pr.splice(+b.dataset.px,1);save();prR()});
+ st.prDate=st.prDate||null;$("#pRev").textContent=st.pr.length?(st.prDate?`Son gözden geçirme: ${st.prDate}. İlkelerini düzenli olarak gözden geçir.`:"İlkelerini güvendiğin birine gösterip geri bildirim iste ve düzenli olarak gözden geçir."):"";sc()}
+$("#pAdd").onclick=()=>{const v=$("#pNew").value.trim();if(!v)return;st.pr.push(v);st.prDate=new Date().toLocaleDateString("tr-TR");$("#pNew").value="";save();prR()};
+$("#pCopy").onclick=()=>copy("İnsan analitiği ilkelerim\n"+st.pr.map((p,i)=>`${i+1}. ${p}`).join("\n"));$("#pPrint").onclick=()=>window.print();
+prR();
+const TM=[["Veri keşfi","Önyargı tespiti için veri keşfi teknikleri"],["Algoritma geliştirme","Adalet metrikleri ve test yöntemleriyle algoritmaları önyargı açısından denetleme; örnek algoritmalarla pratik"],["Yeni analitik teknikler","Mahremiyeti koruyan teknikler: anonimleştirme, birleştirme, diferansiyel mahremiyet, k-anonimlik, l-çeşitlilik, t-yakınlık"],["Teknoloji platformları","Veri güvenliği iyi uygulamaları: erişim kontrolü, şifreleme, veri maskeleme, düzenli güvenlik denetimleri"],["Veri yorumlama","Sorumlu yorum: aşırı genellemeden kaçınmak, veri ve yöntemlerin sınırlılıklarını anlamak"],["Veri görselleştirme","Veriyi doğru temsil eden, izleyiciyi yanıltmayan ve sonuçları çarpıtmayan etik görseller"]];
+st.tm=st.tm||{};
+function tmR(){$("#techMap").innerHTML=TM.map((t,i)=>`<div class="l">${t[0]}</div><div class="a">→</div><div class="r ${st.tm[i]?"":"hid"}" data-tm="${i}" tabindex="0" role="button">${st.tm[i]?t[1]:"Etik karşılığı ne? Tahmin et, sonra tıkla"}</div>`).join("");
+ $$("[data-tm]").forEach(e=>{const f=()=>{st.tm[e.dataset.tm]=1;save();tmR()};e.onclick=f;e.onkeydown=ev=>{if(ev.key==="Enter")f()}})}
+tmR();
+
+// 8. değerlendirmeler
+const AS={priv:["Mahremiyet değerlendirmesi",["Toplanan verinin kataloğu","Verinin amacı","Hukuki uyum doğrulaması (örn. KVKK/GDPR)","Olası riskler (ihlal, yeniden tanımlanma)","Azaltma stratejileri (şifreleme, anonimleştirme)","Veri güvenliği önlemlerinin gözden geçirilmesi","Veri paylaşım uygulamaları","Çalışan iletişim planı","Gözden geçirme ve güncelleme takvimi"]],
+ legit:["Meşru kullanım değerlendirmesi",["İş ihtiyacı","Çalışanlara olası faydalar","Etik sonuçlar","Alternatiflerin analizi","Belgelenmiş gerekçe","Paydaş incelemesi (kimler, ne zaman)"]],
+ imp:["Etki değerlendirmesi",["Paydaşlar","Olası olumlu etkiler (doğrudan/dolaylı, kısa/uzun vadeli)","Olası olumsuz etkiler (doğrudan/dolaylı, kısa/uzun vadeli)","Adalet ve olası ayrımcılık değerlendirmesi","Azaltma stratejileri","İzleme ve değerlendirme mekanizmaları","Geri bildirim kanalları"]]};
+st.as=st.as||{};st.asT=st.asT||"priv";
+function asR(){$("#asTabs").innerHTML=Object.entries(AS).map(([k,v])=>`<button data-at="${k}" class="${st.asT===k?"on":""}">${v[0]}<span class="c">${v[1].filter((_,i)=>(st.as[k+i]||"").trim()).length}/${v[1].length}</span></button>`).join("");
+ $$("[data-at]").forEach(b=>b.onclick=()=>{st.asT=b.dataset.at;save();asR()});
+ const v=AS[st.asT];$("#asBody").innerHTML=`<div class="card">${v[1].map((f,i)=>`<label class="small ui" style="font-weight:700;display:block;margin-top:8px">${f}<textarea data-af="${st.asT+i}" style="min-height:44px;margin-top:2px">${esc(st.as[st.asT+i]||"")}</textarea></label>`).join("")}</div>`;
+ $$("[data-af]").forEach(t=>t.oninput=()=>{st.as[t.dataset.af]=t.value;save();$$("[data-at]").forEach(b=>{const k=b.dataset.at;b.querySelector(".c").textContent=`${AS[k][1].filter((_,i)=>(st.as[k+i]||"").trim()).length}/${AS[k][1].length}`})})}
+asR();
+$("#asCsv").onclick=()=>dl("etik_degerlendirmeler.csv",[["Değerlendirme","Alan","Yanıt"]].concat(Object.entries(AS).flatMap(([k,v])=>v[1].map((f,i)=>[v[0],f,st.as[k+i]||""]))));$("#asPrint").onclick=()=>window.print();
+
+// 9. öz değerlendirme
+const LV=["Farkında","Öğrenen","Yetkin","Uzman","Stratejist"];
+const SK=[["Etik çerçeve geliştirme","Karar almayı yönlendirecek kişisel bir etik çerçeve geliştirip uygular. Veri mahremiyeti, adalet, şeffaflık ve hesap verebilirlikle ilgili temel değerlerini tanımlar ve karmaşık etik ikilemlerde bu değerleri kullanır."],
+ ["Etki değerlendirmesi","Çalışmanın olası sonuçlarını eleştirel olarak değerlendirir. Amaçlanan ve amaçlanmayan sonuçları gözetir, olası olumsuz etkileri proaktif olarak ele alır."],
+ ["Şeffaflık ve iletişim","Veri toplama uygulamaları, veri kullanımı, analitik yöntemler ve bulguların sınırlılıkları konusunda açık ve dürüst iletişim kurar. Verinin nasıl kullanıldığı konusunda açık davranır ve paydaşların sunulan bilgiyi anlamasını sağlar."],
+ ["Veri mahremiyeti","Çalışan verisini yetkisiz erişim, kullanım ya da ifşaya karşı koruyan uygulamaları anlar ve hayata geçirir. İlgili mevzuat (örn. GDPR, CCPA, AB Yapay Zekâ Yasası; Türkiye'de KVKK), etik konular ve veri işleme, saklama, anonimleştirme ve güvenlik iyi uygulamaları bilgisini uygular."],
+ ["Bilgilendirilmiş onay","Veriyi toplamadan ya da kullanmadan önce çalışanlardan açık ve bilgilendirilmiş izin alır. Veri kullanımı hakkında açık iletişim kurar, kişilerin neye onay verdiğini anlamasını sağlar ve onayı geri çekmek için kolay yollar sunar."],
+ ["Meşru kullanım durumu belirleme","Çalışan verisini toplamak ve kullanmak için açık, geçerli ve etik nedenleri tanımlar ve gerekçelendirir. Veri kullanımını iş ihtiyaçlarıyla uyumlar, çalışanlar üzerindeki etkiyi gözetir ve veri faaliyetlerinin gerekçesini belgeler."],
+ ["Etik veri toplama","Çalışanlar üzerindeki olası etkiyi gözeterek veriyi sorumlu ve etik biçimde toplar. Veri toplamayı yalnızca gerekli olanla sınırlar, toplama uygulamaları konusunda şeffaf davranır ve verinin güvenli saklanmasını sağlar."],
+ ["Etik veri analizi ve yorumu","Uygun istatistiksel yöntemlerle veriyi etik biçimde analiz eder. Veri ve algoritmalardaki olası önyargıları tanır ve ele alır, veriyi sorumlu yorumlar, “veri tarama”dan kaçınır ve analiz sırasında bireysel mahremiyeti korur."],
+ ["Etik raporlama ve paylaşım","Bulguları doğru, şeffaf ve etik biçimde iletir. Sansasyon ve abartıdan kaçınır, sınırlılıkları açıklar, bulguları yalnızca bilmeye meşru ihtiyacı olanlarla paylaşır, raporlarda bireysel mahremiyeti korur ve veriyi açık ve anlaşılır sunar."],
+ ["Araştırma etiği","İnsan analitiği araştırmasını katılımcılara yönelik riskleri en aza indirerek etik biçimde tasarlar ve yürütür. Gizliliği sağlar ve nesnelliği korur."],
+ ["Önyargıyı azaltma","Verideki, algoritmalardaki, teknolojideki ve karar almadaki olası önyargıları belirler ve ele alır. Eleştirel düşünme, veri analizi becerileri, algoritmik önyargı bilgisi ve insan önyargılarının sonuçları nasıl etkileyebileceğine dair anlayışı uygular."]];
+st.sa=st.sa||{cur:{},des:{},cust:[{n:"",d:""},{n:"",d:""}]};
+const opts=v=>'<option value="">—</option>'+LV.map((l,i)=>`<option value="${i+1}" ${+v===i+1?"selected":""}>${i+1} · ${l}</option>`).join("");
+const gapTag=(c,d)=>!c||!d?"":d>c?`<span class="gap">+${d-c} düzey hedef</span>`:`<span class="met">hedefe ulaşıldı</span>`;
+function saR(){$("#saTab").innerHTML=`<tr><th>Beceri</th><th>Açıklama</th><th style="width:150px">Bugünkü düzey</th><th style="width:150px">Hedef düzey</th></tr>`+
+ SK.map((s,i)=>`<tr><td class="sk">${s[0]}</td><td>${s[1]}</td><td><select data-c="${i}" aria-label="${esc(s[0])} bugünkü">${opts(st.sa.cur[i])}</select></td><td><select data-d="${i}" aria-label="${esc(s[0])} hedef">${opts(st.sa.des[i])}</select>${gapTag(st.sa.cur[i],st.sa.des[i])}</td></tr>`).join("")+
+ st.sa.cust.map((c,i)=>{const k="c"+i;return `<tr class="custom"><td><input type="text" data-cn="${i}" value="${esc(c.n)}" placeholder="Ek beceri"></td><td><input type="text" data-cd="${i}" value="${esc(c.d)}" placeholder="Açıklama"></td><td><select data-c="${k}">${opts(st.sa.cur[k])}</select></td><td><select data-d="${k}">${opts(st.sa.des[k])}</select>${gapTag(st.sa.cur[k],st.sa.des[k])}</td></tr>`}).join("");
+ $$("#saTab [data-c]").forEach(s=>s.onchange=()=>{st.sa.cur[s.dataset.c]=s.value?+s.value:undefined;save();saR()});
+ $$("#saTab [data-d]").forEach(s=>s.onchange=()=>{st.sa.des[s.dataset.d]=s.value?+s.value:undefined;save();saR()});
+ $$("[data-cn]").forEach(i=>i.onchange=()=>{st.sa.cust[i.dataset.cn].n=i.value;save();saSum()});$$("[data-cd]").forEach(i=>i.onchange=()=>{st.sa.cust[i.dataset.cd].d=i.value;save()});saSum()}
+const allSa=()=>SK.map((s,i)=>[s[0],s[1],i]).concat(st.sa.cust.map((c,i)=>[c.n,c.d,"c"+i]).filter(x=>x[0].trim()));
+function saSum(){const a=allSa();const r=a.filter(x=>st.sa.cur[x[2]]);const gaps=a.filter(x=>st.sa.cur[x[2]]&&st.sa.des[x[2]]>st.sa.cur[x[2]]).sort((x,y)=>(st.sa.des[y[2]]-st.sa.cur[y[2]])-(st.sa.des[x[2]]-st.sa.cur[x[2]]));
+ $("#saSum").innerHTML=`<strong class="ui">${r.length}/${a.length} beceri değerlendirildi.</strong> `+(gaps.length?`En büyük açıklar: ${gaps.slice(0,3).map(x=>`${esc(x[0])} (${LV[st.sa.cur[x[2]]-1]} → ${LV[st.sa.des[x[2]]-1]})`).join("; ")}.`:"Hedef düzeyleri işaretledikçe açıklar burada görünecek.")}
+$("#saAdd").onclick=()=>{st.sa.cust.push({n:"",d:""});save();saR()};
+$("#saCsv").onclick=()=>dl("etik_beceriler_oz_degerlendirme.csv",[["Beceri","Açıklama","Bugünkü düzey","Hedef düzey"]].concat(allSa().map(x=>[x[0],x[1],st.sa.cur[x[2]]?LV[st.sa.cur[x[2]]-1]:"",st.sa.des[x[2]]?LV[st.sa.des[x[2]]-1]:""])));
+$("#saPrint").onclick=()=>window.print();saR();
+
+// 10. değerler ve önyargılar
+const VB=["Dürüstlük","Bütünlük","Adalet","Şefkat","Sorumluluk","Saygı","Şeffaflık"];
+st.vx=st.vx||[];st.vs=st.vs||[];
+function vR(){const all=VB.concat(st.vx);$("#vals").innerHTML=all.map(v=>`<button class="chip ${st.vs.includes(v)?"on":""}" data-vv="${esc(v)}">${esc(v)}</button>`).join("");
+ $$("[data-vv]").forEach(b=>b.onclick=()=>{const v=b.dataset.vv;if(st.vs.includes(v))st.vs=st.vs.filter(x=>x!==v);else if(st.vs.length<5)st.vs.push(v);else{toast("En fazla 5 değer");return}save();vR()});
+ $("#vOut").innerHTML=st.vs.length?`<strong class="ui">Temel değerlerim:</strong> ${st.vs.map(esc).join(" · ")}<div class="small">Bu değerleri “Benim ilkelerim” listene bağlamayı dene: her ilke en az bir değerine dayanmalı.</div>`:'<span class="small">Sende en güçlü yankı uyandıran değerleri seç.</span>'}
+$("#vAdd").onclick=()=>{const v=$("#vNew").value.trim();if(!v||VB.concat(st.vx).includes(v))return;st.vx.push(v);if(st.vs.length<5)st.vs.push(v);$("#vNew").value="";save();vR()};vR();
+const BL=[["Doğrulama önyargısı","mevcut inançları doğrulayan bilgiyi kayırma"],["Kendine hizmet eden önyargı","başarıları kendine, başarısızlıkları dış etkenlere bağlama"],["Demirleme önyargısı","alınan ilk bilgiye aşırı dayanma"],["Seçim önyargısı","temsil edici olmayan bir örneklemden sonuç çıkarma"],["Hale etkisi","bir olumlu özelliğin genel değerlendirmeyi etkilemesi"],["Yakınlık önyargısı","kendine benzeyenleri kayırma"],["Mevcudiyet önyargısı","akla kolay gelen örneklere fazla ağırlık verme"],["Otomasyon önyargısı","otomatik sistemlerin çıktısına sorgusuz güvenme"],["Demografik önyargılar","ırk, cinsiyet, yaş gibi özelliklere dair varsayımlar"]];
+st.bp=st.bp||{};
+function bR(){$("#bPick").innerHTML=BL.map((b,i)=>`<button class="chip ${st.bp[i]?"on":""}" data-bp="${i}" title="${b[1]}">${b[0]}</button>`).join("");
+ $$("[data-bp]").forEach(b=>b.onclick=()=>{const i=b.dataset.bp;if(st.bp[i])delete st.bp[i];else st.bp[i]={a:"",b:"",c:""};save();bR()});
+ const sel=Object.keys(st.bp);$("#bPlan").innerHTML=sel.length?sel.map(i=>`<div class="card" style="margin:8px 0"><div class="t">${BL[i][0]} <span class="small" style="font-weight:600">· ${BL[i][1]}</span></div>${[["a","Fark etme: kararlarımı etkilemeden önce nasıl tanırım?"],["b","Yakalama: sızdığında nasıl fark ederim?"],["c","Azaltma: gelecekte etkisini nasıl en aza indiririm?"]].map(([k,l])=>`<label class="small ui" style="font-weight:700;display:block;margin-top:6px">${l}<input type="text" data-bk="${i}" data-f="${k}" value="${esc(st.bp[i][k])}"></label>`).join("")}</div>`).join(""):'<p class="small">Dikkat gerektirdiğini düşündüğün önyargıları seç.</p>';
+ $$("[data-bk]").forEach(e=>e.oninput=()=>{st.bp[e.dataset.bk][e.dataset.f]=e.value;save()})}
+bR();$("#bCsv").onclick=()=>dl("onyargi_azaltma_planim.csv",[["Önyargı","Fark etme","Yakalama","Azaltma"]].concat(Object.keys(st.bp).map(i=>[BL[i][0],st.bp[i].a,st.bp[i].b,st.bp[i].c])));
+
+// 11. test
+const Q=[
+ {q:"Yazara göre iş analitiği ile insan analitiği arasındaki temel fark nedir?",o:["Kullanılan araçlar","İnsanların hayatlarını etkileyen kararlara bilgi sağlamanın getirdiği etik sorumluluk","Veri miktarı","Kodlama dili"],a:1,e:"Süreç ve araçlar büyük ölçüde aynı; fark, insana odaklanmanın getirdiği sorumluluk."},
+ {q:"Onay için hangisi doğrudur?",o:["Bir kez alınan onay sonsuza dek geçerlidir","Onay yalnızca izin alınan kullanım için geçerlidir ve geri çekilebilmelidir","Onay alındıysa veri her amaçla kullanılabilir","Çalışanlar için onay gerekmez"],a:1,e:"“Her ihtimale karşı” veri toplanamaz; yeni bir meşru kullanım için yeniden onay gerekir."},
+ {q:"Hangisi geçerli bir meşru kullanım gerekçesi değildir?",o:["İş ihtiyacına bağlı olması","Çalışanlara zarar vermemesi","“Çünkü yapabiliyoruz”","Gerekçenin belgelenmesi"],a:2,e:"Yapabiliyor olmak, yapmamız gerektiği anlamına gelmez."},
+ {q:"Net bir hipotez olmadan bulgu aramaya ne denir?",o:["Veri tarama (data dredging)","Veri birleştirme","Örnekleme","Kodlama"],a:0,e:"Etik analizde kaçınılması gereken bir uygulama."},
+ {q:"Anonimleştirilmiş veriyle ilgili hangisi doğrudur?",o:["Anonimleştirilmiş veri hiçbir risk taşımaz","Birleşik ya da anonim veride bile kişiler bazen yeniden tanımlanabilir","Yalnızca isim silmek yeterlidir","k-anonimlik her riski ortadan kaldırır"],a:1,e:"Yaş, birim, lokasyon gibi alanların birleşimi kişiyi ele verebilir."},
+ {q:"Akademideki etik kurullara benzer bir yapı insan analitiği uygulayıcıları için genellikle…",o:["her kurumda zorunludur","yoktur; araştırmanın etik yürütülmesi uygulayıcının sorumluluğundadır","yalnızca kamu kurumlarında vardır","gereksizdir"],a:1,e:"Riskleri en aza indirmek, gizliliği sağlamak ve nesnelliği korumak sana düşer."},
+ {q:"Sarah hikâyesinde yazarın “yanlış yaptım” dediği şey nedir?",o:["Talebi reddetmesi","Önceden belirlenmiş ilkeleri olmaması ve durumu tek başına çözmeye çalışması","Modeli kurması","Hukuk ekibine danışması"],a:1,e:"İlkelere işaret edip “Yöneticime danışayım” diyerek destekle dönebilirdi."},
+ {q:"Öngörücü modeller için hangisi doğrudur?",o:["Bireysel kararlar için idealdir","Sorumlu kullanıldığında iyileştirme alanlarını gösterir; bireysel kararlar için onlara dayanmak felakettir","Hiç kullanılmamalıdır","Yalnızca işe alımda kullanılmalıdır"],a:1,e:"Toplu planlama için güçlü, bireysel etiketleme için zararlı."},
+ {q:"Hangisi Heather'ın insan verisi ilkelerinden biri değildir?",o:["İnsan verisi özel veridir","İnsan verisi diğer veriler gibi değildir","Ürkütücü olma","Tüm veri her zaman toplanmalıdır"],a:3,e:"İlkeler: iyilik için, özel veri, diğer veriler gibi değil, insanlar için ve insanlarla, ürkütücü olma."},
+ {q:"Mahremiyeti koruyan analitik tekniklere hangisi örnektir?",o:["Diferansiyel mahremiyet","Veri tarama","Doğrulama önyargısı","Hale etkisi"],a:0,e:"Anonimleştirme, birleştirme, k-anonimlik, l-çeşitlilik ve t-yakınlık da bu gruptadır."}];
+st.quiz=st.quiz||{};
+function quiz(){$("#quiz").innerHTML=Q.map((x,i)=>`<div class="card" style="margin:12px 0"><div class="ui" style="font-weight:700">${i+1}. ${x.q}</div>${x.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("")}<div class="fb" id="qe${i}" style="display:none">${x.e}</div></div>`).join("");
+ $$("#quiz .opt").forEach(b=>b.onclick=()=>{st.quiz[b.dataset.q]=+b.dataset.o;save();paint()});paint()}
+function paint(){let sc2=0,n=0;Q.forEach((x,i)=>{const ch=st.quiz[i];if(ch===undefined)return;n++;if(ch===x.a)sc2++;
+ $$(`#quiz .opt[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.o;b.classList.toggle("right",j===x.a);b.classList.toggle("wrong",j===ch&&ch!==x.a);b.disabled=true});$("#qe"+i).style.display="block"});
+ $("#score").innerHTML=n?`Skor: ${sc2} / ${Q.length}${n===Q.length?' <button class="btn ghost" id="reset" style="margin-left:8px">Yeniden dene</button>':""}`:"";const r=$("#reset");if(r)r.onclick=()=>{st.quiz={};save();quiz()}}
+quiz();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>

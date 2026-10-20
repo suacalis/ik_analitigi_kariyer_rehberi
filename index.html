@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>İnsan Analitiği Kariyer Rehberi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--bad:#c0392b;--shadow:0 2px 14px rgba(11,58,140,.08)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1040px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:740px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:100px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+.quote{background:var(--soft);border-radius:12px;padding:16px 22px;margin:16px 0;font-style:italic;text-align:center}
+.quote b{display:block;font-style:normal;font-family:Raleway;font-size:14px;color:var(--muted);margin-top:6px}
+.story{border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0;background:color-mix(in srgb,var(--soft) 40%,var(--card))}
+.story .h{font-family:Raleway;font-weight:800;color:var(--navy2);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn.sm{padding:4px 10px;font-size:12px}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,.chip:focus-visible,.seg button:focus-visible,.opt:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chip{font-family:Raleway;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--card);color:var(--muted);font-family:Raleway;font-weight:700;font-size:12px;padding:6px 11px;cursor:pointer}
+.seg button.on{background:var(--navy2);color:#fff}
+.seg button.on[data-v="g"]{background:var(--ok)}
+.seg button.on[data-v="y"]{background:var(--warn)}
+.seg button.on[data-v="r"]{background:var(--bad)}
+input[type=text],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+textarea{min-height:56px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.ok{color:var(--ok)}.no{color:var(--bad)}.wa{color:var(--warn)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.twocol{grid-template-columns:1fr}}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.fb{font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.opt.mid{border-color:var(--navy2);background:color-mix(in srgb,var(--navy2) 10%,var(--card))}
+.check{padding-left:0}.check li{list-style:none;margin:6px 0}
+.check input{width:17px;height:17px;accent-color:var(--navy2);vertical-align:-2px;margin-right:6px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tabs button{font-family:Raleway;font-weight:700;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;padding:7px 12px;cursor:pointer}
+.tabs button.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.tabs button .c{font-size:11px;margin-left:4px;opacity:.85}
+.meter{height:12px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0}
+.meter>div{height:100%;width:0;transition:width .3s,background .3s}
+.gray{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0;background:var(--card);display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+@media (max-width:640px){.gray{grid-template-columns:1fr}}
+.kt{overflow-x:auto}
+.kt table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+.kt th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:6px 8px;border:1px solid var(--line);text-align:left}
+.kt td{border:1px solid var(--line);padding:5px 8px}
+.kt tr.risk td{background:color-mix(in srgb,var(--bad) 14%,var(--card))}
+.prin{display:flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--card)}
+.prin span{flex:1}
+.sa{overflow-x:auto}
+.sa table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+.sa th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.sa td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.sa td.sk{font-family:Raleway;font-weight:700;width:180px}
+.sa select{font-size:13px;padding:5px}
+.sa .gap{font-family:Raleway;font-size:11px;font-weight:800;color:var(--warn);display:block;margin-top:4px}
+.sa .met{font-family:Raleway;font-size:11px;font-weight:800;color:var(--ok);display:block;margin-top:4px}
+.sa tr.custom input{font-size:14px;padding:5px 7px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+@media (max-width:700px){.scale{grid-template-columns:1fr 1fr}}
+.scale .card{padding:10px}.scale .lv{font-family:Raleway;font-weight:800;font-size:12px;color:var(--navy2)}
+.map{display:grid;grid-template-columns:1fr 24px 1fr;gap:6px 8px;align-items:center;font-size:15px}
+.map .a{font-family:Raleway;font-weight:800;color:var(--muted);text-align:center}
+.map .l{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--card);font-family:Raleway;font-weight:700}
+.map .r{border:1px solid var(--ok);border-radius:10px;padding:8px 10px;background:color-mix(in srgb,var(--ok) 8%,var(--card))}
+.map .r.hid{border-style:dashed;border-color:var(--line);background:var(--card);color:var(--muted);cursor:pointer}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+a{color:var(--navy2)}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+.step{border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:var(--shadow);margin:18px 0;overflow:hidden;border-left:6px solid var(--c)}
+.step>summary{list-style:none;cursor:pointer;padding:18px clamp(14px,3vw,26px);display:flex;gap:14px;align-items:center}
+.step>summary::-webkit-details-marker{display:none}
+.step .num{font-family:Raleway;font-weight:800;font-size:13px;color:#fff;background:var(--c);border-radius:10px;padding:6px 10px;white-space:nowrap}
+.step .tt{flex:1;min-width:0}
+.step .tt h2{font-family:Raleway;font-weight:800;color:var(--navy);font-size:clamp(18px,3.2vw,24px);margin:0;line-height:1.2}
+.step .tt .en{font-family:Raleway;font-size:12px;color:var(--muted);margin-top:2px}
+.step .pc{font-family:Raleway;font-weight:800;font-size:13px;color:var(--muted);white-space:nowrap}
+.step .chev{transition:transform .2s;color:var(--muted);font-size:18px}
+.step[open] .chev{transform:rotate(90deg)}
+.step .inner{padding:0 clamp(14px,3vw,26px) 18px}
+.pages{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.pg{font-family:Raleway;font-weight:700;font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:8px 12px;background:var(--card);display:flex;flex-direction:column;gap:4px;min-width:190px;flex:1}
+.pg:hover{border-color:var(--navy2)}
+.pg .bar{height:5px;border-radius:99px;background:var(--line);overflow:hidden}
+.pg .bar>div{height:100%;background:var(--ok)}
+.pg small{color:var(--muted);font-weight:700;font-size:11px}
+ol.toc{list-style:none;margin:0;padding:0}
+ol.toc li{border-top:1px solid var(--line)}
+ol.toc a,ol.toc .na{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:baseline;padding:9px 4px;text-decoration:none;color:var(--ink)}
+ol.toc a:hover{background:var(--soft)}
+ol.toc .ty{font-family:Raleway;font-weight:800;font-size:10px;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:2px 6px;color:#fff;background:var(--muted);align-self:center}
+ol.toc .ty.ee{background:var(--warn)}ol.toc .ty.sd{background:var(--ok)}ol.toc .ty.ch{background:var(--navy2)}
+ol.toc .ttl{min-width:0}
+ol.toc .ttl .en{display:block;font-family:Raleway;font-size:12px;color:var(--muted)}
+body.noen ol.toc .ttl .en,body.noen .step .tt .en{display:none}
+ol.toc .p{font-family:Raleway;font-weight:700;font-size:13px;color:var(--muted)}
+ol.toc .na{color:var(--muted)}
+ol.toc .na .ttl::after{content:" · etkileşimli sayfa yok";font-family:Raleway;font-size:11px;font-weight:700}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}
+.tools input[type=search]{flex:1;min-width:220px;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.big{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:16px 0}
+.big .card .v{font-family:Raleway;font-weight:800;font-size:28px;color:var(--navy)}
+.hide{display:none!important}
+mark{background:color-mix(in srgb,var(--warn) 35%,transparent);color:inherit;border-radius:3px}
+.sr{border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:var(--shadow);padding:16px clamp(14px,3vw,24px);margin:14px 0}
+.sr .hd{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;font-family:Raleway;font-weight:800;color:var(--navy)}
+.hit{display:block;text-decoration:none;color:var(--ink);border-top:1px solid var(--line);padding:10px 4px}
+.hit:hover{background:var(--soft)}
+.hit .pt{font-family:Raleway;font-size:12px;font-weight:800;color:var(--navy2)}
+.hit .st{font-family:Raleway;font-weight:800;font-size:16px}
+.hit .sn{font-size:14px;color:var(--muted)}
+.hit .sc{font-family:Raleway;font-size:11px;font-weight:700;color:var(--muted);float:right}
+.chipsr{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.kbd{font-family:Raleway;font-size:11px;border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--muted)}
+footer{max-width:1040px;margin:0 auto;padding:0 16px 40px;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <div class="brand">İnsan Analitiği Kariyer Rehberi</div>
+    <nav id="nav"></nav>
+    <button class="themebtn" id="theme" title="Tema" aria-label="Açık/koyu tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+<main>
+  <div class="hero">
+    <div class="kicker">Etkileşimli Türkçe çalışma sayfaları</div>
+    <h1>İnsan analitiğinde kariyer: beş adımlık yolculuk</h1>
+    <p>Heather Whiteman'ın insan analitiği kariyer rehberinin bölümlerine dayanan, Türkçe ve etkileşimli çalışma sayfaları. Her sayfada simülasyonlar, öz değerlendirmeler, şablonlar ve mini testler var. İçindekiler aşağıda kitabın sırasıyla verilmiştir; bir başlığa tıklayınca ilgili sayfanın ilgili bölümü açılır. Arama kutusu hem başlıklarda hem de tüm sayfaların içeriğinde arar.</p>
+    <p class="note">Sayfalar kitabın özetlenmiş ve yeniden yazılmış uyarlamalarıdır, çevirisi değildir. Örnek veriler kurgusaldır. İlerlemen ve girdiklerin yalnızca kendi tarayıcında saklanır; hiçbir veri sunucuya gönderilmez.</p>
+  </div>
+  <div class="big">
+    <div class="card"><div class="v" id="kPages">–</div><div class="small">etkileşimli sayfa</div></div>
+    <div class="card"><div class="v" id="kSecs">–</div><div class="small">içindekiler başlığı</div></div>
+    <div class="card"><div class="v" id="kProg">–</div><div class="small">tamamlanan bölüm (bu tarayıcıda)</div></div>
+    <div class="card"><div class="v" style="font-size:18px" id="kNext">–</div><div class="small" id="kNextS">sıradaki önerilen sayfa</div></div>
+  </div>
+  <div class="tools">
+    <input type="search" id="q" placeholder="Ara: kavram, yöntem, beceri… (örn. ikigai, k-anonimlik, SMART)" aria-label="Rehberde ara"><span class="kbd" title="Kısayol">/</span>
+    <label class="ui small" style="font-weight:700"><input type="checkbox" id="en" style="width:16px;height:16px;vertical-align:-3px"> İngilizce başlıklar</label>
+    <button class="btn ghost sm" id="openAll">Tümünü aç</button>
+    <button class="btn ghost sm" id="closeAll">Tümünü kapat</button>
+  </div>
+  <div class="chipsr" id="sugg"></div>
+  <div class="sr" id="sr" style="display:none"><div class="hd"><span id="srTitle">Sayfa içeriklerinde sonuçlar</span><span class="small" id="srInfo"></span></div><div id="srList"></div></div>
+  <div class="legend small ui" style="font-weight:700;display:flex;gap:12px;flex-wrap:wrap"><span><span class="ty" style="background:var(--navy2);color:#fff;border-radius:6px;padding:1px 6px;font-size:10px">BÖLÜM</span> konu anlatımı</span><span><span style="background:var(--warn);color:#fff;border-radius:6px;padding:1px 6px;font-size:10px">KEŞFET</span> Keşfet ve harekete geç</span><span><span style="background:var(--ok);color:#fff;border-radius:6px;padding:1px 6px;font-size:10px">KENDİNİ KEŞFET</span> öz değerlendirme</span></div>
+  <div id="toc"></div>
+  <p class="small" id="empty" style="display:none">Aramanla eşleşen içindekiler başlığı yok.</p>
+</main>
+<footer>
+  <p>Kaynak kitap: Heather Whiteman, insan analitiği kariyer rehberi. Yazarın sitesi: <a href="https://heatherwhiteman.com" target="_blank" rel="noopener">heatherwhiteman.com</a> · okur topluluğu: <a href="https://www.linkedin.com/groups/14487429/" target="_blank" rel="noopener">LinkedIn grubu</a>.</p>
+  <p>İlerleme verisi her sayfanın tarayıcı deposundan okunur. <button class="btn ghost sm" id="reset">Bu tarayıcıdaki tüm ilerlemeyi sıfırla</button></p>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2000)};
+const IK="pa_index_v1";let st={};try{st=JSON.parse(localStorage.getItem(IK)||"{}")||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(IK,JSON.stringify(st))}catch(e){}};
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$("#theme").onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";st.theme=d.dataset.theme;save()};
+
+// sayfalar: dosya, kısa ad, localStorage anahtarı, bölüm sayısı
+const PG={
+ giris:["insan_analitigi_giris.html","Giriş: Neden insan analitiği?","pa_giris_v1",7],
+ a1:["insan_analitigi_adim1_hemen_basla.html","Adım 1: Hemen başla","pa_adim1_v1",5],
+ a2:["insan_analitigi_adim2_teknik_olmayan_beceriler.html","Adım 2: Teknik olmayan beceriler","pa_adim2_v1",10],
+ nicel:["insan_analitigi_adim3_nicel_analitik.html","Nicel analitik","pa_adim3_nicel_v1",9],
+ nitel:["insan_analitigi_adim3_nitel_analitik.html","Nitel analitik","pa_adim3_nitel_v1",8],
+ oz:["insan_analitigi_adim3_analitik_oz_degerlendirme.html","Analitik öz değerlendirme","pa_adim3_analitik_oz_v1",5],
+ gor:["insan_analitigi_adim3_veri_gorsellestirme.html","Veri görselleştirme","pa_adim3_gorsel_v1",9],
+ veri:["insan_analitigi_veri_yonetimi_ve_yonetisimi.html","Veri yönetimi ve yönetişimi","pa_veri_temeli_v1",7],
+ ara:["insan_analitigi_adim3_arastirma_teknoloji.html","Araştırma ve teknoloji","pa_adim3_arastirma_tek_v1",11],
+ buyuk:["insan_analitigi_adim4_buyuk_resim.html","Büyük resim ve topluluk","pa_adim4_buyuk_resim_v1",10],
+ etik:["insan_analitigi_adim4_etik.html","Etik kalmak","pa_adim4_etik_v1",11],
+ iki:["insan_analitigi_adim5_ikigai_kariyer.html","İkigai, işler ve kariyerler","pa_adim5_ikigai_v1",8],
+ plan:["insan_analitigi_adim5_gelisim_plani_kariyer_haritasi.html","Gelişim planı ve kariyer haritası","pa_adim5_plan_v1",6]};
+// içindekiler: [tür, Türkçe başlık, İngilizce başlık, sayfa no, sayfa anahtarı, çapa]
+const TOC=[
+ {id:"giris",no:"Giriş",tr:"Giriş",en:"Introduction",c:"#8e44ad",pages:["giris"],items:[
+  ["ch","Neden insan analitiği?","Why People Analytics?","9","giris","s1"],["ch","Neden şimdi?","Why Now?","11","giris","s3"],["ch","Neden ben?","Why Me?","15","giris","s5"]]},
+ {id:"a1",no:"Adım 1",tr:"Güçlü yönlerinden yararlan: Hemen başla",en:"Leverage Your Strengths: Step 1. Start Now",c:"#1d8a5b",pages:["a1"],items:[
+  ["ch","Küçük başla, şimdi başla","Start Small, Start Now","18","a1","s1"],["ch","Sahtekârlık sendromunu unut","Forget Imposter Syndrome","20","a1","s2"],["ch","Güçlü yönlerinden yararlan","Leverage Your Strengths","24","a1","s3"],["sd","Kendini keşfet: Güçlü yönlerini belirle","Self-Discovery: Identify Your Strengths","25","a1","s4"]]},
+ {id:"a2",no:"Adım 2",tr:"Her şey analitik değil: Teknik olmayan becerilerini geliştir",en:"It's Not All Analytics: Step 2. Build Your Non-Technical Skills",c:"#0b3a8c",pages:["a2"],items:[
+  ["ch","Başarı için insan analitiğini uygulamak","Applying People Analytics for Success","31","a2","s1"],["ch","İnsan analitiği veri tüketicisi","The People Analytics Data Consumer","34","a2","s3"],["ee","Keşfet ve harekete geç: Bir insan analitiği tüketicisi ol","Explore & Engage: Be a People Analytics Consumer","37","a2","s4"],["ch","İnsan analitiği çevirmeni","The People Analytics Translator","42","a2","s5"],["ee","Keşfet ve harekete geç: Tüketiciden çevirmene","Explore & Engage: From Consumer to Translator","44","a2","s5"],["ch","İnsan analitiği çevirmeni becerileri","The People Analytics Translator Skills","46","a2","s6"],["sd","Kendini keşfet: Çevirmen becerileri","Self-Discovery: People Analytics Translator Skills","57","a2","s9"]]},
+ {id:"a3",no:"Adım 3",tr:"Bilgiyi içgörüye dönüştür: Teknik becerilerini geliştir",en:"Turn Info to Insights: Step 3. Build Your Technical Skills",c:"#1f5fd1",pages:["nicel","nitel","oz","gor","veri","ara"],items:[
+  ["ch","Nicel insan analitiği","Quantitative People Analytics","64","nicel","s2"],["ch","Betimleyici insan analitiği","Descriptive People Analytics","70","nicel","s3"],["ch","Tanılayıcı insan analitiği","Diagnostic People Analytics","76","nicel","s4"],["ch","Öngörücü insan analitiği","Predictive People Analytics","84","nicel","s5"],["ch","Kural koyucu insan analitiği","Prescriptive People Analytics","92","nicel","s6"],["ch","Bilişsel insan analitiği","Cognitive People Analytics","95","nicel","s7"],["ch","Nitel insan analitiği","Qualitative People Analytics","101","nitel","s1"],["ee","Keşfet ve harekete geç: Analitik beceriler","Explore & Engage: Analytical Skills","120","oz","s1"],["sd","Kendini keşfet: Analitik becerilerini değerlendir","Self-Discovery: Assess Your Analytics Skills","123","oz","s4"],["ch","Veri görselleştirme","Data Visualization","145","gor","s1"],["ee","Keşfet ve harekete geç: İnsan verisi görselleştirme","Explore & Engage: People Data Visualization","160","gor","s6"],["sd","Kendini keşfet: Veri görselleştirme becerileri","Self-Discovery: Data Visualization Skills","168","gor","s8"],["ch","İnsan analitiğinin temeli","The Foundation of People Analytics","175","veri","s1"],["ch","Veri yönetimi ve yönetişimi","Data Management and Governance","178","veri","s2"],["ee","Keşfet ve harekete geç: İnsan verisi yönetimi ve yönetişimi","Explore & Engage: People Data Management and Governance","185","veri","s5"],["sd","Kendini keşfet: İnsan verisi yönetimi ve yönetişimi","Self-Discovery: People Data Management & Governance","189","veri","s6"],["ch","İnsan analitiği araştırması","People Analytics Research","205","ara","s1"],["ee","Keşfet ve harekete geç: Araştırma becerileri","Explore & Engage: People Analytics Research Skills","222","ara","s6"],["sd","Kendini keşfet: Araştırma becerileri","Self-Discovery: People Analytics Research Skills","225","ara","s7"],["ch","Teknolojiden yararlanmak","Leveraging Technology","232","ara","s8"],["ee","Keşfet ve harekete geç: İnsan analitiği teknolojisi keşifleri","Explore & Engage: People Analytics Technology Explorations","244","ara","s10"]]},
+ {id:"a4",no:"Adım 4",tr:"Daha ileri taşı: Büyük resim",en:"Taking It Further: Step 4. The Big Picture",c:"#b5651d",pages:["buyuk","etik"],items:[
+  ["ch","Hedef kitlene ulaşmak","Reaching Your Audience","253","buyuk","s1"],["ch","Topluluğunu kurmak","Building Your Community","261","buyuk","s3"],["ee","Keşfet ve harekete geç: İnsan analitiği topluluğunu kur","Explore & Engage: Build Your People Analytics Community","268","buyuk","s4"],["sd","Kendini keşfet: Topluluk oluşturma becerilerin","Self-Discovery: Your Community Building Skills","281","buyuk","s7"],["ch","Etik kalmak","Keeping it Ethical","292","etik","s1"],["ee","Keşfet ve harekete geç: Etik insan analitiği uygulamaları","Explore & Engage: Ethical People Analytics Practices","304","etik","s8"],["sd","Kendini keşfet: Etik insan analitiği becerileri","Self-Discovery: Ethical People Analytics Skills","311","etik","s9"]]},
+ {id:"a5",no:"Adım 5",tr:"Bu bir işten fazlası: Tutkularını hizala, kariyerini tasarla",en:"It's More Than A Job: Step 5. Align Your Passions, Design Your Career",c:"#c0392b",pages:["iki","plan"],items:[
+  ["sd","Kendini keşfet: Neden keyif alıyorsun, neyde iyisin?","Self-Discovery: What You Enjoy & What You're Good At","325","iki","s2"],["ee","Keşfet ve harekete geç: Güçlü yönlerinin mutluluk avantajı","Explore & Engage: Use Your Current Strengths to Your Happiness Advantage","331","iki","s3"],["ch","Dünyanın ihtiyacı ve karşılığı ödenen: İşler ve kariyerler","What the World Needs & What You Can Get Paid For: People Analytics Jobs and Careers","334","iki","s4"],["ee","Keşfet ve harekete geç: Talep gören beceriler","Explore & Engage: In-Demand Skills","345","iki","s6"],["sd","Kendini keşfet: Geliştireceğin becerileri önceliklendir","Self-Discovery: Prioritize Your Skills to Develop","358","plan","s1"],["ee","Keşfet ve harekete geç: Gelişim eylem planı","Explore & Engage: Development Action Plan","365","plan","s2"],["ee","Keşfet ve harekete geç: İş şekillendirme","Explore & Engage: Job Crafting","369","plan","s3"],["ee","Keşfet ve harekete geç: Kariyer haritanı oluştur","Explore & Engage: Create Your Career Map","373","plan","s4"],["ch","Başardın!","You've Got This!","380","plan","s5"]]}];
+const TYL={ch:"Bölüm",ee:"Keşfet",sd:"Kendini keşfet"};
+
+function pageProg(k){const [,, key,n]=PG[k];let s=null;try{s=JSON.parse(localStorage.getItem(key)||"null")}catch(e){}
+ const r=s&&s.read&&typeof s.read==="object"?Object.values(s.read).filter(Boolean).length:0;return [Math.min(r,n),n]}
+st.open=st.open||{giris:true};
+function render(){const nzq=t=>String(t||"").toLocaleLowerCase("tr-TR").replace(/[ıİ]/g,"i").replace(/ş/g,"s").replace(/ğ/g,"g").replace(/ü/g,"u").replace(/ö/g,"o").replace(/ç/g,"c").replace(/[âà]/g,"a").replace(/[îì]/g,"i").replace(/[ûù]/g,"u");
+ const q=nzq(($("#q").value||"").trim());let shown=0;
+ const hl=t=>{const s=esc(t);if(!q)return s;const i=nzq(t).indexOf(q);return i<0?s:esc(t.slice(0,i))+"<mark>"+esc(t.slice(i,i+q.length))+"</mark>"+esc(t.slice(i+q.length))};
+ $("#toc").innerHTML=TOC.map(S=>{
+  const items=S.items.filter(it=>!q||nzq(it[1]+" "+it[2]).includes(q)||nzq(S.tr+" "+S.en).includes(q));
+  if(!items.length)return "";shown+=items.length;
+  const pr=S.pages.map(pageProg);const done=pr.reduce((a,p)=>a+p[0],0),tot=pr.reduce((a,p)=>a+p[1],0);
+  return `<details class="step" style="--c:${S.c}" data-sid="${S.id}" ${q||st.open[S.id]?"open":""}><summary><span class="num">${S.no}</span><div class="tt"><h2>${hl(S.tr)}</h2><div class="en">${esc(S.en)}</div></div><span class="pc">${tot?Math.round(done/tot*100)+"%":""}</span><span class="chev">›</span></summary><div class="inner">
+  ${S.pages.length?`<div class="pages">${S.pages.map(k=>{const [d,n]=pageProg(k);return `<a class="pg" href="${PG[k][0]}"><span>${PG[k][1]}</span><small>${d}/${n} bölüm tamamlandı</small><div class="bar"><div style="width:${d/n*100}%"></div></div></a>`}).join("")}</div>`:'<p class="small" style="margin-top:0">Bu kısım için etkileşimli sayfa hazırlanmadı.</p>'}
+  <ol class="toc">${items.map(it=>{const inner=`<span class="ty ${it[0]}">${TYL[it[0]]}</span><span class="ttl">${hl(it[1])}<span class="en">${hl(it[2])}</span></span><span class="p">s. ${it[3]}</span>`;return `<li>${it[4]?`<a href="${PG[it[4]][0]}#${it[5]}">${inner}</a>`:`<div class="na">${inner}</div>`}</li>`}).join("")}</ol></div></details>`}).join("");
+ $("#empty").style.display=shown?"none":"block";
+ $$("details.step").forEach(d=>d.addEventListener("toggle",()=>{if(!q){st.open[d.dataset.sid]=d.open;save()}}));
+ // özet
+ const keys=Object.keys(PG);const P=keys.map(pageProg);const d=P.reduce((a,p)=>a+p[0],0),t=P.reduce((a,p)=>a+p[1],0);
+ $("#kPages").textContent=keys.length;$("#kSecs").textContent=TOC.reduce((a,S)=>a+S.items.length,0);$("#kProg").textContent=`${d}/${t}`;$("#progbar").style.width=(d/t*100)+"%";
+ const nx=keys.find(k=>{const [a,b]=pageProg(k);return a<b});
+ $("#kNext").innerHTML=nx?`<a href="${PG[nx][0]}">${PG[nx][1]}</a>`:"Hepsi tamam!";$("#kNextS").textContent=nx?"sıradaki önerilen sayfa":"tüm sayfalar tamamlandı";
+ $("#nav").innerHTML=TOC.filter(S=>S.pages.length).map(S=>`<a href="#" data-go="${S.id}">${S.no}</a>`).join("");
+ $$("[data-go]").forEach(a=>a.onclick=e=>{e.preventDefault();const el=$(`[data-sid="${a.dataset.go}"]`);if(el){el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"})}})}
+
+// ---- tam metin arama motoru
+const nz=t=>String(t||"").toLocaleLowerCase("tr-TR").replace(/[ıİ]/g,"i").replace(/ş/g,"s").replace(/ğ/g,"g").replace(/ü/g,"u").replace(/ö/g,"o").replace(/ç/g,"c").replace(/[âà]/g,"a").replace(/[îì]/g,"i").replace(/[ûù]/g,"u");
+let IDX=null,loading=null,idxErr=false;
+function buildIndex(){if(loading)return loading;
+ loading=Promise.all(Object.entries(PG).map(([k,p])=>fetch(p[0]).then(r=>{if(!r.ok)throw 0;return r.text()}).then(html=>{
+  const doc=new DOMParser().parseFromString(html,"text/html");doc.querySelectorAll("script,style,.readmark,nav").forEach(e=>e.remove());
+  const out=[];const hero=doc.querySelector(".hero");if(hero)out.push({k,id:"",t:p[1],b:hero.textContent});
+  doc.querySelectorAll("section.ch").forEach(sec=>{const h=sec.querySelector("h2");out.push({k,id:sec.id,t:h?h.textContent.trim():p[1],b:sec.textContent.replace(/\s+/g," ").trim()})});return out}).catch(()=>{idxErr=true;return []})))
+ .then(a=>{IDX=a.flat().map(d=>Object.assign(d,{nt:nz(d.t),nb:nz(d.b)}));return IDX});return loading}
+function snippet(d,terms){const b=d.b,nb=d.nb;let pos=-1;for(const t of terms){const i=nb.indexOf(t);if(i>=0&&(pos<0||i<pos))pos=i}
+ if(pos<0)return esc(b.slice(0,180))+(b.length>180?"…":"");
+ const a=Math.max(0,pos-80),e=Math.min(b.length,pos+180);let seg=b.slice(a,e),ns=nb.slice(a,e);
+ const marks=[];terms.forEach(t=>{let i=0;while((i=ns.indexOf(t,i))>=0){marks.push([i,i+t.length]);i+=t.length}});marks.sort((x,y)=>x[0]-y[0]);
+ let o="",c=0;marks.forEach(([x,y])=>{if(x<c)return;o+=esc(seg.slice(c,x))+"<mark>"+esc(seg.slice(x,y))+"</mark>";c=y});o+=esc(seg.slice(c));
+ return (a>0?"…":"")+o+(e<b.length?"…":"")}
+function hlT(t,terms){const n=nz(t);const m=[];terms.forEach(x=>{let i=0;while((i=n.indexOf(x,i))>=0){m.push([i,i+x.length]);i+=x.length}});m.sort((a,b)=>a[0]-b[0]);let o="",c=0;m.forEach(([x,y])=>{if(x<c)return;o+=esc(t.slice(c,x))+"<mark>"+esc(t.slice(x,y))+"</mark>";c=y});return o+esc(t.slice(c))}
+let sTimer=null,sSeq=0;
+function fullSearch(){const raw=($("#q").value||"").trim();const box=$("#sr");
+ if(raw.length<2){box.style.display="none";return}
+ const phrase=nz(raw);const terms=[...new Set(phrase.split(/\s+/).filter(t=>t.length>=2))];if(!terms.length){box.style.display="none";return}
+ box.style.display="block";const seq=++sSeq;
+ if(!IDX){$("#srInfo").textContent="Dizin hazırlanıyor…";$("#srList").innerHTML=""}
+ buildIndex().then(ix=>{if(seq!==sSeq)return;
+  if(!ix.length){$("#srInfo").textContent="";$("#srList").innerHTML='<p class="small">Tam metin arama için sayfaların bir sunucudan (ör. GitHub Pages) açılması gerekir; dosyayı doğrudan bilgisayardan açtığında tarayıcı diğer sayfaları okuyamaz. Başlık araması aşağıda çalışmaya devam eder.</p>';return}
+  const R=[];ix.forEach(d=>{let sc=0,all=true;terms.forEach(t=>{const inT=d.nt.split(t).length-1,inB=d.nb.split(t).length-1;if(!inT&&!inB)all=false;sc+=inT*8+Math.min(inB,12)});if(!all)return;if(terms.length>1&&d.nb.includes(phrase))sc+=10;if(d.nt.includes(phrase))sc+=15;R.push([sc,d])});
+  R.sort((a,b)=>b[0]-a[0]);const top=R.slice(0,25);
+  $("#srTitle").textContent="Sayfa içeriklerinde sonuçlar";
+  $("#srInfo").textContent=R.length?`${R.length} bölüm${R.length>25?" (ilk 25)":""}${idxErr?" · bazı sayfalar okunamadı":""}`:"";
+  $("#srList").innerHTML=top.length?top.map(([sc,d])=>`<a class="hit" href="${PG[d.k][0]}${d.id?"#"+d.id:""}"><span class="sc">${sc} puan</span><div class="pt">${esc(PG[d.k][1])}</div><div class="st">${hlT(d.t,terms)}</div><div class="sn">${snippet(d,terms)}</div></a>`).join(""):`<p class="small">“${esc(raw)}” için sayfa içeriklerinde sonuç yok. Daha kısa ya da farklı bir kelime dene (Türkçe karakterler olmadan da arayabilirsin).</p>`;
+  st.last=raw;save()})}
+const SUG=["ikigai","sahtekârlık","çevirmen","hikâye","regresyon","sağkalım","tematik analiz","renk körlüğü","veri yönetişimi","örnekleme","k-anonimlik","onay","SMART","iş şekillendirme","ISO 30414"];
+$("#sugg").innerHTML='<span class="small ui" style="font-weight:700;align-self:center">Örnek aramalar:</span>'+SUG.map(w=>`<button class="chip" data-sq="${esc(w)}">${esc(w)}</button>`).join("");
+$$("[data-sq]").forEach(b=>b.onclick=()=>{$("#q").value=b.dataset.sq;render();fullSearch()});
+document.addEventListener("keydown",e=>{if(e.key==="/"&&document.activeElement!==$("#q")&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();$("#q").focus()}if(e.key==="Escape"&&document.activeElement===$("#q")){$("#q").value="";render();fullSearch()}});
+$("#q").oninput=()=>{render();clearTimeout(sTimer);sTimer=setTimeout(fullSearch,250)};
+$("#en").checked=st.en!==false;document.body.classList.toggle("noen",!$("#en").checked);
+$("#en").onchange=e=>{st.en=e.target.checked;save();document.body.classList.toggle("noen",!st.en)};
+$("#openAll").onclick=()=>{TOC.forEach(S=>st.open[S.id]=true);save();render()};
+$("#closeAll").onclick=()=>{TOC.forEach(S=>st.open[S.id]=false);save();render()};
+$("#reset").onclick=()=>{if(!confirm("Tüm sayfalardaki ilerleme ve girdiler bu tarayıcıdan silinsin mi?"))return;Object.values(PG).forEach(p=>{try{localStorage.removeItem(p[2])}catch(e){}});toast("İlerleme sıfırlandı");render()};
+window.addEventListener("pageshow",render);window.addEventListener("storage",render);
+render();
+})();
+</script>
+</body>
+</html>

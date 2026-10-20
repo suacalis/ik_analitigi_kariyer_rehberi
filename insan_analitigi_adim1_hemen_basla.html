@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adım 1: Hemen Başla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f8fc; --card:#ffffff; --ink:#1b2333; --muted:#5b6578; --navy:#0b3a8c; --navy2:#1f5fd1;
+  --soft:#eaf1ff; --line:#d8e0ee; --ok:#1d8a5b; --warn:#b5651d; --shadow:0 2px 14px rgba(11,58,140,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1420; --card:#171e2d; --ink:#e7ecf5; --muted:#9aa6bd; --navy:#8fb4ff; --navy2:#6c9cff;
+    --soft:#1d2a45; --line:#2a3550; --ok:#4cc38a; --warn:#e3a35c; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1420; --card:#171e2d; --ink:#e7ecf5; --muted:#9aa6bd; --navy:#8fb4ff; --navy2:#6c9cff;
+  --soft:#1d2a45; --line:#2a3550; --ok:#4cc38a; --warn:#e3a35c; --shadow:none;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:980px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.brand{font-weight:800;color:var(--navy);font-size:15px;letter-spacing:.02em;flex:1;min-width:180px}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{font-family:Raleway,sans-serif;font-size:13px;font-weight:700;text-decoration:none;color:var(--muted);padding:6px 10px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}
+.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:980px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.hero .kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(30px,6vw,52px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:680px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:90px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:17px;color:var(--ink);margin:1.4em 0 .5em}
+.quote{background:var(--soft);border-radius:12px;padding:18px 22px;margin:18px 0;font-style:italic;text-align:center}
+.quote b{display:block;font-style:normal;font-family:Raleway;font-size:14px;color:var(--muted);margin-top:6px}
+.btn{font-family:Raleway,sans-serif;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn:hover{filter:brightness(1.08)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.box .lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{font-family:Raleway;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+input[type=text],input[type=date],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+textarea{min-height:64px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+ul.tick{padding-left:0;list-style:none}
+ul.tick li{padding-left:28px;position:relative;margin:6px 0}
+ul.tick li::before{content:"✓";position:absolute;left:4px;color:var(--ok);font-weight:700}
+.flipgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+.flip{perspective:900px;height:170px;cursor:pointer}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flip.open .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:14px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--line)}
+.flip .f{background:var(--card)}
+.flip .f::after{content:"Çevir ↻";font-family:Raleway;font-size:11px;color:var(--muted);position:absolute;bottom:8px;right:12px}
+.flip .b{background:var(--navy2);color:#fff;transform:rotateY(180deg);font-size:15px}
+.flip .f span{font-style:italic}
+.steps{counter-reset:s;display:grid;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:12px}
+.step .n{flex:0 0 32px;height:32px;border-radius:50%;background:var(--soft);color:var(--navy);font-family:Raleway;font-weight:800;display:grid;place-items:center}
+.step input{margin-top:8px;width:18px;height:18px;accent-color:var(--ok)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.twocol{grid-template-columns:1fr}}
+.meter{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0}
+.meter>div{height:100%;background:var(--ok);width:0;transition:width .3s}
+.tblwrap{overflow-x:auto;margin:12px 0}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:15px}
+th{font-family:Raleway;background:var(--soft);color:var(--navy);text-align:left;padding:10px;border:1px solid var(--line)}
+td{border:1px solid var(--line);padding:6px;vertical-align:top}
+td textarea{min-height:70px;border:0;background:transparent;padding:4px}
+tr.ex td{color:var(--muted);font-style:italic;padding:10px}
+td.del{width:36px;text-align:center}
+td.del button{border:0;background:none;color:var(--muted);cursor:pointer;font-size:18px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+.quiz .q{border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.quiz .opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.quiz .opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.quiz .opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.quiz .exp{font-size:14px;color:var(--muted);margin-top:6px;display:none}
+.small{font-size:14px;color:var(--muted)}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer;font-size:14px}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Adım 1</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">1 · Küçük başla</a>
+      <a href="#s2" data-s="s2">2 · Sahtekârlık hissi</a>
+      <a href="#s3" data-s="s3">3 · Güçlü yönler</a>
+      <a href="#s4" data-s="s4">4 · Kendini keşfet</a>
+      <a href="#s5" data-s="s5">5 · Mini test</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker">Güçlü yönlerini kullan · Adım 1</div>
+    <h1>Hemen Başla</h1>
+    <p>İnsan analitiği (people analytics) alanında kariyer kurmak isteyenler için ilk adım: beklemeden, küçük ve kendi güçlü yönlerinden başlamak. Her bölümü okuyup etkinlikleri doldurdukça ilerleme çubuğu dolar; yanıtların bu tarayıcıda saklanır.</p>
+    <p class="note">Kaynak: Heather Whiteman'ın insan analitiği kariyer rehberinin 17–28. sayfaları. Metin birebir çeviri değil; içerik Türkçe olarak özetlenip uyarlanmıştır.</p>
+  </div>
+
+  <!-- 1 -->
+  <section class="ch" id="s1">
+    <h2>Küçük Başla, Hemen Başla</h2><hr>
+    <p>Bu rehberi okuyorsan ilk adımı zaten atmışsın demektir: keşfetmeye ve öğrenmeye başladın. Başlamak için gereken de aslında bu kadarı.</p>
+    <p>Hiçbir kariyer bir gecede kurulmaz; zamanla, adım adım büyür. İnsan analitiği pek çok beceri, bilgi ve teknik dalından oluştuğu için “küçük ama hemen başla” yaklaşımı burada özellikle işe yarar. Öğrenilecek çok şey var; ama işe <strong>en kolay gelen</strong>, <strong>mevcut becerilerine en yakın</strong> ya da <strong>seni en çok meraklandıran</strong> konulardan başlayabilirsin. Yeni bir şey öğrenmeye başlamak için önceden bir şey bilmek gerekmez.</p>
+    <p>İnsan analitiğinin bazı unsurları uzun zamandır var olsa da bir meslek alanı olarak hâlâ yeni sayılır. Herkesin yeni olduğu bir alanda kimse çok geride kalmış olmaz. Üstelik bu becerilere olan talep arzı aşıyor; atacağın her küçük adım kariyerini hızlandırır.</p>
+
+    <div class="quote">“Hazır olmadan başla. Hazırlanma, başla.”<b>— Mel Robbins</b></div>
+
+    <div class="box">
+      <div class="lbl">Etkinlik · İlk küçük adımım</div>
+      <p class="small">Önce nasıl seçeceğini belirle, sonra bir başlangıç konusu seç ve tarih koy.</p>
+      <div class="chips" id="crit">
+        <button class="chip" data-v="En kolay gelen">En kolay gelen</button>
+        <button class="chip" data-v="Mevcut becerime en yakın">Mevcut becerime en yakın</button>
+        <button class="chip" data-v="Beni en çok meraklandıran">Beni en çok meraklandıran</button>
+      </div>
+      <div class="chips" id="topics"></div>
+      <div class="twocol">
+        <input type="text" id="firstStep" placeholder="Somut ilk adım (örn. Excel'de pivot tablo öğreticisini bitirmek)">
+        <input type="date" id="firstDate">
+      </div>
+      <div class="row" style="margin-top:10px">
+        <button class="btn" id="saveStep">Taahhüdü kaydet</button>
+        <span class="small" id="stepOut"></span>
+      </div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 2 -->
+  <section class="ch" id="s2">
+    <h2>Sahtekârlık Sendromunu Unut</h2><hr>
+    <p>Boş zamanını kendini ve kariyerini geliştirmeye ayırıyorsan, büyük olasılıkla yüksek başarı yönelimli birisin. Bunu okuyunca “ben sadece idare ederim” diye düşündüysen yalnız değilsin: başarılı insanların çoğu <em>sahtekârlık sendromu</em> (imposter syndrome) denen duyguyu yaşar.</p>
+    <p>Bu durumda kişi kendinden şüphe, yetersizlik ve başarısızlık korkusu hisseder. Resmi bir tanı değildir; ancak psikologlar onu gerçek ve özgül bir entelektüel kendinden şüphe biçimi olarak kabul eder. Özellikle kariyerine yeni başlayan, ilerlemeye ya da yön değiştirmeye çalışan kişilerde sık görülür.</p>
+    <p>Başvuruların sonuçsuz kaldığında ya da yeni bir konuyu okuyup hâlâ ne yapacağından emin olamadığında sorunun sende olduğunu düşünmeye başlayabilirsin. Bu zihniyete bir girersen çıkmak zordur: ne kadar öğrensen, başarsan ya da kanıtlasan da “yeterince” bildiğine inanmakta zorlanırsın. Bu bakışla başlarsan kendini hiçbir zaman yeterli hissetmeyebilirsin. İyi haber şu: başlamak için muhtemelen zaten yeterince donanımlısın.</p>
+
+    <div class="box">
+      <div class="lbl">Etkinlik · Düşünceyi çevir</div>
+      <p class="small">Tanıdık gelen bir düşünce kartına tıkla; arkasında daha dengeli bir bakış var. (Bu bir ölçek ya da tanı aracı değildir.)</p>
+      <div class="flipgrid" id="flips"></div>
+    </div>
+
+    <h3>Şimdilik üç şeyi aklında tut</h3>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div><strong>Bu his yaygın ve normal.</strong> Pek çok kişi böyle hisseder; ilgilendiğin şeyin peşinden gitmene engel olmasına izin verme.</div></div>
+      <div class="step"><div class="n">2</div><div><strong>Onay dışarıdan gelmeyebilir.</strong> Kimse bir şeye iyi başlamaz ve her gün bir öncekinden ileridesin; bunu bilinçli olarak kabul et. “Hak etmedim” korkusu tamamen geçmeyebilir; onu sürekli öğrenmenin ve uzun vadeli bir öğrenme planının hatırlatıcısı olarak kullan.</div></div>
+      <div class="step"><div class="n">3</div><div><strong>İnisiyatifi aldın.</strong> Bu rehberi eline alman seni pek çok kişinin önüne geçiriyor. Gereken şeye sahip olduğunu biri sana söylemek zorunda değil.</div></div>
+    </div>
+
+    <h3>Yazarın birlikte çalıştığı insanlar</h3>
+    <ul class="tick">
+      <li>“Matematikten korkan” ama analitik problem çözmeye tutku duymaya başlayanlar</li>
+      <li>“İnsan analitiği” terimini hiç duymamışken beş aydan kısa sürede bu alanda unvan alanlar</li>
+      <li>Aslında yıllardır insan analitiği yaptığını sonradan fark edenler</li>
+      <li>Tıpkı senin gibi insanlar</li>
+    </ul>
+    <p>İnsan analitiğinde kariyer, ilgi ve kararlılığı olan herkese açık. Sahip olduğun beceri, bilgi ve deneyim bileşimi seni ileri taşıyacak.</p>
+
+    <div class="quote">“Olduğun yerden başla. Elindekini kullan. Yapabildiğini yap.”<b>— Arthur Ashe</b></div>
+    <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 3 -->
+  <section class="ch" id="s3">
+    <h2>Güçlü Yönlerini Kullan</h2><hr>
+    <p>Kariyerin için öğrenmen ya da geliştirmen gereken üç şeyi say desem, büyük olasılıkla listen yalnızca “kötü” olduğunu düşündüğün şeylerden oluşur.</p>
+    <p>Bunu yapabilirsin, ama neden olumsuzdan başlayasın? Bir alternatif düşün: bir “sorunu düzeltmek” için harcayacağın emek ve kararlılığı, zaten iyi olduğun becerileri yeni biçimlerde uygulamanın yollarını bulmaya harca. Yeni beceriler geliştirmek elbette önemli; ama önce elindekini değerlendir. Muhtemelen kendine yakıştırdığından daha fazla becerin var ve küçük başlayıp hemen başlamak için fazlasıyla yeterli. Yani bir “gelişim planı” yapmadan önce, <strong>güçlü yönlerini sonuna kadar kullanma planı</strong> yap.</p>
+
+    <div class="box">
+      <div class="lbl">Etkinlik · Listenin yönü ne?</div>
+      <p class="small">Aklına ilk gelen üç “geliştirmem gereken şey”i yaz, sonra her birinin türünü işaretle.</p>
+      <div id="devlist"></div>
+      <div class="meter"><div id="devMeter"></div></div>
+      <div class="small" id="devOut">Henüz bir şey yazılmadı.</div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 4 -->
+  <section class="ch" id="s4">
+    <h2>Kendini Keşfet: Güçlü Yönlerini Belirle</h2><hr>
+    <p>Güçlü yönlerini belirlemenin birden çok yolu var. Bazılarını zaten biliyor olabilirsin. Emin değilsen seni tanıyan ve seninle çalışan insanlara sor: neyi güçlü yönün olarak gördüklerini ya da hangi konularda sana destek ve tavsiye için geldiklerini. Ya da bir beceri listesi hazırlayıp hangilerinde güçlü olduğunu işaretlemelerini isteyebilirsin.</p>
+    <p>Daha geçerli bir değerlendirme istiyorsan, milyonlarca kişiyle onlarca yıllık araştırmaya dayanan <strong>Gallup CliftonStrengths</strong> gibi araçları düşünebilirsin. İnternette pek çok ücretsiz anket de var; ancak çoğu titizlikle sınanmamıştır ve teknik becerileri ölçmez, bu yüzden sonuçlarını eleştirel değerlendir.</p>
+    <p>Başkalarından geri bildirim alırken yalnızca sana yankı uyandıran bulgulara odaklanabilir, diğerlerini bir kenara bırakabilirsin. “Evet, gerçekten öyle yaparım” diyorsan muhtemelen doğrudur. Güçlü yönlerini yalnızca insan analitiğiyle ilişkili sandığın becerilerle sınırlama. Amaç sıkıcı ya da titiz bir değerlendirme yapmak değil; bugün sahip olduğun ve hemen kullanabileceğin beceriler üzerine düşünmek.</p>
+
+    <div class="box">
+      <div class="lbl">Araç · Geri bildirim isteği</div>
+      <p class="small">Bir meslektaşına gönderebileceğin kısa mesajı hazırla.</p>
+      <div class="twocol">
+        <input type="text" id="fbName" placeholder="Kişinin adı">
+        <select id="fbType">
+          <option value="a">Güçlü yönlerimi sor</option>
+          <option value="b">Bana hangi konularda danışırsın?</option>
+          <option value="c">Listeden işaretle</option>
+        </select>
+      </div>
+      <textarea id="fbMsg" style="margin-top:10px;min-height:110px"></textarea>
+      <div class="row" style="margin-top:8px"><button class="btn ghost" id="fbCopy">Kopyala</button></div>
+    </div>
+
+    <div class="box">
+      <div class="lbl">Beceri havuzu</div>
+      <p class="small">İlham için bir beceriye tıkla; tablonun boş ilk satırına eklenir.</p>
+      <div class="chips" id="skillbank"></div>
+    </div>
+
+    <h3>Güçlü Yönler Tablom</h3>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th style="width:20%">İlk 5 güçlü yönüm</th><th style="width:28%">Bu neden benim güçlü yönüm?</th><th>İnsan analitiği kariyerinde nasıl kullanabilirim?</th><th></th></tr></thead>
+        <tbody id="tbody">
+          <tr class="ex"><td>Örnek: Meraklılık</td><td>Hep “neden?” diye sorarım; her şey hakkında daha fazla bilgi ister, bir şeyin neden olduğunu öğrenmek isterim.</td><td>“İnsanlar işten ayrılıyor” gibi bir iş problemini alıp “Kimler ayrılıyor?”, “Ayrılma nedenleri neler?”, “Bir grup diğerinden daha yüksek oranda mı ayrılıyor?” gibi bir analistin veriyle yanıtlayabileceği sorulara dönüştürebilirim.</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row noprint">
+      <button class="btn" id="addRow">+ Satır ekle</button>
+      <button class="btn ghost" id="csv">CSV indir</button>
+      <button class="btn ghost" id="print">Yazdır / PDF</button>
+      <button class="btn ghost" id="clear">Tabloyu temizle</button>
+    </div>
+    <p class="small">Satır eklemekten çekinme; pek çok şeyde iyisin. Bu listeyi sakla: bir işe başvururken, performans görüşmesine girerken ya da moralin bozulduğunda çıkarıp bak. Başlamak için gereken her şeye zaten sahipsin; o hâlde neden şimdi başlamayasın?</p>
+
+    <div class="quote">“Herkes muhtemelen en az bir şeyi on bin kişiden daha iyi yapabilir.”<b>— Marcus Buckingham</b></div>
+    <label class="readmark"><input type="checkbox" data-read="s4"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 5 -->
+  <section class="ch quiz" id="s5">
+    <h2>Mini Test</h2><hr>
+    <p class="small">Bölümün ana fikirlerini ne kadar içselleştirdin?</p>
+    <div id="quiz"></div>
+    <p class="ui" id="score" style="font-weight:700;color:var(--navy)"></p>
+    <label class="readmark"><input type="checkbox" data-read="s5"> Testi tamamladım</label>
+  </section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><a class="pv" href="insan_analitigi_giris.html"><small>← Önceki</small><b>Giriş: Neden insan analitiği?</b></a><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><a class="nx" href="insan_analitigi_adim2_teknik_olmayan_beceriler.html"><small>Sonraki →</small><b>Adım 2: Teknik olmayan beceriler</b></a></nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  const KEY='pa_adim1_v1';
+  let st={};
+  try{st=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){st={}}
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)};
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  // tema
+  if(st.theme) document.documentElement.dataset.theme=st.theme;
+  $('#theme').onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');d.dataset.theme=cur==='dark'?'light':'dark';st.theme=d.dataset.theme;save()};
+
+  // ilerleme
+  st.read=st.read||{};
+  function prog(){const n=Object.values(st.read).filter(Boolean).length;$('#progbar').style.width=(n/5*100)+'%';
+    $$('#nav a').forEach(a=>a.classList.toggle('done',!!st.read[a.dataset.s]))}
+  $$('[data-read]').forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();if(cb.checked)toast('Harika, bir adım daha!')}});
+  prog();
+
+  // 1. ilk adım
+  const topics=['Excel ve pivot tablolar','Temel istatistik','İK süreçleri ve metrikleri','Veri görselleştirme','SQL','Python / R','İş problemini soruya çevirme','Veriyle hikâye anlatımı','Anket tasarımı','Paydaş iletişimi'];
+  st.s1=st.s1||{};
+  $('#topics').innerHTML=topics.map(t=>`<button class="chip" data-v="${esc(t)}">${esc(t)}</button>`).join('');
+  function single(boxSel,field){$$(boxSel+' .chip').forEach(c=>{c.classList.toggle('on',st.s1[field]===c.dataset.v);c.onclick=()=>{st.s1[field]=c.dataset.v;save();single(boxSel,field)}})}
+  single('#crit','crit');single('#topics','topic');
+  $('#firstStep').value=st.s1.step||'';$('#firstDate').value=st.s1.date||'';
+  function stepOut(){const s=st.s1;if(s.step||s.topic){$('#stepOut').textContent=`Taahhüdün: ${s.topic?s.topic+' — ':''}${s.step||''}${s.date?' ('+new Date(s.date).toLocaleDateString('tr-TR')+')':''}${s.crit?' · Ölçüt: '+s.crit:''}`}}
+  $('#saveStep').onclick=()=>{st.s1.step=$('#firstStep').value.trim();st.s1.date=$('#firstDate').value;save();stepOut();toast('Taahhüt kaydedildi')};
+  stepOut();
+
+  // 2. kartlar
+  const flips=[
+    ['“Yeterince bilmiyorum.”','Kimse her şeyi bilerek başlamaz. Başlamak için bilmek değil, öğrenmeye açık olmak gerekir.'],
+    ['“Başvurularım olumsuz döndü; sorun bende.”','Sonuçsuz başvuru, alana uygun olmadığın anlamına gelmez. Her başvuru neyi geliştireceğini gösteren bir veri noktasıdır.'],
+    ['“Matematikte hiç iyi olmadım.”','Analitik düşünme bir tutum ve beceridir; matematik kaygısı yaşayan pek çok kişi bu alanda problem çözmeyi sevmiştir.'],
+    ['“Başkaları benden çok ileride.”','Alan bir meslek olarak hâlâ yeni; herkes yeniyken kimse çok geride değildir. Dün olduğundan ileridesin.'],
+    ['“Biri onaylarsa başlarım.”','Aradığın onay dışarıdan gelmeyebilir. İnisiyatif almak zaten başladığın anlamına gelir.'],
+    ['“Ben insan analitiği yapmıyorum ki.”','Raporladığın, sorguladığın, karşılaştırdığın her İK verisi bu işin parçası olabilir; belki zaten yapıyorsun.']
+  ];
+  $('#flips').innerHTML=flips.map(f=>`<div class="flip"><div class="in"><div class="f"><span>${f[0]}</span></div><div class="b">${f[1]}</div></div></div>`).join('');
+  $$('.flip').forEach(f=>f.onclick=()=>f.classList.toggle('open'));
+
+  // 3. geliştirme listesi
+  st.dev=st.dev||[{t:'',k:''},{t:'',k:''},{t:'',k:''}];
+  function devRender(){
+    $('#devlist').innerHTML=st.dev.map((d,i)=>`<div class="twocol" style="margin:8px 0;align-items:center">
+      <input type="text" data-di="${i}" value="${esc(d.t)}" placeholder="${i+1}. geliştirmem gereken şey">
+      <div class="chips" style="margin:0">
+        <button class="chip ${d.k==='z'?'on':''}" data-dk="${i}" data-v="z">Zayıf yönü düzeltme</button>
+        <button class="chip ${d.k==='g'?'on':''}" data-dk="${i}" data-v="g">Güçlü yönü yeni biçimde kullanma</button>
+      </div></div>`).join('');
+    $$('[data-di]').forEach(inp=>inp.oninput=()=>{st.dev[inp.dataset.di].t=inp.value;save();devStat()});
+    $$('[data-dk]').forEach(b=>b.onclick=()=>{st.dev[b.dataset.dk].k=b.dataset.v;save();devRender()});
+    devStat();
+  }
+  function devStat(){const k=st.dev.filter(d=>d.k);const g=k.filter(d=>d.k==='g').length;
+    $('#devMeter').style.width=(k.length?g/k.length*100:0)+'%';
+    if(!k.length){$('#devOut').textContent='Her maddenin türünü işaretle.';return}
+    $('#devOut').textContent=g===0?'Listen tamamen eksikliklere odaklı. En az bir maddeyi, zaten iyi olduğun bir beceriyi yeni bir alanda kullanmaya çevirmeyi dene.'
+      :g===k.length?'Güzel: listen tamamen güçlü yönlerini kullanmaya dönük.'
+      :`${k.length} maddeden ${g} tanesi güçlü yönlerine dayanıyor. Dengeyi güçlü yönlerden yana kaydırabilirsin.`}
+  devRender();
+
+  // 4. geri bildirim mesajı
+  function fb(){const n=$('#fbName').value.trim()||'[Ad]';const t=$('#fbType').value;
+    const body={a:'Kariyerimde insan analitiği alanına doğru ilerlemek istiyorum ve güçlü yönlerimi daha iyi tanımak için birkaç kişiden görüş alıyorum. Seninle çalışırken en çok hangi yönlerimin öne çıktığını gördün? Kısa birkaç madde bile çok işime yarar.',
+      b:'Kendi güçlü yönlerimi keşfetmeye çalışıyorum. Merak ediyorum: iş yerinde hangi konularda bana destek ya da tavsiye için gelirsin, ya da gelmeyi düşünürsün?',
+      c:'Güçlü yönlerimi belirlemek için kısa bir beceri listesi hazırladım. Bana en uygun gördüğün 3–5 tanesini işaretleyebilir misin? Listeyi ekte paylaşıyorum.'}[t];
+    $('#fbMsg').value=`Merhaba ${n},\n\n${body}\n\nŞimdiden teşekkürler!`}
+  $('#fbName').oninput=fb;$('#fbType').onchange=fb;fb();
+  $('#fbCopy').onclick=()=>{const v=$('#fbMsg').value;(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast('Kopyalandı')).catch(()=>{$('#fbMsg').select();try{document.execCommand('copy');toast('Kopyalandı')}catch(e){}})};
+
+  // tablo
+  const skills=['Meraklılık','Analitik düşünme','İletişim','Sunum yapma','Problem çözme','Detaylara dikkat','Hikâye anlatımı','Empati','İş bilgisi','Proje yönetimi','Excel','Görselleştirme','İstatistik','Kodlama','Organizasyon','Kolaylaştırıcılık','Öğrenme hızı','İkna'];
+  st.rows=st.rows||[['','',''],['','',''],['','',''],['','',''],['','','']];
+  function rowsRender(){
+    const ex=$('#tbody tr.ex').outerHTML;
+    $('#tbody').innerHTML=ex+st.rows.map((r,i)=>`<tr>${r.map((c,j)=>`<td><textarea data-r="${i}" data-c="${j}" placeholder="${['Güçlü yön','Neden?','Nasıl uygularım?'][j]}">${esc(c)}</textarea></td>`).join('')}<td class="del"><button data-del="${i}" title="Sil">×</button></td></tr>`).join('');
+    $$('#tbody textarea').forEach(t=>t.oninput=()=>{st.rows[t.dataset.r][t.dataset.c]=t.value;save()});
+    $$('[data-del]').forEach(b=>b.onclick=()=>{st.rows.splice(b.dataset.del,1);save();rowsRender()});
+  }
+  rowsRender();
+  $('#skillbank').innerHTML=skills.map(s=>`<button class="chip">${s}</button>`).join('');
+  $$('#skillbank .chip').forEach(c=>c.onclick=()=>{let i=st.rows.findIndex(r=>!r[0].trim());if(i<0){st.rows.push(['','','']);i=st.rows.length-1}st.rows[i][0]=c.textContent;save();rowsRender();toast(c.textContent+' eklendi')});
+  $('#addRow').onclick=()=>{st.rows.push(['','','']);save();rowsRender()};
+  $('#clear').onclick=()=>{if(confirm('Tablodaki tüm yanıtlar silinsin mi?')){st.rows=[['','',''],['','',''],['','',''],['','',''],['','','']];save();rowsRender()}};
+  $('#print').onclick=()=>window.print();
+  $('#csv').onclick=()=>{const q=v=>'"'+String(v).replace(/"/g,'""')+'"';
+    const lines=[['Güçlü yön','Neden güçlü yönüm','İnsan analitiğinde nasıl kullanırım'].map(q).join(';')].concat(st.rows.filter(r=>r.some(c=>c.trim())).map(r=>r.map(q).join(';')));
+    const blob=new Blob(['\ufeff'+lines.join('\n')],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='guclu_yonlerim.csv';a.click();URL.revokeObjectURL(a.href)};
+
+  // 5. test
+  const Q=[
+    {q:'Bölüme göre insan analitiğinde öğrenmeye nereden başlamak en mantıklı?',o:['En zor ve teknik konudan','En kolay, mevcut becerilere en yakın ya da en merak edilen konudan','Tüm alanı öğrenene kadar beklemekten','Yalnızca kodlamadan'],a:1,e:'Alan geniş; küçük ve sana yakın bir noktadan hemen başlamak önerilir.'},
+    {q:'Sahtekârlık sendromu için hangisi doğrudur?',o:['Resmi bir klinik tanıdır','Yalnızca başarısız kişilerde görülür','Resmi tanı değildir ama gerçek bir entelektüel kendinden şüphe biçimi olarak kabul edilir','Kariyer değişikliklerinde hiç görülmez'],a:2,e:'Özellikle kariyere başlarken, ilerlerken veya yön değiştirirken sık görülür.'},
+    {q:'Bir “gelişim planı” yapmadan önce ne öneriliyor?',o:['Zayıf yönlerin tam listesini çıkarmak','Güçlü yönleri sonuna kadar kullanma planı yapmak','Sertifika programına kaydolmak','Yöneticiden onay almak'],a:1,e:'Düzeltmeye harcanacak emeği, var olan becerileri yeni biçimlerde uygulamaya yönlendirmek öneriliyor.'},
+    {q:'Ücretsiz güçlü yön anketleri hakkında ne söyleniyor?',o:['Her zaman güvenilirdir','Çoğu titizlikle sınanmamıştır ve teknik becerileri ölçmez; eleştirel değerlendirilmelidir','Gallup aracından daha geçerlidir','Hiç kullanılmamalıdır'],a:1,e:'Kullanılabilirler ama sonuçlar eleştirel bir gözle okunmalıdır.'},
+    {q:'Güçlü yönler listesini ne zaman yeniden açman öneriliyor?',o:['Yalnızca yılda bir kez','İş başvurusunda, performans görüşmesinde ya da moral bozukluğunda','Hiçbir zaman; bir kez doldurmak yeter','Sadece terfi döneminde'],a:1,e:'Liste hem başvurularda hem de motivasyon düştüğünde başvurulacak bir kaynak.'}
+  ];
+  st.quiz=st.quiz||{};
+  function quizRender(){
+    $('#quiz').innerHTML=Q.map((x,i)=>`<div class="q"><div class="ui" style="font-weight:700">${i+1}. ${x.q}</div>${x.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join('')}<div class="exp" id="e${i}">${x.e}</div></div>`).join('');
+    $$('.opt').forEach(b=>b.onclick=()=>{st.quiz[b.dataset.q]=+b.dataset.o;save();paint()});paint();
+  }
+  function paint(){let sc=0,n=0;Q.forEach((x,i)=>{const ch=st.quiz[i];if(ch===undefined)return;n++;if(ch===x.a)sc++;
+      $$(`.opt[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.o;b.classList.toggle('right',j===x.a);b.classList.toggle('wrong',j===ch&&ch!==x.a);b.disabled=true});$('#e'+i).style.display='block'});
+    $('#score').innerHTML=n?`Skor: ${sc} / ${Q.length}${n===Q.length?' <button class="btn ghost" id="reset" style="margin-left:8px">Yeniden dene</button>':''}`:'';
+    const r=$('#reset');if(r)r.onclick=()=>{st.quiz={};save();quizRender()}}
+  quizRender();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>

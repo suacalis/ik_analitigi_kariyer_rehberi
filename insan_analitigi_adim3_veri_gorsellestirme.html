@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adım 3: Veri Görselleştirme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--bad:#c0392b;--shadow:0 2px 14px rgba(11,58,140,.08);
+--s1:#1f5fd1;--s2:#d9822b;--s3:#1d8a5b;--s4:#9b3fb5;--teal:#0f8a8a;--rose:#b04a4a;--c1:#1f5fd1;--c2:#1d8a5b}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--s1:#6c9cff;--s2:#f0a35c;--s3:#4cc38a;--s4:#c58bf0;--teal:#4fc6c6;--rose:#ff8f8f;--c1:#6c9cff;--c2:#4cc38a}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--s1:#6c9cff;--s2:#f0a35c;--s3:#4cc38a;--s4:#c58bf0;--teal:#4fc6c6;--rose:#ff8f8f;--c1:#6c9cff;--c2:#4cc38a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1040px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:740px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:100px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+.quote{background:var(--soft);border-radius:12px;padding:16px 22px;margin:16px 0;font-style:italic;text-align:center}
+.quote b{display:block;font-style:normal;font-family:Raleway;font-size:14px;color:var(--muted);margin-top:6px}
+.story{border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0;background:color-mix(in srgb,var(--soft) 40%,var(--card))}
+.story .h{font-family:Raleway;font-weight:800;color:var(--navy2);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn.sm{padding:4px 10px;font-size:12px}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,.chip:focus-visible,.seg button:focus-visible,.opt:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chip{font-family:Raleway;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--card);color:var(--muted);font-family:Raleway;font-weight:700;font-size:12px;padding:6px 11px;cursor:pointer}
+.seg button.on{background:var(--navy2);color:#fff}
+input[type=text],input[type=number],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+input[type=color]{width:48px;height:36px;border:1px solid var(--line);border-radius:8px;background:var(--card);padding:2px}
+textarea{min-height:56px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.ok{color:var(--ok)}.no{color:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.twocol{grid-template-columns:1fr}}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.fb{font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+.chartbox{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:10px}
+svg text{font-family:Raleway}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.bignum{font-family:Raleway;font-weight:800;color:var(--navy);line-height:1}
+.helmets{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+.tr-q{font-size:16px;line-height:1.8}
+.tr-q mark{border-radius:3px;padding:1px 3px;color:inherit}
+.m1{background:color-mix(in srgb,var(--s1) 28%,transparent)}
+.m2{background:color-mix(in srgb,var(--s2) 30%,transparent)}
+.m3{background:color-mix(in srgb,var(--s3) 30%,transparent)}
+.m4{background:color-mix(in srgb,var(--s4) 28%,transparent)}
+.swatch{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:4px}
+.game .resp{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--card);font-size:15px}
+.game .resp .seg button.on[data-m="a"]{background:var(--ok)}
+.game .resp .seg button.on[data-m="b"]{background:var(--bad)}
+.game .resp .seg button.on[data-m="c"]{background:var(--warn)}
+.check{padding-left:0}.check li{list-style:none;margin:6px 0}
+.check input{width:17px;height:17px;accent-color:var(--navy2);vertical-align:-2px;margin-right:6px}
+.sa{overflow-x:auto}
+.sa table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+.sa th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.sa td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.sa td.sk{font-family:Raleway;font-weight:700;width:180px}
+.sa select{font-size:13px;padding:5px}
+.sa .gap{font-family:Raleway;font-size:11px;font-weight:800;color:var(--warn);display:block;margin-top:4px}
+.sa .met{font-family:Raleway;font-size:11px;font-weight:800;color:var(--ok);display:block;margin-top:4px}
+.sa tr.custom input{font-size:14px;padding:5px 7px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+@media (max-width:700px){.scale{grid-template-columns:1fr 1fr}}
+.scale .card{padding:10px}.scale .lv{font-family:Raleway;font-weight:800;font-size:12px;color:var(--navy2)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+a{color:var(--navy2)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="cb-prot"><feColorMatrix type="matrix" values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"/></filter>
+  <filter id="cb-deut"><feColorMatrix type="matrix" values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0"/></filter>
+  <filter id="cb-trit"><feColorMatrix type="matrix" values="0.95 0.05 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0"/></filter>
+  <filter id="cb-achr"><feColorMatrix type="matrix" values="0.299 0.587 0.114 0 0  0.299 0.587 0.114 0 0  0.299 0.587 0.114 0 0  0 0 0 1 0"/></filter>
+  <pattern id="pat1" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#4a7fd6"/><line x1="0" y1="0" x2="0" y2="6" stroke="#fff" stroke-width="2"/></pattern>
+  <pattern id="pat2" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#d9822b"/><circle cx="3" cy="3" r="1.3" fill="#fff"/></pattern>
+</svg>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Adım 3</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">Hikâye</a>
+      <a href="#s2" data-s="s2">Raporlama</a>
+      <a href="#s3" data-s="s3">Erişilebilirlik</a>
+      <a href="#s4" data-s="s4">Analiz ve keşif</a>
+      <a href="#s5" data-s="s5">Nitel süreci göster</a>
+      <a href="#s6" data-s="s6">Keşfet ve katıl</a>
+      <a href="#s7" data-s="s7">Ne anlatıyor? oyunu</a>
+      <a href="#s8" data-s="s8">Öz değerlendirme</a>
+      <a href="#s9" data-s="s9">Test</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema" aria-label="Açık/koyu tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker">Adım 3 · Teknik beceriler</div>
+    <h1>Veri Görselleştirme</h1>
+    <p>Bilgiyle çalışan her kariyerde en çok aranan becerilerden biri görselleştirme: karmaşık veri setlerini sadeleştirir, bir hikâye anlatır, hatta keşif ve analiz aracı olur. İnsanlar bilgiyi görsel olarak almak ve işlemek için özel olarak donanımlıdır; beynimiz görsel şeylerde örüntü görmekte harikadır (hayvanlardaki belirli desenler tehlike demekti, renkler yiyeceğin yenebilir olup olmadığını gösterirdi, yükseklik ve mesafeyi gözle ölçmeyi öğrendik). Bir şeyi görsel olarak gösterdiğinde beynimiz içgüdüsel olarak anlam arar.</p>
+    <p class="note">Kaynak: Heather Whiteman'ın insan analitiği kariyer rehberinin 145–174. sayfaları. Metin birebir çeviri değil; içerik Türkçe olarak özetlenip uyarlanmıştır. Grafiklerdeki veriler kurgusaldır.</p>
+  </div>
+
+  <!-- 1 -->
+  <section class="ch" id="s1">
+    <h2>Hikâye Anlatımı İçin Görselleştirme</h2><hr>
+    <p>Adım 2'de veri hikâyesi anlatımının önemini konuştuk; görselleştirme bunun için en iyi araçlarımızdan biri. Küçük bir çocuk olduğunu düşün: resimli bir hikâye kitabı istemez miydin? İnsan verisi hikâyelerimiz de farklı değil. İyi tasarlanmış bir grafik karmaşık bilgiyi metnin çoğu zaman yapamayacağı biçimde anında iletir; dikkati çeker, önemli bulguları öne çıkarır, hikâyeyi akılda kalıcı ve etkili kılar. Bilgiyi kelimelerden çok daha hızlı aktarır: memnuniyet puanlarının zaman içindeki değişimini anlatmak epey kelime ister, bir çizgi grafik ise saniyeler içinde anlatır. Yazarın deyişiyle, sayıları açıklamaya çalışmak yerine çalışan deneyimini iyileştirmenin yollarını tasarlamaya zaman ayırmak çok daha iyidir.</p>
+    <p>Görseller merakı da kıvılcımlar. Yazar, “insan analitiği” teriminin henüz var olmadığı ve pek az kişinin bunu talep ettiği dönemlerde bile bir görselin ilgi çektiğini ve hemen her zaman yeni soru ve içgörü taleplerine yol açtığını anlatıyor.</p>
+
+    <div class="box">
+      <div class="lbl">Karşılaştırma · Aynı bulgu, iki anlatım</div>
+      <div class="row" style="margin-bottom:10px"><div class="seg" id="tvSeg"><button data-v="t" class="on">Yalnızca cümle</button><button data-v="v">Isı haritası</button></div></div>
+      <div id="tvOut"></div>
+    </div>
+    <div class="quote">“Görselleştirme, sahip olduğunu bilmediğin sorulara yanıt verir.”<b>— Ben Shneiderman</b></div>
+
+    <h3>Görselleştirme yalnızca nicel veri için değil</h3>
+    <p>Nitel veri daha az kullanıldığı için, onun hikâyesini anlatmakta görseller daha da önemli olabilir: izleyicinin önemli bulguları anlamasına yardım eder, hatta analiz sürecine ek güvenilirlik katar. Analiz edilen kodlar ve temalar arasındaki yapıyı ya da ilişkiyi (örneğin farklı çalışan kaygısı türlerini) zihin haritalarıyla gösterebilir, çelişen bulgu alanlarını görsel olarak sunabilirsin. Örneğin çalışanlarla görüşerek bir eğitim programının etkinliğini değerlendirdiysen, bir ısı haritası her beceriyi öznel bir değerlendirmeye göre renklendirip eğitimin hangi becerileri etkili öğrettiğini ve hangilerinin iyileştirilmesi gerektiğini gösterebilir. <strong>Görselleştirmeler süreçleri ve yapıyı göstermekte de harikadır:</strong> sık görülen kariyer yolları süreç ya da akış şemalarıyla, kariyer esnekliği sağlayan aktarılabilir beceriler gibi nicel ölçmesi zor şeyler görsellerle sergilenebilir. Gözlem ya da günlük çalışmalarından çıkan bulgular, çalışanların iş sistemleriyle bir gününü ya da kurumdaki çalışan yaşam döngüsünü gösteren bir akışa dönüşebilir.</p>
+    <div class="box">
+      <div class="lbl">İpucu · Nitel veri de bir görsel olabilir</div>
+      <p class="small">Yüksek bağlılık oranını gösteren nicel bir grafiğe, şirkette neyi sevdiğini anlatan bir çalışan alıntısı eklemek, insan deneyimini vurgulamanın ve nitel hikâyeyi nicel hikâyeyle birlikte görsel olarak anlatmanın güçlü bir yoludur.</p>
+      <div class="row" style="margin-bottom:8px"><label class="small"><input type="checkbox" id="qOn" checked style="accent-color:var(--navy2)"> Alıntıyı göster</label></div>
+      <div class="chartbox"><svg id="engSvg" viewBox="0 0 560 220" style="width:100%" role="img" aria-labelledby="engT"><title id="engT">Bağlılık oranı dört yılda yüzde 64'ten 82'ye yükseldi.</title></svg></div>
+    </div>
+    <p>Hikâye bir deneyimdir; kendini sınırlama ve yaratıcı ol. Sayısal, metin ya da süreç verisiyle sınırlı değilsin: görüntüleri gruplayabilir, video kliplerini derleyebilir, fiziksel bir mekânda çalışıyorsan fiziksel nesneler bile kullanabilirsin. İş sahalarındaki endişe verici %10'luk iş kazası oranını sunarken PowerPoint grafiği yerine masaya dokuz sağlam ve bir paramparça baret dizip daha iyi güvenlik eğitimi ve uyum ihtiyacını vurgulayabilirsin.</p>
+    <div class="helmets" id="helmets" role="img" aria-label="On baretten dokuzu sağlam, biri hasarlı: yüzde 10 iş kazası oranı."></div>
+    <div class="quote">“Bilgi aktarma, bir deneyim yarat.”<b>— Nancy Duarte</b></div>
+    <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 2 -->
+  <section class="ch" id="s2">
+    <h2>Raporlama ve Paylaşım İçin Görselleştirme</h2><hr>
+    <p>Raporlar, gösterge panelleri, karneler ve veri paylaşmak için kullandığın her mekanizma birer veri görselleştirmesidir. Düzenli bir devamsızlık raporu istendiğini düşün. Önce <strong>ne</strong> sunacağına karar verirsin: sayı mı, oran mı, yüzde mi? Genel tek bir değer mi, departman ya da lokasyon kırılımı mı? Tek dönem mi, birden çok dönem mi? Sonra <strong>nasıl</strong> sunacağına: tek bir tablo mu, zaman içinde bir grafik mi? Önemli metrikleri kalın yazmak ya da olumlu/olumsuz eğilimleri renkle vurgulamak gerekir mi? Hızlı taranabilmesi için net ve kısa etiketler? Statik mi, yoksa animasyonlu ya da alt kümeler arasında geçiş yapılabilen bir web sayfası mı? Liderlerin mevcut oranı yorumlayabilmesi için şirketin “kabul edilebilir” saydığı bir devamsızlık düzeyi referans olarak eklenmeli mi?</p>
+    <p>Bu, ister elle hazırlanan karneler, raporlar ve sunumlar olsun ister bir İK bilgi sisteminden “otomatik” üretilen raporlar; hepsi için geçerlidir. Bir sistemde raporun değerlerini, hesaplamalarını ve düzenini seçiyorsan görselleştirme kararları veriyorsun demektir. Neyi ve nasıl göstereceğine dair her karar, hatta görsel yapıp yapmama kararı bile bir görselleştirme kararıdır.</p>
+
+    <div class="box">
+      <div class="lbl">Araç · Devamsızlık raporu tasarlayıcı</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div><div class="small ui" style="font-weight:700">NE · Ölçü</div><div class="seg" id="rMeas"><button data-v="count">Gün sayısı</button><button data-v="pct" class="on">Oran (%)</button></div></div>
+        <div><div class="small ui" style="font-weight:700">NE · Kırılım</div><div class="seg" id="rBrk"><button data-v="all">Genel</button><button data-v="dept" class="on">Departman</button></div></div>
+        <div><div class="small ui" style="font-weight:700">NE · Dönem</div><div class="seg" id="rPer"><button data-v="one">Son çeyrek</button><button data-v="many" class="on">Son 6 çeyrek</button></div></div>
+        <div><div class="small ui" style="font-weight:700">NASIL · Biçim</div><div class="seg" id="rFmt"><button data-v="table">Tablo</button><button data-v="chart" class="on">Grafik</button><button data-v="num">Tek büyük sayı</button></div></div>
+      </div>
+      <div class="row" style="margin:8px 0"><label class="small"><input type="checkbox" id="rRef" checked style="accent-color:var(--navy2)"> “Kabul edilebilir” düzey çizgisi (%3)</label><label class="small"><input type="checkbox" id="rHi" checked style="accent-color:var(--navy2)"> Eşiği aşanları vurgula</label></div>
+      <div class="chartbox" id="rOut"></div>
+      <div class="fb" id="rFb"></div>
+    </div>
+
+    <p><strong>Her veri bir hikâyeye ya da görsele ihtiyaç duymaz.</strong> Devamsızlık raporunu isteyen kişi basit bir soruyu yanıtlamak için yalnızca mevcut oranı bilmek istiyorsa ve bunu bir daha sormayacaksa, rapor ya da görsel tasarlamaya değmeyebilir; oranı hesaplayıp söylemek ikiniz için de daha hızlıdır. Bazı şeyler görsel olarak iyi temsil edilmez; bazen kelime ya da sayı daha iyidir ve bazen bağlam görsele uygun değildir. Görselleri amaçlarını desteklediklerinde kullan.</p>
+    <p>Her görselleştirme bir grafik ya da diyagram değildir. En iyi görselleştirmeler bazen kelimelere, görüntülere, hatta tek bir sayıya görsel tasarım ilkeleri uygulamaktan doğar: tek bir metriği metnin geri kalanından dört kat büyük yazan bir rapor büyük etki yaratabilir; nitel analizden çıkan önemli bir temayı kalın yazmak dikkati gereken yere çeker; öğelerin ekrandaki yerleşimi bile anlaşılmayı etkiler. Veri görselleştirme, izleyicinin görülmesi gerekeni görmesine yardım etmektir. (Tasarlayıcıdaki “Tek büyük sayı” seçeneğini dene.)</p>
+    <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 3 -->
+  <section class="ch" id="s3">
+    <h2>Erişilebilirlik Anahtardır</h2><hr>
+    <p>Görselleştirme yaparken, farklı görme yeteneklerine sahip olanlar dahil herkesin verinin hikâyesinin tamamına erişebildiğinden emin ol: farklı renk algısı, boyut ve kontrast ihtiyacı olanları, ekran okuyucu ya da yardımcı teknoloji kullananları düşün. Yüksek kontrastlı renk paletleri kullan ve veri noktalarını ayırt etmek için <strong>yalnızca renge güvenme</strong>; karmaşık 3B tasarımlar yerine net desenli grafikleri seç; kısa etiketler kullan ve görselin içine metin açıklamaları eklemeyi düşün. Web tabanlı paneller ya da arayüzler yapıyorsan görselin amacını açıklayan, verideki eğilimleri özetleyen alternatif metinleri her zaman sağla. Bunu iyi yapmak için Web İçeriği Erişilebilirlik Yönergeleri (WCAG) gibi görselleştirme erişilebilirlik standartlarını incele ve izle. Birçok durumda erişilebilirlik zorunludur; ama yalnızca uyumla ilgili değil, kapsayıcılıkla ve herkesin görsellerin ortaya koyduğu içgörülerden yararlanmasıyla ilgilidir.</p>
+
+    <div class="box">
+      <div class="lbl">Laboratuvar · Renk körlüğü simülasyonu</div>
+      <p class="small">Kırmızı–yeşil renklere dayanan bir grafiği farklı renk algısı türleriyle gör; sonra erişilebilir sürüme geç. Simülasyonlar yaklaşıktır.</p>
+      <div class="row" style="margin-bottom:8px">
+        <div class="seg" id="cbSeg"><button data-v="none" class="on">Tipik görme</button><button data-v="prot">Protanopi</button><button data-v="deut">Döteranopi</button><button data-v="trit">Tritanopi</button><button data-v="achr">Renksiz</button></div>
+        <div class="seg" id="accSeg"><button data-v="0" class="on">Yalnızca renk</button><button data-v="1">Erişilebilir sürüm</button></div>
+      </div>
+      <div class="chartbox"><svg id="cbSvg" viewBox="0 0 560 230" style="width:100%" role="img"><title id="cbT">Üç departmanın altı çeyreklik ayrılma oranı</title></svg></div>
+      <div class="fb" id="cbFb"></div>
+    </div>
+
+    <div class="twocol">
+      <div class="box">
+        <div class="lbl">Araç · Kontrast oranı denetleyicisi</div>
+        <div class="row"><label class="small">Metin / veri <input type="color" id="fg" value="#7a8aa0"></label><label class="small">Arka plan <input type="color" id="bgc" value="#ffffff"></label></div>
+        <div id="ctPrev" style="margin-top:10px;padding:14px;border-radius:10px;border:1px solid var(--line);font-family:Raleway;font-weight:700">Örnek etiket: Ayrılma oranı %12,4</div>
+        <div class="result" id="ctOut"></div>
+      </div>
+      <div class="box">
+        <div class="lbl">Araç · Alternatif metin yazıcı</div>
+        <p class="small">Her görselin, ekran okuyucular için sunulan bilgiyi doğru anlatan kısa ve net bir alternatif metni olmalı.</p>
+        <input type="text" id="altType" placeholder="Grafik türü (örn. çizgi grafik)" value="Çizgi grafik">
+        <input type="text" id="altWhat" placeholder="Ne gösteriyor?" value="üç departmanın son altı çeyrekteki ayrılma oranı" style="margin-top:6px">
+        <input type="text" id="altKey" placeholder="Ana eğilim / mesaj" value="Satış'ta oran %8'den %15'e yükseldi, diğerleri %7–9 aralığında sabit kaldı" style="margin-top:6px">
+        <div class="result" id="altOut"></div>
+      </div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 4 -->
+  <section class="ch" id="s4">
+    <h2>Analiz ve Keşif İçin Görselleştirme</h2><hr>
+    <p>Görselleştirme yalnızca başkalarıyla bilgi paylaşmak için değil; yazarın analiz yaparken en sevdiği tekniklerden biri ve yeni bir veri setini analiz ederken yaptığı ilk şeylerden. Bazı şeyler ham veride ya da istatistiksel yaklaşımlarla görmek için çok zor, hatta imkânsızdır; ama doğru görselle adeta “fırlar”. Görseller uç değerleri, anormallikleri ve veri sorunlarını hızla fark etmeyi sağlar; bir görüntüde görünen tutarsızlıklar, örüntüler ya da gruplanmalar veriyi temizleme, analiz etme ya da yorumlama yaklaşımının tamamını belirleyebilir. Tableau, Power BI, Excel gibi hızlı görsel üretmeye izin veren araçlarla bu görseller bazen istatistikleri hesaplamak kadar, hatta daha hızlı üretilebilir.</p>
+    <p>Örnek: bir yönetici ekibindeki çalışanların performans puanlarını ayrıntılı anlamak istiyor. Sayı olarak gösterilen istatistikler, görsellerden öğrenebileceği kadar yardımcı olmayabilir. Aşağıda aynı kurgusal veri setini altı farklı grafikle incele.</p>
+
+    <div class="box">
+      <div class="lbl">Laboratuvar · Bir veri seti, altı grafik</div>
+      <div class="row" style="margin-bottom:8px">
+        <div class="seg" id="gSeg"><button data-v="bar" class="on">Çubuk</button><button data-v="hist">Histogram</button><button data-v="scatter">Saçılım</button><button data-v="line">Çizgi</button><button data-v="box">Kutu</button><button data-v="pie">Pasta</button></div>
+        <label class="small"><input type="checkbox" id="fixErr" style="accent-color:var(--navy2)"> Veri giriş hatasını düzelt</label>
+      </div>
+      <div class="chartbox"><svg id="gSvg" viewBox="0 0 600 280" style="width:100%" role="img"><title id="gT"></title></svg></div>
+      <div class="result" id="gExp"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s4"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 5 -->
+  <section class="ch" id="s5">
+    <h2>Nitel Analizini Nasıl Yaptığını Anlatırken: Görsel Kullan</h2><hr>
+    <p>Yazar genellikle, sorulmadıkça ya da izleyicinin bunu beklediğini bilmedikçe analizlerini tam olarak <em>nasıl</em> yaptığına dair çok ayrıntı paylaşmamayı öğütlüyor; çoğu insan bulgulara nasıl ulaştığının tam sürecini, özellikle nicel analizleri duymak istemez (Adım 4'te ele alınıyor). Ama nitel analiz söz konusu olduğunda tam tersini öneriyor.</p>
+    <p>Çoğu insan gerçek nitel analize yabancı olduğundan ve nicel yöntemler kadar “titiz” olmadığına dair hatalı bir yanılgı bulunduğundan, izleyicinin sonuçlara güvenmesi için sürecin ne kadar titiz olduğunu görmesi gerekir. Nitel teknikleri anlatmak ise olağanüstü zordur. Bu yüzden izleyiciyi bir araştırma yöntemi dersine maruz bırakmak yerine, sürecin farklı adımlarında görsellerle “çalışmanı göster”. Örneğin kullandığın anonimleştirilmiş görüşme metninin bir bölümünü, farklı kısımları renk kodlu biçimde göstererek tek tek yorumlardan kodlama yoluyla temalara nasıl ulaştığını anlatabilirsin. Görseller genelde olabildiğince sade ve temiz olmalı, ama yazar burada kuralları biraz esnetmeyi öneriyor: izleyiciyi biraz bunaltmaktan çekinme ki elden geçirdiğin bilginin derinliğini, karmaşıklığını ve hacmini anlasınlar. Yalnızca tüm veriyi göstermeye kalkma; bir örnek (ekran görüntüsü ya da anonimleştirilmiş bir alt küme) yeterli, ve özel ya da gizli hiçbir şey paylaşmadığından emin ol.</p>
+    <div class="box">
+      <div class="lbl">Örnek · Renk kodlu kodlama görseli (kurgusal, anonimleştirilmiş)</div>
+      <div class="row" style="margin-bottom:8px" id="legend"></div>
+      <div class="tr-q card" id="trq"></div>
+      <div class="small" style="margin-top:8px">Bir temaya tıklayarak yalnızca onu vurgula; tekrar tıklayınca tümü görünür.</div>
+    </div>
+
+    <div class="story"><div class="h">Sanat becerisi gerekmez!</div>
+      Yazar resim çizmekte berbat olduğunu, şarkı söyleyemediğini, oyunculuk yapamadığını, enstrüman çalamadığını, kıyafetleri bile birbirine uyduramadığını, dekorasyon anlayışının duvara raptiyeyle tutturulmuş bir takvimden ibaret olduğunu anlatıyor. Yani bir şeyin “güzel” görünmesi gerekiyorsa aranacak kişi o değil. Ama iyi veri görselleştirmeleri yapmayı öğrendi, çünkü <strong>etkili veri görselleştirme bilgiyi güzel göstermekle ilgili değildir</strong>: açıklık, özlük ve doğrulukla, veriyi bilinçli karar almayı destekleyecek biçimde sunmakla ilgilidir. Bazı görselleştirmeler olağanüstü güzeldir; yaratıcı bir yanın ve görsel tasarıma ilgin varsa bu alan senin için son derece doyurucu olabilir. Kendini sanata yatkın biri olarak görmüyorsan da merak etme: renk kuramı, kompozisyon ve boşluk kullanımı gibi temel tasarım ilkelerini öğrenip uygulayabilir, şablon ve araçlar kullanabilir, başkalarının harika işlerini örnek alabilirsin. Veri görselleştirme öğrenilebilir bir beceridir ve hepimize sanatçı olma şansı verir.
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s5"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 6 -->
+  <section class="ch" id="s6">
+    <h2>Keşfet ve Katıl: İnsan Verisi Görselleştirme</h2><hr>
+    <p>Pratik mükemmelleştirir. Ne kadar çok görsel üretirsen o kadar rahat ve iyi olursun; denemekten korkma.</p>
+    <h3>Eylem · Üretmeyi öğrenmeden önce seçmeyi, karmaşığı üretmeden önce sadeyi öğren</h3>
+    <ol>
+      <li><strong>Hangi görselin ne zaman kullanılacağını öğren.</strong> Hangi grafik türünün hangi bilgi türü için en iyi olduğunu anlatan infografikler, kitaplar ve yazılar var (örneğin tek bir zamandaki veri için genellikle çubuk grafik, birden çok zaman noktası için çizgi grafik). Bu rehberleri izlemek, önce neyi göstermeye çalıştığını bilmeyi gerektirir; çevirmen becerilerin bu yüzden önemli. <em>Not:</em> Veri araçlarının hazır, otomatik önerdiği görsellere güvenme: yalnızca veri biçimini bilirler, ne söylemeye çalıştığını ya da bağlamı bilmezler. Elindeki veriyle hangi görsellerin mümkün olduğunu görmek için işe yarayabilirler, ama hikâyene ve amacına uygun görseli yalnızca sen seçebilirsin.</li>
+      <li><strong>İnsan analitiği için en iyi görselleri öğren.</strong> Diğer profesyonellerin çalışmalarını incele ve veriyi görsel olarak nasıl gösterdiklerine dikkat et. Örneğin beceriler için çoğunlukla radar grafikler, çalışan hareketleri için alüvyon diyagramları, işe alım ve ayrılmaya bağlı kadro değişimleri için şelale grafikleri, organizasyon şemaları için hiyerarşik gösterimler, beceri haritaları ya da örgütsel ağ analizleri için ağ grafikleri kullanılır.</li>
+      <li><strong>Sade başla.</strong> Önce basit görselleri iyi yapmayı öğren; tasarım ve erişilebilirlik ilkelerini uygulayarak üretmekte ustalaştığından emin olmadan karmaşık grafiklere, panellere, raporlara ya da infografiklere geçme. Görsel karmaşıklaştıkça tasarım ve erişilebilirlik zorlaşır. Çubuk, çizgi ve saçılım grafikleriyle başla; sonra tek grafikte çok değişken, zaman içindeki akışlar, animasyonlar, etkileşimli paneller ya da grafiksel haritalamaya geç.</li>
+    </ol>
+    <div class="box">
+      <div class="lbl">Etkinlik · Hangi görsel?</div>
+      <div id="pick"></div>
+    </div>
+    <div class="box">
+      <div class="lbl">Etkileşimli · Kadro değişimi için şelale grafiği</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(130px,1fr))">
+        <label class="small">Dönem başı<input type="number" id="wf0" value="500"></label>
+        <label class="small">İşe alım<input type="number" id="wf1" value="85"></label>
+        <label class="small">Gönüllü ayrılma<input type="number" id="wf2" value="48"></label>
+        <label class="small">Gönülsüz ayrılma<input type="number" id="wf3" value="14"></label>
+        <label class="small">İç transfer (net)<input type="number" id="wf4" value="-6"></label>
+      </div>
+      <div class="chartbox"><svg id="wfSvg" viewBox="0 0 600 240" style="width:100%" role="img"><title id="wfT"></title></svg></div>
+    </div>
+
+    <h3>Eylem · Uzmanları izle</h3>
+    <ol>
+      <li><strong>Mevcut tasarım ilkelerinden yararlan:</strong> renk kuramı, kompozisyon ve boşluk kullanımı gibi temel ilkeler dengeli ve göze hoş gelen grafikler üretmeni sağlar.</li>
+      <li><strong>Şablon ve araçları (dikkatle) kullan.</strong> Pek çok araçtaki hazır şablon ve stil seçenekleri iyi bir başlangıç noktasıdır. Ama önemli hikâyenin ya da mesajın ne olduğunu asla bilemezler; çoğu zaman amacın için en kötü görseli bile önerirler. Şablon ve araç kullanmak, önce iletilmesi gereken mesaj için uygun görseli seçebilme becerisini gerektirir.</li>
+    </ol>
+    <h3>Eylem · Görsel erişilebilirlik standartlarını öğren</h3>
+    <ol>
+      <li><strong>Renk hakkında bilgi edin.</strong> Veri noktaları, metin ve arka plan arasında her zaman yeterli <strong>renk kontrastı</strong> sağla; kontrast oranlarını denetleyen araçlar kullan ya da görselini uzağa koyup çok küçük boyutta hâlâ ayırt edebiliyor musun bak. Görsellerini farklı ekran ve çözünürlüklerde de incele. Pek çok insan farklı renk körlüğü biçimleri yaşar; sen onlardan değilsen önce bu kişilerin rengi nasıl deneyimlediğini öğrenerek anlayış ve empatini artır (yukarıdaki simülasyon gibi). Ardından <strong>erişilebilirlik için tasarlanmış renk paletleri</strong> kullan ya da bilgiyi iletmek için <strong>yalnızca renge güvenmekten kaçın</strong>.</li>
+      <li><strong>Farklı araçlar için tasarlamayı öğren.</strong> Her görsel öğenin, sunulan bilgiyi doğru anlatan <strong>kısa ve net bir alternatif metni</strong> olmalı; bu, ekran okuyucular ve görme engelli kullanıcılar için bir seslendirme işlevi görür. Görselin etkileşimliyse <strong>klavyeyle gezinilebilir</strong> olmasını ve hangi veri noktasının ya da öğenin seçili olduğunu gösteren net <strong>odak göstergeleri</strong> bulunmasını sağla. (Bu sayfadaki düğmeleri Tab tuşuyla gezmeyi dene.)</li>
+    </ol>
+    <label class="readmark"><input type="checkbox" data-read="s6"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 7 -->
+  <section class="ch game" id="s7">
+    <h2>“Bu Sana Ne Anlatıyor?” Oyunu</h2><hr>
+    <p>Görselinin istediğin hikâyeyi net biçimde anlattığından emin olmak için yapabileceğin belki de en iyi şey. Tek gereken görselin ve oynamaya istekli bir kişi. Aşağıdaki araç oyunu turlar hâlinde yönetmene ve notlarını tutmana yardım eder.</p>
+    <div class="box">
+      <div class="lbl">1 · Görsel ve ana mesaj</div>
+      <input type="text" id="gmVis" placeholder="Görselin adı (örn. Q3 ayrılma ısı haritası)">
+      <input type="text" id="gmMsg" placeholder="İzleyicinin öğrenmesini istediğin EN önemli şey" style="margin-top:6px">
+      <input type="text" id="gmTopic" placeholder="Yalnızca konu (bulguyu değil!) — örn. “Satış departmanı”" style="margin-top:6px">
+    </div>
+    <div class="box">
+      <div class="lbl">2 · Kurallar (oyun sırasında)</div>
+      <ul class="check" id="rules"></ul>
+    </div>
+    <div class="box">
+      <div class="lbl">3 · Yanıtları kaydet ve işaretle</div>
+      <div class="row"><input type="text" id="gmIn" placeholder="Oyuncunun söylediği bir şey" style="flex:1;min-width:200px"><button class="btn" id="gmAdd">Ekle</button></div>
+      <div id="gmList"></div>
+      <div class="small" style="margin-top:6px"><span class="swatch" style="background:var(--ok)"></span>a) amaçlandığı gibi doğru yorumladı &nbsp; <span class="swatch" style="background:var(--bad)"></span>b) yanlış yorumladı &nbsp; <span class="swatch" style="background:var(--warn)"></span>c) fark etmedi ya da tam/doğru anlamadı</div>
+    </div>
+    <div class="box">
+      <div class="lbl">4 · Ne oldu? Görseli güncellemek için öneriler</div>
+      <ul class="check" id="obs"></ul>
+      <div class="result" id="recs"></div>
+      <div class="row" style="margin-top:10px"><button class="btn" id="gmRound">Turu kaydet ve yeni tura başla</button><button class="btn ghost" id="gmCsv">Turları CSV indir</button></div>
+      <div id="rounds" class="small" style="margin-top:8px"></div>
+    </div>
+    <p class="small"><strong>İpucu:</strong> Estetik önemli, ama bu oyun verinin net iletilmesine öncelik vermekle ilgili. “Kazanmanın” yolu, görsellerinin verine uygun biçimde, kolay anlaşılır olması ve izleyiciyi ne fazla bilgiyle boğması ne de yetersiz bilgiyle bırakması. (Bu oyun pek çok arkadaşını çıldırtabilir; neyi bulmaları gerektiğini bilmek isteyecekler.)</p>
+    <label class="readmark"><input type="checkbox" data-read="s7"> Oyunu en az bir kez oynadım</label>
+  </section>
+
+  <!-- 8 -->
+  <section class="ch" id="s8">
+    <h2>Kendini Keşfet: Veri Görselleştirme Becerileri</h2><hr>
+    <p>Her becerinin açıklamasını oku ve bugünkü düzeyini en iyi tahminle işaretle. İsteğe bağlı olarak gelecekte ulaşmak istediğin düzeyi de belirt; hedeflerin zamanla ve farklı kariyer seçeneklerini düşündükçe değişebilir.</p>
+    <div class="scale">
+      <div class="card"><div class="lv">1 · FARKINDA</div><div class="small">Beceride yenisin; kavramsal olarak bilsen de işi henüz kendin yapmadın.</div></div>
+      <div class="card"><div class="lv">2 · ÖĞRENEN</div><div class="small">Öğrenmeye yeni başladın ya da ayrıntılı yönergelere dayanıyorsun.</div></div>
+      <div class="card"><div class="lv">3 · YETKİN</div><div class="small">Bir ölçüde yeteneklisin ama bazı ya da ileri kısımlarda yardıma ihtiyaç duyuyorsun.</div></div>
+      <div class="card"><div class="lv">4 · UZMAN</div><div class="small">Zorlukları güvenle çözüyor, desteğe ihtiyaç duymuyor, kavramları sade anlatabiliyorsun.</div></div>
+      <div class="card"><div class="lv">5 · STRATEJİST</div><div class="small">Tekniği yeni biçimlerde uyguluyor, yeni yöntemler yaratıyor, başkalarına mentorluk yapabiliyorsun.</div></div>
+    </div>
+    <p class="small"><strong>Not:</strong> Kendini nereye koyduğun konusunda fazla kaygılanma; bunun “gerçek” bir puanı yok. Ölçek genel bir yön ve düşündürücü bir egzersiz sunuyor.</p>
+    <div class="sa"><table id="saTab"></table></div>
+    <div class="row noprint" style="margin-top:10px">
+      <button class="btn ghost sm" id="saAdd">+ Satır ekle</button>
+      <button class="btn ghost" id="saCsv">CSV indir</button>
+      <button class="btn ghost" id="saPrint">Yazdır / PDF</button>
+    </div>
+    <div class="result" id="saSum"></div>
+    <label class="readmark"><input type="checkbox" data-read="s8"> Öz değerlendirmeyi tamamladım</label>
+  </section>
+
+  <!-- 9 -->
+  <section class="ch" id="s9">
+    <h2>Mini Test</h2><hr>
+    <div id="quiz"></div>
+    <p class="ui" id="score" style="font-weight:700;color:var(--navy)"></p>
+    <label class="readmark"><input type="checkbox" data-read="s9"> Testi tamamladım</label>
+  </section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><a class="pv" href="insan_analitigi_adim3_analitik_oz_degerlendirme.html"><small>← Önceki</small><b>Adım 3: Analitik öz değerlendirme</b></a><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><a class="nx" href="insan_analitigi_veri_yonetimi_ve_yonetisimi.html"><small>Sonraki →</small><b>Adım 3: Veri yönetimi ve yönetişimi</b></a></nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+const KEY="pa_adim3_gorsel_v1";
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt=(x,d=1)=>Number.isFinite(x)?x.toLocaleString("tr-TR",{minimumFractionDigits:d,maximumFractionDigits:d}):"–";
+const dl=(name,rows)=>{const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';const b=new Blob(["﻿"+rows.map(r=>r.map(q).join(";")).join("\n")],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href)};
+const redraws=[];
+function seg(sel,key,def,cb){st[key]=st[key]??def;const set=()=>$$(sel+" button").forEach(b=>{b.classList.toggle("on",b.dataset.v===String(st[key]));b.setAttribute("aria-pressed",b.dataset.v===String(st[key]))});$$(sel+" button").forEach(b=>b.onclick=()=>{st[key]=b.dataset.v;save();set();cb()});set()}
+
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$("#theme").onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";st.theme=d.dataset.theme;save();redraws.forEach(f=>f())};
+
+st.read=st.read||{};const N=9;
+function prog(){const n=Object.values(st.read).filter(Boolean).length;$("#progbar").style.width=(n/N*100)+"%";$$("#nav a").forEach(a=>a.classList.toggle("done",!!st.read[a.dataset.s]))}
+$$("[data-read]").forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();if(cb.checked)toast("Bir bölüm daha tamam!")}});prog();
+
+// SVG yardımcıları
+const T=(x,y,s,o={})=>`<text x="${x}" y="${y}" font-size="${o.fs||11}" text-anchor="${o.a||"middle"}" fill="${o.c||css("--muted")}" ${o.w?`font-weight="${o.w}"`:""} ${o.rot?`transform="rotate(${o.rot} ${x} ${y})"`:""}>${s}</text>`;
+const axes=(x0,y0,x1,y1)=>`<line x1="${x0}" y1="${y1}" x2="${x1}" y2="${y1}" stroke="${css("--line")}"/><line x1="${x0}" y1="${y0}" x2="${x0}" y2="${y1}" stroke="${css("--line")}"/>`;
+
+// 1. metin vs ısı haritası
+const DEPTS=["Satış","Üretim","Ar-Ge","Finans","Lojistik","Müşteri hizm."],QS=["Ç1","Ç2","Ç3","Ç4"];
+const HM=[[6,7,6,7],[5,5,6,5],[4,4,5,4],[3,4,3,4],[6,5,6,6],[7,9,13,16]];
+function tv(){if(st.tv!=="v"){$("#tvOut").innerHTML=`<div class="card" style="font-size:18px">“Müşteri hizmetleri departmanında ayrılmalarda artış oldu.”</div><p class="small" style="margin-top:8px">Olası tepki: “Evet, biliyoruz; Cem geçen hafta, Deniz geçen ay ayrıldı.” Cümle pek dikkat çekmiyor.</p>`;return}
+ const W=560,cw=70,ch=28,x0=130,y0=30;let g="";QS.forEach((q,j)=>g+=T(x0+j*cw+cw/2,y0-10,q,{w:700}));
+ HM.forEach((r,i)=>{g+=T(x0-8,y0+i*ch+ch/2+4,DEPTS[i],{a:"end",c:css("--ink"),w:i===5?800:500});r.forEach((v,j)=>{const t=Math.min(1,v/16);g+=`<rect x="${x0+j*cw+2}" y="${y0+i*ch+2}" width="${cw-4}" height="${ch-4}" rx="4" fill="color-mix(in srgb, ${css("--bad")} ${Math.round(8+t*85)}%, ${css("--card")})"/>`+T(x0+j*cw+cw/2,y0+i*ch+ch/2+4,"%"+v,{c:t>.55?"#fff":css("--ink"),w:700})})});
+ g+=T(x0+cw*4+12,y0+5*ch+ch/2+4,"← diğerlerinin 2–3 katı",{a:"start",c:css("--bad"),w:700});
+ $("#tvOut").innerHTML=`<div class="chartbox"><svg viewBox="0 0 ${W} 210" style="width:100%" role="img" aria-label="Isı haritası: Müşteri hizmetlerinde çeyreklik ayrılma oranı yüzde 7'den 16'ya çıkarken diğer departmanlar yüzde 3 ile 7 arasında."><title>Departmanlara göre çeyreklik ayrılma oranı</title>${g}</svg></div><p class="small" style="margin-top:8px">Şimdi tepkiler soruya dönüşüyor: “Ayrılmamız gerçekten herkesten bu kadar yüksek mi? Departmanımızda ne oluyor?” Bu da daha fazla incelemeye ve olası çözümlere götürüyor.</p>`}
+seg("#tvSeg","tv","t",tv);tv();redraws.push(tv);
+
+// bağlılık + alıntı
+function eng(){const yrs=["2021","2022","2023","2024"],v=[64,69,75,82];const W=560,H=220,p=40,x1=st.qOn===false?W-20:330;let g=axes(p,15,x1,H-30);
+ const X=i=>p+20+i*((x1-p-40)/3),Y=x=>H-30-(x-50)/40*(H-50);
+ g+=`<polyline fill="none" stroke="${css("--navy2")}" stroke-width="3" points="${v.map((x,i)=>X(i)+","+Y(x)).join(" ")}"/>`;
+ v.forEach((x,i)=>{g+=`<circle cx="${X(i)}" cy="${Y(x)}" r="5" fill="${css("--navy2")}"/>`+T(X(i),Y(x)-10,"%"+x,{c:css("--ink"),w:700})+T(X(i),H-12,yrs[i])});
+ g+=T(p,12,"Çalışan bağlılık oranı",{a:"start",c:css("--ink"),w:800,fs:12});
+ if(st.qOn!==false)g+=`<rect x="350" y="40" width="195" height="130" rx="10" fill="${css("--soft")}"/><foreignObject x="362" y="48" width="175" height="118"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;line-height:1.4;color:${css("--ink")}">“Burada fikirlerim gerçekten dinleniyor; geçen yıl önerdiğim süreç değişikliği hayata geçti.”<div style="font-style:normal;font-family:Raleway;font-size:11px;color:${css("--muted")};margin-top:4px">— Üretim ekibinden bir çalışan</div></div></foreignObject>`;
+ $("#engSvg").innerHTML=`<title id="engT">Bağlılık oranı dört yılda yüzde 64'ten 82'ye yükseldi.</title>`+g}
+st.qOn=st.qOn??true;$("#qOn").checked=st.qOn;$("#qOn").onchange=e=>{st.qOn=e.target.checked;save();eng()};eng();redraws.push(eng);
+
+// baretler
+function helm(dmg){const c=dmg?css("--bad"):css("--warn");return `<svg width="56" height="48" viewBox="0 0 56 48" aria-hidden="true"><path d="M6 36 Q6 10 28 8 Q50 10 50 36 Z" fill="${c}" ${dmg?'opacity=".85"':""}/><rect x="2" y="34" width="52" height="7" rx="3" fill="${c}"/><rect x="25" y="8" width="6" height="26" fill="#ffffff" opacity=".35"/>${dmg?`<path d="M18 12 L26 22 L20 28 L30 36" stroke="${css("--card")}" stroke-width="3" fill="none"/><path d="M38 14 L33 24 L40 30" stroke="${css("--card")}" stroke-width="3" fill="none"/>`:""}</svg>`}
+function helmets(){$("#helmets").innerHTML=Array.from({length:10},(_,i)=>helm(i===9)).join("")+`<div class="small ui" style="width:100%;text-align:center;font-weight:700">10 çalışandan 1'i: iş kazası oranı %10</div>`}
+helmets();redraws.push(helmets);
+
+// 2. rapor tasarlayıcı
+const AB={depts:["Satış","Üretim","Ar-Ge","Lojistik"],q:["2024-Ç3","2024-Ç4","2025-Ç1","2025-Ç2","2025-Ç3","2025-Ç4"],
+ pct:[[2.1,2.3,2.6,2.4,2.2,2.0],[3.2,3.5,3.9,4.1,4.4,4.8],[1.6,1.7,1.5,1.8,1.6,1.5],[2.8,2.9,3.1,2.7,2.9,3.0]],hc:[120,260,90,110]};
+const wd=63; // çeyrekteki iş günü
+function report(){const meas=st.rMeas,brk=st.rBrk,per=st.rPer,f=st.rFmt;const ref=$("#rRef").checked,hi=$("#rHi").checked;
+ const qi=per==="one"?[5]:[0,1,2,3,4,5];
+ const val=(d,q)=>meas==="pct"?AB.pct[d][q]:Math.round(AB.pct[d][q]/100*AB.hc[d]*wd);
+ const tot=q=>{const days=AB.depts.reduce((a,_,d)=>a+AB.pct[d][q]/100*AB.hc[d]*wd,0);const hc=AB.hc.reduce((a,b)=>a+b,0);return meas==="pct"?Math.round(days/(hc*wd)*1000)/10:Math.round(days)};
+ const rows=brk==="dept"?AB.depts.map((n,d)=>({n,v:qi.map(q=>val(d,q))})):[{n:"Şirket geneli",v:qi.map(q=>tot(q))}];
+ const unit=meas==="pct"?"%":" gün";const over=v=>meas==="pct"&&hi&&v>3;
+ let fb="";
+ if(f==="num"){const v=rows.length===1?rows[0].v[rows[0].v.length-1]:tot(5);const prev=rows.length===1&&per==="many"?rows[0].v[rows[0].v.length-2]:tot(4);
+  $("#rOut").innerHTML=`<div style="padding:10px 6px"><div class="small ui" style="font-weight:700">Şirket geneli devamsızlık · 2025-Ç4</div><div class="bignum" style="font-size:64px">${meas==="pct"?"%"+fmt(v):v.toLocaleString("tr-TR")+" gün"}</div><div style="font-size:16px">Bir önceki çeyrek: ${meas==="pct"?"%"+fmt(prev):prev.toLocaleString("tr-TR")+" gün"}${meas==="pct"&&ref?` · kabul edilebilir düzey %3`:""}</div></div>`;
+  fb="Basit bir soruya hızlı yanıt için çoğu zaman en iyi “görsel” budur: metnin geri kalanından dört kat büyük tek bir sayı.";}
+ else if(f==="table"){$("#rOut").innerHTML=`<div class="sa" style="overflow-x:auto"><table style="min-width:0"><tr><th></th>${qi.map(q=>`<th>${AB.q[q]}</th>`).join("")}</tr>${rows.map(r=>`<tr><td class="sk">${r.n}</td>${r.v.map(v=>`<td style="${over(v)?`font-weight:800;color:var(--bad)`:""}">${meas==="pct"?fmt(v):v.toLocaleString("tr-TR")}${unit}</td>`).join("")}</tr>`).join("")}</table></div>`;
+  fb=per==="many"?"Tablolar kesin değerler için iyidir, ama zaman içindeki eğilimi okumak gözü yorar. Altı çeyreklik değişim için çizgi grafiği dene.":"Tek dönem ve birkaç değer için tablo yeterince açık."}
+ else{const W=560,H=230,p=46,x1=W-110;const all=rows.flatMap(r=>r.v);const mx=Math.max(...all,meas==="pct"?(ref?3.4:0):0)*1.12;const Y=v=>H-30-v/mx*(H-55);let g=axes(p,15,x1,H-30);
+  [0,.5,1].forEach(k=>{const v=mx*k;g+=T(p-6,Y(v)+4,meas==="pct"?fmt(v):Math.round(v),{a:"end"})});
+  const cols=["--s1","--s2","--s3","--s4"];
+  if(qi.length===1){const bw=(x1-p-20)/rows.length;rows.forEach((r,i)=>{const v=r.v[0];const x=p+10+i*bw;g+=`<rect x="${x+8}" y="${Y(v)}" width="${bw-16}" height="${H-30-Y(v)}" rx="4" fill="${over(v)?css("--bad"):css("--navy2")}"/>`+T(x+bw/2,Y(v)-6,(meas==="pct"?fmt(v):v)+unit,{c:css("--ink"),w:700})+T(x+bw/2,H-12,r.n)});
+   fb="Tek bir zamandaki karşılaştırma için çubuk grafik uygun."}
+  else{const X=i=>p+16+i*((x1-p-30)/(qi.length-1));qi.forEach((q,i)=>g+=T(X(i),H-12,AB.q[q].replace("20","’"),{fs:10}));
+   rows.forEach((r,ri)=>{const c=rows.length===1?css("--navy2"):(hi&&r.v.some(over)?css("--bad"):css("--muted"));const sw=rows.length===1||(hi&&r.v.some(over))?3:2;
+    g+=`<polyline fill="none" stroke="${c}" stroke-width="${sw}" points="${r.v.map((v,i)=>X(i)+","+Y(v)).join(" ")}"/>`;r.v.forEach((v,i)=>g+=`<circle cx="${X(i)}" cy="${Y(v)}" r="3.5" fill="${c}"/>`);
+    g+=T(X(r.v.length-1)+8,Y(r.v[r.v.length-1])+4,`${r.n} ${meas==="pct"?fmt(r.v[r.v.length-1]):r.v[r.v.length-1]}${unit}`,{a:"start",c,w:700,fs:11})});
+   fb=brk==="dept"&&hi?"Çizgi grafik zaman içindeki eğilimi gösteriyor; vurgu rengi ve doğrudan etiketler, eşiği aşan departmanı lejant gerektirmeden öne çıkarıyor.":"Birden çok zaman noktası için çizgi grafik uygun."}
+  if(meas==="pct"&&ref){g+=`<line x1="${p}" x2="${x1}" y1="${Y(3)}" y2="${Y(3)}" stroke="${css("--ok")}" stroke-dasharray="5 4" stroke-width="1.5"/>`+T(p+4,Y(3)-5,"kabul edilebilir düzey %3",{a:"start",c:css("--ok"),w:700,fs:10})}
+  if(meas!=="pct"&&ref)fb+=" Not: “Kabul edilebilir düzey” bir oran olarak tanımlandığı için gün sayısı grafiğinde gösterilemiyor; ölçüyü orana çevirmeyi düşün.";
+  $("#rOut").innerHTML=`<svg viewBox="0 0 ${W} ${H}" style="width:100%" role="img" aria-label="Devamsızlık raporu grafiği"><title>Devamsızlık raporu</title>${g}</svg>`}
+ if(meas==="count"&&brk==="dept")fb+=" Dikkat: departmanların kadroları farklı olduğundan gün sayıları doğrudan karşılaştırılamaz; oran daha adil bir karşılaştırma sağlar.";
+ $("#rFb").textContent=fb}
+seg("#rMeas","rMeas","pct",report);seg("#rBrk","rBrk","dept",report);seg("#rPer","rPer","many",report);seg("#rFmt","rFmt","chart",report);
+$("#rRef").onchange=report;$("#rHi").onchange=report;report();redraws.push(report);
+
+// 3. renk körlüğü
+const CB={q:["Ç1","Ç2","Ç3","Ç4","Ç5","Ç6"],s:[["Satış",[8,9,11,12,14,15]],["Üretim",[7,7.5,7,8,7.5,8]],["Ar-Ge",[9,8.5,9,8.5,9,8.8]]]};
+function cbDraw(){const acc=st.acc==="1";const W=560,H=230,p=40,x1=acc?W-90:W-20;const X=i=>p+16+i*((x1-p-30)/5),Y=v=>H-30-(v-5)/11*(H-55);
+ const cols=acc?["#c25700","#1f5fd1","#2a9d8f"]:["#d62728","#2ca02c","#8fbf3f"];const dash=acc?["","6 4","2 3"]:["","",""];const mk=acc?["circle","rect","tri"]:["circle","circle","circle"];
+ let g=axes(p,15,x1,H-30);CB.q.forEach((q,i)=>g+=T(X(i),H-12,q));[6,10,14].forEach(v=>g+=T(p-6,Y(v)+4,"%"+v,{a:"end"}));
+ CB.s.forEach(([n,v],k)=>{g+=`<polyline fill="none" stroke="${cols[k]}" stroke-width="3" ${dash[k]?`stroke-dasharray="${dash[k]}"`:""} points="${v.map((x,i)=>X(i)+","+Y(x)).join(" ")}"/>`;
+  v.forEach((x,i)=>{const cx=X(i),cy=Y(x);g+=mk[k]==="rect"?`<rect x="${cx-4}" y="${cy-4}" width="8" height="8" fill="${cols[k]}"/>`:mk[k]==="tri"?`<path d="M${cx} ${cy-5} L${cx+5} ${cy+4} L${cx-5} ${cy+4}Z" fill="${cols[k]}"/>`:`<circle cx="${cx}" cy="${cy}" r="4" fill="${cols[k]}"/>`});
+  if(acc)g+=T(X(5)+10,Y(v[5])+4,n,{a:"start",c:cols[k],w:800,fs:12})});
+ if(!acc)g+=CB.s.map(([n],k)=>`<circle cx="${p+20+k*90}" cy="14" r="5" fill="${cols[k]}"/>`+T(p+30+k*90,18,n,{a:"start",c:css("--ink")})).join("");
+ else g+=T(p,12,"Satış'ta ayrılma oranı iki katına çıktı",{a:"start",c:css("--ink"),w:800,fs:13});
+ const f=st.cb==="none"?"":`filter="url(#cb-${st.cb})"`;
+ $("#cbSvg").innerHTML=`<title>Üç departmanın altı çeyreklik ayrılma oranı. Satış yüzde 8'den 15'e çıktı; Üretim ve Ar-Ge yüzde 7–9 aralığında kaldı.</title><g ${f}>${g}</g>`;
+ $("#cbFb").textContent=acc?"Erişilebilir sürüm: renk körlüğü dostu palet, farklı çizgi desenleri ve işaretçiler, lejant yerine doğrudan etiketler ve ana mesajı söyleyen bir başlık. Renk tek başına bilgi taşımıyor.":(st.cb==="prot"||st.cb==="deut"?"Kırmızı ve yeşil çizgiler bu görme türünde birbirine çok yakın görünüyor; hangi çizginin Satış olduğunu ayırt etmek zor.":st.cb==="achr"?"Renksiz görüntüde üç çizgi neredeyse aynı gri tonda.":"Bu grafik ayırt etmek için yalnızca renge dayanıyor. Bir simülasyon seçerek nasıl göründüğüne bak.")}
+seg("#cbSeg","cb","none",cbDraw);seg("#accSeg","acc","0",cbDraw);cbDraw();redraws.push(cbDraw);
+
+// kontrast
+const lum=h=>{const c=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255).map(v=>v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+function contrast(){const a=$("#fg").value,b=$("#bgc").value;const L1=lum(a),L2=lum(b);const r=(Math.max(L1,L2)+.05)/(Math.min(L1,L2)+.05);
+ $("#ctPrev").style.color=a;$("#ctPrev").style.background=b;const p=(ok,t)=>`<span class="${ok?"ok":"no"}">${ok?"✓":"✗"} ${t}</span>`;
+ $("#ctOut").innerHTML=`<strong class="ui" style="font-size:20px">${fmt(r,2)} : 1</strong><br>${p(r>=4.5,"Normal metin (WCAG AA ≥ 4,5)")}<br>${p(r>=3,"Büyük metin ve grafik öğeleri (≥ 3)")}<br>${p(r>=7,"Normal metin (WCAG AAA ≥ 7)")}`}
+$("#fg").oninput=contrast;$("#bgc").oninput=contrast;contrast();
+
+// alt metin
+function alt(){const t=$("#altType").value.trim(),w=$("#altWhat").value.trim(),k=$("#altKey").value.trim();const s=`${t||"Grafik"}: ${w||"…"}. ${k?k.charAt(0).toLocaleUpperCase("tr-TR")+k.slice(1)+".":""}`;
+ $("#altOut").innerHTML=`<code style="white-space:pre-wrap">${esc(s)}</code><div class="small" style="margin-top:4px">${s.length} karakter${s.length>250?" · uzun: ayrıntıyı tabloya ya da metne taşı":""}${!k?" · ana mesajı eklemeyi unutma":""}</div>`}
+["#altType","#altWhat","#altKey"].forEach(s=>$(s).oninput=alt);alt();
+
+// 4. altı grafik
+const JT=["Uzman","Kıdemli","Takım lideri"];
+const EMP=[];(function(){let s=7;const r=()=>{s=(s*9301+49297)%233280;return s/233280};for(let i=0;i<36;i++){const jt=i%3;const tr=Math.round(8+r()*36);const base=2.2+tr/40*2+(jt===1?.15:0)+(r()-.5)*.9;EMP.push({id:i+1,jt,tr,ten:Math.round(1+r()*14),rt:Math.max(1,Math.min(5,Math.round(base*10)/10))})}
+ EMP[7].rt=4.9;EMP[7].tr=46;EMP[22].rt=45;})();
+const data=()=>EMP.map(e=>({...e,rt:st.fix&&e.rt>5?4.5:e.rt}));
+function gDraw(){const D=data(),t=st.g;const W=600,H=280,p=46,x1=W-20,y1=H-36;let g="",exp="",title="";
+ const err=D.some(e=>e.rt>5);const valid=D.filter(e=>e.rt<=5);
+ if(t==="bar"||t==="pie"||t==="hist"){const bins=[1,2,3,4,5].map(b=>valid.filter(e=>Math.round(e.rt)===b).length);
+  if(t==="bar"){const mx=Math.max(...bins)*1.15;const bw=(x1-p)/5;g+=axes(p,15,x1,y1);bins.forEach((c,i)=>{const h=c/mx*(y1-25);g+=`<rect x="${p+i*bw+12}" y="${y1-h}" width="${bw-24}" height="${h}" rx="4" fill="${i===4?css("--teal"):css("--navy2")}"/>`+T(p+i*bw+bw/2,y1-h-6,c,{c:css("--ink"),w:700})+T(p+i*bw+bw/2,y1+16,"Puan "+(i+1))});
+   title="Performans puanı dağılımı (çubuk)";exp="<strong>Çubuk grafik:</strong> her puan düzeyinde kaç çalışan olduğunu, yani yüksek ya da düşük uçta kaç kişinin değerlendirildiğini hemen gösterir."+(err?" Not: 45 puanlık hatalı kayıt 1–5 aralığında olmadığı için bu grafikte hiç görünmüyor; hatayı ancak başka bir grafik ortaya çıkarır.":"")}
+  else if(t==="pie"){const cx=170,cy=140,R=105;let a0=-Math.PI/2;const tot=bins.reduce((a,b)=>a+b,0);const cols=["--rose","--s2","--muted","--s1","--teal"];
+   bins.forEach((c,i)=>{if(!c)return;const a1=a0+c/tot*2*Math.PI;const lg=a1-a0>Math.PI?1:0;g+=`<path d="M${cx} ${cy} L${cx+R*Math.cos(a0)} ${cy+R*Math.sin(a0)} A${R} ${R} 0 ${lg} 1 ${cx+R*Math.cos(a1)} ${cy+R*Math.sin(a1)} Z" fill="${css(cols[i])}" stroke="${css("--card")}" stroke-width="2"/>`;const am=(a0+a1)/2;if(c/tot>.06)g+=T(cx+R*.65*Math.cos(am),cy+R*.65*Math.sin(am)+4,"%"+Math.round(c/tot*100),{c:"#fff",w:800});a0=a1});
+   bins.forEach((c,i)=>g+=`<rect x="330" y="${60+i*26}" width="14" height="14" rx="3" fill="${css(cols[i])}"/>`+T(352,72+i*26,`Puan ${i+1}: ${c} kişi`,{a:"start",c:css("--ink")}));
+   title="Performans puanı dağılımı (pasta)";exp="<strong>Pasta grafik:</strong> payları hızlıca gösterir; ama birbirine yakın dilimleri karşılaştırmak zordur. Rehberin “Ne anlatıyor?” oyunundaki uyarıya göre pasta, küçük farkları görmeyi zorlaştırabilir."}
+  else{const bs=[];for(let b=1;b<5;b+=.5)bs.push([b,b+.5,valid.filter(e=>e.rt>=b&&(e.rt<b+.5||(b===4.5&&e.rt<=5))).length]);const mx=Math.max(...bs.map(x=>x[2]))*1.15;const bw=(x1-p)/bs.length;g+=axes(p,15,x1,y1);
+   bs.forEach(([a,b,c],i)=>{const h=c/mx*(y1-25);g+=`<rect x="${p+i*bw}" y="${y1-h}" width="${bw-1}" height="${h}" fill="${css("--teal")}"/>`+T(p+i*bw+bw/2,y1-h-6,c,{c:css("--ink")})+T(p+i*bw,y1+16,fmt(a))});g+=T(x1,y1+16,"5,0");
+   title="Performans puanı histogramı";exp="<strong>Histogram:</strong> sürekli bir değişkenin dağılımını ve yayılımını gösterir; puanların hangi aralıkta yoğunlaştığını ve dağılımın çarpık olup olmadığını görürsün."}}
+ else if(t==="scatter"){const mxR=err?47:5.2;const X=v=>p+v/50*(x1-p),Y=v=>y1-(v-(err?0:1))/(mxR-(err?0:1))*(y1-20);g+=axes(p,15,x1,y1);
+  [10,20,30,40,50].forEach(v=>g+=T(X(v),y1+16,v));(err?[0,15,30,45]:[1,2,3,4,5]).forEach(v=>g+=T(p-6,Y(v)+4,v,{a:"end"}));
+  D.forEach(e=>{const o=e.rt>5,st2=e.id===8;g+=`<circle cx="${X(e.tr)}" cy="${Y(e.rt)}" r="${o||st2?7:5}" fill="${o?css("--bad"):st2?css("--ok"):css("--navy2")}" fill-opacity="${o||st2?1:.7}"/>`;if(o)g+=T(X(e.tr)+10,Y(e.rt)+4,"45?? (1–5 ölçeğinde)",{a:"start",c:css("--bad"),w:700});if(st2&&!err)g+=T(X(e.tr)-10,Y(e.rt)+4,"yıldız çalışan?",{a:"end",c:css("--ok"),w:700})});
+  g+=T((p+x1)/2,H-4,"eğitim saati")+T(14,(y1)/2,"performans puanı",{rot:-90});
+  title="Eğitim saati ile performans puanı (saçılım)";exp=err?"<strong>Saçılım grafiği:</strong> uç değeri diğer değişkenle birlikte gösterir. 45 puan 1–5 ölçeğinde imkânsız; büyük olasılıkla “4,5” yanlış girilmiş. Bu hata ölçeği bastırdığı için diğer noktalar arasındaki ilişkiyi de gizliyor. “Veri giriş hatasını düzelt” kutusunu işaretle.":"<strong>Saçılım grafiği:</strong> noktalar sağa doğru yükselen bir çizgi oluşturuyor; daha çok eğitimin daha yüksek performansla ilişkili olabileceğini düşündürüyor (bu bir korelasyon, nedensellik değil). Yeşil nokta gerçek bir uç değer: veri hatası değil, belki tanınmayı ve kutlanmayı hak eden bir çalışan."}
+ else if(t==="line"){const Q=["2024-Ç1","Ç2","Ç3","Ç4","2025-Ç1","Ç2"];const L=[[3.1,3.2,3.2,3.3,3.4,3.5],[3.5,3.5,3.6,3.6,3.7,3.7],[3.6,3.4,3.3,3.2,3.1,3.0]];const X=i=>p+20+i*((x1-p-110)/5),Y=v=>y1-(v-2.8)/1.1*(y1-25);
+  g+=axes(p,15,x1-90,y1);Q.forEach((q,i)=>g+=T(X(i),y1+16,q,{fs:10}));[3,3.5].forEach(v=>g+=T(p-6,Y(v)+4,fmt(v),{a:"end"}));
+  const cs=[css("--muted"),css("--muted"),css("--bad")];L.forEach((v,k)=>{g+=`<polyline fill="none" stroke="${cs[k]}" stroke-width="${k===2?3:2}" points="${v.map((x,i)=>X(i)+","+Y(x)).join(" ")}"/>`+T(X(5)+8,Y(v[5])+4,JT[k],{a:"start",c:cs[k],w:700})});
+  title="Rol türüne göre ortalama performans (çizgi)";exp="<strong>Çizgi grafik:</strong> zaman içindeki değişimi gösterir. Takım liderlerinin ortalaması altı çeyrektir düşüyor; vurgu rengi okuyucunun gözünü doğrudan oraya yönlendiriyor."}
+ else if(t==="box"){const grp=[0,1,2].map(j=>D.filter(e=>e.jt===j).map(e=>e.rt).sort((a,b)=>a-b));const q=(a,f)=>{const s=(a.length-1)*f,l=Math.floor(s);return a[l]+(a[Math.ceil(s)]-a[l])*(s-l)};
+  const mxR=err?47:5.2,mnR=err?0:1;const Y=v=>y1-(v-mnR)/(mxR-mnR)*(y1-20);g+=axes(p,15,x1,y1);(err?[0,15,30,45]:[1,2,3,4,5]).forEach(v=>g+=T(p-6,Y(v)+4,v,{a:"end"}));
+  const bw=(x1-p)/3;grp.forEach((a,j)=>{const q1=q(a,.25),md=q(a,.5),q3=q(a,.75),iq=q3-q1;const lo=Math.min(...a.filter(v=>v>=q1-1.5*iq)),hi2=Math.max(...a.filter(v=>v<=q3+1.5*iq));const cx=p+j*bw+bw/2;const c=j===1?css("--rose"):css("--teal");
+   g+=`<line x1="${cx}" x2="${cx}" y1="${Y(lo)}" y2="${Y(hi2)}" stroke="${c}" stroke-width="2"/><rect x="${cx-35}" y="${Y(q3)}" width="70" height="${Math.max(2,Y(q1)-Y(q3))}" fill="${c}" fill-opacity=".25" stroke="${c}" stroke-width="2"/><line x1="${cx-35}" x2="${cx+35}" y1="${Y(md)}" y2="${Y(md)}" stroke="${c}" stroke-width="3"/>`;
+   a.filter(v=>v<q1-1.5*iq||v>q3+1.5*iq).forEach(v=>{g+=`<circle cx="${cx}" cy="${Y(v)}" r="6" fill="${v>5?css("--bad"):css("--ok")}"/>`+T(cx+10,Y(v)+4,v>5?"45 (hata)":fmt(v),{a:"start",c:v>5?css("--bad"):css("--ok"),w:700})});g+=T(cx,y1+16,JT[j])});
+  title="Rol türüne göre performans dağılımı (kutu)";exp=err?"<strong>Kutu grafiği:</strong> uç değerleri fark etmeyi çok kolaylaştırır; ham veride görmek ise çok zordur. Kıdemli grubundaki 45 açıkça bir giriş hatası ve ölçeği bozduğu için kutuları ezmiş durumda.":"<strong>Kutu grafiği:</strong> grupların ortancasını, yayılımını ve uç değerlerini yan yana karşılaştırır. Kalan uç değerler (yeşil) hata değil; incelenmeye ve belki tanınmaya değer."}
+ $("#gSvg").innerHTML=`<title id="gT">${title}</title>`+g;$("#gExp").innerHTML=exp+`<div class="small" style="margin-top:6px">Farklı görsellerin bir karışımıyla yönetici, performansın nasıl dağıldığına, nelerle ilişkili olduğuna ve veriyi nerede daha çok incelemek isteyebileceğine dair bütüncül bir fikir edinir.</div>`}
+seg("#gSeg","g","bar",gDraw);st.fix=!!st.fix;$("#fixErr").checked=st.fix;$("#fixErr").onchange=e=>{st.fix=e.target.checked;save();gDraw()};gDraw();redraws.push(gDraw);
+
+// 5. renk kodlu metin
+const TH=[["m1","Söz hakkı / görülme"],["m2","İş yükü"],["m3","Gelişim"],["m4","Yönetici desteği"]];
+const TRQ=`<b>G:</b> Son birkaç aya dönüp baktığınızda işinizi nasıl tarif edersiniz?<br><b>K7:</b> Açıkçası <mark class="m2">her hafta yeni bir öncelik geliyor, yetişemiyorum</mark>. <mark class="m1">Toplantılarda bir şey söylüyorum, kimse not almıyor bile</mark>. Bir de <mark class="m3">geçen yıl sözü verilen eğitim programı hâlâ başlamadı</mark>.<br><b>G:</b> Bunu biraz açar mısınız?<br><b>K7:</b> <mark class="m4">Yöneticim iyi niyetli ama kendisi de çok yoğun; birebir görüşmelerimiz üç aydır iptal</mark>. <mark class="m2">Akşamları e-postalara bakmadan yatamıyorum</mark>. Ama şunu da söyleyeyim, <mark class="m3">mentorumla konuşmalarım bana çok iyi geliyor</mark>.`;
+st.hl=st.hl??null;
+function trq(){$("#legend").innerHTML=TH.map(([c,n])=>`<button class="chip ${st.hl===c?"on":""}" data-hl="${c}"><span class="swatch ${c}"></span>${n}</button>`).join("");
+ $("#trq").innerHTML=TRQ;$$("#trq mark").forEach(m=>{m.style.opacity=!st.hl||m.classList.contains(st.hl)?1:.25});
+ $$("[data-hl]").forEach(b=>b.onclick=()=>{st.hl=st.hl===b.dataset.hl?null:b.dataset.hl;save();trq()})}
+trq();
+
+// 6. hangi görsel
+function scen(sel,items){$(sel).innerHTML=items.map((it,k)=>`<div class="card" style="margin:10px 0"><div style="font-size:15px">${it.q}</div>${it.o.map((o,j)=>`<button class="opt" data-k="${k}" data-j="${j}">${o}</button>`).join("")}<div class="fb" id="${sel.slice(1)}fb${k}"></div></div>`).join("");
+ $$(sel+" .opt").forEach(b=>b.onclick=()=>{const it=items[b.dataset.k];$$(`${sel} .opt[data-k="${b.dataset.k}"]`).forEach(x=>x.classList.remove("right","wrong"));const ok=+b.dataset.j===it.a;b.classList.add(ok?"right":"wrong");$(`${sel}fb${b.dataset.k}`).innerHTML=`<span class="${ok?"ok":"no"}">${ok?"Doğru":"Tekrar düşün"}:</span> ${it.e}`})}
+const CH=["Çubuk grafik","Çizgi grafik","Radar grafik","Alüvyon diyagramı","Şelale grafiği","Ağ grafiği"];
+scen("#pick",[
+ {q:"Bu ayki çalışan sayısını dört lokasyon arasında karşılaştırmak",o:CH,a:0,e:"Tek bir zamandaki veriler için genellikle çubuk grafik en iyisidir."},
+ {q:"Memnuniyet puanının son üç yıldaki seyrini göstermek",o:CH,a:1,e:"Birden çok zaman noktası için çizgi grafik."},
+ {q:"Bir çalışanın sekiz beceri alanındaki profilini göstermek",o:CH,a:2,e:"Beceriler için çoğunlukla radar grafikler kullanılır."},
+ {q:"Çalışanların yıl içinde hangi departmanlardan hangilerine geçtiğini göstermek",o:CH,a:3,e:"Çalışan hareketleri için alüvyon diyagramları yaygındır."},
+ {q:"Yıl başındaki kadronun işe alım ve ayrılmalarla yıl sonuna nasıl dönüştüğünü göstermek",o:CH,a:4,e:"İşe alım ve ayrılmaya bağlı kadro değişimleri için şelale grafiği (aşağıda dene)."},
+ {q:"Ekipler arasında kimin kiminle iş birliği yaptığını göstermek",o:CH,a:5,e:"Örgütsel ağ analizleri genellikle ağ grafikleriyle gösterilir."}]);
+
+// şelale
+function wf(){const v=[0,1,2,3,4].map(i=>+$("#wf"+i).value||0);const steps=[["Dönem başı",v[0],"tot"],["İşe alım",v[1],"up"],["Gönüllü ayrılma",-Math.abs(v[2]),"dn"],["Gönülsüz ayrılma",-Math.abs(v[3]),"dn"],["İç transfer",v[4],v[4]>=0?"up":"dn"]];
+ const end=steps.reduce((a,s)=>a+s[1],0);steps.push(["Dönem sonu",end,"tot"]);
+ let run=0;const bars=steps.map(s=>{if(s[2]==="tot"){run=s[1];return{n:s[0],a:0,b:s[1],t:"tot",v:s[1]}}const a=run;run+=s[1];return{n:s[0],a,b:run,t:s[2],v:s[1]}});
+ const mx=Math.max(...bars.map(b=>Math.max(b.a,b.b)))*1.1,mn=Math.min(0,...bars.map(b=>Math.min(b.a,b.b)));
+ const W=600,H=240,p=46,x1=W-20,y1=H-36;const Y=x=>y1-(x-mn)/(mx-mn)*(y1-20);const bw=(x1-p)/bars.length;let g=axes(p,15,x1,y1);
+ bars.forEach((b,i)=>{const x=p+i*bw+8,top=Y(Math.max(b.a,b.b)),h=Math.abs(Y(b.a)-Y(b.b));const c=b.t==="tot"?css("--navy2"):b.t==="up"?css("--ok"):css("--bad");
+  g+=`<rect x="${x}" y="${top}" width="${bw-16}" height="${Math.max(1,h)}" rx="3" fill="${c}"/>`+T(x+(bw-16)/2,top-6,(b.t==="tot"?"":b.v>0?"+":"")+b.v,{c:css("--ink"),w:700})+T(x+(bw-16)/2,y1+14,b.n,{fs:10});
+  if(i<bars.length-1)g+=`<line x1="${x+bw-16}" x2="${x+bw}" y1="${Y(b.b)}" y2="${Y(b.b)}" stroke="${css("--muted")}" stroke-dasharray="2 2"/>`});
+ $("#wfSvg").innerHTML=`<title id="wfT">Şelale grafiği: kadro ${v[0]} kişiden ${end} kişiye değişti.</title>`+g}
+[0,1,2,3,4].forEach(i=>$("#wf"+i).oninput=wf);wf();redraws.push(wf);
+
+// 7. oyun
+const RULES=["Hiçbir soruyu yanıtlamıyorum. “Bu ne anlama geliyor?” sorusuna yalnızca “Sence ne anlama geliyor?” diye karşılık veriyorum (açıklamak isteyeceğim, ama yapmıyorum!).","Aklına başka bir şey gelmeyene kadar tekrar tekrar “Bu görsel sana başka ne anlatıyor?” diye soruyorum. Garip gelebilir, ama hile yapmıyorum!","Başka bir şey söyleyemediğinde, en önemli konuya hiç değinmediyse yalnızca bir ek soru soruyorum: “______ hakkında bir şey fark ettin mi, sence ne anlama geliyor?” Bulguyu değil, yalnızca konuyu söylüyorum.","Her yanıtı not alıyor ve a/b/c olarak işaretliyorum."];
+st.gm=st.gm||{rules:{},resp:[],obs:{},rounds:[]};
+["gmVis","gmMsg","gmTopic"].forEach(id=>{$("#"+id).value=st.gm[id]||"";$("#"+id).oninput=e=>{st.gm[id]=e.target.value;save();if(id==="gmTopic")rulesR()}});
+function rulesR(){const tp=st.gm.gmTopic?`“${esc(st.gm.gmTopic)}”`:"______";$("#rules").innerHTML=RULES.map((r,i)=>`<li><label><input type="checkbox" data-rl="${i}" ${st.gm.rules[i]?"checked":""}>${i===2?r.replace("______",tp):r}</label></li>`).join("");$$("[data-rl]").forEach(c=>c.onchange=()=>{st.gm.rules[c.dataset.rl]=c.checked;save()})}
+rulesR();
+function respR(){$("#gmList").innerHTML=st.gm.resp.map((r,i)=>`<div class="resp"><span>${esc(r.t)}</span><div class="row" style="gap:6px"><div class="seg">${["a","b","c"].map(m=>`<button data-m="${m}" data-ri="${i}" class="${r.m===m?"on":""}" aria-label="${m}">${m}</button>`).join("")}</div><button class="btn ghost sm" data-rd="${i}" aria-label="Sil">×</button></div></div>`).join("");
+ $$("[data-ri]").forEach(b=>b.onclick=()=>{st.gm.resp[b.dataset.ri].m=b.dataset.m;save();respR();recs()});$$("[data-rd]").forEach(b=>b.onclick=()=>{st.gm.resp.splice(b.dataset.rd,1);save();respR();recs()})}
+$("#gmAdd").onclick=()=>{const t=$("#gmIn").value.trim();if(!t)return;st.gm.resp.push({t,m:""});$("#gmIn").value="";save();respR();recs()};
+$("#gmIn").onkeydown=e=>{if(e.key==="Enter")$("#gmAdd").click()};
+const OBS=[["conf","Kişi kafası karıştı, görseli nasıl okuyacağını bilemedi.","Sayfada çok fazla şey olabilir: daha fazla boşlukla sadeleştir. Belki yanlış grafik türünü seçtin: zaman içindeki değişim için çubuk yerine bağlantılı çizgi grafik daha iyi olabilir. 3B efekt, kabarcık şekli ya da pasta grafik küçük farkları görmeyi zorlaştırmış olabilir."],
+ ["ask","Sana sorular sordu.","Bu soruları en iyi görsel olarak nasıl yanıtlayacağını düşün: lejant ya da eksen etiketi eklemen gerekiyor mu? Bir sonraki sürüm sorularını doğrudan yanıtlamalı."],
+ ["irr","Ana mesajınla ilgisiz ya da önemsiz bir bulgudan söz etti.","Dikkati tam istediğin yere çekmek için renk, çerçeve ya da kalın yazı gibi öğeler ekle."],
+ ["prompt","Ana mesajı ancak sen sorunca anladı.","Ana mesajı doğrudan söyleyen bir başlık eklemeyi düşün."]];
+function obsR(){$("#obs").innerHTML=OBS.map(o=>`<li><label><input type="checkbox" data-ob="${o[0]}" ${st.gm.obs[o[0]]?"checked":""}>${o[1]}</label></li>`).join("");$$("[data-ob]").forEach(c=>c.onchange=()=>{st.gm.obs[c.dataset.ob]=c.checked;save();recs()})}
+function recs(){const c={a:0,b:0,c:0};st.gm.resp.forEach(r=>{if(r.m)c[r.m]++});const tot=c.a+c.b+c.c;const sel=OBS.filter(o=>st.gm.obs[o[0]]);
+ $("#recs").innerHTML=`<div class="ui" style="font-weight:800">Yanıtlar: <span class="ok">${c.a} doğru</span> · <span class="no">${c.b} yanlış</span> · <span style="color:var(--warn)">${c.c} fark edilmedi/eksik</span></div>`+
+ (sel.length?`<ul style="margin:8px 0 0">${sel.map(o=>`<li>${o[2]}</li>`).join("")}</ul>`:'<div class="small" style="margin-top:6px">Yukarıda gözlemlerini işaretlediğinde güncelleme önerileri burada görünecek.</div>')+
+ (tot&&c.a===tot&&!sel.length?'<div class="ok ui" style="margin-top:6px;font-weight:700">Görselin mesajını net iletiyor gibi görünüyor. Yeni bir oyuncuyla doğrula.</div>':"")}
+$("#gmRound").onclick=()=>{const c={a:0,b:0,c:0};st.gm.resp.forEach(r=>{if(r.m)c[r.m]++});st.gm.rounds.push({d:new Date().toLocaleDateString("tr-TR"),vis:st.gm.gmVis||"",msg:st.gm.gmMsg||"",a:c.a,b:c.b,c:c.c,obs:OBS.filter(o=>st.gm.obs[o[0]]).map(o=>o[1]).join(" | "),resp:st.gm.resp.map(r=>`${r.t} (${r.m||"-"})`).join(" | ")});
+ st.gm.resp=[];st.gm.obs={};st.gm.rules={};save();respR();obsR();rulesR();recs();roundsR();toast("Tur kaydedildi; görseli güncelle ve mümkünse yeni bir oyuncuyla tekrar oyna")};
+function roundsR(){$("#rounds").innerHTML=st.gm.rounds.length?st.gm.rounds.map((r,i)=>`Tur ${i+1} (${r.d}${r.vis?" · "+esc(r.vis):""}): ${r.a} doğru, ${r.b} yanlış, ${r.c} eksik`).join("<br>"):"Henüz kaydedilmiş tur yok."}
+$("#gmCsv").onclick=()=>dl("ne_anlatiyor_oyunu.csv",[["Tur","Tarih","Görsel","Ana mesaj","Doğru","Yanlış","Eksik","Gözlemler","Yanıtlar"]].concat(st.gm.rounds.map((r,i)=>[i+1,r.d,r.vis,r.msg,r.a,r.b,r.c,r.obs,r.resp])));
+respR();obsR();recs();roundsR();
+
+// 8. öz değerlendirme
+const LV=["Farkında","Öğrenen","Yetkin","Uzman","Stratejist"];
+const SK=[["Grafik türleri ve teknikleri","Çubuk, çizgi, saçılım, histogram, ısı haritası, ağaç haritası, kabarcık grafiği ve daha fazlası dahil çeşitli grafik türleri ve tekniklerinde ustalaşmak."],
+ ["Görsel veri keşfi ve analizi","Verideki içgörü ve örüntüleri en iyi öne çıkaracak, farklı veri analizi tekniklerine en etkili görselleri seçmede yetkinlik geliştirmek (örn. doğrusal olmayan ilişkileri görmek için saçılım grafiği)."],
+ ["Görsel veri temizleme","Veri doğruluğunu sağlamak ve veriyi görselleştirmeye hazırlamak için görselleştirme becerilerini veri temizleme ve ön işlemeye uygulamak (örn. bir saçılım grafiği temizlenmesi gereken hatalı bir uç değeri hızla gösterebilir)."],
+ ["Görsel tasarım ilkeleri","Renk kuramı, kompozisyon, boşluk kullanımı ve hiyerarşi gibi temel tasarım ilkelerini anlamak."],
+ ["Erişilebilir veri görselleştirme tasarımı","Erişilebilirlik iyi uygulamalarını görsellere dahil etmek."],
+ ["Karneler ve gösterge panelleri","Temel metrikleri ve performans göstergelerini açık ve öz sunan karneler ve paneller tasarlayıp oluşturmak; yerleşim tasarımı, raporlama aracı kullanımı ve uygun yerlerde etkileşimli bileşenler dahil."],
+ ["Animasyonlu görselleştirmeler","Görselleri daha ilgi çekici ve etkili kılmak için animasyon tekniklerini kullanmak."],
+ ["Hikâye anlatımı","İzleyicinin dikkatini çeken, içgörüleri açıkça ileten ve kalıcı bir izlenim bırakan bir anlatı kurmak; izleyiciyi tanımayı, etkileyici görseller, başlıklar ve etiketler oluşturmayı ve iyi tanımlanmış bir mesajla izleyiciyi veri yolculuğunda yönlendirmeyi kapsar."],
+ ["Veri görselleştirme araçları","Tableau, Power BI, QlikView, Google Data Studio, matplotlib, seaborn, ggplot gibi bir ya da daha fazla görselleştirme aracında yetkinlik."]];
+st.sa=st.sa||{cur:{},des:{},cust:[{n:"",d:""},{n:"",d:""},{n:"",d:""}]};
+const opts=v=>'<option value="">—</option>'+LV.map((l,i)=>`<option value="${i+1}" ${+v===i+1?"selected":""}>${i+1} · ${l}</option>`).join("");
+const gapTag=(c,d)=>!c||!d?"":d>c?`<span class="gap">+${d-c} düzey hedef</span>`:`<span class="met">hedefe ulaşıldı</span>`;
+function saR(){$("#saTab").innerHTML=`<tr><th>Beceri</th><th>Açıklama</th><th style="width:150px">Bugünkü düzey</th><th style="width:150px">Hedef düzey</th></tr>`+
+ SK.map((s,i)=>`<tr><td class="sk">${s[0]}</td><td>${s[1]}</td><td><select data-c="${i}" aria-label="${esc(s[0])} bugünkü düzey">${opts(st.sa.cur[i])}</select></td><td><select data-d="${i}" aria-label="${esc(s[0])} hedef düzey">${opts(st.sa.des[i])}</select>${gapTag(st.sa.cur[i],st.sa.des[i])}</td></tr>`).join("")+
+ st.sa.cust.map((c,i)=>{const k="c"+i;return `<tr class="custom"><td><input type="text" data-cn="${i}" value="${esc(c.n)}" placeholder="Ek beceri"></td><td><input type="text" data-cd="${i}" value="${esc(c.d)}" placeholder="Açıklama (isteğe bağlı)"></td><td><select data-c="${k}">${opts(st.sa.cur[k])}</select></td><td><select data-d="${k}">${opts(st.sa.des[k])}</select>${gapTag(st.sa.cur[k],st.sa.des[k])}</td></tr>`}).join("");
+ $$("#saTab [data-c]").forEach(s=>s.onchange=()=>{st.sa.cur[s.dataset.c]=s.value?+s.value:undefined;save();saR()});
+ $$("#saTab [data-d]").forEach(s=>s.onchange=()=>{st.sa.des[s.dataset.d]=s.value?+s.value:undefined;save();saR()});
+ $$("[data-cn]").forEach(i=>i.onchange=()=>{st.sa.cust[i.dataset.cn].n=i.value;save();saSum()});$$("[data-cd]").forEach(i=>i.onchange=()=>{st.sa.cust[i.dataset.cd].d=i.value;save()});saSum()}
+function allSa(){return SK.map((s,i)=>[s[0],s[1],i]).concat(st.sa.cust.map((c,i)=>[c.n,c.d,"c"+i]).filter(x=>x[0].trim()))}
+function saSum(){const a=allSa();const r=a.filter(x=>st.sa.cur[x[2]]);const gaps=a.filter(x=>st.sa.cur[x[2]]&&st.sa.des[x[2]]>st.sa.cur[x[2]]).sort((x,y)=>(st.sa.des[y[2]]-st.sa.cur[y[2]])-(st.sa.des[x[2]]-st.sa.cur[x[2]]));
+ $("#saSum").innerHTML=`<strong class="ui">${r.length}/${a.length} beceri değerlendirildi.</strong> `+(gaps.length?`En büyük açıklar: ${gaps.slice(0,3).map(x=>`${esc(x[0])} (${LV[st.sa.cur[x[2]]-1]} → ${LV[st.sa.des[x[2]]-1]})`).join("; ")}.`:"Hedef düzeyleri işaretledikçe en büyük açıklar burada görünecek.")+` <span class="small">Rehberin önerisi: üretmeden önce seçmeyi, karmaşıktan önce sadeyi öğren.</span>`}
+$("#saAdd").onclick=()=>{st.sa.cust.push({n:"",d:""});save();saR()};
+$("#saCsv").onclick=()=>dl("veri_gorsellestirme_oz_degerlendirme.csv",[["Beceri","Açıklama","Bugünkü düzey","Hedef düzey"]].concat(allSa().map(x=>[x[0],x[1],st.sa.cur[x[2]]?LV[st.sa.cur[x[2]]-1]:"",st.sa.des[x[2]]?LV[st.sa.des[x[2]]-1]:""])));
+$("#saPrint").onclick=()=>window.print();
+saR();
+
+// 9. test
+const Q=[
+ {q:"Yazara göre görselleştirme neden bu kadar güçlü?",o:["Raporları daha uzun yaptığı için","İnsan beyni görsel bilgide örüntü görmek için evrimleşmiş olduğu için","Sayıları gereksiz kıldığı için","Yalnızca yöneticiler görsel sevdiği için"],a:1,e:"Gösterilen bir şeyde beynimiz içgüdüsel olarak anlam arar."},
+ {q:"“X departmanında ayrılma arttı” cümlesi yerine ısı haritası kullanmanın etkisi nedir?",o:["Hiçbir fark yaratmaz","Tepkileri “Ne oluyor?” sorularına dönüştürüp incelemeye ve çözüme götürür","Yalnızca sunumu güzelleştirir","Ayrılmayı azaltır"],a:1,e:"Görseller merakı kıvılcımlar ve eyleme dönük konuşmalar başlatır."},
+ {q:"Devamsızlık oranını tek seferlik bir soru için soran birine en iyi yanıt hangisi?",o:["Etkileşimli bir panel kurmak","Oranı hesaplayıp söylemek","20 sayfalık rapor","Animasyonlu infografik"],a:1,e:"Her verinin bir hikâyeye ya da görsele ihtiyacı yoktur."},
+ {q:"Erişilebilirlik için hangisi önerilmez?",o:["Yüksek kontrast","Alternatif metin","Veri noktalarını yalnızca renkle ayırmak","Klavyeyle gezinme ve odak göstergeleri"],a:2,e:"Yalnızca renge güvenmekten kaçın; desen, etiket ve işaretçilerle destekle."},
+ {q:"Uç değerleri fark etmeyi en kolaylaştıran grafik hangisi?",o:["Pasta grafik","Kutu grafiği","Alan grafiği","Halka grafik"],a:1,e:"Kutu grafikleri uç değerleri görmeyi çok kolaylaştırır; saçılım grafiği de onları diğer değişkenle birlikte gösterir."},
+ {q:"Yazar nitel analizde sürecin ayrıntısını gösterme konusunda ne öneriyor?",o:["Hiç göstermemeyi","Renk kodlu örneklerle “çalışmanı göstermeyi”; gerekirse izleyiciyi biraz bunaltmayı","Tüm ham veriyi paylaşmayı","Yalnızca kelime bulutu göstermeyi"],a:1,e:"Titizliği göstermek bulguların görüş değil gerçek analiz olduğunun kanıtıdır; ama yalnızca anonim bir örnek yeterli."},
+ {q:"Araçların otomatik önerdiği görsellere neden güvenmemeli?",o:["Her zaman yanlış oldukları için","Yalnızca veri biçimini bilir, mesajını ve bağlamı bilmezler","Pahalı oldukları için","Erişilebilir olmadıkları için"],a:1,e:"Mümkün görselleri görmek için yararlı olabilirler; ama amaca uygun görseli yalnızca sen seçebilirsin."},
+ {q:"İşe alım ve ayrılmalarla kadro değişimini göstermek için yaygın görsel hangisi?",o:["Radar grafik","Şelale grafiği","Alüvyon diyagramı","Ağ grafiği"],a:1,e:"Radar beceriler, alüvyon çalışan hareketi, ağ grafiği ise örgütsel ağ için yaygındır."},
+ {q:"“Ne anlatıyor?” oyununda oyuncu “Bu ne demek?” diye sorarsa ne yaparsın?",o:["Hemen açıklarım","“Sence ne demek?” diye karşılık veririm","Oyunu bitiririm","Ana bulguyu söylerim"],a:1,e:"Soruları yanıtlamazsın; kafa karışıklığını not alırsın."},
+ {q:"Oyuncu ana mesajı ancak sen sorunca fark ettiyse ne önerilir?",o:["Daha fazla veri eklemek","Ana mesajı söyleyen bir başlık eklemek","Pasta grafiğe geçmek","Lejantı kaldırmak"],a:1,e:"Başlık doğrudan ana çıkarımı söylemeli."}];
+st.quiz=st.quiz||{};
+function quiz(){$("#quiz").innerHTML=Q.map((x,i)=>`<div class="card" style="margin:12px 0"><div class="ui" style="font-weight:700">${i+1}. ${x.q}</div>${x.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("")}<div class="fb" id="qe${i}" style="display:none">${x.e}</div></div>`).join("");
+ $$("#quiz .opt").forEach(b=>b.onclick=()=>{st.quiz[b.dataset.q]=+b.dataset.o;save();paint()});paint()}
+function paint(){let sc=0,n=0;Q.forEach((x,i)=>{const ch=st.quiz[i];if(ch===undefined)return;n++;if(ch===x.a)sc++;
+ $$(`#quiz .opt[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.o;b.classList.toggle("right",j===x.a);b.classList.toggle("wrong",j===ch&&ch!==x.a);b.disabled=true});$("#qe"+i).style.display="block"});
+ $("#score").innerHTML=n?`Skor: ${sc} / ${Q.length}${n===Q.length?' <button class="btn ghost" id="reset" style="margin-left:8px">Yeniden dene</button>':""}`:"";const r=$("#reset");if(r)r.onclick=()=>{st.quiz={};save();quiz()}}
+quiz();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>

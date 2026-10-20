@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adım 4: Büyük Resim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--bad:#c0392b;--shadow:0 2px 14px rgba(11,58,140,.08);--s1:#1f5fd1;--s2:#d9822b;--s3:#1d8a5b;--s4:#9b3fb5}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--s1:#6c9cff;--s2:#f0a35c;--s3:#4cc38a;--s4:#c58bf0}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--s1:#6c9cff;--s2:#f0a35c;--s3:#4cc38a;--s4:#c58bf0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1040px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:740px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.steps4{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.steps4 span{font-family:Raleway;font-weight:800;font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.steps4 span.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.part{font-family:Raleway;font-weight:800;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-size:13px;margin:34px 0 -6px;display:flex;align-items:center;gap:10px}
+.part::after{content:"";flex:1;height:1px;background:var(--line)}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:100px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+.quote{background:var(--soft);border-radius:12px;padding:16px 22px;margin:16px 0;font-style:italic;text-align:center}
+.quote b{display:block;font-style:normal;font-family:Raleway;font-size:14px;color:var(--muted);margin-top:6px}
+.story{border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0;background:color-mix(in srgb,var(--soft) 40%,var(--card))}
+.story .h{font-family:Raleway;font-weight:800;color:var(--navy2);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn.sm{padding:4px 10px;font-size:12px}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,.chip:focus-visible,.seg button:focus-visible,.opt:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chip{font-family:Raleway;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--card);color:var(--muted);font-family:Raleway;font-weight:700;font-size:12px;padding:6px 11px;cursor:pointer}
+.seg button.on{background:var(--navy2);color:#fff}
+input[type=text],input[type=date],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+input[type=range]{width:100%;accent-color:var(--navy2)}
+textarea{min-height:56px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.ok{color:var(--ok)}.no{color:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.twocol{grid-template-columns:1fr}}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.fb{font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+.flag{font-size:14px;margin:4px 0;padding-left:22px;position:relative}
+.flag::before{position:absolute;left:0;font-weight:800}
+.flag.w::before{content:"⚠";color:var(--warn)}
+.flag.g::before{content:"✓";color:var(--ok)}
+.msg{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card);white-space:pre-wrap;font-size:15px}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.check{padding-left:0}.check li{list-style:none;margin:6px 0}
+.check input{width:17px;height:17px;accent-color:var(--navy2);vertical-align:-2px;margin-right:6px}
+.tbl{overflow-x:auto}
+.tbl table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+.tbl th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:6px 8px;border:1px solid var(--line);text-align:left}
+.tbl td{border:1px solid var(--line);padding:5px 6px;vertical-align:top}
+.tbl input,.tbl select{font-size:13px;padding:4px 6px}
+.tag{font-family:Raleway;font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--navy);white-space:nowrap}
+.tag.due{background:color-mix(in srgb,var(--warn) 22%,var(--card));color:var(--warn)}
+.sa{overflow-x:auto}
+.sa table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+.sa th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.sa td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.sa td.sk{font-family:Raleway;font-weight:700;width:170px}
+.sa select{font-size:13px;padding:5px}
+.sa .gap{font-family:Raleway;font-size:11px;font-weight:800;color:var(--warn);display:block;margin-top:4px}
+.sa .met{font-family:Raleway;font-size:11px;font-weight:800;color:var(--ok);display:block;margin-top:4px}
+.sa tr.custom input{font-size:14px;padding:5px 7px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+@media (max-width:700px){.scale{grid-template-columns:1fr 1fr}}
+.scale .card{padding:10px}.scale .lv{font-family:Raleway;font-weight:800;font-size:12px;color:var(--navy2)}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--card)}
+@media (max-width:640px){.who{grid-template-columns:1fr}}
+.who.has{border-left:4px solid var(--ok)}
+.who.miss{border-left:4px solid var(--warn)}
+.meter{height:12px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0}
+.meter>div{height:100%;background:var(--ok);width:0;transition:width .3s}
+.lk{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0;font-size:15px}
+svg text{font-family:Raleway}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+a{color:var(--navy2)}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Adım 4</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">Mesaj</a>
+      <a href="#s2" data-s="s2">Kanal</a>
+      <a href="#s3" data-s="s3">Topluluk ve güven</a>
+      <a href="#s4" data-s="s4">Ağ kur</a>
+      <a href="#s5" data-s="s5">Bağları derinleştir</a>
+      <a href="#s6" data-s="s6">Topluluk kur</a>
+      <a href="#s7" data-s="s7">Öz değerlendirme</a>
+      <a href="#s8" data-s="s8">Kim var?</a>
+      <a href="#s9" data-s="s9">Veren, alan, denkleştiren</a>
+      <a href="#s10" data-s="s10">Test</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema" aria-label="Açık/koyu tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker">Daha ileri gitmek · Adım 4</div>
+    <h1>Büyük Resim</h1>
+    <div class="steps4"><span>1 · Güçlü yönlerin</span><span>2 · Teknik olmayan beceriler</span><span>3 · Teknik beceriler</span><span class="on">4 · Büyük resim</span></div>
+    <p>Umarız güçlü yönlerinden yararlanıyor (Adım 1), teknik olmayan (Adım 2) ve teknik (Adım 3) becerilerini geliştirip uyguluyorsun. Bu bölüm, insan analitiği çalışmalarının duyulmasını, değer yaratmasını ve uygun biçimde yapılmasını sağlayacak, seni destekleyecek bir topluluk kurmana yardım edecek büyük resim konularını ele alıyor.</p>
+    <p class="note">Kaynak: Heather Whiteman'ın insan analitiği kariyer rehberinin 252–291. sayfaları. Metin birebir çeviri değil; içerik Türkçe olarak özetlenip uyarlanmıştır. Girdiğin isimler ve notlar yalnızca bu tarayıcıda saklanır.</p>
+  </div>
+
+  <div class="part">Hedef kitlene ulaşmak</div>
+
+  <!-- 1 -->
+  <section class="ch" id="s1">
+    <h2>Mesajını Oluşturmak</h2><hr>
+    <p>Bilgiyi analiz ettin, eğilimleri belirledin, değerli içgörüler buldun; şimdi bulgularını eyleme ve değişime yol açacak biçimde paylaşma zamanı. Adım 2'de konuştuğumuz iş zekâsı, iletişim ve hikâye anlatımı becerileri burada işe yarar, çünkü etkili insan analitiği analizle değil, <strong>içgörülerin nasıl kullanıldığıyla</strong> ilgilidir. Bulgularının başkalarınca duyulacak ve başarıya en iyi konumlanacak biçimde iletilmesini sağlamak sana kalıyor.</p>
+    <p>Bulguları özetlemek yetmez; <strong>dinleyicini tanı</strong> ve mesajını ona göre uyarlamaya biraz fazladan zaman ayır. Aynı bulgular bile farklı dinleyiciler için farklı yaklaşımlar ister. İş liderleri stratejik sonuçları, bulguların iş hedefleriyle uyumunu, temel performans göstergelerini (KPI) ya da yatırım getirisini (ROI) duymak ister. Geniş bir çalışan grubu ise ROI ile daha az, bilginin kendileriyle ilgisiyle daha çok ilgilenir: geri bildirimlerinin bulgulara nasıl katkı sağladığını ya da sonuçların iş yaşamlarını nasıl etkileyebileceğini duymak isterler.</p>
+    <div class="grid">
+      <div class="card"><div class="t">İş liderleri için</div><div class="small"><strong>Stratejik etkiye odaklan:</strong> bulguları şirket hedefleriyle uyumla; içgörülerin iş hedeflerini (verimlilik, kalite, performans) nasıl iyileştirebileceğini ya da yetenek süreçlerini (yetenek kazanımı, elde tutma, liderlik etkinliği) nasıl kolaylaştırabileceğini göster.<br><strong>Onların dilini konuş:</strong> maliyet tasarrufu ya da verimlilik artışı gibi metriklere odaklanan iş merkezli bir dil kullan.</div></div>
+      <div class="card"><div class="t">Çalışanlar için</div><div class="small"><strong>Şeffaflık ve saygı:</strong> çalışan verisinin bireyleri izlemek için değil, kurumu iyileştirmek için kullanıldığını vurgula. Mahremiyet, etik ve güven insan analitiğinin en kritik yönlerinden; süreçte ya da sonuçlarda çalışanları korumak için atılan adımları her zaman anlat.<br><strong>İyileştirmeye odaklan:</strong> bulguları büyüme ve gelişim fırsatı olarak çerçevele; girişimlerin çalışan geri bildirimine dayanarak ve çalışanların yararına yapıldığını öne çıkar.</div></div>
+      <div class="card"><div class="t">İK profesyonelleri için</div><div class="small"><strong>İş birliği ve pratik uygulama:</strong> İK girişimleri için somut önerilerle eyleme dönük içgörüler sun; bulgulara dayalı çözümleri İK ile birlikte üret, onların derin yetenek uzmanlığını kat.<br><strong>Derinleş ve bağlantı kur:</strong> insanları desteklemek işleri olduğu için genellikle daha fazla ayrıntı ve derinliği takdir ederler. Bulguları İK kararlarını destekleme yolu olarak çerçevele; yöntem ve veri kaynaklarını ana bulgularla birlikte ver; bağlam ve iyi uygulama tartışması için ilgili İK metrikleri ve sektör kıyaslarını ekle.</div></div>
+    </div>
+
+    <div class="box">
+      <div class="lbl">Araç · Aynı bulgu, üç dinleyici</div>
+      <p class="small">Kurgusal bulgu: “Kariyer görüşmesi yapılmayan çalışanlarda ilk yıl ayrılma oranı %24, yapılanlarda %11.” Dinleyiciyi seç; mesaj iskeleti ona göre değişsin. Düzenleyip kopyalayabilirsin.</p>
+      <div class="row" style="margin-bottom:8px"><div class="seg" id="audSeg"><button data-v="lead" class="on">İş liderleri</button><button data-v="emp">Çalışanlar</button><button data-v="hr">İK profesyonelleri</button></div></div>
+      <textarea id="audMsg" style="min-height:200px"></textarea>
+      <div class="row" style="margin-top:8px"><button class="btn ghost" id="audCopy">Kopyala</button><button class="btn ghost" id="audReset">Şablona dön</button></div>
+    </div>
+
+    <h3>Genel ipuçları</h3>
+    <div class="grid">
+      <div class="card"><div class="t">Sorun değil, eyleme dönük içgörü paylaş</div><div class="small">Yalnızca sorun sunma, çözüm öner. Paylaşacağın tek şey çözümü olmayan bir sorunsa (“Çalışan verimliliği %32 düştü”), muhtemelen yeterince analiz yapmadın ve geniş paylaşıma hazır değilsin. Bu aşamada güvendiğin meslektaşlarla, yöneticinle ya da olası açıklamaları, önerileri veya eylemleri bulmana yardım edebilecek kişilerle paylaş.</div></div>
+      <div class="card"><div class="t">Çalışmanı değil, bulgularını paylaş</div><div class="small">Dinleyiciyi karmaşık yöntemlerle boğma; ilişkileri açıklamak için uygun yerde görseller kullanarak net ve öz çıkarımlar sun. Yaygın bir hata, bir bulguya ulaşmak için yapılan <em>bütün</em> analizleri ya da yöntemle ilgili çok fazla ayrıntıyı paylaşmak. Ayrıntılarla ilgili sorulara hazırlıklı ol: bir ek ya da sonra e-postayla gönderebileceğin notlar, ayrıntıları yol kesmeden erişilebilir kılar.</div></div>
+      <div class="card"><div class="t">Faydaya odaklan (WIFM)</div><div class="small">Yaygın kısaltma WIFM, “What's in it for me?”, yani “Bunun bana ne faydası var?” anlamına gelir; birlikte çalıştığın herkesin aklındaki soru budur. Başkalarına değer sunmaya odaklan; bunu iletişimini konumlandırma biçiminde, odaklandığın işlerde ve verinin onlar, çalışanlar ya da kurum için nasıl iyileştirme getirebileceğini vurgulayarak yap.</div></div>
+    </div>
+    <div class="box">
+      <div class="lbl">Araç · Mesaj denetleyicisi</div>
+      <p class="small">Paylaşmayı düşündüğün mesajı yaz; kural tabanlı kaba bir kontrol yapılır.</p>
+      <textarea id="mcIn" style="min-height:90px">Çalışan verimliliği geçen çeyreğe göre %32 düştü. Lojistik regresyon, kohort analizi ve 14 farklı model denedik.</textarea>
+      <div id="mcOut" style="margin-top:8px"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 2 -->
+  <section class="ch" id="s2">
+    <h2>Doğru Kanalı Seçmek</h2><hr>
+    <p>Doğru iletişim kanalı içgörülerinin duyulma, hatırlanma ve eyleme dönüşme olasılığını artırır. Belirli bir yolla (toplantı ya da rapor gibi) paylaşman istenmediyse e-posta, toplantı, yazılı rapor ya da başka bir yol arasında karar vermek zor olabilir. Dinleyicini iyi tanıyor ve tercih ettiği iletişim yolunu biliyorsan yazar onu ilk seçenek olarak öneriyor: insanlarla bulundukları yerde, rahat ettikleri kanallarda buluşmak onları sana daha açık kılar. Net bir yöntem verilmediğinde aşağıdaki araç kitaptaki genel yönergeleri uygular.</p>
+    <div class="box">
+      <div class="lbl">Araç · Kanal seçici</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div><div class="small ui" style="font-weight:700">Dinleyici</div><div class="seg" id="chAud"><button data-v="lead" class="on">İş liderleri</button><button data-v="emp">Çalışanlar</button><button data-v="hr">İK</button></div></div>
+        <div><div class="small ui" style="font-weight:700">Mesaj</div><div class="seg" id="chCx"><button data-v="simple" class="on">Basit, hassas değil</button><button data-v="complex">Karmaşık / hassas / insanları etkiliyor</button></div></div>
+        <div><div class="small ui" style="font-weight:700">Hedefim</div><div class="seg" id="chGoal"><button data-v="self" class="on">Kendi başlarına incelesinler</button><button data-v="dialog">Diyalog ve geri bildirim</button><button data-v="collab">Ortak eylem</button></div></div>
+      </div>
+      <div class="row" style="margin-top:8px"><label class="small"><input type="checkbox" id="chPref" style="accent-color:var(--navy2)"> Dinleyicinin tercih ettiği kanalı biliyorum</label><input type="text" id="chPrefT" placeholder="Tercih ettiği kanal" style="max-width:260px;display:none"></div>
+      <div class="result" id="chOut"></div>
+    </div>
+    <p>Her kültür ve durum benzersizdir; bu genel ipuçlarını kendi durumuna göre uyarlaman ya da farklı seçimler yapman gerekecek. Mesajın ne kadar acil olduğunu, paylaştığın ortamın kültürünü ve birlikte çalıştığın kişilerin tercihlerini düşün. Kendi becerilerini de hesaba kat: bir yöntemle diğerinden daha iyi iletişim kuruyorsan bazen o daha iyi bir seçim olabilir.</p>
+    <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+  </section>
+
+  <div class="part">Topluluğunu kurmak</div>
+
+  <!-- 3 -->
+  <section class="ch" id="s3">
+    <h2>Topluluk ve Güven</h2><hr>
+    <p>Bu kitap şimdiye dek becerilerine odaklandı; ama insan analitiği kariyerin, başkalarıyla ilişki kurma ve sürdürme yeteneğine de bağlı. İnsan analitiği içgörüleri eyleme dönüştürmektir ve bunu tek başına yapamazsın: anlamlı etki iş birliği, güven ve güçlü bir müttefik ağı gerektirir. Destekleyici bir topluluk düşünceni sınar, içgörülerini güçlendirir ve gerçek sonuçlar elde etmene yardım eder. Bazıları yerleşik ekiplere ya da uygulama topluluklarına katılacak kadar şanslıdır; çoğu kişi ise kendi topluluğunu aktif olarak kurmalı, genişletmeli ya da güçlendirmeli. Mevcut topluluklarda bile katılmak, katkı sağlamak ve gerçek bir üye olmak için emek vermek sana düşer. Topluluk kurmak yalnızca ağ kurmak değil; ilgi ve hedeflerini paylaşan kişi ve gruplarla gerçek bağlar oluşturmak, karşılıklı yarar sağlayan ilişkiler geliştirmek, destek ve uzmanlık sunmak ve ağınla birlikte ortak başarıya çalışmaktır.</p>
+    <p>Topluluğunda insanlar farklı roller üstlenir: ekip arkadaşları, mentorlar, danışmanlar, meslektaşlar, akranlar, tanıdıklar ve müttefikler. Onları işyerinde ya da akademik ortamda, konferans ve buluşmalarda, çevrimiçi topluluklarda ya da benzer düşünen profesyonelleri çeken içerikler etrafında bulabilirsin. Canlı topluluklar aktif katılıma dayanır: bilgi paylaşmak, başkalarının işine geri bildirim vermek ve güvenilir bir içgörü kaynağı olmak.</p>
+    <div class="quote">“Güven, toplumu bir arada tutan temel güçlerden biridir.”<b>— Thomas Hobbes, filozof</b></div>
+    <p>Güven hemen her şeyin temel taşıdır ve etkili iş birliği, başarılı analitik projeler ve güçlü bir topluluk için mutlaka gereklidir. İnsan analitiğinde birden fazla güven türü devrededir ve başarı için üçüne de ihtiyacın var. İnsanlar dürüst, şeffaf ve tutarlı davrananlara güvenir. Kişisel güvenilirlik önemlidir ama tek başına yetmez; çok saygın olsan bile analitik çalışman başkalarının ona dayanabilmesi için titiz, etik ve yansız olmalı. Kişi ve çalışmanın ötesinde verinin kendisi de güvenilir olmalı: başkaları veriye güvenmezse içgörülere göre davranmaz. Veriye güven; kaynaklar, yöntemler ve sınırlılıklar konusunda şeffaflık gerektirir. İnsan analitiği çoğu zaman karmaşık, belirsiz ve bazen hassas bilgilerle uğraşır; kesinliği abartmak yerine bu incelikleri kabul etmek güvenilirliği pekiştirir. Güçlü veri yönetişimi, etik veri uygulamaları ve verinin nasıl toplanıp doğrulandığına dair net açıklamalar başkalarının karar almada veriye güvenmesine yardım eder. Çalışmanı göstermek ve başkalarını sürece erkenden dahil ederek ortak sahiplik ve uyum yaratmak da güvenilirlik kazandırır.</p>
+    <div class="box">
+      <div class="lbl">Araç · Güven üçgeni</div>
+      <p class="small">Belirli bir proje ya da paydaş için üç güven türünü kendi gözünle değerlendir. En zayıf halka bütün yapıyı belirler.</p>
+      <div class="twocol" style="align-items:center">
+        <div>
+          <label class="small">Kişi olarak sana güven (kişilerarası güvenilirlik): <strong id="t1v"></strong><input type="range" id="t1" min="1" max="5" value="4"></label>
+          <label class="small">Uzmanlığına güven (bilgi ve yetkinlik): <strong id="t2v"></strong><input type="range" id="t2" min="1" max="5" value="3"></label>
+          <label class="small">Analitiğe güven (veri, sonuçlar, uygulanabilirlik): <strong id="t3v"></strong><input type="range" id="t3" min="1" max="5" value="2"></label>
+        </div>
+        <svg id="triSvg" viewBox="0 0 300 250" style="width:100%;max-width:340px" role="img"><title>Üç güven türü</title></svg>
+      </div>
+      <div class="result" id="triOut"></div>
+    </div>
+    <p>Güven güçlü olduğunda kurumlar gereksiz şüphecilik süreci yavaşlatmadan daha iyi ve daha hızlı karar verebilir; başkaları analitiğe dayalı önerilerini daha kolay benimser ve verinin eyleme yön verdiği bir kültürü pekiştirmene yardım eder. Ama güveni kurmak ve sürdürmek sürekli emek ister ve kazanıldığından daha hızlı kaybedilebilir.</p>
+    <div class="quote">“Dünyayı tek başıma değiştiremem, ama suya bir taş atıp pek çok dalga yaratabilirim.”<b>— Rahibe Teresa</b></div>
+    <p>İnsan analitiği sürecinin her adımını tek başına yürütemezsin: veri vermek, toplamak, saklamak, analiz etmek, erişim ya da araç sağlamak ve içgörülere göre harekete geçmek için başkalarına dayanman gerekir. İyi haber şu: daha geniş topluluğundaki bilgi, araç ve kaynaklara ulaşmakta ustaysan her alanda uzman olman gerekmez. Ama başkalarıyla bir şey yapmak için insanları tanıman gerekir; topluluk kurmanın basit ilk adımı insanlarla tanışmaktır. Topluluk önce bir ağ kurmakla, sonra seçili ilişkileri besleyip geliştirmekle başlar; böylece bu bağlar yalnızca tanıdığın kişilerden seni olanaklı kılan, destekleyen, ilham veren ve güçlendiren kişilere dönüşür. Ağ kurmak yalnızca dışadönükler için bir sosyal etkinlik değildir; bir “happy hour”da sohbet etmek, hiç tanışmadığın birine sosyal medyada “bağlan” demek ya da insanlardan iş istemek ağ kurmaya kötü ad kazandıran davranışlardır. Ağ kurmak, gerçek bağlar ve anlamlı ilişkiler bulabileceğin daha fazla kişiyi belirlemenin bir yoludur.</p>
+    <div class="story"><div class="h">Yazarın en değerli dersi · Unvan değil, tutku ara</div>
+      Topluluk kurarken iş unvanlarına ya da resmî yeterliliklere değil, fikirlere ve bakış açılarına odaklan. Küçük bir sivil toplum kuruluşundaki tek analistsen, çok uluslu bir şirketin büyük ekibindeki bir veri mühendisinden öğrenebilirsin; o da senden çok şey öğrenebilir. En yeni projelerde çalışan kıdemli bir insan verisi bilimcisi bile, başka bir ekipte işe yeni başlayan bir stajyerle kurduğu ilişkiden çok şey kazanır.
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 4 -->
+  <section class="ch" id="s4">
+    <h2>Keşfet ve Katıl: Ağını Kur</h2><hr>
+    <p>Topluluk sahibi olmadan önce insanları gerçekten tanıman gerekir. İşte ağ kurmanın harika yolları; her birine bir sonraki adımını yaz ve tamamladığında işaretle.</p>
+    <div id="netActs"></div>
+    <div class="box">
+      <div class="lbl">Bağlantılar (kitapta verilen)</div>
+      <div class="grid">
+        <div class="card"><div class="t">Society for People Analytics (SPA)</div><div class="small">Yazara göre insan analitiği topluluğuna dalmanın en iyi yollarından biri. Kâr amacı gütmüyor ve herkes ücretsiz katılabiliyor. Üyeler yüz yüze ve çevrim içi buluşmalar ve ağ etkinlikleri, atölyeler ve bilgi paylaşım oturumları, tartışma, iş birliği ve mentorluk için canlı bir çevrimiçi topluluk oluşturuyor. Yakınında bir buluşma grubu yoksa her üyeyi kendi grubunu kurmaya teşvik ediyor.<br><a href="https://www.societyforpeopleanalytics.org/become-a-member" target="_blank" rel="noopener">societyforpeopleanalytics.org/become-a-member</a></div></div>
+        <div class="card"><div class="t">Kitabın okurları için LinkedIn grubu</div><div class="small">Yazar, aynı kariyer yolculuğundaki kişilerin bağ kurabilmesi için bir LinkedIn grubu açtı ve diyalog başlatmaya davet ediyor.<br><a href="https://linkedin.com/groups/14487429" target="_blank" rel="noopener">linkedin.com/groups/14487429</a></div></div>
+        <div class="card"><div class="t">Yazarla bağlantı</div><div class="small">Yazar, ağının parçası olmanı çok istediğini, iletişim bilgilerinin kitabın son bölümünde de olduğunu söylüyor.<br><a href="https://heatherwhiteman.com" target="_blank" rel="noopener">heatherwhiteman.com</a> · <a href="https://linkedin.com/in/heatherwhiteman" target="_blank" rel="noopener">linkedin.com/in/heatherwhiteman</a></div></div>
+      </div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s4"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 5 -->
+  <section class="ch" id="s5">
+    <h2>Ağındaki Bağları Derinleştir</h2><hr>
+    <p>Okulda, işte, topluluk gruplarında ya da ağ kurma etkinliklerinde tanıştığın insanlar geniş ağını oluşturur; etkileşime girip ilişki kurana kadar herkes yalnızca bir tanıdıktır. Kariyer gelişimin için bağ kurarken iş ve içerik ağırlıklı etkileşimlere fırsat veren ortamlar ara. (Eğlence ve kişisel doyum için kişisel ilişkileri beslemekte hiçbir sorun yok; bu kariyer odaklı bir kitap olduğu için yazar onları atlıyor.)</p>
+    <p>Mevcut meslektaşlarla ya da topluluk gruplarının üyeleriyle iş birliğine dayalı ekip çalışması, ağını kurmanın hem kolay erişilebilir hem güçlü bir yolu ve bu kişilerle bağları derinleştirmek için pek çok fırsat sağlar. İş birliğine dayalı ekip çalışması yalnızca başkalarıyla çalışmak değildir: farklı bakış açılarını aktif olarak aramak, etkili iletişim kurmak, çatışmaları yapıcı biçimde yönetmek ve hedeflerin ve sonuçların sahipliğini paylaşmaktır; grup olarak ortak emeğin her birinizin tek başına başarabileceğinden büyük olduğu bir sinerji yaratmaktır. Bu fırsatlar işyeriyle sınırlı değil: inanç temelli, okulla ilgili, hayır amaçlı, mesleki dernek ya da hobi toplulukları ilişki kurmak ve birlikte çalışmak için harika alanlar; bu topluluklarda insan analitiği becerilerini ne kadar uygulayıp geliştirebildiğine şaşırabilirsin.</p>
+    <div class="grid">
+      <div class="card"><div class="t">İş birliğine dayalı ekip çalışması</div><div class="small">Paylaşılan ilgi ya da ortak hedef olduğu için ağındaki kişilerle daha derin bağ kurmanın en iyi yollarından biri. Birlikte yapabileceğini asla tek başına yapma.</div></div>
+      <div class="card"><div class="t">Fonksiyonlar arası projeler</div><div class="small">Uzmanlığını kendi alanın dışındaki ekiplere sun ve onların bakış açılarından öğren; fikirlerin bu çapraz etkileşimi yenilikçi çözümlere ve iş sorunlarının daha bütün anlaşılmasına yol açar.</div></div>
+      <div class="card"><div class="t">Bilgi paylaşım oturumları</div><div class="small">Atölyeler, sunumlar ya da bültenler/bloglar aracılığıyla öğrendiklerini paylaş; sosyal etkinliklerle gayriresmî iş birliğini besle. Örneğin insanların süren analitik projelerini paylaştığı ya da tamamlananları kutladığı aylık bir oturum başlat.</div></div>
+      <div class="card"><div class="t">Açık iletişimi ve farklı bakışları savun</div><div class="small">Her ilişki kurma çabası etkinlik başlatmayı gerektirmez. Saygılı tartışmayı teşvik etmek ve fikirler hakkında aktif olarak geri bildirim istemek, herkesin sesinin duyulduğu güvenli alanı yaratır. Aktif dinlemek, soru sormak ve anlamlı biçimde ilgilenmek her zaman güçlü bir eylemler bütünüdür.</div></div>
+    </div>
+
+    <h3>Fonksiyonlar arası “rüya takım” kur</h3>
+    <p>İK, iş stratejisi, hukuk, veri bilimi, veri mühendisliği, BT, uyum, güvenlik, finans gibi farklı birimlerden kilit paydaşları belirle. Bu tür takımlar kurmak zor olabilir: üyeler aynı alanda çalışmadığında aynı acil iş hedeflerini paylaşmayabilir ve herkesin çekirdek üye olacak zamanı ya da becerisi olmayabilir. Ama esnek olursan farklı kişileri dahil etmenin yollarını bulursun: becerisi olup zamanı kısıtlı olan biri yalnızca dönemsel geri bildirim veren bir mentor olabilir; kritik uzmanlığı (örneğin veri mahremiyeti ya da hukuk) olup zamanı ya da proje tutkusu sınırlı olana yalnızca göze batan sorunları kaçırmamanı sağlayacak bir danışmanlık rolü önerebilirsin; tutkusu ve zamanı olup henüz becerisi olmayan biri fikirler için bir yankı duvarı, sunum provaları için bir dinleyici ve sonuçların erken benimseyicisi olarak değer katan bir müttefik olabilir. Kişileri davet ederken hangi rolü üstlenmelerini istediğini net söyle.</p>
+    <div class="box">
+      <div class="lbl">Araç · Rüya takım kurucu</div>
+      <p class="small">Kişi ekle, beceri, zaman ve tutku düzeyini işaretle; kitaptaki mantığa göre bir rol önerilir. Rolü istersen değiştir; davet mesajı rolü netleştirir.</p>
+      <input type="text" id="dtProj" placeholder="Proje (örn. yeni çalışan elde tutma analizi)" style="margin-bottom:8px">
+      <div class="tbl"><table id="dtTab"></table></div>
+      <div class="row noprint" style="margin-top:8px"><button class="btn ghost sm" id="dtAdd">+ Kişi</button><button class="btn ghost sm" id="dtCsv">CSV indir</button></div>
+      <div class="result" id="dtOut"></div>
+      <div class="msg" id="dtMsg" style="margin-top:8px;display:none"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s5"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 6 -->
+  <section class="ch" id="s6">
+    <h2>Topluluk Kurmak İçin Eylemler</h2><hr>
+    <p>Topluluk kurmak için atacağın adımlar ağ kurarken yapabileceklerine benzer; fark, etkileşimlerin ve ortaya çıkan ilişkilerin <em>derinliği</em> ve <em>niteliği</em>dir. Geniş ağınla başla, aynı ağ kurma etkinliklerini sürdür, ama seni motive eden, zorlayan, ilham veren ve büyüten kişilerle daha derin, nitelikli etkileşimlere ve gerçek bağlara öncelik ver. Topluluk kurmak karşılıklı yarar sağlayan ilişkiler geliştirmek, destek sunmak ve ortak hedeflere ulaşmak için ağından yararlanmaktır; bu yüzden bağ kurduğun kişilere sen de yardım edip değer katabileceğin fırsatları ara.</p>
+    <div class="grid" id="deepActs"></div>
+    <div class="story"><div class="h">İçe dönükler için ipucu</div>Çalışman hakkında geri bildirim istemek (ya da düşündüğün bir yöntem veya fikir hakkında birinin görüşünü sormak), ortak bir ilgi konusunda daha anlamlı bir diyalog başlatmanın harika bir yoludur ve gündelik sohbet uydurma baskısını ortadan kaldırır. Karşındakinin düşünmeye zamana ihtiyacı olduğundan sessizlik anları doğal ve beklenendir. Yanıtlarıyla tam olarak ilgilenmeyi unutma; takip soruları sor, kendi görüşlerini de paylaş. Amaç bir diyalog; karşındaki mülakatta sorguya çekiliyormuş gibi hissetmemeli.</div>
+
+    <div class="box">
+      <div class="lbl">Araç · İlişki takipçisi</div>
+      <p class="small">Yazarın ipucu: biriyle “tık” ettiğinde yeniden bağlantı zamanını <em>hemen</em> planla. Kişi ekle, bir sonraki eylemi ve tarihini seç; tarihi gelenler vurgulanır.</p>
+      <div class="tbl"><table id="rtTab"></table></div>
+      <div class="row noprint" style="margin-top:8px"><button class="btn ghost sm" id="rtAdd">+ Kişi</button><button class="btn ghost sm" id="rtCsv">CSV indir</button></div>
+      <div class="result" id="rtOut"></div>
+    </div>
+    <p>Ağındaki kişilerle etkileşimler sürüp ilişkiler derinleştikçe ortak ilgi, hedef ya da değerleri paylaştığın bir grup oluşmaya başlar ve birlikte bir aidiyet ve karşılıklı destek duygusu kurarsınız. Anlamlı ilişki kurmanın yolları sınırsız ve sana özgü; herkes ilişki ve güveni kendine özgü biçimlerde kurar. Kendi güçlü yönlerinin ve kişilik tarzının sana en uygun topluluk kurma yöntemlerini nasıl etkileyebileceğini düşünmeye zaman ayır: bazı içe dönükler takım ortamları yerine birebir etkileşimlerle daha güçlü ilişkiler kurar; başkalarının güçlü yönlerini ve başarılarını kutlamayı seviyorsan ağını başkalarının mükemmelliğini görünür kılmak etrafında kurabilirsin; ya da zamanını ve uzmanlığını başkalarına sunarak hem ilişki kurup hem çalışmana güven inşa edebilirsin.</p>
+    <div class="box">
+      <div class="lbl">Yansıtma · Bana uygun topluluk kurma yolları</div>
+      <textarea id="refl" placeholder="Güçlü yönlerim ve tarzım topluluk kurma biçimimi nasıl etkiliyor? (Adım 1'deki güçlü yönler tablona dönebilirsin.)"></textarea>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s6"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 7 -->
+  <section class="ch" id="s7">
+    <h2>Kendini Keşfet: Topluluk Kurma Becerilerin</h2><hr>
+    <div class="scale">
+      <div class="card"><div class="lv">1 · FARKINDA</div><div class="small">Beceride yenisin; kavramsal olarak bilsen de henüz kendin yapmadın.</div></div>
+      <div class="card"><div class="lv">2 · ÖĞRENEN</div><div class="small">Öğrenmeye yeni başladın ya da ayrıntılı yönergelere dayanıyorsun.</div></div>
+      <div class="card"><div class="lv">3 · YETKİN</div><div class="small">Bir ölçüde yeteneklisin ama bazı ya da ileri kısımlarda yardıma ihtiyaç duyuyorsun.</div></div>
+      <div class="card"><div class="lv">4 · UZMAN</div><div class="small">Zorlukları güvenle çözüyor, desteğe ihtiyaç duymuyor, kavramları sade anlatabiliyorsun.</div></div>
+      <div class="card"><div class="lv">5 · STRATEJİST</div><div class="small">Yeni biçimlerde uyguluyor, yeni yollar yaratıyor, başkalarına mentorluk yapabiliyorsun.</div></div>
+    </div>
+    <p class="small"><strong>Not:</strong> Kendini nereye koyduğun konusunda fazla kaygılanma; bunun “gerçek” bir puanı yok. Hedef düzeylerin zamanla ve farklı kariyer seçeneklerini düşündükçe değişebilir.</p>
+    <div class="sa"><table id="saTab"></table></div>
+    <div class="row noprint" style="margin-top:10px"><button class="btn ghost sm" id="saAdd">+ Satır ekle</button><button class="btn ghost" id="saCsv">CSV indir</button><button class="btn ghost" id="saPrint">Yazdır / PDF</button></div>
+    <div class="result" id="saSum"></div>
+    <label class="readmark"><input type="checkbox" data-read="s7"> Öz değerlendirmeyi tamamladım</label>
+  </section>
+
+  <!-- 8 -->
+  <section class="ch" id="s8">
+    <h2>Bonus: İnsan Analitiği Topluluğunda Kim Var?</h2><hr>
+    <p>Topluluğunda doğru ya da yeterli insan olup olmadığını nasıl anlarsın? Yanıtın sayıyla ilgisi yok; ihtiyaç duyduğun destek türü için ulaşabileceğin insanların olup olmadığıyla (ve senin de başkalarını destekleyip desteklemediğinle) ilgili. Her soru için yardım isteyeceğin en az bir kişinin adını yaz. Aynı kişiyi birden fazla soruya yazabilirsin, ama yanıtlarını olabildiğince çeşitlendirmeye ve mümkünse birden fazla kişi yazmaya çalış. Her soruya bir isim yazabiliyorsan harika bir başlangıç yapmışsın; isim yazamadığın sorular, topluluk kurma çabalarını odaklayabileceğin alanlar.</p>
+    <div class="meter"><div id="whoMeter"></div></div>
+    <div class="small ui" id="whoStat" style="font-weight:700"></div>
+    <div id="whoList"></div>
+    <h3>Ağ tek yönlü değildir</h3>
+    <p>Bu konulardan herhangi birinde başkaları için bir tavsiye ya da destek kaynağı mısın? Bu soruları kimler senin adınla yanıtlardı? Yazabiliyorsan listele. Kimse aklına gelmiyorsa ağındaki başkalarına yardım ve uzmanlık sunma zamanı gelmiş olabilir. Sana yardım edenleri ve senin yardım ettiklerini belirlemek, topluluğundan ne kadar alıp ne kadar verdiğini görmenin de harika bir yolu.</p>
+    <div class="box">
+      <div class="lbl">Bu soruları kimler benim adımla yanıtlar?</div>
+      <textarea id="whoMe" placeholder="İsimler ve hangi konularda (örn. Ayşe: görselleştirme geri bildirimi)"></textarea>
+      <div class="result" id="giveTake"></div>
+    </div>
+    <div class="row noprint"><button class="btn ghost" id="whoCsv">CSV indir</button><button class="btn ghost" id="whoPrint">Yazdır / PDF</button></div>
+    <label class="readmark"><input type="checkbox" data-read="s8"> Bu etkinliği tamamladım</label>
+  </section>
+
+  <!-- 9 -->
+  <section class="ch" id="s9">
+    <h2>Bonus: Veren, Alan, Denkleştiren?</h2><hr>
+    <p>Topluluk kurmayla ilgili bir başka değerli öz keşif etkinliği, topluluğundaki diğerleriyle verme, alma ve karşılıklılık eğilimlerinin farkına varmak. Veren, Alan ve Denkleştiren kavramı örgüt psikoloğu Adam Grant'in çalışmalarından gelir ve bireylerin ilişkilerde karşılıklılığa nasıl yaklaştığını tanımlar. Kendi eğilimlerini ya da istediğin etkileşim biçimini bilmek, topluluktaki diğerleriyle nasıl etkileşim kurmak istediğini daha iyi düşünmeni sağlar. Her türün (fazlasıyla) basitleştirilmiş tanımı:</p>
+    <div class="grid">
+      <div class="card"><div class="t">Verenler</div><div class="small">Başkalarına yardım etmeye ve topluluğa katkıya öncelik verir; bilgiyi kolayca paylaşır, mentorluk yapar, karşılık beklemeden fazladan çaba gösterir.</div></div>
+      <div class="card"><div class="t">Alanlar</div><div class="small">Kendi kazançlarını en üst düzeye çıkarmaya odaklanır; yardım ve kaynak isteyebilir ama nadiren karşılık verir; kendi başarı ve ilerlemelerini başkalarının ihtiyaçlarının önünde tutar.</div></div>
+      <div class="card"><div class="t">Denkleştirenler</div><div class="small">İlişkilerde denge arar; gerektiğinde yardım eder ve karşılığında aynısını bekler; etkileşimlerinde adalete ve karşılıklılığa değer verir.</div></div>
+    </div>
+    <p>Pek çok kişi bazı türlerin otomatik olarak “daha iyi” olduğunu varsayar; ama hepsinin artıları ve eksileri var. Verenler özgeci göründükleri için çoğu zaman “en iyi” sayılır, ama sınır koymadan sürekli vermek tükenmişliğe yol açıp kariyer ilerlemesini engelleyebilir. Denkleştirenler alma ile verme arasında denge olduğu için hoş bir “orta yol” gibi görünebilir, ama ilişkileri bir alışveriş gibi görmek kişisizleştirici olabilir ve algılanan dengesizlikten doğan kırgınlık ilişkilere zarar verebilir. Her zaman alan olmak, ilişkilere verdiği zarar nedeniyle mesleki gelişimini engeller; ama karşılığında bir şey veremesen bile ihtiyacın olduğunda yardım istemekten korkmamalısın. Hepimizin farklı durumlarda farklı ölçülerde bu yaklaşımların her birine doğal bir eğilimi var. Doğal eğilimini düşünmek topluluktaki etkileşimlerin hakkında bilinçli düşünmeni ve sana uyan sürdürülebilir bir verme–alma dengesi tasarlamanı sağlar.</p>
+    <div class="box">
+      <div class="lbl">Yansıtma · Kendine dürüstçe sor</div>
+      <p class="small">“Doğru” yanıt yok; bu yalnızca öz keşif. Aşağıdaki özet geçerliği sınanmış bir test değildir, yalnızca düşünmeyi kolaylaştırmak için yanıtlarını bir araya getirir.</p>
+      <div id="gtm"></div>
+      <div class="result" id="gtmOut"></div>
+    </div>
+    <div class="story"><div class="h">Yazarın gözünden insan analitiği topluluğu</div>
+      Yazar insan analitiği topluluğunu en iyi “yönlendirilmemiş bir denkleştirme topluluğu” olarak tanımlıyor. Birinin diğeriyle doğrudan “takas” yaptığı bir ilişki görmüyor; bunun yerine harika insanların zamanlarını, bilgilerini, heveslerini ve desteklerini karşılık beklemeden verdiklerini, sonra da aynı kişilerin topluluktan büyük destek ve savunuculuk gördüğünü görüyor. Bu genellikle hemen gelmiyor, ilk verilen kişilerden gelmiyor ve beklenenden farklı biçimde gelebiliyor; ama veren kişilere, özellikle sürekli verenlere dönen bir verme akışı var gibi. Geniş dünya böyle işlemeyebilir, ama yazarın insan analitiği topluluğundaki deneyimi bu ve sürekli veren, birbirini destekleyen bir topluluğun parçası olmayı çok özel buluyor.<br><br>
+      İnsan analitiği çalışmalarında yazar, karşılığında hemen somut bir şey almasan bile elinden geldiğince vermeni öneriyor; çünkü vermenin karşılıklılık dışında da faydaları var: başkalarına yardım etmek güven inşa eder, iyi niyet yaratır ve ağını genişletir. Üstelik başkalarına yardım etmek ve öğretmek bilgi ve uzmanlığını güçlendirip derinleştirmenin en iyi yollarından biri; insan analitiği becerilerini geliştirmenin harika bir yolu! <em>(Not: iyi oluşuna ya da kariyerine zarar verecek kadar çok verme; kendini bu durumda bulursan, yardım ve tavsiye isteme sırası sende.)</em>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s9"> Bu etkinliği tamamladım</label>
+  </section>
+
+  <!-- 10 -->
+  <section class="ch" id="s10">
+    <h2>Mini Test</h2><hr>
+    <div id="quiz"></div>
+    <p class="ui" id="score" style="font-weight:700;color:var(--navy)"></p>
+    <label class="readmark"><input type="checkbox" data-read="s10"> Testi tamamladım</label>
+  </section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><a class="pv" href="insan_analitigi_adim3_arastirma_teknoloji.html"><small>← Önceki</small><b>Adım 3: Araştırma ve teknoloji</b></a><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><a class="nx" href="insan_analitigi_adim4_etik.html"><small>Sonraki →</small><b>Adım 4: Etik kalmak</b></a></nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+const KEY="pa_adim4_buyuk_resim_v1";
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const dl=(name,rows)=>{const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';const b=new Blob(["﻿"+rows.map(r=>r.map(q).join(";")).join("\n")],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href)};
+const copy=v=>{(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast("Kopyalandı")).catch(()=>toast("Kopyalanamadı"))};
+function seg(sel,key,def,cb){st[key]=st[key]??def;const set=()=>$$(sel+" button").forEach(b=>{b.classList.toggle("on",b.dataset.v===String(st[key]));b.setAttribute("aria-pressed",b.dataset.v===String(st[key]))});$$(sel+" button").forEach(b=>b.onclick=()=>{st[key]=b.dataset.v;save();set();cb()});set()}
+const bind=(id,key,cb)=>{const el=$("#"+id);el.value=st[key]??el.value;el.oninput=()=>{st[key]=el.value;save();cb&&cb()}};
+const redraws=[];
+
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$("#theme").onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";st.theme=d.dataset.theme;save();redraws.forEach(f=>f())};
+st.read=st.read||{};const N=10;
+function prog(){const n=Object.values(st.read).filter(Boolean).length;$("#progbar").style.width=(n/N*100)+"%";$$("#nav a").forEach(a=>a.classList.toggle("done",!!st.read[a.dataset.s]))}
+$$("[data-read]").forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();if(cb.checked)toast("Bir bölüm daha tamam!")}});prog();
+
+// 1. dinleyiciye göre mesaj
+const AUD={
+ lead:"Konu: İlk yıl ayrılmasını yaklaşık yarıya indirme fırsatı\n\nAna bulgu: Kariyer görüşmesi yapılan yeni çalışanlarda ilk yıl ayrılma oranı %11, yapılmayanlarda %24.\n\nİş etkisi: Bu fark, yıllık işe alım ve uyum maliyetinde [X ₺] tasarruf ve kritik rollerde daha hızlı verimlilik anlamına gelebilir.\n\nÖneri: İlk 90 günde her yeni çalışana yöneticisiyle bir kariyer görüşmesi; iki birimde pilot, 6 ay sonra ayrılma oranıyla değerlendirme.\n\nKarar istediğim konu: Pilotun onayı ve yönetici zamanının ayrılması.\n\n(Yöntem ve veri ayrıntıları ektedir.)",
+ emp:"Geri bildirimleriniz için teşekkürler!\n\nGeçen yılki anket ve görüşmelerde pek çoğunuz kariyer yolunuzun belirsiz olduğunu söylediniz. Bunu ciddiye aldık ve verilere baktık: işe girişin ilk aylarında kariyer görüşmesi yapanlar şirkette daha uzun süre kalıyor ve gelişim fırsatlarını daha net görüyor.\n\nBu nedenle önümüzdeki dönemde yeni katılan arkadaşlarımız için yöneticileriyle düzenli kariyer görüşmeleri başlatıyoruz.\n\nVerileriniz nasıl kullanıldı? Analizler yalnızca toplu düzeyde yapıldı; hiçbir kişi ayrı ayrı değerlendirilmedi veya izlenmedi. Raporlarda küçük grupların tanınmasını önleyen eşikler uygulandı.\n\nSorularınızı ve önerilerinizi [kanal] üzerinden paylaşabilirsiniz.",
+ hr:"Konu: Kariyer görüşmeleri ve ilk yıl ayrılması: bulgular ve birlikte tasarım önerisi\n\nAna bulgu: İlk yıl ayrılması görüşme yapılan grupta %11, yapılmayan grupta %24 (n = [ ]; dönem: [ ]).\n\nYöntem ve veri: İK bilgi sistemi işe giriş/çıkış kayıtları + yönetici görüşme kayıtları; pozisyon düzeyi ve lokasyon kontrol edildi. Sınırlılık: görüşmeler rastgele atanmadı; motivasyonu yüksek yöneticiler daha çok görüşme yapıyor olabilir.\n\nBağlam: Sektör ilk yıl ayrılma kıyası [ ]; mevcut uyum programı metrikleri [ ].\n\nÖneri ve iş birliği: Görüşme rehberini, yönetici eğitimini ve pilot birimleri birlikte tasarlamak için bir atölye öneriyorum. Ayrıntılı panel bağlantısı: [ ].\n\nTakip analizi taleplerine açığım."};
+st.audTxt=st.audTxt||{};
+function aud(){$("#audMsg").value=st.audTxt[st.aud]??AUD[st.aud]}
+seg("#audSeg","aud","lead",aud);aud();
+$("#audMsg").oninput=()=>{st.audTxt[st.aud]=$("#audMsg").value;save()};
+$("#audCopy").onclick=()=>copy($("#audMsg").value);
+$("#audReset").onclick=()=>{delete st.audTxt[st.aud];save();aud()};
+
+// mesaj denetleyici
+function mc(){const t=$("#mcIn").value;const L=t.toLocaleLowerCase("tr-TR");const f=[];if(!t.trim()){$("#mcOut").innerHTML="";return}
+ const prob=/(düştü|azaldı|arttı|yükseldi|kötüleşti|sorun|kayıp|%)/.test(L);const sol=/(öner|tavsiye|yapmalıyız|başlat|pilot|eylem|çözüm|adım|planlıyoruz|karar)/.test(L);
+ if(prob&&!sol)f.push(["w","Sorun var ama öneri ya da eylem yok. Kitaba göre bu, geniş paylaşıma henüz hazır olmadığının işareti olabilir: önce güvendiğin meslektaşlarla açıklama ve öneri üzerinde çalış."]);
+ if(sol)f.push(["g","Bir öneri ya da eylem içeriyor."]);
+ const meth=(L.match(/regresyon|kohort|model|p\s*<|anlamlı|korelasyon|algoritma|analiz yaptık|denedik|varyans/g)||[]).length;
+ if(meth>=2)f.push(["w","Yöntem ayrıntısı fazla görünüyor. Bulguları paylaş, çalışmanı değil; ayrıntıyı ek ya da sonradan gönderilecek notlara taşı."]);
+ const wifm=/(sizin için|size|sizi|ekibiniz|çalışanlar için|tasarruf|kazanç|fayda|iyileş|daha az|daha hızlı)/.test(L);
+ f.push(wifm?["g","Dinleyiciye faydayı (WIFM) anlatıyor."]:["w","“Bunun bana ne faydası var?” sorusuna yanıt yok. Dinleyici, çalışanlar ya da kurum için faydayı ekle."]);
+ if(t.length>600)f.push(["w","Uzun bir mesaj; ana çıkarımı en başa koy."]);
+ $("#mcOut").innerHTML=f.map(x=>`<div class="flag ${x[0]}">${x[1]}</div>`).join("")}
+bind("mcIn","mcIn",mc);mc();
+
+// 2. kanal seçici
+function ch(){const a=st.chA,c=st.chC,g=st.chG;const pref=$("#chPref").checked;$("#chPrefT").style.display=pref?"":"none";
+ const base={lead:["Yönetici özeti","Kısa e-posta (ana bulgular ekte)","Etkili bir sunum: ana bulgular en başta, her slaytın başlığı ana çıkarım"],emp:["Kurum içi iletişim platformları","Şirket geneli ya da ekip toplantıları","E-posta","Görsel olarak etkileyici infografikler"],hr:["Etkileşimli gösterge panelleri","Ayrıntılı raporlar","Ortak çalışma atölyeleri","Toplantılar"]}[a];
+ const byGoal={self:"e-posta, gösterge paneli ya da rapor",dialog:"sunum, atölye ya da toplantı",collab:"toplantı ve atölye"}[g];
+ const byCx=c==="simple"?"Basit ve hassas olmayan, yanlış anlaşılma riski düşük bulgular e-posta, infografik ya da duyuru gönderileriyle eşzamansız ve verimli biçimde paylaşılabilir.":"Karmaşık bulgular, hassas veriler ya da insanları etkileyen eylemler için daha ayrıntılı bilgi sunan rapor ya da etkileşimli panel ve soru yanıtlayıp geri bildirim alabileceğin iyi yapılandırılmış bir sunum ya da toplantı genellikle daha iyidir.";
+ let extra="";if(a==="emp")extra=`<div class="flag w">Çok sayıda kişiye ya da hassas konularda (çoğu insan analitiği konusu hassastır) mesaj veriyorsan İK, Kurumsal İletişim ve gerekirse Hukuk biriminden birini sürece dahil et.</div>`;
+ if(a==="hr")extra=`<div class="flag g">Soruları yanıtlamak için ulaşılabilir ol; takip analizi talepleri gelirse şaşırma. İK genellikle bilgiyi liderlere ve çalışanlara çevirmek ya da harekete geçmek için ister.</div>`;
+ $("#chOut").innerHTML=(pref?`<div class="flag g"><strong>İlk tercih:</strong> ${esc($("#chPrefT").value||"dinleyicinin tercih ettiği kanal")}. İnsanlarla rahat ettikleri kanallarda buluşmak onları sana daha açık kılar.</div>`:"")+
+ `<div class="ui" style="font-weight:800;margin-top:4px">Bu dinleyici için tipik kanallar</div><ul style="margin:.3em 0">${base.map(b=>`<li>${b}</li>`).join("")}</ul><div class="small"><strong>Hedefine göre:</strong> ${byGoal}.<br><strong>Mesajın karmaşıklığına göre:</strong> ${byCx}</div>${extra}`}
+seg("#chAud","chA","lead",ch);seg("#chCx","chC","simple",ch);seg("#chGoal","chG","self",ch);
+$("#chPref").checked=!!st.chP;$("#chPref").onchange=()=>{st.chP=$("#chPref").checked;save();ch()};bind("chPrefT","chPT",ch);ch();
+
+// 3. güven üçgeni
+function tri(){const v=[1,2,3].map(i=>+$("#t"+i).value);v.forEach((x,i)=>$("#t"+(i+1)+"v").textContent=x);st.tri=v;save();
+ const cx=150,cy=140,R=100;const ang=[-90,30,150].map(a=>a*Math.PI/180);const P=(i,r)=>[cx+Math.cos(ang[i])*r,cy+Math.sin(ang[i])*r];
+ let g="";[1,2,3,4,5].forEach(l=>g+=`<polygon points="${[0,1,2].map(i=>P(i,R*l/5).join(",")).join(" ")}" fill="none" stroke="${css("--line")}"/>`);
+ const mn=Math.min(...v);g+=`<polygon points="${v.map((x,i)=>P(i,R*x/5).join(",")).join(" ")}" fill="${css("--navy2")}" fill-opacity=".22" stroke="${css("--navy2")}" stroke-width="2"/>`;
+ const lb=["Sana","Uzmanlığına","Analitiğe"];v.forEach((x,i)=>{const[px,py]=P(i,R*x/5);g+=`<circle cx="${px}" cy="${py}" r="6" fill="${x===mn?css("--warn"):css("--navy2")}"/>`;const[lx,ly]=P(i,R+22);g+=`<text x="${lx}" y="${ly+4}" font-size="12" font-weight="800" text-anchor="middle" fill="${x===mn?css("--warn"):css("--ink")}">${lb[i]} (${x})</text>`});
+ $("#triSvg").innerHTML="<title>Üç güven türü</title>"+g;
+ const tips=["<strong>Kişi olarak güven:</strong> dürüst, şeffaf ve tutarlı davran; sözünü tut; insanları sürece erkenden dahil et.","<strong>Uzmanlığına güven:</strong> yöntemlerinin sağlam, yorumlarının adil olduğunu göster; bulguları net ilet; gerektiğinde konu uzmanlarıyla birlikte çalış.","<strong>Analitiğe güven:</strong> kaynaklar, yöntemler ve sınırlılıklar konusunda şeffaf ol; kesinliği abartma; veri yönetişimini, etik uygulamaları ve verinin nasıl toplanıp doğrulandığını açıkla."];
+ const weak=v.map((x,i)=>x===mn?i:-1).filter(i=>i>=0);
+ $("#triOut").innerHTML=`<div class="ui" style="font-weight:800">En zayıf halka: ${weak.map(i=>lb[i]).join(", ")} (${mn}/5)</div>${weak.map(i=>`<div class="small" style="margin-top:4px">${tips[i]}</div>`).join("")}${mn>=4?'<div class="small ok" style="margin-top:4px">Üç güven türü de güçlü görünüyor. Güven kazanıldığından hızlı kaybedilebilir; sürdürmek için emek vermeye devam et.</div>':""}`}
+(st.tri||[]).forEach((x,i)=>$("#t"+(i+1)).value=x);[1,2,3].forEach(i=>$("#t"+i).oninput=tri);tri();redraws.push(tri);
+
+// 4. ağ kurma eylemleri
+const NA=[["Ortak öğrenme deneyimlerine katıl","Başkalarıyla birlikte kurslara ya da atölyelere katıl. Eşzamansız öğrenmenin pek çok yolu var, ama hem öğrenip hem topluluk kurmak istiyorsan canlı ve başkalarıyla birlikte yapılan bir şeye kaydol. Bu ortamlarda kendini geliştirme isteğini ve ilgi konunu paylaşan insanlar bulursun; konuşacak bir şeyin de hazır olur: kurs, oturum ya da konu derin bir tartışma için zemin sağlar."],
+ ["Sektör konferanslarına ve etkinliklerine katıl","Yaklaşan insan analitiği etkinliklerini ara ve kaydol; yüz yüze ve çevrim içi ne kadar düzenli etkinlik olduğuna şaşıracaksın. Bulamazsan bir buluşma ya da etkinlik düzenleyip bölgendeki insanları davet etmeyi düşün: eğilimleri öğrenmenin, bilgini paylaşmanın ve mesleki çevreni genişletmenin harika bir yolu."],
+ ["Uzmanlığını gönüllü olarak sun","Becerilerini kurumunun içinde ya da dışında gönüllü olarak paylaş; açık kaynak projelere katkı ver ya da ücretsiz danışmanlık/staj sun. Bu hem beceri gelişimine katkı sağlar hem de becerilerini yeni bağlamlarda uygularken benzer düşünen kişilerle değerli bağlar kurmanı sağlar."],
+ ["Çevrim içi bağlan","Çevrim içi topluluklara katıl. İnternet çok çeşitli insanlarla tanışma ve rahat ettiğin kadar etkileşimli ve yakın (ya da değil!) olma fırsatı sunar. Çevrim içi topluluk kurmak bağlantı ya da beğeni sayısıyla ilgili değil ve tek bir etkileşim biçimi yok: pek çok kişi X (Twitter) ya da Bluesky'da yorumlarda açık diyalog ve tartışmaya girer, ama daha anonim kalmayı tercih etmen de sorun değil; ilham veren bir paylaşım görürsen kişiye özel mesajla teşekkür edebilir, bir forumda yardım isteyen birine herkese açık yanıt vermek yerine birebir konuşmaya hazır olduğunu söyleyebilirsin. İçgörülü sorular sor, uzmanlığını paylaş, ilgili kişi ve kurumları takip et. LinkedIn, insan analitiği sohbetleriyle ilgilenen mevcut grupları bulmak için harika bir kaynak."],
+ ["Başkalarıyla paylaşacağın içerik üret","Düşüncelerini ve fikirlerini çevrim içi paylaşarak benzer ilgileri olanları kendine çekebilirsin: blog yazıları, makaleler, kitaplar, vaka çalışmaları, podcast'ler, webinarlar, konferans sunumları, haber röportajları, araştırma çalışmaları, çalışma portfolyon ya da aklına gelen başka bir şey. Dışarı çık, bilgini paylaş ve insanlara sana nasıl ulaşabileceklerini söyle."]];
+st.na=st.na||{};
+function na(){$("#netActs").innerHTML=NA.map((a,i)=>{const s=st.na[i]||{};return `<div class="card" style="margin:10px 0;${s.done?"border-left:4px solid var(--ok)":""}"><div class="t">${i+1}. ${a[0]}</div><div class="small">${a[1]}</div><div class="row" style="margin-top:8px"><input type="text" data-nap="${i}" value="${esc(s.p||"")}" placeholder="Bir sonraki adımım" style="flex:1;min-width:180px"><label class="small"><input type="checkbox" data-nad="${i}" ${s.done?"checked":""} style="accent-color:var(--ok)"> Yaptım</label></div></div>`}).join("")+`<div class="small ui" style="font-weight:700">${NA.filter((_,i)=>(st.na[i]||{}).done).length}/${NA.length} eylem yapıldı</div>`;
+ $$("[data-nap]").forEach(i=>i.oninput=()=>{const k=i.dataset.nap;st.na[k]=st.na[k]||{};st.na[k].p=i.value;save()});$$("[data-nad]").forEach(c=>c.onchange=()=>{const k=c.dataset.nad;st.na[k]=st.na[k]||{};st.na[k].done=c.checked;save();na()})}
+na();
+
+// 5. rüya takım
+const DEPTS=["İK","İş stratejisi","Hukuk","Veri bilimi","Veri mühendisliği","BT","Uyum","Güvenlik","Finans","Çalışan temsilcisi","Diğer"];
+const ROLES={tm:["Takım üyesi","işin parçası olacak ve hedefleri paylaşan"],me:["Mentor","dönemsel rehberlik sağlayan uzman"],ad:["Danışman","kilit konuların gözden kaçmamasını sağlayan uzman (örn. hukuk, uyum)"],al:["Müttefik","fikirler için yankı duvarı olan ve sonuçları erken benimseyen tutkulu destekçi"]};
+const LH=["Düşük","Orta","Yüksek"];
+st.dt=st.dt||[{n:"",d:"İK",sk:2,tm:2,ps:2,r:""},{n:"",d:"Hukuk",sk:2,tm:0,ps:0,r:""},{n:"",d:"Çalışan temsilcisi",sk:0,tm:2,ps:2,r:""}];
+const sugg=p=>p.sk>=1&&p.tm>=1&&p.ps>=1?"tm":p.sk===2&&p.tm===0&&p.ps>=1?"me":p.sk>=1&&(p.tm===0||p.ps===0)?(["Hukuk","Uyum","Güvenlik"].includes(p.d)?"ad":p.ps>=1?"me":"ad"):p.ps>=1&&p.tm>=1?"al":"al";
+function dt(){const sel=(k,v,i)=>`<select data-dtf="${k}" data-i="${i}">${LH.map((l,j)=>`<option value="${j}" ${v===j?"selected":""}>${l}</option>`).join("")}</select>`;
+ $("#dtTab").innerHTML=`<tr><th>Ad</th><th>Birim</th><th>Beceri</th><th>Zaman</th><th>Tutku</th><th>Rol</th><th></th></tr>`+st.dt.map((p,i)=>{const s=sugg(p);const r=p.r||s;return `<tr><td><input type="text" data-dtn="${i}" value="${esc(p.n)}" placeholder="Ad"></td><td><select data-dtd="${i}">${DEPTS.map(d=>`<option ${p.d===d?"selected":""}>${d}</option>`).join("")}</select></td><td>${sel("sk",p.sk,i)}</td><td>${sel("tm",p.tm,i)}</td><td>${sel("ps",p.ps,i)}</td><td><select data-dtr="${i}">${Object.entries(ROLES).map(([k,v])=>`<option value="${k}" ${r===k?"selected":""}>${v[0]}${k===s?" (önerilen)":""}</option>`).join("")}</select></td><td><button class="btn ghost sm" data-dtx="${i}" aria-label="Sil">×</button></td></tr>`}).join("");
+ $$("[data-dtn]").forEach(e=>e.oninput=()=>{st.dt[e.dataset.dtn].n=e.value;save();dtSum()});
+ $$("[data-dtd]").forEach(e=>e.onchange=()=>{st.dt[e.dataset.dtd].d=e.value;save();dt()});
+ $$("[data-dtf]").forEach(e=>e.onchange=()=>{st.dt[e.dataset.i][e.dataset.dtf]=+e.value;st.dt[e.dataset.i].r="";save();dt()});
+ $$("[data-dtr]").forEach(e=>e.onchange=()=>{st.dt[e.dataset.dtr].r=e.value;save();dtSum()});
+ $$("[data-dtx]").forEach(b=>b.onclick=()=>{st.dt.splice(+b.dataset.dtx,1);save();dt()});dtSum()}
+function dtSum(){const c={tm:0,me:0,ad:0,al:0};st.dt.forEach(p=>c[p.r||sugg(p)]++);const ds=new Set(st.dt.map(p=>p.d));
+ const miss=["İK","Hukuk","Veri bilimi","BT"].filter(d=>!ds.has(d));
+ $("#dtOut").innerHTML=`<div class="ui" style="font-weight:800">${Object.entries(c).map(([k,v])=>`${ROLES[k][0]}: ${v}`).join(" · ")}</div><div class="small">${ds.size} farklı birim.${miss.length?` Eksik olabilecek bakış açıları: ${miss.join(", ")}.`:""} ${c.tm===0?"Henüz çekirdek takım üyesi yok.":""}</div>`;
+ const named=st.dt.filter(p=>p.n.trim());if(!named.length){$("#dtMsg").style.display="none";return}
+ const p=named[0];const r=ROLES[p.r||sugg(p)];$("#dtMsg").style.display="block";
+ $("#dtMsg").textContent=`Merhaba ${p.n},\n\n${st.dtProj||"[proje]"} üzerinde çalışıyorum ve ${p.d} bakış açınızın çok değerli olacağını düşünüyorum. Sizden ${r[0].toLocaleLowerCase("tr-TR")} olarak, yani ${r[1]} biri olarak destek rica ediyorum.${p.r==="me"||sugg(p)==="me"&&!p.r?" Bu yalnızca birkaç haftada bir kısa geri bildirim anlamına geliyor.":""}${(p.r||sugg(p))==="ad"?" Sizden yalnızca önemli bir şeyi gözden kaçırmamamız için kilit noktalarda görüş almak istiyorum.":""}\n\nUygunsanız kısa bir görüşme ayarlayabilir miyiz?`}
+bind("dtProj","dtProj",dtSum);
+$("#dtAdd").onclick=()=>{st.dt.push({n:"",d:"Diğer",sk:1,tm:1,ps:1,r:""});save();dt()};
+$("#dtCsv").onclick=()=>dl("ruya_takim.csv",[["Ad","Birim","Beceri","Zaman","Tutku","Rol"]].concat(st.dt.map(p=>[p.n,p.d,LH[p.sk],LH[p.tm],LH[p.ps],ROLES[p.r||sugg(p)][0]])));
+dt();
+
+// 6. derinleştirme eylemleri
+const DA=[["Tekrarla","Geçmişte başarılı iş birliği yaptığın kişilerle çalışmayı sürdürecek fırsatlar bul."],["Kutla","Başarılı bir projenin sonunda ekibi kutlama için yeniden bir araya getir; bağları pekiştirir ve bir kez daha etkileşim fırsatı verir. Gelecekte birlikte daha fazla iş yapma fırsatlarını da konuş."],["Yeniden bağlan","Bir konferansta, eğitimde, toplantıda ya da tutkulu bir diyalog yaşadığın başka bir etkinlikte tanıştığın kişilerle yeniden bağlanmak için zaman planla. İpucu: “tık” ettiğin biriyle tanıştığın anda <em>hemen</em> planla."],["Mentorluk","Mentorluk iste ya da başkalarına mentor ol."],["Geri bildirim","Geri bildirim iste ya da başkalarının işine geri bildirim vermeyi teklif et."],["Destekle","Hayran olduğun kişilerin işlerini takip et, sürekli ilgilen ve destekle."],["Yanıtla","Başkaları seninle çevrim içi etkileşime girdiğinde yanıt vermeyi unutma."]];
+$("#deepActs").innerHTML=DA.map(a=>`<div class="card"><div class="t">${a[0]}</div><div class="small">${a[1]}</div></div>`).join("");
+st.rt=st.rt||[{n:"",w:"",a:"Yeniden bağlan",d:""}];
+const today=()=>new Date().toISOString().slice(0,10);
+function rt(){$("#rtTab").innerHTML=`<tr><th>Kişi</th><th>Nerede tanıştık / ortak ilgi</th><th>Sonraki eylem</th><th style="width:150px">Tarih</th><th></th></tr>`+st.rt.map((r,i)=>`<tr><td><input type="text" data-rtf="n" data-i="${i}" value="${esc(r.n)}"></td><td><input type="text" data-rtf="w" data-i="${i}" value="${esc(r.w)}"></td><td><select data-rtf="a" data-i="${i}">${DA.map(a=>`<option ${r.a===a[0]?"selected":""}>${a[0]}</option>`).join("")}</select></td><td><input type="date" data-rtf="d" data-i="${i}" value="${esc(r.d)}">${r.d&&r.d<=today()?' <span class="tag due">zamanı geldi</span>':""}</td><td><button class="btn ghost sm" data-rtx="${i}" aria-label="Sil">×</button></td></tr>`).join("");
+ $$("[data-rtf]").forEach(e=>{const ev=e.tagName==="SELECT"||e.type==="date"?"onchange":"oninput";e[ev]=()=>{st.rt[e.dataset.i][e.dataset.rtf]=e.value;save();if(ev==="onchange")rt();else rtSum()}});
+ $$("[data-rtx]").forEach(b=>b.onclick=()=>{st.rt.splice(+b.dataset.rtx,1);save();rt()});rtSum()}
+function rtSum(){const named=st.rt.filter(r=>r.n.trim());const due=named.filter(r=>r.d&&r.d<=today());const nod=named.filter(r=>!r.d);
+ $("#rtOut").innerHTML=`<strong class="ui">${named.length} kişi · ${due.length} eylemin zamanı geldi.</strong>${nod.length?` <span class="small">${nod.length} kişi için tarih yok; yazarın ipucuna göre hemen planla.</span>`:""}`}
+$("#rtAdd").onclick=()=>{st.rt.push({n:"",w:"",a:"Yeniden bağlan",d:""});save();rt()};
+$("#rtCsv").onclick=()=>dl("iliski_takipcisi.csv",[["Kişi","Nerede / ortak ilgi","Sonraki eylem","Tarih"]].concat(st.rt.map(r=>[r.n,r.w,r.a,r.d])));
+rt();bind("refl","refl");
+
+// 7. öz değerlendirme
+const LV=["Farkında","Öğrenen","Yetkin","Uzman","Stratejist"];
+const SK=[["Güven inşası","Bireyler ve gruplarla güven kurar ve sürdürür. Dürüst, şeffaf ve tutarlı davranır. Uzmanlık ve yetkinlik gösterir. Çalışmanın titiz, etik ve açık biçimde iletilmesini sağlar. Kaynaklar, yöntemler ve sınırlılıklar konusunda şeffaf olarak veriye güven inşa eder."],
+ ["İş birliğine dayalı ekip çalışması","İş birliği fırsatları arar. Ortak hedefler doğrultusunda başkalarıyla etkili çalışır. Farklı bakış açılarını aktif olarak arar, açık ve saygılı iletişim kurar, çatışmaları yapıcı biçimde yönetir, hem sürecin hem sonuçların sahipliğini paylaşır. Ortak emeğin bireysel katkıların toplamını aştığı bir sinerji yaratır."],
+ ["Ağ kurma","Mesleki bağlantılardan oluşan bir ağ kurar ve genişletir. İlgi alanlarını paylaşan, tamamlayıcı becerilere sahip ya da değerli bakış açıları sunan kişileri belirleyip bağ kurar. Anlamlı sohbetlere girer, sektör etkinliklerine katılır, çevrim içi topluluklarda yer alır ve iş birliği fırsatları arar."],
+ ["İlişkileri besleme","Ağdaki kişilerle bağları geliştirir ve derinleştirir. Karşılıklı yarar sağlayan ilişkiler kurar, destek ve uzmanlık sunar, aktif dinler, anlamlı diyaloğa girer ve ortak hedeflere yönelik iş birliği yolları bulur. Farklı bakış açılarını ve katkıları tanır ve değer verir."]];
+st.sa=st.sa||{cur:{},des:{},cust:[{n:"",d:""},{n:"",d:""}]};
+const opts=v=>'<option value="">—</option>'+LV.map((l,i)=>`<option value="${i+1}" ${+v===i+1?"selected":""}>${i+1} · ${l}</option>`).join("");
+const gapTag=(c,d)=>!c||!d?"":d>c?`<span class="gap">+${d-c} düzey hedef</span>`:`<span class="met">hedefe ulaşıldı</span>`;
+function saR(){$("#saTab").innerHTML=`<tr><th>Beceri</th><th>Açıklama</th><th style="width:150px">Bugünkü düzey</th><th style="width:150px">Hedef düzey</th></tr>`+
+ SK.map((s,i)=>`<tr><td class="sk">${s[0]}</td><td>${s[1]}</td><td><select data-c="${i}" aria-label="${esc(s[0])} bugünkü">${opts(st.sa.cur[i])}</select></td><td><select data-d="${i}" aria-label="${esc(s[0])} hedef">${opts(st.sa.des[i])}</select>${gapTag(st.sa.cur[i],st.sa.des[i])}</td></tr>`).join("")+
+ st.sa.cust.map((c,i)=>{const k="c"+i;return `<tr class="custom"><td><input type="text" data-cn="${i}" value="${esc(c.n)}" placeholder="Ek beceri"></td><td><input type="text" data-cd="${i}" value="${esc(c.d)}" placeholder="Açıklama"></td><td><select data-c="${k}">${opts(st.sa.cur[k])}</select></td><td><select data-d="${k}">${opts(st.sa.des[k])}</select>${gapTag(st.sa.cur[k],st.sa.des[k])}</td></tr>`}).join("");
+ $$("#saTab [data-c]").forEach(s=>s.onchange=()=>{st.sa.cur[s.dataset.c]=s.value?+s.value:undefined;save();saR()});
+ $$("#saTab [data-d]").forEach(s=>s.onchange=()=>{st.sa.des[s.dataset.d]=s.value?+s.value:undefined;save();saR()});
+ $$("[data-cn]").forEach(i=>i.onchange=()=>{st.sa.cust[i.dataset.cn].n=i.value;save();saSum()});$$("[data-cd]").forEach(i=>i.onchange=()=>{st.sa.cust[i.dataset.cd].d=i.value;save()});saSum()}
+const allSa=()=>SK.map((s,i)=>[s[0],s[1],i]).concat(st.sa.cust.map((c,i)=>[c.n,c.d,"c"+i]).filter(x=>x[0].trim()));
+function saSum(){const a=allSa();const r=a.filter(x=>st.sa.cur[x[2]]);const gaps=a.filter(x=>st.sa.cur[x[2]]&&st.sa.des[x[2]]>st.sa.cur[x[2]]).sort((x,y)=>(st.sa.des[y[2]]-st.sa.cur[y[2]])-(st.sa.des[x[2]]-st.sa.cur[x[2]]));
+ $("#saSum").innerHTML=`<strong class="ui">${r.length}/${a.length} beceri değerlendirildi.</strong> `+(gaps.length?`En büyük açıklar: ${gaps.slice(0,3).map(x=>`${esc(x[0])} (${LV[st.sa.cur[x[2]]-1]} → ${LV[st.sa.des[x[2]]-1]})`).join("; ")}.`:"Hedef düzeyleri işaretledikçe açıklar burada görünecek.")}
+$("#saAdd").onclick=()=>{st.sa.cust.push({n:"",d:""});save();saR()};
+$("#saCsv").onclick=()=>dl("topluluk_kurma_oz_degerlendirme.csv",[["Beceri","Açıklama","Bugünkü düzey","Hedef düzey"]].concat(allSa().map(x=>[x[0],x[1],st.sa.cur[x[2]]?LV[st.sa.cur[x[2]]-1]:"",st.sa.des[x[2]]?LV[st.sa.des[x[2]]-1]:""])));
+$("#saPrint").onclick=()=>window.print();
+saR();
+
+// 8. kim var
+const WQ=["Analizlerinin doğru yapılıp yapılmadığını kontrol edecek birine ihtiyacın varsa?","Belirli bir veri seti, sorun türü ya da soru için hangi analiz tekniklerinin en iyi olduğunu öğrenmek istiyorsan?","Bir veri görselleştirmesi, sunum, yazılı rapor ya da iş önerisi için geri bildirim istiyorsan?","Veri mahremiyetini ve güvenliğini anlaman gerekiyorsa?","Kariyerin ya da işte zor bir konuşmayı nasıl yapacağın konusunda tavsiye istiyorsan?","Başkalarını insan analitiği bulgularına göre harekete geçmeye ikna etmek için yardıma ihtiyacın varsa?","Çalışmanla nasıl değer yaratabileceğine dair yeni fikirlere ihtiyacın varsa?","İnsan analitiği konusunda enerji ya da ilham bulmak istiyorsan?"];
+st.who=st.who||{};
+function who(){$("#whoList").innerHTML=WQ.map((q,i)=>{const v=(st.who[i]||"").trim();return `<div class="who ${v?"has":"miss"}"><div style="font-size:15px">${q}</div><input type="text" data-wq="${i}" value="${esc(st.who[i]||"")}" placeholder="İsim(ler), virgülle ayır"></div>`}).join("");
+ $$("[data-wq]").forEach(e=>e.oninput=()=>{st.who[e.dataset.wq]=e.value;save();whoStat();e.closest(".who").className="who "+(e.value.trim()?"has":"miss")});whoStat()}
+const names=s=>(s||"").split(/[,;]/).map(x=>x.trim()).filter(Boolean);
+function whoStat(){const filled=WQ.filter((_,i)=>names(st.who[i]).length).length;$("#whoMeter").style.width=filled/WQ.length*100+"%";
+ const all={};WQ.forEach((_,i)=>names(st.who[i]).forEach(n=>{const k=n.toLocaleLowerCase("tr-TR");all[k]=all[k]||{n,c:0};all[k].c++}));const ppl=Object.values(all).sort((a,b)=>b.c-a.c);
+ const multi=WQ.filter((_,i)=>names(st.who[i]).length>1).length;
+ const miss=WQ.map((q,i)=>names(st.who[i]).length?null:i+1).filter(Boolean);
+ $("#whoStat").innerHTML=`${filled}/${WQ.length} soruda en az bir isim · ${ppl.length} farklı kişi · ${multi} soruda birden fazla kişi`+(ppl.length&&ppl[0].c>=4?`<div class="small" style="font-weight:600;margin-top:4px">${esc(ppl[0].n)} ${ppl[0].c} soruda geçiyor; tek bir kişiye çok bağımlı olabilirsin, yanıtlarını çeşitlendirmeyi dene.</div>`:"")+(miss.length&&filled?`<div class="small" style="font-weight:600;margin-top:4px">Odaklanabileceğin alanlar: ${miss.map(n=>n+". soru").join(", ")}</div>`:"")+(filled===WQ.length?'<div class="small ok" style="font-weight:700;margin-top:4px">Her soruya bir isim yazabildin: harika bir başlangıç!</div>':"");giveTake()}
+function giveTake(){const give=names(($("#whoMe").value||"").replace(/\n/g,",")).length;const take=new Set(WQ.flatMap((_,i)=>names(st.who[i]).map(n=>n.toLocaleLowerCase("tr-TR")))).size;
+ $("#giveTake").innerHTML=!give&&!take?'<span class="small">Her iki listeyi doldurdukça topluluğundan ne kadar alıp ne kadar verdiğine dair kaba bir resim görünecek.</span>':`<strong class="ui">Yardım aldığın kişi: ${take} · Sana danışan kişi: ${give}</strong><div class="small">${give===0?"Kimse aklına gelmiyorsa, ağındaki başkalarına yardım ve uzmanlık sunma zamanı gelmiş olabilir.":give<take/2?"Aldığın destek verdiğinden belirgin biçimde fazla görünüyor; karşılık veremesen de yardım istemekten çekinme, ama sunabileceğin uzmanlığı da düşün.":"Verme ve alma arasında bir akış var gibi görünüyor."}</div>`}
+who();bind("whoMe","whoMe",giveTake);giveTake();
+$("#whoCsv").onclick=()=>dl("toplulugumda_kim_var.csv",[["Soru","İsimler"]].concat(WQ.map((q,i)=>[q,st.who[i]||""])).concat([["Bana danışanlar",st.whoMe||""]]));
+$("#whoPrint").onclick=()=>window.print();
+
+// 9. veren / alan / denkleştiren
+const GQ=[["Bilgi ve kaynaklarımı meslektaşlarımla kolayca paylaşırım.",{g:1}],["İhtiyacım olduğunda başkalarından yardım istemekte rahatım.",{h:1}],["Başkaları için yaptıklarımın ve başkalarının benim için yaptıklarının hesabını tutarım.",{m:1}],["Başkalarının başarılı olmasına yardım etmekten gerçekten keyif alırım.",{g:1}],["Yardımıma karşılık verilmediğinde kırgınlık hissederim.",{m:1}]];
+const LK=["Hiç","Nadiren","Bazen","Sıklıkla","Her zaman"];
+st.gt=st.gt||{};
+function gtm(){$("#gtm").innerHTML=GQ.map((q,i)=>`<div class="lk"><span>${q[0]}</span><div class="seg" role="group">${LK.map((l,j)=>`<button data-gq="${i}" data-v="${j}" class="${st.gt[i]===j?"on":""}">${l}</button>`).join("")}</div></div>`).join("");
+ $$("[data-gq]").forEach(b=>b.onclick=()=>{st.gt[b.dataset.gq]=+b.dataset.v;save();gtm()});
+ const n=Object.keys(st.gt).length;if(n<GQ.length){$("#gtmOut").innerHTML=`<span class="small">${n}/${GQ.length} soru yanıtlandı.</span>`;return}
+ const give=(st.gt[0]+st.gt[3])/2,match=(st.gt[2]+st.gt[4])/2,ask=st.gt[1];const notes=[];
+ if(give>=3)notes.push("<strong>Verme eğilimin güçlü görünüyor.</strong> Bu güven ve iyi niyet yaratır; ama sınır koymadan sürekli vermenin tükenmişliğe yol açıp kariyer ilerlemeni engelleyebileceğini unutma.");
+ if(match>=2.5)notes.push("<strong>Denkleştirme eğilimin belirgin.</strong> Adalete değer veriyorsun; ilişkileri bir alışverişe dönüştürmenin kişisizleştirebileceğine ve algılanan dengesizlikten doğan kırgınlığın ilişkilere zarar verebileceğine dikkat et. Yazarın gözlediği “yönlendirilmemiş” karşılıklılık, verdiğinin çoğu zaman başka zaman ve başka kişilerden döndüğünü söylüyor.");
+ if(ask<=1)notes.push("<strong>Yardım istemek sana zor geliyor olabilir.</strong> Yazar, karşılığında bir şey veremesen bile ihtiyacın olduğunda yardım istemekten korkmamanı öneriyor; özellikle çok verip yorulduğunda yardım isteme sırası sende.");
+ if(give<2&&ask>=3)notes.push("<strong>Alma tarafın veremeye göre ağır basıyor olabilir.</strong> Her zaman alan olmak ilişkilere zarar vererek mesleki gelişimi engeller; elinden geldiğince vermeyi, örneğin bildiğin bir konuda birine yardım etmeyi dene. Öğretmek kendi uzmanlığını da derinleştirir.");
+ if(!notes.length)notes.push("Yanıtların dengeli bir karışım gösteriyor. Hepimizin farklı durumlarda farklı ölçülerde her yaklaşıma doğal bir eğilimi var.");
+ $("#gtmOut").innerHTML=notes.map(x=>`<p style="margin:.3em 0">${x}</p>`).join("")+'<p class="small" style="margin:.3em 0 0">Hiçbir tür otomatik olarak “daha iyi” değil; amaç sana uyan sürdürülebilir bir verme ve alma dengesi tasarlamak.</p>'}
+gtm();
+
+// 10. test
+const Q=[
+ {q:"Yazara göre etkili insan analitiği neyle ilgilidir?",o:["Analizin karmaşıklığıyla","İçgörülerin nasıl kullanıldığıyla","Rapor sayısıyla","Araçların gelişmişliğiyle"],a:1,e:"Bulguların duyulacak ve başarıya konumlanacak biçimde iletilmesi sana kalıyor."},
+ {q:"Geniş bir çalışan grubuyla paylaşırken neye öncelik verilmeli?",o:["Yatırım getirisine","Şeffaflık, saygı ve bilginin onlarla ilgisine","Yöntemsel ayrıntılara","Rakip kıyaslarına"],a:1,e:"Verinin bireyleri izlemek için değil kurumu iyileştirmek için kullanıldığını vurgula ve koruma adımlarını anlat."},
+ {q:"Paylaşacağın tek şey “Verimlilik %32 düştü” ise…",o:["Hemen herkese duyur","Muhtemelen yeterince analiz yapmadın; önce güvendiğin kişilerle açıklama ve öneri üzerinde çalış","Yalnızca liderlere gönder","Grafiğe dönüştür, yeter"],a:1,e:"Sorun değil, eyleme dönük içgörü paylaş."},
+ {q:"WIFM ne anlama gelir?",o:["İşgücü bilgi yönetimi modeli","“Bunun bana ne faydası var?”","Haftalık içgörü formatı","İK metrik standardı"],a:1,e:"Birlikte çalıştığın herkesin aklındaki soru."},
+ {q:"İş liderlerine sunumda kitabın önerisi hangisi?",o:["Ana bulguları en sona saklamak","Ana bulguları en başa koymak ve her slaytın başlığını ana çıkarım yapmak","Tüm analizleri tek tek göstermek","Yalnızca tablo kullanmak"],a:1,e:"Yönetici özetleri, kısa e-postalar ya da etkili sunumlar."},
+ {q:"Hedefin ortak eylemse hangi kanal önerilir?",o:["E-posta","Gösterge paneli","Toplantı ve atölye","İnfografik"],a:2,e:"Kendi başına inceleme için e-posta/panel/rapor; diyalog için sunum/atölye/toplantı."},
+ {q:"İnsan analitiğinde başarı için hangi güven türleri gerekir?",o:["Yalnızca kişisel güven","Yalnızca veriye güven","Kişiye, uzmanlığa ve analitiğin kendisine güvenin üçü","Hiçbiri; veri kendini anlatır"],a:2,e:"Kişisel güvenilirlik önemli ama tek başına yetmez."},
+ {q:"Becerisi olan ama zamanı kısıtlı biri rüya takımda hangi rolü üstlenebilir?",o:["Takım üyesi","Mentor","Müttefik","Hiçbiri"],a:1,e:"Yalnızca dönemsel geri bildirim veren bir mentor."},
+ {q:"Topluluk ararken yazarın en değerli dersi nedir?",o:["Yalnızca kıdemlilerle bağ kur","Unvan değil, tutku ara","Bağlantı sayısını artır","Yalnızca kendi sektöründen insanlarla tanış"],a:1,e:"Fikirlere ve bakış açılarına odaklan; stajyerle kıdemli veri bilimci birbirinden öğrenebilir."},
+ {q:"Veren/Alan/Denkleştiren için hangisi doğrudur?",o:["Verenler her zaman en iyisidir","Her türün artıları ve eksileri var; amaç sürdürülebilir bir denge","Denkleştirenler hiç kırgınlık yaşamaz","Yardım istemek her zaman alan olmaktır"],a:1,e:"Sınırsız vermek tükenmişliğe yol açabilir; karşılık veremesen de yardım istemekten çekinme."}];
+st.quiz=st.quiz||{};
+function quiz(){$("#quiz").innerHTML=Q.map((x,i)=>`<div class="card" style="margin:12px 0"><div class="ui" style="font-weight:700">${i+1}. ${x.q}</div>${x.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("")}<div class="fb" id="qe${i}" style="display:none">${x.e}</div></div>`).join("");
+ $$("#quiz .opt").forEach(b=>b.onclick=()=>{st.quiz[b.dataset.q]=+b.dataset.o;save();paint()});paint()}
+function paint(){let sc=0,n=0;Q.forEach((x,i)=>{const ch=st.quiz[i];if(ch===undefined)return;n++;if(ch===x.a)sc++;
+ $$(`#quiz .opt[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.o;b.classList.toggle("right",j===x.a);b.classList.toggle("wrong",j===ch&&ch!==x.a);b.disabled=true});$("#qe"+i).style.display="block"});
+ $("#score").innerHTML=n?`Skor: ${sc} / ${Q.length}${n===Q.length?' <button class="btn ghost" id="reset" style="margin-left:8px">Yeniden dene</button>':""}`:"";const r=$("#reset");if(r)r.onclick=()=>{st.quiz={};save();quiz()}}
+quiz();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>

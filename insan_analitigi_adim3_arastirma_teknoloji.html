@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adım 3: Araştırma ve Teknoloji</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#1b2333;--muted:#5b6578;--navy:#0b3a8c;--navy2:#1f5fd1;--soft:#eaf1ff;--line:#d8e0ee;--ok:#1d8a5b;--warn:#b5651d;--bad:#c0392b;--shadow:0 2px 14px rgba(11,58,140,.08);
+--s1:#1f5fd1;--s2:#d9822b;--s3:#1d8a5b;--s4:#9b3fb5}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--s1:#6c9cff;--s2:#f0a35c;--s3:#4cc38a;--s4:#c58bf0}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#171e2d;--ink:#e7ecf5;--muted:#9aa6bd;--navy:#8fb4ff;--navy2:#6c9cff;--soft:#1d2a45;--line:#2a3550;--ok:#4cc38a;--warn:#e3a35c;--bad:#ff7a6b;--shadow:none;--s1:#6c9cff;--s2:#f0a35c;--s3:#4cc38a;--s4:#c58bf0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.65}
+h1,h2,h3,.ui{font-family:Raleway,system-ui,sans-serif}
+header.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-family:Raleway;font-weight:800;color:var(--navy);font-size:15px;flex:1;min-width:170px}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+nav a{font-family:Raleway;font-size:12px;font-weight:700;text-decoration:none;color:var(--muted);padding:5px 9px;border-radius:999px;border:1px solid var(--line)}
+nav a.done{color:var(--ok);border-color:var(--ok)}
+nav a:hover{color:var(--navy);border-color:var(--navy)}
+nav .sep{width:1px;background:var(--line);margin:0 2px}
+.prog{height:4px;background:var(--line)}.prog>div{height:100%;width:0;background:var(--navy2);transition:width .4s}
+main{max-width:1040px;margin:0 auto;padding:20px 16px 80px}
+.hero{padding:28px 0 8px}
+.kicker{font-family:Raleway;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{color:var(--navy);font-size:clamp(28px,6vw,50px);line-height:1.05;margin:.2em 0 .3em;font-weight:800}
+.hero p{color:var(--muted);max-width:740px}
+.note{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.part{font-family:Raleway;font-weight:800;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-size:13px;margin:34px 0 -6px;display:flex;align-items:center;gap:10px}
+.part::after{content:"";flex:1;height:1px;background:var(--line)}
+section.ch{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px clamp(16px,4vw,36px);margin:22px 0;scroll-margin-top:110px}
+section.ch h2{color:var(--navy);font-size:clamp(22px,4vw,30px);margin:.1em 0 .2em;font-weight:800}
+section.ch h2+hr{border:0;border-top:2px solid var(--navy2);width:64px;margin:6px 0 18px}
+h3{font-size:18px;color:var(--navy);margin:1.5em 0 .5em}
+.story{border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0;background:color-mix(in srgb,var(--soft) 40%,var(--card))}
+.story .h{font-family:Raleway;font-weight:800;color:var(--navy2);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.callout{border:2px solid var(--warn);border-radius:12px;padding:14px 18px;margin:16px 0}
+.callout strong{font-family:Raleway;color:var(--warn)}
+.quote{background:var(--soft);border-radius:12px;padding:16px 22px;margin:16px 0;font-style:italic;text-align:center}
+.btn{font-family:Raleway;font-weight:700;font-size:14px;border:1px solid var(--navy2);background:var(--navy2);color:#fff;padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy2)}
+.btn.sm{padding:4px 10px;font-size:12px}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,.chip:focus-visible,.seg button:focus-visible,.opt:focus-visible,.stp:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.box{border:1px dashed var(--line);border-radius:12px;padding:16px;margin:16px 0;background:color-mix(in srgb,var(--soft) 35%,transparent)}
+.lbl{font-family:Raleway;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy2);margin-bottom:6px}
+.chip{font-family:Raleway;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--card);color:var(--muted);font-family:Raleway;font-weight:700;font-size:12px;padding:6px 11px;cursor:pointer}
+.seg button.on{background:var(--navy2);color:#fff}
+input[type=text],input[type=number],textarea,select{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+input[type=range]{width:100%;accent-color:var(--navy2)}
+textarea{min-height:56px;resize:vertical}
+.readmark{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:Raleway;font-weight:700;font-size:14px;color:var(--muted)}
+.readmark input{width:18px;height:18px;accent-color:var(--ok)}
+.small{font-size:14px;color:var(--muted)}
+.ok{color:var(--ok)}.no{color:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--card)}
+.card .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.twocol{grid-template-columns:1fr}}
+.result{margin-top:10px;padding:12px;border-radius:10px;background:var(--soft)}
+.fb{font-size:14px;color:var(--muted);margin-top:6px;min-height:20px}
+.chartbox{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:10px}
+svg text{font-family:Raleway}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,var(--card))}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs>div{padding:14px}
+.vs>div:first-child{background:var(--card)}
+.vs>div:last-child{background:var(--soft)}
+.vs .t{font-family:Raleway;font-weight:800;margin-bottom:4px}
+.steps3{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.stp{font-family:Raleway;font-weight:700;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;padding:8px 12px;cursor:pointer}
+.stp.on{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.stp.done{border-color:var(--ok);color:var(--ok)}
+.flipgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:12px 0}
+.flip{perspective:900px;height:150px;cursor:pointer}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flip.open .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--line)}
+.flip .f{background:var(--card);font-family:Raleway;font-weight:800;color:var(--navy);font-size:16px;text-align:center}
+.flip .f small{font-weight:600;color:var(--muted);font-size:12px;margin-top:4px}
+.flip .b{background:var(--navy2);color:#fff;transform:rotateY(180deg);font-size:14px}
+.cycle{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cycle .arr{color:var(--muted);font-family:Raleway}
+.tool{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card);transition:opacity .2s,box-shadow .2s}
+.tool.dim{opacity:.4}
+.tool.hit{box-shadow:0 0 0 2px var(--ok)}
+.tool .t{font-family:Raleway;font-weight:800;color:var(--navy)}
+.tool .ex{font-size:13px;color:var(--muted);font-family:Raleway;font-weight:700}
+.tool dl{margin:6px 0 0;font-size:14px}
+.tool dt{font-family:Raleway;font-weight:800;font-size:12px;color:var(--muted);margin-top:4px}
+.tool dd{margin:0}
+.tiers{display:flex;flex-direction:column;align-items:center;gap:6px;margin:12px 0}
+.tier{border-radius:12px;padding:10px 14px;color:#fff;font-family:Raleway;font-weight:800;text-align:center;cursor:pointer;border:0;font-size:14px}
+.tier.on{outline:3px solid var(--warn);outline-offset:2px}
+.mx{overflow-x:auto}
+.mx table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+.mx th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:6px 8px;border:1px solid var(--line);text-align:left}
+.mx td{border:1px solid var(--line);padding:5px 6px;vertical-align:top}
+.mx input,.mx select{font-size:13px;padding:4px 6px}
+.mx tr.tot td{font-family:Raleway;font-weight:800;background:var(--bg)}
+.check{padding-left:0}.check li{list-style:none;margin:6px 0}
+.check input{width:17px;height:17px;accent-color:var(--navy2);vertical-align:-2px;margin-right:6px}
+.sa{overflow-x:auto}
+.sa table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+.sa th{font-family:Raleway;background:var(--soft);color:var(--navy);padding:8px;border:1px solid var(--line);text-align:left}
+.sa td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.sa td.sk{font-family:Raleway;font-weight:700;width:180px}
+.sa select{font-size:13px;padding:5px}
+.sa .gap{font-family:Raleway;font-size:11px;font-weight:800;color:var(--warn);display:block;margin-top:4px}
+.sa .met{font-family:Raleway;font-size:11px;font-weight:800;color:var(--ok);display:block;margin-top:4px}
+.sa tr.custom input{font-size:14px;padding:5px 7px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+@media (max-width:700px){.scale{grid-template-columns:1fr 1fr}}
+.scale .card{padding:10px}.scale .lv{font-family:Raleway;font-weight:800;font-size:12px;color:var(--navy2)}
+.stat{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--card)}
+.stat b{display:block;font-family:Raleway;font-size:20px;color:var(--navy)}
+.stat span{font-size:12px;color:var(--muted);font-family:Raleway}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:Raleway;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.themebtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+a{color:var(--navy2)}
+@media print{header.top,.btn,.readmark,.noprint{display:none!important}section.ch{box-shadow:none;break-inside:avoid}body{background:#fff}}
+
+/* site gezinme */
+.homebtn{font-family:Raleway,system-ui,sans-serif;font-weight:800;font-size:13px;text-decoration:none;color:#fff;background:var(--navy2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.homebtn:hover{filter:brightness(1.1)}
+.brand a{color:inherit;text-decoration:none}
+.pager{max-width:1040px;margin:0 auto;padding:0 16px 48px;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.pager a{font-family:Raleway,system-ui,sans-serif;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+.pager a:hover{border-color:var(--navy2)}
+.pager a small{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pager a b{font-size:15px;color:var(--navy)}
+.pager .nx{text-align:right}.pager .mid{justify-content:center;align-items:center}
+.pager .ph{visibility:hidden}
+@media (max-width:640px){.pager{grid-template-columns:1fr}.pager .nx{text-align:left}.pager .ph{display:none}}
+@media print{.pager,.homebtn{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <a class="homebtn" href="index.html" title="İçindekiler (ana sayfa)">← İçindekiler</a>
+    <div class="brand"><a href="index.html">İnsan Analitiği Kariyer Rehberi · Adım 3</a></div>
+    <nav id="nav">
+      <a href="#s1" data-s="s1">Araştırma nedir?</a>
+      <a href="#s2" data-s="s2">Güvenirlik ve geçerlik</a>
+      <a href="#s3" data-s="s3">Örnekleme</a>
+      <a href="#s4" data-s="s4">İleri yöntemler</a>
+      <a href="#s5" data-s="s5">Araştırma çalışmaları</a>
+      <a href="#s6" data-s="s6">Keşfet ve katıl</a>
+      <a href="#s7" data-s="s7">Araştırma öz değerlendirmesi</a>
+      <span class="sep"></span>
+      <a href="#s8" data-s="s8">Teknoloji</a>
+      <a href="#s9" data-s="s9">İA'ya özgü araçlar</a>
+      <a href="#s10" data-s="s10">Teknoloji keşifleri</a>
+      <a href="#s11" data-s="s11">Test</a>
+    </nav>
+    <button class="themebtn" id="theme" title="Tema" aria-label="Açık/koyu tema">◐</button>
+  </div>
+  <div class="prog"><div id="progbar"></div></div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker">Adım 3 · Teknik beceriler</div>
+    <h1>İnsan Analitiği Araştırması ve Teknolojiden Yararlanma</h1>
+    <p>Araştırma becerileri, hiç “araştırma yapmayacak” olsan bile güvenebileceğin içgörüler için şarttır. Bu sayfa analitik ile araştırma arasındaki farkı, güvenirlik ve geçerliği, örneklemeyi, ileri istatistik ve araştırma tasarımını; ardından teknolojiyi güçlü yönlerini büyütmek için nasıl seçip kullanacağını, simülasyonlar ve araçlarla anlatıyor.</p>
+    <p class="note">Kaynak: Heather Whiteman'ın insan analitiği kariyer rehberinin 205–251. sayfaları. Metin birebir çeviri değil; içerik Türkçe olarak özetlenip uyarlanmıştır. Simülasyonlardaki veriler kurgusaldır; anılan ürün adları rehberdeki örneklerdir, tavsiye değildir.</p>
+  </div>
+
+  <div class="part">Bölüm A · İnsan analitiği araştırması</div>
+
+  <!-- 1 -->
+  <section class="ch" id="s1">
+    <h2>Araştırma Nedir, Analitikten Farkı Ne?</h2><hr>
+    <p>Bu rehber uygulamalı bir insan analitiği kariyeri hedefleyenler için; bu yüzden akademik araştırma yerine araştırma yapmak için kullanılan becerilere ya da uygulamalı bir ortamda yapılan araştırmaya odaklanıyor. Akademiye ilgi duyuyorsan bu harika: insan analitiğine odaklanan akademik araştırmalar artıyor ve işletme, ekonomi ve psikoloji gibi komşu alanların uzun bir birikimi var; ama akademide başarılı olmaya dair kariyer rehberliği başka bir kitabın konusu. Akademik araştırma alanın anlaşılmasını genişleterek uygulayıcılara temel sağlar ama kuramsal gelişimi pratik uygulamanın önünde tutar. <strong>Uygulamalı araştırma</strong> ise belirli sorunları çözmeye ya da acil konulara pratik çözümler geliştirmeye yöneliktir ve rehberin insan analitiği tanımıyla daha iyi örtüşür: insanlar, iş ve iş hedefleriyle ilgili daha iyi kararlar yoluyla iş sonuçlarını iyileştirmek için veri ve içgörülerin uygulanması.</p>
+    <p>“Araştırma” kelimesi bazen fazla rahat kullanılır: “Hangi bilgisayarı alacağımı araştırdım” diyen kişi muhtemelen karar vermeden önce çok bilgi gözden geçirmiştir, gerçek bir araştırma yapmamıştır. Araştırma; bir konuyu daha derin anlamak, karmaşık sorulara yanıt vermek, yeni bilgi üretmek ya da tümüyle yeni sonuçlara ulaşmak için sistematik ve yapılandırılmış bir yaklaşımdır. Basit bir arama motoru sorgusu ya da hazır kaynaklara göz atmak değildir.</p>
+    <p>Araştırma çoğu zaman analizle de karıştırılır. Her araştırma analiz içerir ama her analiz araştırma değildir. Bir çalışan anketinden bilgi toplayıp memnuniyeti anlamak için analiz ediyorsan analiz yapıyorsun, araştırma değil. Araştırma; güvenilirliğin, olası yanlılıkların eleştirel değerlendirilmesini ve veriyi, bulguları ve yorumları sorgulayan bir doğrulama sürecini güvence altına alan bir yöntem tasarlamayı ve izlemeyi gerektirir. Analitik veride anlam bulmaktır; araştırma da analizle anlam bulur ama ek olarak diğer olası yanıtları kontrol etmeye çalışır ve bulguların güvenirliğini, geçerliğini, aktarılabilirliğini ve uygulanabilirliğini değerlendirir.</p>
+
+    <div class="box">
+      <div class="lbl">Simülasyon · Ücret mi memnuniyeti artırıyor?</div>
+      <p class="small">Kitaptaki örnek: çalışan memnuniyeti anketi sonuçlarıyla memnuniyeti anlamak istiyorsun. 120 kişilik kurgusal veriyle analitik yaklaşımdan araştırma yaklaşımına adım adım geç.</p>
+      <div class="steps3" id="cfSteps"></div>
+      <div class="twocol" style="align-items:start">
+        <div class="chartbox"><svg id="cfSvg" viewBox="0 0 420 280" style="width:100%" role="img"><title id="cfT"></title></svg></div>
+        <div id="cfTxt"></div>
+      </div>
+    </div>
+
+    <div class="vs">
+      <div><div class="t">Analitik yaklaşım</div><div class="small">Anket verisine dalıp içgörü ve örüntü ararsın; analizler ne kadar ileri olursa olsun, veri doğruluğunu ve geçerliğini güvence altına alan bir yöntem tasarlamadıysan, yanlılığa karşı kontrolün yoksa ve güvenirlik ile uygulanabilirliğe dair sonucun yoksa bu analitiktir. Bu kötü bir şey değil: bu rehberin tamamı analitiğin gücüyle ilgili. Ama yazar buna araştırma demiyor (analitik ile araştırmanın kesiştiği gri bir alan olduğunu da kabul ediyor).</div></div>
+      <div><div class="t">Araştırma becerilerine dayalı yaklaşım</div><div class="small">Bir örüntü bulmak yetmez; memnuniyeti etkileyen bütün olasılıkların değerlendirildiği sistematik bir süreç gerekir. Amaç “en güçlü korelasyon hangisi?” kadar basit ya da “bakalım veri ne diyor” kadar gevşek değil; memnuniyeti neyin yönlendirdiğini ve bunların doğal bağlamda nasıl var olduğunu olabildiğince anlamak, alternatif açıklamaları, veri yanlılıklarını ve hataları da göz önüne almaktır. Diğer değişkenleri <em>kontrol etmen</em> ve “Bu ilişkiyi başka şeyler açıklayabilir mi?” diye sormayı sürdürmen gerekir.</div></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s1"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 2 -->
+  <section class="ch" id="s2">
+    <h2>Araştırma Becerileri: Güvenirlik ve Geçerlik</h2><hr>
+    <p>Gerçek araştırma yapmayı planlamasan bile araştırma becerileri insan analitiği işin için paha biçilmezdir. Kritik olanlar dört ölçütü değerlendirebilmektir. Kartlara tıkla:</p>
+    <div class="flipgrid" id="crit"></div>
+    <p>Hepsi önemli; ama yazara göre <strong>güvenirlik ve geçerlik</strong> insan analitiğinde şu an gördüğünden çok daha fazla ilgiyi hak ediyor. İnsan analitiği ağırlıklı olarak fiziksel olmayan, bu yüzden kolay ölçülemeyen soyut yönleri analiz eder. Bu nedenle çalıştığımız ölçülerin çoğu <strong>vekil ölçülerdir</strong> (proxy): başka bir şeyin yerine geçen değerler. Yani ölçmek istediğimiz şeyi nadiren ölçeriz; varsayımlar yapıp gerçeğe olabildiğince yaklaşırız. Çalışan memnuniyeti bakılıp dokunulabilen ya da kolayca sayısallaştırılabilen bir şey değildir; onu anketler, görüşmeler, gözlemler ya da başka vekil metriklerin bir bileşimiyle anlamaya ve ölçmeye çalışırız. Bu da memnuniyeti <em>gerçekten</em> ölçüp ölçmediğimizden ya da bunu ne kadar iyi yaptığımızdan hiçbir zaman tam emin olamayacağımız anlamına gelir. Bulgularını paylaştığın kişiler de ölçümlerine güvenip güvenemeyeceklerini bilmez ve sonuçlarını doğal olarak sorgular: “Evet ama anket memnuniyeti <em>gerçekten</em> göstermiyor ki.” Yazar bu itirazdan rahatsız olmuyor; bunu söyleyen kişi insanları ölçmenin doğasındaki zorlukla düşünerek ilgilenen biridir. Ölçmek istediğin şeye yaklaştığından emin olmanın ve başkalarının analizlerine güvenmesini sağlamanın tek yolu, ölçülerinin, sürecinin ve analizlerinin güvenirliğini ve geçerliğini belirlemeye ve göstermeye zaman ayırmaktır. Ne kadar çok kanıtın olursa sen de başkaları da sonuçlarına o kadar güvenir.</p>
+    <div class="box">
+      <div class="lbl">Etkinlik · Vekil ölçü avı</div>
+      <p class="small">Her kavram için yaygın bir vekil ölçü ve onun neyi kaçırabileceği verilmiş. Bir vekil ölçüye tıkla; sınırlılığını gör ve kendi ek kanıt fikrini yaz.</p>
+      <div id="proxy"></div>
+    </div>
+    <h3>Geçerlik türlerinden başla</h3>
+    <p>Yazar güvenirliğin farklı kavramlarını ve iç, dış, ekolojik ve yapı geçerliğini öğrenmeye biraz fazladan zaman ayırmayı öneriyor. Bunaldığında <strong>yapı geçerliği</strong> kavramıyla başla: bu türün en kolay başlangıç noktası <strong>kapsam geçerliği</strong> (görünüş geçerliği olarak da bilinir), en güçlüsü ise <strong>ölçüt geçerliği</strong>.</p>
+    <div class="grid" id="valid"></div>
+    <label class="readmark"><input type="checkbox" data-read="s2"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 3 -->
+  <section class="ch" id="s3">
+    <h2>Araştırma (ve Diğer Analizler) İçin Örnekleme</h2><hr>
+    <p>Gerçek bir deneysel çalışma her zaman mümkün olmadığı gibi, belirli bir çalışma için bütün çalışanlardan veri toplamak da her zaman mümkün değildir. Zamanın ya da kaynağın olmayabilir; çalışanları anket ya da görüşme için işten ayırmak verimliliğe zarar verebilir ya da kurumda rahatsız edici olabilecek veri toplamayı sınırlamak isteyebilirsin. Bu yüzden <strong>örnekleme yöntemleri</strong> konusunda bilgi ve beceri geliştirmek önemlidir: böylece daha küçük ama yine de temsil edici bir alt grup seçip sonuç çıkarabilir ve araştırma sorularını yanıtlayabilirsin. İyi yapılırsa daha büyük evren hakkında sağlam ve yararlı çıkarımlar yapmanı sağlar. Örnekleme yalnızca araştırma için değil; bazen verinin yalnızca bir alt kümesini kullanman gerektiği için her tür analitik için yararlıdır.</p>
+    <div class="box">
+      <div class="lbl">Simülasyon · Örnekleme yöntemi tahmini nasıl etkiler?</div>
+      <p class="small">600 çalışanlık kurgusal bir kurum: Üretim 300, Satış 150, Ar-Ge 90, Merkez ofis 60 kişi. Birimlerin ortalama memnuniyeti farklı. Gerçek kurum ortalamasını bir örneklemle tahmin etmeye çalış.</p>
+      <div class="row" style="margin-bottom:8px"><div class="seg" id="smSeg"><button data-v="srs" class="on">Basit rastgele</button><button data-v="str">Tabakalı (orantılı)</button><button data-v="conv">Kolayda (gönüllüler)</button><button data-v="quota">Kota (eşit, kolayda)</button></div></div>
+      <label class="small">Örneklem büyüklüğü: <strong id="smNv">60</strong></label>
+      <input type="range" id="smN" min="20" max="200" step="10" value="60">
+      <div class="row" style="margin:8px 0"><button class="btn" id="smOne">Bir örneklem çek</button><button class="btn ghost" id="smMany">200 kez tekrarla</button></div>
+      <div class="twocol" style="align-items:start">
+        <div class="chartbox"><svg id="smSvg" viewBox="0 0 420 230" style="width:100%" role="img"><title id="smT">Örneklem tahminlerinin dağılımı</title></svg></div>
+        <div id="smOut"></div>
+      </div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s3"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 4 -->
+  <section class="ch" id="s4">
+    <h2>İleri İstatistik ve Araştırma Tasarımı Becerileri</h2><hr>
+    <p>Güvenirlik, geçerlik ve örnekleme temellerinin ötesinde, etkili insan analitiği için şu beceriler kritiktir:</p>
+    <div class="grid">
+      <div class="card"><div class="t">Nedensel çıkarımı anlamak</div><div class="small">İnsan analitiği çoğu zaman neden-sonuç ilişkilerini anlamaya çalışır; bu basit korelasyonların ötesine geçmeyi gerektirir. Yarı deneysel tasarımlar ve araç değişkenler dahil nedensellik kurma yöntemlerini bilmeli, nedensel sonuç çıkarırken kullandığın veri ya da tasarımın sınırlılıklarının farkında olmalısın.</div></div>
+      <div class="card"><div class="t">Yapısal eşitlik modellemesi (YEM/SEM)</div><div class="small">Çok sayıda değişken arasındaki karmaşık ilişkileri incelemek için güçlü bir teknik; çok değişkenli modelleri test etmek ve bağlılık, örgüt kültürü gibi gizil yapıları anlamak için özellikle yararlı.</div></div>
+      <div class="card"><div class="t">Kümeleme ve segmentasyon</div><div class="small">k-ortalamalar ya da hiyerarşik kümeleme gibi teknikler çalışan verisindeki farklı grupları belirlemeye yarar; kişiselleştirilmiş müdahaleler, hedefli iletişim ve farklı çalışan segmentlerini anlamak için yararlı.</div></div>
+      <div class="card"><div class="t">Faktör analizi</div><div class="small">Verinin boyutunu azaltmak ve bir değişken kümesi arasındaki korelasyonları açıklayan temel faktörleri bulmak için kullanılır; karmaşık yapılar için geçerli ve güvenilir ölçüler geliştirmede kritik. Test tasarlarken ya da anket maddelerini azaltırken özellikle yararlı.</div></div>
+    </div>
+    <h3>Düzenleyicilik (moderasyon) ve aracılık (mediasyon)</h3>
+    <p>Davranışla ilgili herhangi bir insan analitiği yapıyorsan bu kavramları anlamak kritik. Bir sonucu tek bir şeyin etkilemesi nadirdir; çoğu zaman birden fazla şey etkileşerek bir etki yaratır ya da bir şey diğerini ancak başka bir şeyin “içinden geçerek” etkiler. <strong>Düzenleyicilik</strong> bir ilişkinin <em>ne zaman</em> var olduğunu açıklar (eğitimin performansa etkisi çalışanın motivasyonuna göre değişebilir). <strong>Aracılık</strong> bir ilişkinin <em>nasıl</em> var olduğunu açıklar (eğitim, çalışanın bilgisini artırarak performansı iyileştirebilir). Bu beceri, modellerde etkileşim terimleri oluşturmayı ve etkileşim etkilerini yorumlamayı içerir.</p>
+    <div class="twocol">
+      <div class="box">
+        <div class="lbl">Etkileşimli · Düzenleyicilik: ne zaman?</div>
+        <label class="small">Motivasyonun eğitim etkisini değiştirme gücü (etkileşim): <strong id="modV"></strong></label>
+        <input type="range" id="mod" min="0" max="10" step="1" value="6">
+        <div class="chartbox"><svg id="modSvg" viewBox="0 0 380 220" style="width:100%" role="img"><title>Düşük ve yüksek motivasyonlu çalışanlarda eğitimin performansa etkisi</title></svg></div>
+        <div class="small" id="modOut"></div>
+      </div>
+      <div class="box">
+        <div class="lbl">Etkileşimli · Aracılık: nasıl?</div>
+        <label class="small">Etkinin bilgi üzerinden geçen payı: <strong id="medV"></strong>%</label>
+        <input type="range" id="med" min="0" max="100" step="10" value="70">
+        <div class="chartbox"><svg id="medSvg" viewBox="0 0 380 220" style="width:100%" role="img"><title>Eğitim, bilgi ve performans arasındaki aracılık modeli</title></svg></div>
+        <div class="small" id="medOut"></div>
+      </div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s4"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 5 -->
+  <section class="ch" id="s5">
+    <h2>İnsan Analitiği Araştırma Çalışmaları</h2><hr>
+    <p>Bu bölümde şimdiye kadar bir araştırma çalışmasından söz edilmedi; çünkü araştırma becerileri hiç “araştırma yapmasan” bile kritik. Güvenebileceğin, ölçmek istediğini ölçen ve karar almak için geçerli içgörüler istiyorsan araştırma becerilerine ihtiyacın var, kendine “araştırmacı” demesen bile. Ama araştırma çalışmaları pek çok kariyer yolunun eğlenceli ve önemli bir parçası; “İnsan Analitiği Araştırmacısı” gibi unvanlar var, unvanında araştırma geçmese de araştırma projeleri yürüten roller de. Belirli iş sorularını yanıtlamak, hipotezleri test etmek ya da nedensel ilişkileri ortaya çıkarmak için yapılan insan analitiği araştırması bir <strong>uygulamalı araştırma</strong> türüdür; basit hipotez testlerinden ayrıntılı tasarlanmış çalışmalara uzanabilir.</p>
+    <h3>Araştırma çerçeveleri</h3>
+    <p>Yazar işe araştırma çerçevelerini anlamakla başlamayı öneriyor; bir çerçeve bir süreci ya da yapıyı tanımlar ve izleyeceğin bir yaklaşım sunar. Önerdiği iki çerçeve:</p>
+    <div class="twocol">
+      <div class="box">
+        <div class="lbl">Bilimsel yöntem · doğrusal (gerekirse yinelemeli)</div>
+        <div class="cycle" id="sciSteps"></div>
+        <div class="result" id="sciOut"></div>
+      </div>
+      <div class="box">
+        <div class="lbl">Tasarım odaklı düşünme · yinelemeli</div>
+        <div class="cycle" id="dtSteps"></div>
+        <div class="result" id="dtOut"></div>
+      </div>
+    </div>
+    <p class="small">Bilimsel yöntemde genellikle bir adımı bitirip sonrakine geçersin ve bulgulara dayalı ileri araştırmaya geçmeden önce bir hipotezi ya da hipotez kümesini test edersin; ama özellikle uygulamalı ortamda ilk bulgular ek sorulara ve hipotezlere yol açabildiği için yinelemeli de olabilir. Tasarım odaklı düşünme bilinçli olarak yinelemelidir: empati, kullanıcı araştırması, prototipleme ve çözüm testine dayanan bir problem çözme çerçevesi. İnsan merkezli olduğu için insan analitiği araştırmasına çok uygundur ve çalışanları sürece davet etmeye daha fazla fırsat verir: çalışanlar olası çözümleri beyin fırtınasıyla üretebilir, prototipleri test edebilir, geri bildirim verebilir. Araştırma bilimsel yöntemi, tasarım odaklı düşünmeyi ya da ikisinin bir karmasını izleyebilir.</p>
+
+    <h3>Deneysel, yarı deneysel ve deneysel olmayan tasarımlar</h3>
+    <p>Bir çalışmanın gerçek tasarımı kurum, bireyler ya da ortam için neyin uygulanabilir olduğuna göre çok değişir. İnsanlarla çalıştığımızda ortamı manipüle etme ve kontrol etme fırsatı genellikle azdır. <strong>Deneysel araştırma</strong> araştırma dünyasında “altın standart” sayılır: değişkenleri, bir grup ölçülecek şeyi deneyimlerken diğer grup (kontrol grubu) deneyimlemeyecek şekilde manipüle edersin; örneğin çalışanların yarısı rastgele seçilip eğitime alınır. Kimin erişip kimin erişemeyeceğini kontrol edebildiğinde eğitimin etkisini yalıtır ve etkinliği hakkında daha güçlü iddialarda bulunabilirsin. Sorun, insan analitiğinde bunu yapmanın çoğu zaman zor olması; bu yüzden daha çok deneysel olmayan ya da yarı deneysel yaklaşımlar görürsün. <strong>Deneysel olmayan araştırma</strong> mevcut durumları gözlemleyip analiz eder (eğitim isteğe bağlıysa alanlarla almayanların sonuçlarını karşılaştırmak); dezavantajı, eğitimi seçenlerle seçmeyenler arasındaki önemli farkları kontrol edememendir: eğitimi seçenlerin motivasyonu ya da ilerleme isteği daha yüksek olabilir ve eğitimden bağımsız olarak terfi etme olasılıkları zaten yüksektir. <strong>Yarı deneysel araştırma</strong> ikisinin arasındadır: sınırlılıkları kabul ederek deneysel koşulları olabildiğince taklit eder; örneğin A departmanındaki herkesi eğitip B departmanını eğitmeyerek farkları karşılaştırır.</p>
+    <div class="box">
+      <div class="lbl">Simülasyon · Eğitim gerçekten işe yarıyor mu?</div>
+      <p class="small">400 kurgusal çalışan. Performansı hem motivasyon hem eğitim etkiliyor. Eğitimin gerçek etkisini sen belirle; üç tasarımın bu etkiyi ne kadar doğru tahmin ettiğine bak.</p>
+      <div class="twocol">
+        <label class="small">Eğitimin gerçek etkisi: <strong id="teV"></strong> puan<input type="range" id="te" min="0" max="10" step="1" value="3"></label>
+        <label class="small">Motivasyonun eğitimi seçmeye etkisi: <strong id="seV"></strong><input type="range" id="se" min="0" max="10" step="1" value="7"></label>
+      </div>
+      <div class="row" style="margin:8px 0"><button class="btn" id="desRun">Simülasyonu çalıştır</button></div>
+      <div class="chartbox"><svg id="desSvg" viewBox="0 0 560 210" style="width:100%" role="img"><title>Üç araştırma tasarımının tahmin ettiği eğitim etkisi</title></svg></div>
+      <div class="small" id="desOut"></div>
+    </div>
+
+    <h3>Nicel, nitel ya da karma yöntem</h3>
+    <p>Her zaman böyle olmasa da genel bir varsayım karar vermene yardım eder: <strong>nicel araştırma</strong> genellikle bir kuramı/hipotezi doğrulamak ya da test etmek için ve sayısal ya da “evet/hayır” biçiminde bir yanıt istediğinde daha iyidir (“Takdir, çalışan memnuniyetine yol açar mı?”). <strong>Nitel araştırma</strong> net bir “evet/hayır” yanıtı olmadığında ve bir şeyin, özellikle kavramların, insanların, deneyimlerin ve süreçlerin niteliğini anlamak istediğinde daha yararlıdır (“Çalışanlar memnuniyetleri için hangi işyeri deneyimlerini en önemli buluyor?”). Hem nicel hem nitel yanıta ihtiyacın varsa (“Takdir memnuniyete yol açar mı ve hangi takdir türleri insanlar için en anlamlıdır?”) <strong>karma yöntem</strong> tasarla. Yazar uygulanabilir olduğunda karma yöntemleri seviyor: sayılar çok şeyi anlamamıza ve varsayımları test etmemize yardım eder, uygun karar için gereken inceliği ve bağlamı veren nitel bilgiyle daha da güçlenir; karma yöntem yalnızca “ne kadar” değil “ne şekilde” sorusunu da yanıtlar.</p>
+    <div class="box">
+      <div class="lbl">Etkinlik · Hangi tasarım, hangi yaklaşım?</div>
+      <div id="desQ"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s5"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 6 -->
+  <section class="ch" id="s6">
+    <h2>Keşfet ve Katıl: Araştırma Becerileri</h2><hr>
+    <div class="grid">
+      <div class="card"><div class="t">Bir ders kitabı edin</div><div class="small">Yazar şimdiye dek belirli bir içerik türünü önermedi; ama araştırma yöntemlerinde en iyi kaynakların bazıları ders kitaplarında. Akademi araştırmayla yaşar; her yıl yüz binlerce öğrenciye araştırma yöntemleri öğretilir, bu yüzden kitap, e-kitap, sesli kitap ve etkileşimli metin seçenekleri harika; eski, ikinci el kitaplar çok ucuza ya da ücretsiz bulunabilir. Sosyal bilimler ya da işletme/yönetim için yazılmış olanı seç.</div></div>
+      <div class="card"><div class="t">Başka çalışmaları tekrarla</div><div class="small">İnsan analitiği araştırmalarını oku ve tekrarla (replikasyon). Hem başkalarının bulgularından öğrenir hem de kendi kurumunda doğru olup olmadığını görürsün; araştırma yöntemini başkalarını izleyerek öğrenirken kurumunun diğerlerine ne kadar benzediğini ya da farklı olduğunu keşfedersin. Bu “kopyalamak” değil; bulguları destekleyen (ya da çürüten) ek kanıt sağlıyorsun. Kaynak gösterip emeklerini tanımayı unutma.</div></div>
+      <div class="card"><div class="t">Araştırma olmasa da hipotez testine öncelik ver</div><div class="small">Pek çok şeyin hipotez testine tabi tutulması gerekir ama kimse bunu istemeyi düşünmemiştir. İstenmeden yapan kişi ol. Aşağıdaki aracı dene.</div></div>
+    </div>
+    <div class="box">
+      <div class="lbl">Araç · İddiayı test edilebilir hipoteze çevir</div>
+      <p class="small">Örnek iddia: “Yeni çalışanları karşılamak için uyguladığımız oryantasyon süreci onları daha verimli yapıyor.” Test edilmediyse bu bir olgu değil, bir hipotezdir.</p>
+      <div class="twocol">
+        <label class="small">Bağımsız değişken (neden olduğu düşünülen)<input type="text" id="hIV" value="yeni oryantasyon sürecine katılmak"></label>
+        <label class="small">Bağımlı değişken (sonuç)<input type="text" id="hDV" value="tam verimliliğe ulaşma süresi"></label>
+        <label class="small">Yön<select id="hDir"><option value="az">azaltır / kısaltır</option><option value="art">artırır</option><option value="fark">farklılaştırır</option></select></label>
+        <label class="small">Karşılaştırma grubu<input type="text" id="hCmp" value="eski oryantasyondan geçen çalışanlar"></label>
+        <label class="small">Veri kaynağı<input type="text" id="hData" value="İK bilgi sistemi işe giriş tarihleri ve yönetici verimlilik değerlendirmeleri"></label>
+        <label class="small">Kontrol edilecek değişkenler<input type="text" id="hCtl" value="pozisyon düzeyi, önceki deneyim, işe giriş dönemi"></label>
+      </div>
+      <div class="result" id="hOut"></div>
+    </div>
+    <div class="callout"><strong>Uyarı:</strong> Araştırman yeni bulgular keşfetmek kadar varsayılan doğruları çürütmeye de yatkındır. Herkes oryantasyon programının verimliliğe ulaşma süresini kısalttığını varsayıyorsa ve veri bunu desteklemiyorsa, bu yanlışları bulmak önemli ve değerli bir iş; ama bunu nasıl paylaşıp tartıştığın konusunda dikkatli ol. İnsanlar o programı tasarlamak için çok zaman ve enerji harcadı; çoğu insan emeklerinin ve varsayımlarının titiz bilimsel testlere dayanmadığını duymaktan hoşlanmaz. Adım 2'deki “dinleyicini tanı” ilkesi ve iletişim ile hikâye anlatımı becerileri, mesajının duyulmasını sağlarken yardım etmeye çalıştığın kişilerle olumlu ilişkileri korumana yardım eder.</div>
+    <label class="readmark"><input type="checkbox" data-read="s6"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 7 -->
+  <section class="ch" id="s7">
+    <h2>Kendini Keşfet: İnsan Analitiği Araştırma Becerileri</h2><hr>
+    <div class="scale">
+      <div class="card"><div class="lv">1 · FARKINDA</div><div class="small">Beceride yenisin; kavramsal olarak bilsen de işi henüz kendin yapmadın.</div></div>
+      <div class="card"><div class="lv">2 · ÖĞRENEN</div><div class="small">Öğrenmeye yeni başladın ya da ayrıntılı yönergelere dayanıyorsun.</div></div>
+      <div class="card"><div class="lv">3 · YETKİN</div><div class="small">Bir ölçüde yeteneklisin ama bazı ya da ileri kısımlarda yardıma ihtiyaç duyuyorsun.</div></div>
+      <div class="card"><div class="lv">4 · UZMAN</div><div class="small">Zorlukları güvenle çözüyor, desteğe ihtiyaç duymuyor, kavramları sade anlatabiliyorsun.</div></div>
+      <div class="card"><div class="lv">5 · STRATEJİST</div><div class="small">Tekniği yeni biçimlerde uyguluyor, yeni yöntemler yaratıyor, başkalarına mentorluk yapabiliyorsun.</div></div>
+    </div>
+    <p class="small"><strong>Not:</strong> Kendini nereye koyduğun konusunda fazla kaygılanma; bunun “gerçek” bir puanı yok. Hedef düzeylerin zamanla ve farklı kariyer seçeneklerini düşündükçe değişebilir.</p>
+    <div class="sa"><table id="saTab"></table></div>
+    <div class="row noprint" style="margin-top:10px">
+      <button class="btn ghost sm" id="saAdd">+ Satır ekle</button>
+      <button class="btn ghost" id="saCsv">CSV indir</button>
+      <button class="btn ghost" id="saPrint">Yazdır / PDF</button>
+    </div>
+    <div class="result" id="saSum"></div>
+    <h3>Bonus araştırma becerileri</h3>
+    <p>Araştırma, Adım 2'deki veri tüketicisi ve veri çevirmeni becerileriyle el ele gider. Bilgiyi analiz etmek, örüntüleri belirlemek ve içgörülü sorular sormak için <strong>eleştirel düşünme</strong>; iş sorunlarını araştırılıp <strong>veri yapıcı</strong> becerilerinle test edilebilecek insan analitiği sorularına dönüştürmek için <strong>veri çevirmenliği</strong> (araştırma için bundan daha önemli bir beceri hiç olmamıştır); bulgularını açık, öz ve ikna edici sunmak için <strong>iletişim</strong>. Araştırma, <em>literatür taraması</em> yaparak <strong>veri tüketicisi</strong> olmayı pratik etmek için de harika bir alan: araştırdığın konudaki geçmiş çalışmaları ve bulguları okuyup başkalarının düşüncelerini, kuramlarını ve bulgularını eleştirel olarak değerlendirerek çalışmana sağlam bir temel ve bağlam kazandırırsın. Adım 2'deki öz değerlendirmelerine dön ve bu becerilere dair düşüncen değişti mi bak.</p>
+    <label class="readmark"><input type="checkbox" data-read="s7"> Öz değerlendirmeyi tamamladım</label>
+  </section>
+
+  <div class="part">Bölüm B · Teknolojiden yararlanma</div>
+
+  <!-- 8 -->
+  <section class="ch" id="s8">
+    <h2>Teknolojiden Yararlanma</h2><hr>
+    <p>Bu noktada insan analitiği kariyerindeki teknik becerilerin çokluğu seni biraz bunaltmış olabilir; ama hepsini desteksiz üstlenmen gerekmiyor. Veriyle çalışmak için sayısız araç ve teknoloji var; uygun seçilip kullanıldığında becerilerini tek başına yapacağından daha az emekle uygulamanı sağlar. Bugünkü teknoloji analitik konusunda en çekingen kişiyi bile güçlendirebilir: kodlama dili öğrenme ihtiyacını tümüyle ortadan kaldırabilir (kaçınmak istiyorsan), tasarım deneyimin olmasa bile güzel görseller üretmene yardım eder, yaklaşımını daha verimli, uyumlu ve tutarlı kılar.</p>
+    <p>Yazar her zaman bulunduğun yerden ve güçlü yönlerinden başlamayı öneriyor; teknoloji kullanımı da farklı değil. Teknoloji zayıflıkları kapatmaya ve beceri açıklarını doldurmaya yardım edebilir, ama önce <strong>güçlü yönlerini tamamlayan araçlara</strong> odaklan: nicel analizde güçlüysen güçlü istatistik özellikli platformları, çalışanların metin yanıtlarına dalmayı seviyorsan doğal dil işleme özelliklerini, hikâye anlatan görseller yapmak seni heyecanlandırıyorsa görselleştirme teknolojisini keşfet. Nedenleri: (1) Bir konuda zaten ustaysan ve ilgiliysen, o ürünlerin başkalarının kullanamadığı özgün ve ileri işlevlerinden yararlanır, uzmanlaşmanın gücüyle o işte “başvurulan kişi” olursun. (2) Her yeni teknolojiyi öğrenmek bir öncekinden kolaydır; sevdiğin ve iyi olduğun bir konuda başlarsan, sonra başka teknolojileri öğrenirken kullanacağın teknoloji benimseme becerilerini farkında olmadan geliştirirsin. Hem teknolojiyi hem konuyu aynı anda öğrenmek zordur; tek seferde bir şeye odaklanmak daha az zorlayıcıdır.</p>
+    <div class="box">
+      <div class="lbl">Araç · Güçlü yönüne göre araç kategorisi bul</div>
+      <div class="small ui" style="font-weight:700">Güçlü yönlerim / ilgilerim</div>
+      <div class="chips" id="tfStr"></div>
+      <div class="small ui" style="font-weight:700;margin-top:6px">Kodlama tercihim</div>
+      <div class="seg" id="tfCode"><button data-v="any" class="on">Fark etmez</button><button data-v="no">Kod yazmadan</button><button data-v="yes">Kod yazmaya açığım</button></div>
+      <div class="grid" id="tools" style="margin-top:12px"></div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s8"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 9 -->
+  <section class="ch" id="s9">
+    <h2>İnsan Analitiğine Özgü Araç ve Teknolojiler</h2><hr>
+    <p>Önceki bölümdeki araçlar genel veri işleri içindi. İnsan analitiği için özel tasarlanmış platformlar da var; farklı odak ve kapsamlılık düzeylerinde gelirler. En dar kapsamlıdan en genişe doğru bir katmana tıkla:</p>
+    <div class="tiers" id="tiers"></div>
+    <div class="result" id="tierOut"></div>
+    <div class="quote">Önemli: Teknoloji güçlü bir araçtır, ama yalnızca bir araçtır. Gerçek potansiyelini açığa çıkarmak için senin analitik uzmanlığın ve eleştirel düşüncen gerekir.</div>
+    <label class="readmark"><input type="checkbox" data-read="s9"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 10 -->
+  <section class="ch" id="s10">
+    <h2>Keşfet ve Katıl: Teknoloji Keşifleri</h2><hr>
+    <p>Sürekli gelen yenilikçi araçlar hem heyecan verici hem bunaltıcı olabilir. Bazen veri ve teknolojiyle <em>yapabileceğimiz</em> havalı şeylere o kadar kapılırız ki bunun <em>doğru</em> araç olup olmadığını sormayı unuturuz. Araçları kişisel ve kurumsal ihtiyaçlarına uyumlarına göre keşfetmek, seçenek bolluğunu azaltmanın ve en çok etki yaratacak araçları seçmenin en iyi yolu. En yeni, en popüler teknolojiyi benimsemek cazip gelse de önce değerlendirip bilinçli karar vermek kritik.</p>
+    <div class="twocol">
+      <div class="card"><div class="t">Bulunduğun yerden başla</div><div class="small">Başlamak için en yeni teknolojiyi edinme baskısı hissetme. Pek çok başarılı profesyonel güçlü temellerini birkaç temel araç ve mevcut İK bilgi sistemleriyle kurdu; yazar da kariyerinde yalnızca ücretsiz araçlar ve o an elindeki İK bilgi sistemiyle epey şey yaptığını, çünkü o araçlarda uzmanlaşmaya emek verdiğini söylüyor. <strong>Mevcut kaynaklardan yararlan</strong> (bugün kullandığın araçlar sandığından fazlasını yapabilir; ipuçlarını ve ileri özellikleri araştır), <strong>kademeli entegre et</strong> (yeni araçları belirli görevlere yavaş yavaş kat), <strong>beceri setini geliştir</strong> (benzersiz beceri setini değiştiren değil güçlendiren araçlara öncelik ver).</div></div>
+      <div class="card"><div class="t">Yeni teknoloji tekliflerini keşfet</div><div class="small">Elindeki araçlardan memnun olsan bile yenileri takip etmek fikir verir. <strong>Sektör etkinlikleri</strong> (teknoloji sağlayıcılarının stantları), <strong>meslektaş ağı</strong> (bir aracın desteğini ve işlevselliğini öğrenmenin en iyi yolu onu kullanan birine sormak), <strong>bağımsız araştırma</strong> (yazar her yıl RedThread Research'ün insan analitiği teknoloji pazarı incelemesini bekliyor), <strong>iş birliği</strong> (belirli teknolojileri bilen meslektaşlardan örnekle öğren).</div></div>
+    </div>
+    <div class="box">
+      <div class="lbl">İpucu · R mi, Python mı? Önce kiminle çalışacağına bak</div>
+      <p class="small">Yazar, kurumunda başkalarının zaten kullandığı araçları seçmeyi öneriyor. Güçlü bir insan analitiği topluluğuna erişimin varsa R kullanan ve uygulamalarını paylaşabilecek daha çok kişi bulabilirsin; ama yazılımcılarla dolu, herkesin Python kullandığı bir kurumdaysan onların dilinde çalışmak daha yararlı olabilir.</p>
+      <div class="twocol">
+        <label class="small">Birlikte çalışacağım kişilerden R kullananlar: <strong id="rV">2</strong><input type="range" id="rN" min="0" max="20" value="2"></label>
+        <label class="small">Python kullananlar: <strong id="pV">6</strong><input type="range" id="pN" min="0" max="20" value="6"></label>
+      </div>
+      <div class="result" id="rpOut"></div>
+    </div>
+
+    <h3>Araç seçerken: heves değil, teknoloji stratejisi</h3>
+    <ol>
+      <li><strong>Kişisel teknoloji ihtiyaçlarını belirle:</strong> bu bölümdeki öz değerlendirmelere dön, büyütmek istediğin birkaç güçlü yönü seç ve onları öne çıkaracak araçları ara.</li>
+      <li><strong>İş ihtiyaçlarını belirle:</strong> heveslere kapılma; satıcı iddialarını eleştirel değerlendir ve ihtiyaçlarına uyan çözümlere odaklan. Kurumunun işgücü sorunlarını ve fırsatlarını ana hatlarıyla çıkar, veriye dayalı yaklaşımların değerli içgörü sağlayabileceği alanları belirle.</li>
+      <li><strong>İhtiyaç analizi yap:</strong> kişisel ve kurumsal ihtiyaçları bir matriste satır satır listele; değerlendirdiğin her araç için her ihtiyacı ne kadar karşıladığını not al ve sunabileceği ek özellikleri yaz. Bu, benzer seçenekler arasında seçim yapmanın basit bir yolu ve bir “uyum kontrolü”: bir araca çekiliyorsun ama ihtiyaçlarınla örtüşmüyorsa, şu an için en iyi seçenek olmayabilir.</li>
+      <li><strong>Güvenlik ve uyumu sağla:</strong> güçlü veri güvenliği önlemleri olan ve ilgili veri mahremiyeti düzenlemelerine (örn. GDPR, CCPA; Türkiye'de KVKK) uyan platformlara öncelik ver. Satıcı bu düzenlemelere yabancı görünüyorsa bunu bir kırmızı bayrak say.</li>
+      <li><strong>Ölçeklenebilirlik ve geleceğe hazırlık:</strong> değişen ihtiyaçlarına uyum sağlayabilen, gelecekteki teknolojilerle bütünleşebilen kullanıcı dostu bir platform seç; destek ve kaynaklarını (yardım hizmetleri, eğitim kaynakları, kullanıcı toplulukları) değerlendir. Aracın bugünkü ihtiyaçlarını karşılayıp ileride başka sorunlara genişleyip genişleyemeyeceğini ve mevcut İK ve iş sistemleriyle sorunsuz bütünleşip bütünleşemeyeceğini nesnel olarak incele.</li>
+      <li><strong>Finansal olarak akıllı ol:</strong> platformun maliyet etkinliğini ve hedeflerine göre olası yatırım getirisini (ROI) dikkatle değerlendir. Çoğu şirket, senin durumunda ulaşılabilecekten daha yüksek bir getiri vaat eder; gerçek getiri genellikle kurumsal ihtiyaçlarla örtüşen araçları seçmekten gelir. Uygulama ücretleri, destek ve sürekli bakım gibi ek maliyetleri unutma.</li>
+    </ol>
+
+    <div class="box">
+      <div class="lbl">Araç · İhtiyaç analizi matrisi</div>
+      <p class="small">Her hücrede aracın o ihtiyacı ne kadar karşıladığını seç (0 = hiç, 3 = tam). Satır ve araç ekleyebilirsin.</p>
+      <div class="mx"><table id="mx"></table></div>
+      <div class="row noprint" style="margin-top:8px"><button class="btn ghost sm" id="mxRow">+ İhtiyaç</button><button class="btn ghost sm" id="mxCol">+ Araç</button><button class="btn ghost sm" id="mxCsv">CSV indir</button></div>
+      <div class="result" id="mxOut"></div>
+    </div>
+    <div class="twocol">
+      <div class="box">
+        <div class="lbl">Kontrol listesi · Güvenlik, uyum, ölçek</div>
+        <ul class="check" id="sec"></ul>
+        <div class="small" id="secOut"></div>
+      </div>
+      <div class="box">
+        <div class="lbl">Hesaplayıcı · Toplam maliyet ve gerçekçi getiri</div>
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:8px">
+          <label class="small">Yıllık lisans (bin ₺)<input type="number" id="c1" value="300"></label>
+          <label class="small">Uygulama (tek sefer)<input type="number" id="c2" value="150"></label>
+          <label class="small">Yıllık destek/bakım<input type="number" id="c3" value="60"></label>
+          <label class="small">Süre (yıl)<input type="number" id="c4" value="3"></label>
+          <label class="small">Yılda kazanılan saat<input type="number" id="c5" value="900"></label>
+          <label class="small">Saatlik maliyet (bin ₺)<input type="number" id="c6" value="0.6" step="0.05"></label>
+        </div>
+        <label class="small">Satıcının vaat ettiği getiriye göre gerçekçilik payı: <strong id="c7v">60</strong>%<input type="range" id="c7" min="20" max="100" step="5" value="60"></label>
+        <div class="result" id="roiOut"></div>
+      </div>
+    </div>
+
+    <h3>Eğlen ve dene</h3>
+    <ul>
+      <li><strong>Ücretsiz deneme ve demolardan yararlan:</strong> işlevleri test edip kullanım kolaylığını ve sana uygunluğunu değerlendir. (Uyarı: o şirket muhtemelen kariyerinin geri kalanında sana satış yapmak için peşini bırakmayacak!)</li>
+      <li><strong>Küçük deneyler yap:</strong> yeni teknolojilerin belirli kullanım senaryolarına uygunluğunu küçük ölçekli denemelerle (pilot) değerlendir. Teknoloji uygulama denemeleri de her deney gibi ele alınabilir; hem yeni uygulamaları keşfeder hem araştırma becerilerini geliştirirsin!</li>
+      <li><strong>Otomasyon ve etkiye odaklan:</strong> tekrar eden işleri otomatikleştirip zamanını daha stratejik ve keyifli analitiğe ayıran özellikleri ve en yüksek etkiyi sağlayan teknolojileri ara.</li>
+    </ul>
+    <h3>Sürekli teknoloji öğrenme yolculuğuna başla</h3>
+    <p>Çoğu teknoloji şirketi ürününden en iyi şekilde yararlanmanı ister ve ücretsiz öğrenme ve topluluk kaynakları sunar: <strong>satıcı kaynakları</strong> (öğrenme materyalleri, topluluk forumları), <strong>çevrimiçi kurs ve öğreticiler</strong> (platformların ya da güvenilir sağlayıcıların sertifikaları), <strong>pratik</strong> (kariyer gelişim planına yeni araçlarla pratik için ayrılmış zaman koy), <strong>birlikte öğrenme</strong> (bilgi ve deneyimini paylaşacak meslektaşlarla çevrili ol, kendi öğrenme denemelerini de paylaş). İnsan analitiği teknoloji ortamı sürekli değişiyor; teknolojiyi sürekli öğrenme sürecinin bir parçası olarak gör.</p>
+    <div class="box">
+      <div class="lbl">Planım · Bir araç, bir görev, bir pilot</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px">
+        <label class="small">Büyütmek istediğim güçlü yön<input type="text" id="pl1"></label>
+        <label class="small">Deneyeceğim araç / özellik<input type="text" id="pl2"></label>
+        <label class="small">Uygulayacağım belirli görev<input type="text" id="pl3"></label>
+        <label class="small">Başarı ölçütüm (pilot)<input type="text" id="pl4"></label>
+        <label class="small">Öğrenme kaynağım<input type="text" id="pl5"></label>
+        <label class="small">Haftalık pratik süresi<input type="text" id="pl6"></label>
+      </div>
+    </div>
+    <label class="readmark"><input type="checkbox" data-read="s10"> Bu bölümü tamamladım</label>
+  </section>
+
+  <!-- 11 -->
+  <section class="ch" id="s11">
+    <h2>Mini Test</h2><hr>
+    <div id="quiz"></div>
+    <p class="ui" id="score" style="font-weight:700;color:var(--navy)"></p>
+    <label class="readmark"><input type="checkbox" data-read="s11"> Testi tamamladım</label>
+  </section>
+</main>
+<nav class="pager" aria-label="Sayfalar arası gezinme"><a class="pv" href="insan_analitigi_veri_yonetimi_ve_yonetisimi.html"><small>← Önceki</small><b>Adım 3: Veri yönetimi ve yönetişimi</b></a><a class="mid" href="index.html"><small>Ana sayfa</small><b>İçindekiler</b></a><a class="nx" href="insan_analitigi_adim4_buyuk_resim.html"><small>Sonraki →</small><b>Adım 4: Büyük resim</b></a></nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+const KEY="pa_adim3_arastirma_tek_v1";
+let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt=(x,d=1)=>Number.isFinite(x)?x.toLocaleString("tr-TR",{minimumFractionDigits:d,maximumFractionDigits:d}):"–";
+const dl=(name,rows)=>{const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';const b=new Blob(["﻿"+rows.map(r=>r.map(q).join(";")).join("\n")],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href)};
+const redraws=[];
+function seg(sel,key,def,cb){st[key]=st[key]??def;const set=()=>$$(sel+" button").forEach(b=>{b.classList.toggle("on",b.dataset.v===String(st[key]));b.setAttribute("aria-pressed",b.dataset.v===String(st[key]))});$$(sel+" button").forEach(b=>b.onclick=()=>{st[key]=b.dataset.v;save();set();cb()});set()}
+const T=(x,y,s,o={})=>`<text x="${x}" y="${y}" font-size="${o.fs||11}" text-anchor="${o.a||"middle"}" fill="${o.c||css("--muted")}" ${o.w?`font-weight="${o.w}"`:""} ${o.rot?`transform="rotate(${o.rot} ${x} ${y})"`:""}>${s}</text>`;
+const axes=(x0,y0,x1,y1)=>`<line x1="${x0}" y1="${y1}" x2="${x1}" y2="${y1}" stroke="${css("--line")}"/><line x1="${x0}" y1="${y0}" x2="${x0}" y2="${y1}" stroke="${css("--line")}"/>`;
+const rng=seed=>{let s=seed;return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}};
+const gauss=r=>{let u=0,v=0;while(!u)u=r();while(!v)v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)};
+const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
+const corr=(x,y)=>{const mx=mean(x),my=mean(y);let n=0,dx=0,dy=0;x.forEach((v,i)=>{n+=(v-mx)*(y[i]-my);dx+=(v-mx)**2;dy+=(y[i]-my)**2});return n/Math.sqrt(dx*dy)};
+
+if(st.theme)document.documentElement.dataset.theme=st.theme;
+$("#theme").onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.dataset.theme=cur==="dark"?"light":"dark";st.theme=d.dataset.theme;save();redraws.forEach(f=>f())};
+st.read=st.read||{};const N=11;
+function prog(){const n=Object.values(st.read).filter(Boolean).length;$("#progbar").style.width=(n/N*100)+"%";$$("#nav a").forEach(a=>a.classList.toggle("done",!!st.read[a.dataset.s]))}
+$$("[data-read]").forEach(cb=>{cb.checked=!!st.read[cb.dataset.read];cb.onchange=()=>{st.read[cb.dataset.read]=cb.checked;save();prog();if(cb.checked)toast("Bir bölüm daha tamam!")}});prog();
+
+function scen(sel,items){$(sel).innerHTML=items.map((it,k)=>`<div class="card" style="margin:10px 0"><div style="font-size:15px">${it.q}</div>${it.o.map((o,j)=>`<button class="opt" data-k="${k}" data-j="${j}">${o}</button>`).join("")}<div class="fb" id="${sel.slice(1)}fb${k}"></div></div>`).join("");
+ $$(sel+" .opt").forEach(b=>b.onclick=()=>{const it=items[b.dataset.k];$$(`${sel} .opt[data-k="${b.dataset.k}"]`).forEach(x=>x.classList.remove("right","wrong"));const ok=+b.dataset.j===it.a;b.classList.add(ok?"right":"wrong");$(`${sel}fb${b.dataset.k}`).innerHTML=`<span class="${ok?"ok":"no"}">${ok?"Doğru":"Tekrar düşün"}:</span> ${it.e}`})}
+
+// 1. karıştırıcı değişken simülasyonu
+const CF=[];(function(){const r=rng(11);for(let i=0;i<120;i++){const L=i%3;const R=Math.floor(r()*7);const sal=40+22*L+4*R+gauss(r)*4;const sat=Math.max(1,Math.min(5,1.6+.9*L+.15*R+gauss(r)*.45));CF.push({L,R,sal,sat})}})();
+const LN=["Uzman","Yönetici","Direktör"],LC=["--s1","--s2","--s4"];
+const CFS=["1 · Analitik: tüm veri","2 · İş düzeyini kontrol et","3 · Ödülleri de hesaba kat","4 · Dört ölçütü değerlendir"];
+st.cf=st.cf??0;
+function cf(){$("#cfSteps").innerHTML=CFS.map((s,i)=>`<button class="stp ${i===st.cf?"on":i<st.cf?"done":""}" data-cf="${i}">${s}</button>`).join("");$$("[data-cf]").forEach(b=>b.onclick=()=>{st.cf=+b.dataset.cf;save();cf()});
+ const W=420,H=280,p=44,x1=W-14,y1=H-34;const step=st.cf;const useR=step>=2;
+ const xs=CF.map(d=>useR?d.R:d.sal);const xmin=useR?-.5:Math.min(...xs)-3,xmax=useR?6.5:Math.max(...xs)+3;const X=v=>p+(v-xmin)/(xmax-xmin)*(x1-p),Y=v=>y1-(v-1)/4*(y1-14);
+ let g=axes(p,10,x1,y1);[1,2,3,4,5].forEach(v=>g+=T(p-6,Y(v)+4,v,{a:"end"}));
+ g+=T((p+x1)/2,H-6,useR?"yıl içinde alınan takdir/ödül sayısı":"aylık ücret (bin ₺)")+T(12,y1/2,"memnuniyet (1–5)",{rot:-90});
+ if(useR)[0,2,4,6].forEach(v=>g+=T(X(v),y1+14,v));else[60,90,120].forEach(v=>{if(v>xmin&&v<xmax)g+=T(X(v),y1+14,v)});
+ CF.forEach((d,i)=>{const c=step>=1?css(LC[d.L]):css("--navy2");g+=`<circle cx="${X(xs[i])+(useR?(d.L-1)*5:0)}" cy="${Y(d.sat)}" r="4" fill="${c}" fill-opacity=".7"/>`});
+ if(step>=1)LN.forEach((n,k)=>g+=`<circle cx="${p+14+k*90}" cy="16" r="5" fill="${css(LC[k])}"/>`+T(p+24+k*90,20,n,{a:"start",c:css("--ink")}));
+ $("#cfSvg").innerHTML=`<title id="cfT">Ücret ve memnuniyet ilişkisi, adım ${step+1}</title>`+g;
+ const r0=corr(CF.map(d=>d.sal),CF.map(d=>d.sat));const rL=[0,1,2].map(L=>{const s=CF.filter(d=>d.L===L);return corr(s.map(d=>d.sal),s.map(d=>d.sat))});
+ const rR=[0,1,2].map(L=>{const s=CF.filter(d=>d.L===L);return corr(s.map(d=>d.R),s.map(d=>d.sat))});const rNet=[0,1,2].map(L=>{const s=CF.filter(d=>d.L===L);return corr(s.map(d=>d.sal-4*d.R),s.map(d=>d.sat))});
+ const txt=[`<div class="result"><strong class="ui">Ücret–memnuniyet korelasyonu: r = ${fmt(r0,2)}</strong><p class="small" style="margin:.4em 0 0">Güçlü bir ilişki bulundu: ücret arttıkça memnuniyet artıyor gibi. Analitik yaklaşım burada durabilir. Yararlı ama sınırlı bir bulgu.</p></div>`,
+ `<div class="result"><strong class="ui">İş düzeyine göre ayrı ayrı:</strong><br>${LN.map((n,k)=>`${n}: r = ${fmt(rL[k],2)}`).join(" · ")}<p class="small" style="margin:.4em 0 0">Üst düzey pozisyonlardakilerin ücreti de genellikle yüksektir. Düzeyler ayrı ayrı incelendiğinde (ya da matematiksel kontrolle) ilişki zayıflıyor ama tamamen kaybolmuyor. Araştırmacı burada durmaz: “Bu ilişkiyi başka şeyler açıklayabilir mi?”</p></div>`,
+ `<div class="result"><strong class="ui">Takdir/ödül sayısı ile memnuniyet:</strong><br>${LN.map((n,k)=>`${n}: r = ${fmt(rR[k],2)}`).join(" · ")}<br><strong class="ui">Ödül tutarı çıkarıldığında ücret:</strong> ${LN.map((n,k)=>`r = ${fmt(rNet[k],2)}`).join(" · ")}<p class="small" style="margin:.4em 0 0">Bu kurgusal kurumda takdir parasal ödülle geliyor, yani her ödül ücreti artırıyor; iki değişken iç içe. Sık ödüllendirilenler zam ve terfi de alıyor. Yeni soru: memnuniyeti yönlendiren yüksek ücret mi, yoksa takdir edilip ödüllendirilmek mi? Bu kurgusal veride ödül tutarı çıkarıldığında ücretin kalan ilişkisi zayıf ya da yok; yani ilişkinin büyük kısmını takdir ve ödül taşıyor.</p></div>`,
+ `<div class="result"><strong class="ui">Bulguların ötesinde dört ölçüt:</strong><ul style="margin:.3em 0 0;padding-left:18px;font-size:15px"><li><em>Geçerlik:</em> anket memnuniyeti ne kadar iyi temsil ediyor?</li><li><em>Güvenirlik:</em> yöntem memnuniyeti ne kadar tutarlı ölçüyor?</li><li><em>Aktarılabilirlik:</em> sonuçlar başka gruplara, zamanlara, yerlere ne kadar uygulanabilir?</li><li><em>Uygulanabilirlik:</em> bulgular belirli iş sonuçları için ne kadar yararlı?</li></ul></div>`];
+ $("#cfTxt").innerHTML=txt[step]+`<div class="row" style="margin-top:8px">${step>0?'<button class="btn ghost sm" id="cfPrev">← Geri</button>':""}${step<3?'<button class="btn sm" id="cfNext">Sonraki adım →</button>':""}</div>`;
+ const pv=$("#cfPrev"),nx=$("#cfNext");if(pv)pv.onclick=()=>{st.cf--;save();cf()};if(nx)nx.onclick=()=>{st.cf++;save();cf()}}
+cf();redraws.push(cf);
+
+// 2. dört ölçüt
+const CR=[["Geçerlik","validity","Veri, temsil etmesi gereken şeyi ne kadar iyi temsil ediyor?"],["Güvenirlik","reliability","Ölçme yöntemi ne kadar tutarlı?"],["Aktarılabilirlik","transferability","Sonuçlar başka gruplara, zamanlara, yerlere ne kadar uygulanabilir?"],["Uygulanabilirlik","applicability","Bulgular ihtiyaçların ve belirli iş sonuçları için ne kadar yararlı?"]];
+$("#crit").innerHTML=CR.map(c=>`<div class="flip" tabindex="0" role="button" aria-label="${c[0]}"><div class="in"><div class="f">${c[0]}<small>${c[1]}</small></div><div class="b">${c[2]}</div></div></div>`).join("");
+$$(".flip").forEach(f=>{f.onclick=()=>f.classList.toggle("open");f.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();f.classList.toggle("open")}}});
+// vekil ölçü
+const PX=[["Çalışan memnuniyeti","Yıllık anketteki “Genel olarak işimden memnunum” maddesi","Tek madde; o günkü ruh hâlinden, anketin zamanlamasından ve yanıtın kimin göreceğine dair kaygıdan etkilenebilir."],
+ ["Verimlilik","Kişi başına tamamlanan iş kaydı (ticket) sayısı","İşin zorluğunu, kalitesini ve başkalarına yardımı göstermez; sayıyı artırmak için davranış değişebilir."],
+ ["Deneyim","Sektördeki çalışma yılı","Yazarın da dediği gibi deneyim yıllarla kazanılmaz ya da doğru ölçülmez; aynı işi on yıl tekrarlamak ile on farklı deneyim aynı değil."],
+ ["Bağlılık","Gönüllü fazla mesai saatleri","İş yükü baskısını ya da zorunluluğu bağlılık sanabilir; tükenmişliği de “yüksek bağlılık” gösterebilir."]];
+st.px=st.px||{};
+function pxR(){$("#proxy").innerHTML=PX.map((p,i)=>`<div class="card" style="margin:8px 0"><div class="ui" style="font-weight:800;color:var(--navy)">${p[0]}</div><button class="chip" data-px="${i}" style="margin:6px 0">Vekil: ${p[1]}</button><div class="small" id="pxl${i}" style="display:${st.px["o"+i]?"block":"none"}">⚠ ${p[2]}</div><input type="text" data-pxn="${i}" placeholder="Geçerliği güçlendirmek için ek kanıt fikrim (örn. odak grupla karşılaştırma)" value="${esc(st.px[i]||"")}" style="margin-top:6px"></div>`).join("");
+ $$("[data-px]").forEach(b=>b.onclick=()=>{const k="o"+b.dataset.px;st.px[k]=!st.px[k];save();pxR()});$$("[data-pxn]").forEach(i=>i.oninput=()=>{st.px[i.dataset.pxn]=i.value;save()})}
+pxR();
+const VT=[["Yapı geçerliği","Ölçünün ölçmek istediğin kuramsal yapıyı (bağlılık, memnuniyet) gerçekten ölçüp ölçmediği. Yazarın önerdiği başlangıç noktası.","başla"],
+ ["Kapsam (görünüş) geçerliği","Ölçünün yapının tüm önemli yönlerini kapsayıp kapsamadığı ve uzmanlara “doğru görünüp” görünmediği. En kolay başlangıç.","kolay"],
+ ["Ölçüt geçerliği","Ölçünün, onunla ilişkili olması beklenen bir dış ölçütle (örn. sonraki performans ya da gerçek ayrılma) ne kadar ilişkili olduğu. En güçlüsü.","güçlü"],
+ ["İç geçerlik","Bulunan etkinin gerçekten incelenen değişkenden kaynaklandığından, başka açıklamaların dışlanabildiğinden ne kadar emin olunabildiği.",""],
+ ["Dış geçerlik","Sonuçların başka kişilere, ortamlara ve zamanlara genellenebilirliği.",""],
+ ["Ekolojik geçerlik","Bulguların gerçek, günlük iş koşullarını ne kadar yansıttığı.",""]];
+$("#valid").innerHTML=VT.map(v=>`<div class="card"><div class="t">${v[0]} ${v[2]?`<span class="small" style="font-weight:800;color:${v[2]==="güçlü"?"var(--ok)":"var(--navy2)"}">· ${v[2]==="başla"?"buradan başla":v[2]==="kolay"?"en kolay":"en güçlü"}</span>`:""}</div><div class="small">${v[1]}</div></div>`).join("");
+
+// 3. örnekleme
+const POP=[];(function(){const r=rng(5);[["Üretim",300,3.0],["Satış",150,3.5],["Ar-Ge",90,3.9],["Merkez ofis",60,4.2]].forEach(([d,n,m],k)=>{for(let i=0;i<n;i++)POP.push({d:k,s:Math.max(1,Math.min(5,m+gauss(r)*.7)),vol:r()<(k>=2?.6:.15)})})})();
+const TRUE=mean(POP.map(p=>p.s));const DN=["Üretim","Satış","Ar-Ge","Merkez ofis"];
+let smR=rng(99),smHist=[],smLast=null;
+const pick=(arr,n)=>{const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(smR()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a.slice(0,Math.min(n,a.length))};
+function draw1(){const n=+$("#smN").value,m=st.sm;let s;
+ if(m==="srs")s=pick(POP,n);
+ else if(m==="str")s=[0,1,2,3].flatMap(k=>{const g=POP.filter(p=>p.d===k);return pick(g,Math.round(n*g.length/POP.length))});
+ else if(m==="conv"){const v=POP.filter(p=>p.vol);s=pick(v,n)}
+ else s=[0,1,2,3].flatMap(k=>{const g=POP.filter(p=>p.d===k);const v=g.filter(p=>p.vol),nv=g.filter(p=>!p.vol);return pick(v,Math.round(n/4)).concat(pick(nv,Math.max(0,Math.round(n/4)-v.length)))});
+ return s}
+function smDraw(){$("#smNv").textContent=$("#smN").value;const W=420,H=230,p=36,x1=W-14,y1=H-34;const lo=2.9,hi=4.1;const X=v=>p+(v-lo)/(hi-lo)*(x1-p);let g=axes(p,10,x1,y1);
+ [3,3.25,3.5,3.75,4].forEach(v=>g+=T(X(v),y1+14,fmt(v,2)));
+ if(smHist.length){const bins=new Array(24).fill(0);smHist.forEach(v=>{const b=Math.floor((v-lo)/(hi-lo)*24);if(b>=0&&b<24)bins[b]++});const mx=Math.max(...bins);const bw=(x1-p)/24;bins.forEach((c,i)=>{const h=c/mx*(y1-30);g+=`<rect x="${p+i*bw}" y="${y1-h}" width="${bw-1}" height="${h}" fill="${css("--navy2")}" fill-opacity=".55"/>`})}
+ g+=`<line x1="${X(TRUE)}" x2="${X(TRUE)}" y1="12" y2="${y1}" stroke="${css("--ok")}" stroke-width="2.5"/>`+T(X(TRUE),12,"gerçek ortalama "+fmt(TRUE,2),{c:css("--ok"),w:800,fs:10});
+ if(smLast!=null)g+=`<line x1="${X(smLast)}" x2="${X(smLast)}" y1="26" y2="${y1}" stroke="${css("--warn")}" stroke-width="2.5" stroke-dasharray="4 3"/>`+T(X(smLast),y1-4,"son tahmin",{c:css("--warn"),w:800,fs:10,a:smLast>TRUE?"start":"end"});
+ g+=T((p+x1)/2,H-4,"örneklem ortalaması (memnuniyet)");$("#smSvg").innerHTML=`<title id="smT">Örneklem tahminlerinin dağılımı</title>`+g;
+ const txt={srs:"Her çalışanın seçilme şansı eşit. Ortalamada gerçeğe yakın; ama küçük örneklemde tahminler epey dağılabiliyor.",str:"Evren birimlere (tabakalara) bölünüp her birinden büyüklüğüyle orantılı seçim yapılıyor. Birimler farklı olduğunda tahminler basit rastgeleye göre daha az dağılır.",conv:"Yalnızca kolay ulaşılan gönüllüler: burada daha memnun olan Ar-Ge ve merkez ofis çalışanları daha istekli. Örneklem büyüse bile tahmin sistematik olarak yukarı kayıyor: yanlılık büyüklükle düzelmez.",quota:"Her birimden eşit sayıda kişi, birim içinde de önce gönüllüler alınıyor. Küçük ve memnun birimler fazla temsil ediliyor; kotalar temsiliyeti garanti etmez."}[st.sm];
+ let stat="";if(smHist.length){const m=mean(smHist),sd=Math.sqrt(mean(smHist.map(v=>(v-m)**2)));stat=`<div class="stats"><div class="stat"><b>${fmt(m,2)}</b><span>Tahminlerin ortalaması</span></div><div class="stat"><b style="color:${Math.abs(m-TRUE)>.08?css("--bad"):css("--ok")}">${m-TRUE>=0?"+":""}${fmt(m-TRUE,2)}</b><span>Yanlılık</span></div><div class="stat"><b>${fmt(sd,3)}</b><span>Dağılım (std. sapma)</span></div></div>`}
+ $("#smOut").innerHTML=`<div class="small">Gerçek kurum ortalaması: <strong>${fmt(TRUE,2)}</strong>${smLast!=null?` · son örneklem: <strong>${fmt(smLast,2)}</strong>`:""}</div>${stat}<p class="small">${txt}</p>`}
+seg("#smSeg","sm","srs",()=>{smHist=[];smLast=null;smDraw()});
+$("#smN").oninput=()=>{smHist=[];smLast=null;smDraw()};
+$("#smOne").onclick=()=>{const s=draw1();smLast=mean(s.map(p=>p.s));smHist.push(smLast);smDraw()};
+$("#smMany").onclick=()=>{smHist=[];for(let i=0;i<200;i++)smHist.push(mean(draw1().map(p=>p.s)));smLast=smHist[199];smDraw()};
+smDraw();redraws.push(smDraw);
+
+// 4. moderasyon / mediasyon
+function mod(){const k=+$("#mod").value;$("#modV").textContent=k;const W=380,H=220,p=40,x1=W-90,y1=H-34;const Y=v=>y1-(v-50)/25*(y1-14);let g=axes(p,10,x1,y1);
+ const lo=[60,60+2],hi=[62,62+2+k];const xs=[p+30,x1-30];g+=T(xs[0],y1+14,"Eğitim yok")+T(xs[1],y1+14,"Eğitim var");[55,65,70].forEach(v=>g+=T(p-6,Y(v)+4,v,{a:"end"}));
+ [[lo,css("--muted"),"Düşük motivasyon"],[hi,css("--navy2"),"Yüksek motivasyon"]].forEach(([v,c,n])=>{g+=`<line x1="${xs[0]}" y1="${Y(v[0])}" x2="${xs[1]}" y2="${Y(v[1])}" stroke="${c}" stroke-width="3"/><circle cx="${xs[0]}" cy="${Y(v[0])}" r="4" fill="${c}"/><circle cx="${xs[1]}" cy="${Y(v[1])}" r="4" fill="${c}"/>`+T(xs[1]+8,Y(v[1])+4,n,{a:"start",c,w:700,fs:10})});
+ g+=T(12,y1/2,"performans",{rot:-90});$("#modSvg").innerHTML=`<title>Düşük ve yüksek motivasyonda eğitim etkisi</title>`+g;
+ $("#modOut").innerHTML=`Eğitimin etkisi düşük motivasyonda <strong>+2</strong>, yüksek motivasyonda <strong>+${2+k}</strong> puan. ${k===0?"Çizgiler paralel: motivasyon etkiyi değiştirmiyor, düzenleyicilik yok.":"Çizgiler paralel değil: motivasyon, eğitimin <em>ne zaman</em> daha çok işe yaradığını belirliyor. Modelde bu “eğitim × motivasyon” etkileşim terimiyle gösterilir."}`}
+$("#mod").oninput=mod;mod();redraws.push(mod);
+function med(){const s=+$("#med").value;$("#medV").textContent=s;const tot=10,ind=tot*s/100,dir=tot-ind;const W=380,H=220;let g="";
+ const box=(x,y,t)=>`<rect x="${x-55}" y="${y-18}" width="110" height="36" rx="8" fill="${css("--soft")}" stroke="${css("--navy2")}"/>`+T(x,y+4,t,{c:css("--ink"),w:800,fs:12});
+ const arrow=(x1,y1,x2,y2,w,lbl,lx,ly)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${css("--navy2")}" stroke-width="${Math.max(1,w)}" marker-end="url(#ar)"/>`+T(lx,ly,lbl,{c:css("--ink"),w:700,fs:11});
+ g+=`<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="${css("--navy2")}"/></marker></defs>`;
+ g+=arrow(110,160,160,70,1+ind/1.5,"",0,0)+arrow(220,70,268,160,1+ind/1.5,"",0,0)+arrow(130,180,248,180,1+dir/1.5,"doğrudan: "+fmt(dir,0),190,206);
+ g+=T(108,108,"a",{c:css("--muted"),fs:12})+T(272,108,"b",{c:css("--muted"),fs:12})+T(190,30,"dolaylı (bilgi üzerinden): "+fmt(ind,0),{c:css("--ink"),w:700,fs:11});
+ g+=box(80,180,"Eğitim")+box(190,55,"Bilgi")+box(300,180,"Performans");
+ $("#medSvg").innerHTML=`<title>Aracılık modeli</title>`+g;
+ $("#medOut").innerHTML=`Eğitimin toplam etkisi 10 puan: ${fmt(ind,0)} puanı bilgi artışı üzerinden (dolaylı), ${fmt(dir,0)} puanı doğrudan. ${s>=80?"Etki neredeyse tamamen bilgi üzerinden geçiyor: eğitim performansı <em>nasıl</em> artırıyor sorusunun yanıtı bilgi.":s===0?"Bilgi aracı değil; etki başka bir yoldan geliyor.":"Kısmi aracılık: bilgi açıklamanın bir parçası, ama tamamı değil."}`}
+$("#med").oninput=med;med();redraws.push(med);
+
+// 5. çerçeveler
+const SCI=[["Gözlem / soru","Yöneticiler, esnek çalışma saatleri olan ekiplerde memnuniyetin daha yüksek olduğunu fark ediyor."],["Hipotez","“Esnek çalışma saatleri çalışan memnuniyetini artırır.” (Kitaptaki öz değerlendirme tablosundaki örnek.)"],["Deney tasarımı","Benzer iki birimden birinde esnek saatleri başlat, diğerini karşılaştırma grubu olarak tut; ölçüleri önceden belirle."],["Analiz","Uygulama öncesi ve sonrası memnuniyet farkını gruplar arasında karşılaştır; anlamlılığı sına."],["Sonuç","Kanıta dayalı sonuç çıkar; uygulamalı ortamda yeni sorular doğabilir (örn. hangi rollerde işe yaramıyor?) ve süreç yeniden başlayabilir."]];
+const DT=[["Empati","Çalışanlarla görüş: esneklik onlar için ne anlama geliyor, hangi anlarda zorlanıyorlar?"],["Tanımla","Sorunu insan odaklı tanımla: “Ebeveyn çalışanlar sabah saatlerinde toplantılara katılmakta zorlanıyor.”"],["Fikir üret","Çalışanlarla birlikte uzun bir olası çözüm listesi çıkar: çekirdek saatler, toplantısız sabahlar, sıkıştırılmış hafta…"],["Prototip","En umut verici fikirlerden küçük ölçekli bir deneme kur."],["Test","Çalışanlarla test et, geri bildirim al, iyileştir; en kullanışlı çözüm bulunana kadar döngüyü yinele."]];
+st.sci=st.sci??0;st.dt=st.dt??0;
+function fw(id,arr,key,cyc){$(id+"Steps").innerHTML=arr.map((s,i)=>`<button class="stp ${st[key]===i?"on":""}" data-${key}="${i}">${i+1}. ${s[0]}</button>${i<arr.length-1?'<span class="arr">→</span>':cyc?'<span class="arr">↺</span>':""}`).join("");
+ $$(`[data-${key}]`).forEach(b=>b.onclick=()=>{st[key]=+b.getAttribute("data-"+key);save();fw(id,arr,key,cyc)});$(id+"Out").innerHTML=`<strong class="ui">${arr[st[key]][0]}:</strong> ${arr[st[key]][1]}`}
+fw("#sci",SCI,"sci",false);fw("#dt",DT,"dt",true);
+
+// tasarım simülasyonu
+function des(){const te=+$("#te").value,se=+$("#se").value;$("#teV").textContent=te;$("#seV").textContent=se;const r=rng(7+te*13+se);const P=[];
+ for(let i=0;i<400;i++){const M=r();const dept=i<200?0:1;const Md=Math.min(1,Math.max(0,M+(dept===0?.05:-.05)));
+  const pSel=Math.min(.95,Math.max(.05,.5+(Md-.5)*se/10*1.8));P.push({M:Md,dept,tN:r()<pSel?1:0,tR:r()<.5?1:0,tQ:dept===0?1:0,e:gauss(r)*4})}
+ const perf=(p,t)=>50+20*p.M+te*t+p.e;const est=k=>{const a=P.filter(p=>p[k]).map(p=>perf(p,1)),b=P.filter(p=>!p[k]).map(p=>perf(p,0));return mean(a)-mean(b)};
+ const E=[["Deneysel (rastgele atama)",est("tR"),"--ok"],["Yarı deneysel (A eğitimli, B değil)",est("tQ"),"--s2"],["Deneysel olmayan (isteğe bağlı)",est("tN"),"--bad"]];
+ const W=560,H=210,p=210,x1=W-40;const mx=Math.max(12,...E.map(e=>e[1]))+1;const X=v=>p+Math.max(0,v)/mx*(x1-p);let g="";
+ E.forEach(([n,v,c],i)=>{const y=24+i*52;g+=T(p-8,y+18,n,{a:"end",c:css("--ink"),w:700,fs:12})+`<rect x="${p}" y="${y}" width="${Math.max(2,X(v)-p)}" height="28" rx="4" fill="${css(c)}"/>`+T(X(v)+6,y+19,fmt(v,1),{a:"start",c:css("--ink"),w:800,fs:12})});
+ g+=`<line x1="${X(te)}" x2="${X(te)}" y1="14" y2="${H-14}" stroke="${css("--navy2")}" stroke-width="2" stroke-dasharray="5 4"/>`+T(X(te),H-2,"gerçek etki "+te,{c:css("--navy2"),w:800,fs:11});
+ $("#desSvg").innerHTML=`<title>Üç tasarımın tahmini</title>`+g;
+ const bias=E[2][1]-te;$("#desOut").innerHTML=`Deneysel olmayan karşılaştırma etkiyi <strong>${bias>=0?fmt(bias,1)+" puan fazla":fmt(-bias,1)+" puan eksik"}</strong> gösteriyor: eğitimi seçenler zaten daha motive${se===0?" değil (seçim motivasyondan bağımsız olduğunda yanlılık kayboluyor)":", eğitimsiz de daha iyi performans gösterirdi"}. Rastgele atama bu farkı dengeler. Yarı deneysel tasarım, departmanlar arasındaki küçük motivasyon farkı kadar yanlı olabilir; sınırlılıkları kabul edilerek yorumlanmalı.`}
+$("#desRun").onclick=des;$("#te").oninput=des;$("#se").oninput=des;des();redraws.push(des);
+
+scen("#desQ",[
+ {q:"Yönetim, yeni liderlik programının etkisini görmek istiyor ve katılımcıları rastgele belirlemeye izin veriyor.",o:["Deneysel","Yarı deneysel","Deneysel olmayan"],a:0,e:"Rastgele atama mümkünse deneysel tasarım en güçlü iddiaları sağlar."},
+ {q:"Yeni esnek çalışma politikası yalnızca İzmir şubesinde başlatılıyor; Bursa şubesi aynı kalacak.",o:["Deneysel","Yarı deneysel","Deneysel olmayan"],a:1,e:"Kimin erişeceği manipüle ediliyor ama mevcut kısıtlar (şubeler) içinde; rastgele değil."},
+ {q:"Geçen yıl isteğe bağlı mentorluk programına katılanlarla katılmayanların terfi oranlarını karşılaştırıyorsun.",o:["Deneysel","Yarı deneysel","Deneysel olmayan"],a:2,e:"Mevcut durum gözlemleniyor; katılanların motivasyonu farklı olabilir."},
+ {q:"“Çalışanlar memnuniyetleri için hangi işyeri deneyimlerini en önemli buluyor?”",o:["Nicel","Nitel","Karma yöntem"],a:1,e:"Evet/hayır yanıtı yok; deneyimlerin niteliği soruluyor."},
+ {q:"“Takdir memnuniyete yol açar mı ve hangi takdir türleri insanlar için en anlamlıdır?”",o:["Nicel","Nitel","Karma yöntem"],a:2,e:"Hem test edilecek bir hipotez hem de nitelik sorusu var: karma yöntem."}]);
+
+// 6. hipotez yazıcı
+function hyp(){const g=id=>$("#"+id).value.trim();const dir={az:"azaltır",art:"artırır",fark:"farklılaştırır"}[$("#hDir").value];
+ const h=`H1: ${g("hIV")||"[bağımsız değişken]"}, ${g("hCmp")?g("hCmp")+" ile karşılaştırıldığında ":""}${g("hDV")||"[bağımlı değişken]"} değerini ${dir}.`;
+ const h0=`H0: ${g("hIV")||"[bağımsız değişken]"} ile ${g("hDV")||"[bağımlı değişken]"} arasında fark/ilişki yoktur.`;
+ const miss=["hIV","hDV","hCmp","hData"].filter(id=>!g(id)).length;
+ $("#hOut").innerHTML=`<div class="ui" style="font-weight:800">${esc(h)}</div><div class="small">${esc(h0)}</div><div class="small" style="margin-top:6px">Veri: ${esc(g("hData")||"—")} · Kontrol: ${esc(g("hCtl")||"—")}</div>${miss?`<div class="small no" style="margin-top:4px">${miss} alan eksik: test edilebilir bir hipotez net bir karşılaştırma ve veri kaynağı gerektirir.</div>`:'<div class="small ok" style="margin-top:4px">Test edilebilir görünüyor. Sonuç ne çıkarsa çıksın paylaşırken programı tasarlayanların emeğini gözet.</div>'}`}
+["hIV","hDV","hDir","hCmp","hData","hCtl"].forEach(id=>{const el=$("#"+id);st.h=st.h||{};if(st.h[id])el.value=st.h[id];el.oninput=el.onchange=()=>{st.h[id]=el.value;save();hyp()}});hyp();
+
+// 7. öz değerlendirme
+const LV=["Farkında","Öğrenen","Yetkin","Uzman","Stratejist"];
+const SK=[["Araştırma çerçeveleri","Hem sistematik (örn. bilimsel yöntem) hem yinelemeli (örn. tasarım odaklı düşünme) araştırma çerçevelerini anlamak ve izlemeyi öğrenmek."],
+ ["Araştırma tasarımı","Farklı araştırma yöntemlerini anlamak; soruları yanıtlamak ve hipotezleri test etmek için uygun yöntemi (deneysel, yarı deneysel, deneysel olmayan, nitel, nicel, karma yöntem vb.) seçebilmek."],
+ ["Hipotez geliştirme ve test","Değişkenler arasındaki ilişkiler hakkında açık, test edilebilir ifadeler oluşturabilmek (örn. “Esnek çalışma saatleri çalışan memnuniyetini artıracaktır”); uygun hipotez testi yöntemlerini seçip sonuçları yorumlayabilmek."],
+ ["Veri toplama ve analiz","Seçilen araştırma tasarımı ve yöntemi için hangi veri toplama ve analiz yöntemlerinin (anket, görüşme, odak grup, deney, prototip testi, gözlem vb.) uygun olduğunu anlamak."],
+ ["Güvenirlik ve geçerlik","Güvenirliği (tutarlılık) ve geçerliği (ölçmek istediğini ölçme) sağlayarak veriyi etkili biçimde toplayıp analiz edebilmek."],
+ ["Örnekleme yöntemi","Farklı örnekleme yöntemlerini anlamak; kısıtlar ve veri ihtiyaçları göz önüne alınarak en uygun temsil edici örneklemi oluşturacak tekniği (basit rastgele, tabakalı, kolayda, kota vb.) seçip uygulayabilmek."],
+ ["Modelleme teknikleri (değişken ilişkileri)","Düzenleyicilik, aracılık ve kümelemenin kuramsal temellerini anlamak; üçüncü bir değişkenin diğerleri arasındaki ilişkiyi etkileyebileceği durumları tanımak; modellerde etkileşim terimleri oluşturup etkileşim etkilerini yorumlamak; uygun istatistiksel testleri (regresyon, YEM, faktör analizi, kümeleme) seçmek."]];
+st.sa=st.sa||{cur:{},des:{},cust:[{n:"",d:""},{n:"",d:""},{n:"",d:""}]};
+const opts=v=>'<option value="">—</option>'+LV.map((l,i)=>`<option value="${i+1}" ${+v===i+1?"selected":""}>${i+1} · ${l}</option>`).join("");
+const gapTag=(c,d)=>!c||!d?"":d>c?`<span class="gap">+${d-c} düzey hedef</span>`:`<span class="met">hedefe ulaşıldı</span>`;
+function saR(){$("#saTab").innerHTML=`<tr><th>Beceri</th><th>Açıklama</th><th style="width:150px">Bugünkü düzey</th><th style="width:150px">Hedef düzey</th></tr>`+
+ SK.map((s,i)=>`<tr><td class="sk">${s[0]}</td><td>${s[1]}</td><td><select data-c="${i}" aria-label="${esc(s[0])} bugünkü">${opts(st.sa.cur[i])}</select></td><td><select data-d="${i}" aria-label="${esc(s[0])} hedef">${opts(st.sa.des[i])}</select>${gapTag(st.sa.cur[i],st.sa.des[i])}</td></tr>`).join("")+
+ st.sa.cust.map((c,i)=>{const k="c"+i;return `<tr class="custom"><td><input type="text" data-cn="${i}" value="${esc(c.n)}" placeholder="Ek beceri"></td><td><input type="text" data-cd="${i}" value="${esc(c.d)}" placeholder="Açıklama (isteğe bağlı)"></td><td><select data-c="${k}">${opts(st.sa.cur[k])}</select></td><td><select data-d="${k}">${opts(st.sa.des[k])}</select>${gapTag(st.sa.cur[k],st.sa.des[k])}</td></tr>`}).join("");
+ $$("#saTab [data-c]").forEach(s=>s.onchange=()=>{st.sa.cur[s.dataset.c]=s.value?+s.value:undefined;save();saR()});
+ $$("#saTab [data-d]").forEach(s=>s.onchange=()=>{st.sa.des[s.dataset.d]=s.value?+s.value:undefined;save();saR()});
+ $$("[data-cn]").forEach(i=>i.onchange=()=>{st.sa.cust[i.dataset.cn].n=i.value;save();saSum()});$$("[data-cd]").forEach(i=>i.onchange=()=>{st.sa.cust[i.dataset.cd].d=i.value;save()});saSum()}
+const allSa=()=>SK.map((s,i)=>[s[0],s[1],i]).concat(st.sa.cust.map((c,i)=>[c.n,c.d,"c"+i]).filter(x=>x[0].trim()));
+function saSum(){const a=allSa();const r=a.filter(x=>st.sa.cur[x[2]]);const gaps=a.filter(x=>st.sa.cur[x[2]]&&st.sa.des[x[2]]>st.sa.cur[x[2]]).sort((x,y)=>(st.sa.des[y[2]]-st.sa.cur[y[2]])-(st.sa.des[x[2]]-st.sa.cur[x[2]]));
+ $("#saSum").innerHTML=`<strong class="ui">${r.length}/${a.length} beceri değerlendirildi.</strong> `+(gaps.length?`En büyük açıklar: ${gaps.slice(0,3).map(x=>`${esc(x[0])} (${LV[st.sa.cur[x[2]]-1]} → ${LV[st.sa.des[x[2]]-1]})`).join("; ")}.`:"Hedef düzeyleri işaretledikçe en büyük açıklar burada görünecek.")}
+$("#saAdd").onclick=()=>{st.sa.cust.push({n:"",d:""});save();saR()};
+$("#saCsv").onclick=()=>dl("arastirma_becerileri_oz_degerlendirme.csv",[["Beceri","Açıklama","Bugünkü düzey","Hedef düzey"]].concat(allSa().map(x=>[x[0],x[1],st.sa.cur[x[2]]?LV[st.sa.cur[x[2]]-1]:"",st.sa.des[x[2]]?LV[st.sa.des[x[2]]-1]:""])));
+$("#saPrint").onclick=()=>window.print();
+saR();
+
+// 8. araç bulucu
+const STR=[["quant","Nicel analiz / istatistik"],["text","Metin ve nitel veri"],["viz","Görselleştirme ve hikâye"],["data","Veri yönetimi ve temizleme"],["survey","Anket ve veri toplama"],["design","Görsel tasarım"]];
+const TL=[
+ {n:"Elektronik tablo yazılımları",ex:"Excel, Google Sheets, Numbers…",tags:["quant","viz","data"],code:"no",g:"Küçük ve orta veri setlerinin temel analizi ve görselleştirilmesi.",b:"Çoğu kurumda genellikle ücretsiz erişilebilir, iyi bilinir; veri ve çıktıları paylaşmak kolay. Hesaplama ve veri işleme için temel formül ve fonksiyonlar.",l:"İstatistik analiz ve veri temizleme gibi ileri yeteneklerde sınırlı. Büyük verili karmaşık analizlerde yönetim ve iş birliği zor. Elle veri girişi ve işleme nedeniyle hataya açık."},
+ {n:"Kullanıcı dostu, arayüz tabanlı (GUI) platformlar",ex:"Power BI, Tableau, SPSS…",tags:["quant","viz"],code:"no",g:"Neyi analiz etmek istediğini bilen ama tekniklerin ardındaki kodu ya da matematiği öğrenmek istemeyenler; içgörüleri etkili ileten etkileyici paneller ve raporlar.",b:"Sürükle-bırak özellikleri, hazır paneller, sezgisel iş akışları ve şablonlar kodlama ihtiyacını ve öğrenme süresini azaltır. Çoğunda kapsamlı belgeler; veriyi etkileşimli keşif.",l:"Abonelik ücreti gerekebilir. Özellikle ileri işlevler için eğitim gerekir. Aracı bilmeyenlerle paylaşmak zor olabilir. Gerçekten etkili görseller yine tasarım becerisi ve ilkeleri ister."},
+ {n:"Kodlama tabanlı seçenekler",ex:"R, Python (Pandas, Statsmodels)…",tags:["quant","data","text","viz"],code:"yes",g:"Derinlemesine istatistik analiz, model kurma ve özelleştirme.",b:"Karmaşık analizler için son derece esnek ve güçlü. Açık kaynak seçenekler ücretsiz. Öğrenme ve sorun çözme için geniş çevrimiçi topluluklar; öğrenme eğrisini azaltan yapay zekâ araçları artıyor.",l:"Programlama bilgisi gerekir, öğrenme eğrisi dik. Hata ayıklama zaman alabilir. Teknik olmayan kullanıcılar için ideal değil. Şirket estetiğine uygun kişiselleştirilmiş görseller zahmetli olabilir."},
+ {n:"Veri hikâyesi araçları",ex:"Chartic, Flourish…",tags:["viz"],code:"no",g:"Animasyon ve etkileşimle ilgi çekici veri anlatıları oluşturmak.",b:"Veri hikâyesi için tasarlanmış şablon ve özelliklerle başlanabilir; izleyici ilgisini artırır.",l:"Genel amaçlı görselleştirme araçlarına göre özelleştirme seçenekleri sınırlı olabilir."},
+ {n:"Tasarım yazılımları",ex:"Canva, Adobe Illustrator (temel)…",tags:["design","viz"],code:"no",g:"Görsellerin estetiğini ve görsel tasarımını geliştirmek (biraz tasarım becerin varsa).",b:"Cilalı görseller için geniş tasarım araçları ve özellikleri.",l:"Etkili kullanım için tasarım bilgisi gerekir; diğer görselleştirme araçlarının yerini tutmaz."},
+ {n:"Nitel veri analizi",ex:"RapidMiner, Lexalytics, Qualtrics gibi metin analitiği platformları…",tags:["text"],code:"no",g:"Görüşmelerden, anketlerden, açık uçlu yanıtlardan tema ve örüntüleri kodlamak.",b:"Sistematik kodlama ve sınıflandırmayı kolaylaştırır; büyük metin hacimlerinde süreyi çok azaltır; analiz tutarlılığını artırabilir.",l:"Özellikle kurumsal lisanslarda pahalı olabilir; eğitim gerekir. Önemli bireysel bakış açılarının “kalabalıkta kaybolmaması” için bir uzman gerekir. Örüntü tanıma ve sayısallaştırmada istisnai, ama insan deneyimi, bağlam, incelik ve kültürel farkları değerlendirmede insanlardan hâlâ sorunlu biçimde zayıf."},
+ {n:"Anket platformları",ex:"Qualtrics, SurveyMonkey…",tags:["survey"],code:"no",g:"Anket, soru formu ve kısa oylamalarla veri toplama; temel analiz ve raporlama.",b:"Anket oluşturmak ve dağıtmak için kullanıcı dostu arayüzler; çeşitli soru türleri ve mantık özellikleri; veri toplama ve analizi bir ölçüde otomatikleştirebilir.",l:"İleri analitikte sınırlı. İleri özellikler ve büyük hacimler için ücret gerekebilir. Bazıları için anket tasarımında yanlış bir kalite duygusu yaratıp güvenirlik ve geçerliği zayıflatabilir. Uygun kullanım için veri mahremiyeti ve güvenlik bilgisi gerekir."},
+ {n:"Veri yönetimi platformları",ex:"Tableau Prep, Alteryx…",tags:["data"],code:"no",g:"Kapsamlı kodlama bilgisi olmadan veri temizleme ve dönüştürmeyi kolaylaştırmak.",b:"Temizleme ve işleme için görsel arayüzler; elle işlemeden kaynaklanan hataları azaltır; popüler görselleştirme araçlarıyla kolay bütünleşir.",l:"Abonelik ücreti gerekebilir; kodlama tabanlı seçeneklere göre daha az özelleştirilebilir."},
+ {n:"Bulut tabanlı veri ambarları",ex:"Snowflake, Amazon Redshift, Microsoft Azure Synapse Analytics…",tags:["data"],code:"yes",g:"Çeşitli kaynaklardan büyük veri setlerini güvenle depolamak, düzenlemek ve erişmek.",b:"Büyük veri için ölçeklenebilir depolama; ekipler arası iş birliği ve veri paylaşımı; verimli keşif ve analiz.",l:"Depolama ve işleme ihtiyaçlarına göre pahalı olabilir; yönetim ve bakım için teknik uzmanlık gerekebilir."},
+ {n:"Veritabanı platformları",ex:"SQL Server, MySQL…",tags:["data"],code:"yes",g:"Yapılandırılmış veriyi ilişkisel veritabanlarında depolamak ve yönetmek.",b:"Karmaşık ilişkili büyük veri setleri için sağlam; SQL sorgularıyla verimli erişim ve işleme.",l:"Veritabanı yönetimi ve sorgu yazımı için teknik uzmanlık gerekir; yapılandırılmamış veri kaynakları için ideal değil."}];
+st.tf=st.tf||[];
+function tf(){$("#tfStr").innerHTML=STR.map(([k,n])=>`<button class="chip ${st.tf.includes(k)?"on":""}" data-tf="${k}">${n}</button>`).join("");
+ $$("[data-tf]").forEach(b=>b.onclick=()=>{const k=b.dataset.tf;const i=st.tf.indexOf(k);if(i<0)st.tf.push(k);else st.tf.splice(i,1);save();tf()});
+ const code=st.tfc;const sc=t=>(st.tf.length?t.tags.filter(x=>st.tf.includes(x)).length:0)-(code==="no"&&t.code==="yes"?5:0)+(code==="yes"&&t.code==="yes"?.5:0);
+ const list=TL.map(t=>({...t,s:sc(t)})).sort((a,b)=>b.s-a.s);const any=st.tf.length||code!=="any";
+ $("#tools").innerHTML=list.map(t=>`<div class="tool ${any&&t.s<=0?"dim":""} ${any&&t.s>0?"hit":""}"><div class="t">${t.n}</div><div class="ex">${t.ex} · ${t.code==="yes"?"teknik bilgi/kod gerektirir":"kodsuz kullanılabilir"}</div><dl><dt>NE İÇİN İYİ</dt><dd>${t.g}</dd><dt>FAYDALAR</dt><dd>${t.b}</dd><dt>SINIRLILIKLAR</dt><dd>${t.l}</dd></dl></div>`).join("")}
+seg("#tfCode","tfc","any",tf);tf();
+
+// 9. katmanlar
+const TI=[["Yetenek sürecine ve analize özgü araçlar","--s4",55,"En dar kapsamlı: tek bir insan verisi türüne (performans, işe alım, öğrenme analitiği) ya da belirli bir analiz türüne (örgütsel ağ analizi) odaklananlar için. Analitik işlevleri olan çok sayıda yetenek yönetimi sistemi var; konuya özgü ve ilgili yetenekler sunarlar. Örneğin Cornerstone ya da Pluralsight gibi bir öğrenme yönetim sistemi (LMS) öğrenme etkinliklerinin ve etkinliğin inceliklerine özgü veri toplama, analiz ve raporlamayla gelir; Performica gibi bir performans yönetim sistemi farklı işlevlerle. Örgütsel ağ analizi (ONA) daha genel, graf tabanlı bir analiz türüdür; ama Polinode ya da Trustsphere gibi platformlar sistemlerini açıkça kurum içi kullanım için kurarak bu analizi yalnızca insan analitiği amacıyla kullanmak isteyen kurumlar için süreci kolaylaştırır."],
+ ["İnsan analitiği platformları","--s1",78,"Biraz daha geniş ama hâlâ insan analitiğine özgü: insan analitiği süreçlerinin tamamını kapsayacak şekilde tasarlanmış platformlar. Visier, OneModel ya da Worklytics gibi platformlar kurumlardaki insan verisi ve süreçleriyle çalışmanın zorlukları ve çıktıları için tasarlanmıştır ama olası yetenek süreçlerinin çoğunu tek sistemde değerlendirmeye izin verir. Geniş bir uygulama yelpazesini kapsamak isteyen tek bir uygulayıcı ya da küçük bir ekip için özellikle yararlı; birden çok veri ve analiz türüne tek sistemden erişildiği için eğitim ihtiyacını da azaltır. Ancak kullanıcının insan analitiği ilkelerini bilmesini, belirli bir durum için en yararlı özellikleri seçmek ve çıktıları doğru yorumlamak için emek ve yaratıcılık gerektirir."],
+ ["Bilgi sistemleri","--s3",100,"En geniş kategori. İnsan analitiği verisinin çoğu bir İK Bilgi Sistemi (HRIS), İnsan Sermayesi Yönetimi (HCM) sistemi ya da benzerinde; bir kısmı da Kurumsal Kaynak Planlama (ERP) ya da finans sistemlerinde tutulur. Kapsamları değişir: bazıları çalışan verisiyle ilgili her şeyi (bordro, zaman yönetimi, performans, öğrenme, uyum) kapsar, bazıları yaşam döngüsünün belirli yönlerine odaklanır. Örnekler: Oracle HCM, Workday, SAP ve diğerleri. Bir tür İK bilgi sistemi bugün iş gereksinimidir; kurum içindeki profesyoneller mevcut sistemin işlevleriyle hemen başlayabilir, uzman çözümlere göre daha az başlangıç yatırımı gerekir. Genel veri araçlarıyla birlikte pek çokları için en hızlı ve ekonomik seçenek olabilir; çoğu HRIS yetenek yönetimi ya da insan analitiği eklentileri de sunar. Dezavantajı: kurumun operasyonel süreçlerini karşılamak için gereken genişlik nedeniyle temel işlevlere odaklanırlar, insan analitiğine özgü işlevsellikte sınırlı olabilirler ve özelleştirme çoğunlukla önceden tanımlı yapılandırma seçenekleriyle sınırlıdır."]];
+st.tier=st.tier??0;
+function tiers(){$("#tiers").innerHTML=TI.map((t,i)=>`<button class="tier ${st.tier===i?"on":""}" data-ti="${i}" style="width:${t[2]}%;background:var(${t[1]})">${t[0]}</button>`).join("")+`<div class="small ui" style="font-weight:700">↑ daha dar ve konuya özgü · daha geniş ve kapsamlı ↓</div>`;
+ $$("[data-ti]").forEach(b=>b.onclick=()=>{st.tier=+b.dataset.ti;save();tiers()});$("#tierOut").innerHTML=`<strong class="ui">${TI[st.tier][0]}</strong><p style="margin:.4em 0 0">${TI[st.tier][1]}</p>`}
+tiers();
+
+// 10. R / Python
+function rp(){const r=+$("#rN").value,p=+$("#pN").value;$("#rV").textContent=r;$("#pV").textContent=p;
+ $("#rpOut").innerHTML=r===p?"Eşit: hangisinin insan analitiğine özgü uygulamalarını daha çok bulabileceğine ve hangisiyle daha keyifli öğrendiğine bak.":`<strong class="ui">${r>p?"R":"Python"}</strong> ile başlamak daha mantıklı görünüyor: birlikte çalışabileceğin ${Math.max(r,p)} kişi onu kullanıyor. Örnek paylaşacak, takıldığında yardım edecek insanlar seçimde dilin kendisinden daha belirleyici.`}
+["#rN","#pN"].forEach(s=>$(s).oninput=rp);rp();
+
+// ihtiyaç matrisi
+st.mx=st.mx||{needs:[["Kişisel","Açık uçlu anket yorumlarını hızlı kodlamak"],["Kişisel","Panelleri kodsuz hazırlamak"],["İş","Ayrılma eğilimlerini birim bazında izlemek"],["İş","Mevcut İK bilgi sistemiyle bütünleşme"]],tools:["Araç A","Araç B"],v:{},extra:{}};
+const SC=["0 · hiç","1 · kısmen","2 · çoğunlukla","3 · tam"];
+function mx(){const M=st.mx;$("#mx").innerHTML=`<tr><th style="width:90px">Tür</th><th>İhtiyaç</th>${M.tools.map((t,j)=>`<th><input type="text" data-tn="${j}" value="${esc(t)}" aria-label="Araç adı"></th>`).join("")}<th style="width:30px"></th></tr>`+
+ M.needs.map((n,i)=>`<tr><td><select data-nt="${i}"><option ${n[0]==="Kişisel"?"selected":""}>Kişisel</option><option ${n[0]==="İş"?"selected":""}>İş</option></select></td><td><input type="text" data-nn="${i}" value="${esc(n[1])}"></td>${M.tools.map((_,j)=>`<td><select data-v="${i}_${j}">${'<option value="">—</option>'+SC.map((s,k)=>`<option value="${k}" ${M.v[i+"_"+j]===k?"selected":""}>${s}</option>`).join("")}</select></td>`).join("")}<td><button class="btn ghost sm" data-nd="${i}" aria-label="Satırı sil">×</button></td></tr>`).join("")+
+ `<tr><td></td><td class="small">Ek özellikler / notlar</td>${M.tools.map((_,j)=>`<td><input type="text" data-ex="${j}" value="${esc(M.extra[j]||"")}"></td>`).join("")}<td></td></tr>`+
+ `<tr class="tot"><td></td><td>Uyum puanı</td>${M.tools.map((_,j)=>{const s=M.needs.reduce((a,_,i)=>a+(M.v[i+"_"+j]||0),0);return `<td>${s} / ${M.needs.length*3}</td>`}).join("")}<td></td></tr>`;
+ $$("[data-tn]").forEach(i=>i.onchange=()=>{M.tools[i.dataset.tn]=i.value;save();mxOut()});$$("[data-nn]").forEach(i=>i.onchange=()=>{M.needs[i.dataset.nn][1]=i.value;save()});
+ $$("[data-nt]").forEach(s=>s.onchange=()=>{M.needs[s.dataset.nt][0]=s.value;save();mxOut()});$$("[data-v]").forEach(s=>s.onchange=()=>{M.v[s.dataset.v]=s.value===""?undefined:+s.value;save();mx()});
+ $$("[data-ex]").forEach(i=>i.onchange=()=>{M.extra[i.dataset.ex]=i.value;save()});$$("[data-nd]").forEach(b=>b.onclick=()=>{const k=+b.dataset.nd;M.needs.splice(k,1);const nv={};Object.entries(M.v).forEach(([key,val])=>{const[i,j]=key.split("_").map(Number);if(i<k)nv[i+"_"+j]=val;else if(i>k)nv[(i-1)+"_"+j]=val});M.v=nv;save();mx()});mxOut()}
+function mxOut(){const M=st.mx;const sc=M.tools.map((t,j)=>({t,s:M.needs.reduce((a,_,i)=>a+(M.v[i+"_"+j]||0),0),p:M.needs.reduce((a,n,i)=>a+(n[0]==="Kişisel"?(M.v[i+"_"+j]||0):0),0),b:M.needs.reduce((a,n,i)=>a+(n[0]==="İş"?(M.v[i+"_"+j]||0):0),0)})).sort((a,b)=>b.s-a.s);
+ const anyV=Object.values(M.v).some(v=>v!=null);if(!anyV){$("#mxOut").innerHTML='<span class="small">Hücreleri doldurdukça uyum karşılaştırması burada görünecek.</span>';return}
+ const top=sc[0];const weak=M.tools.map((t,j)=>({t,z:M.needs.filter((n,i)=>M.v[i+"_"+j]===0).map(n=>n[1])})).filter(x=>x.z.length);
+ $("#mxOut").innerHTML=`<strong class="ui">${esc(top.t)}</strong> en yüksek uyumu gösteriyor (${top.s} puan; kişisel ${top.p}, iş ${top.b}).`+(top.b===0?' <span class="no">İş ihtiyaçlarını hiç karşılamıyor; şu an için en iyi seçenek olmayabilir.</span>':"")+(weak.length?`<div class="small" style="margin-top:4px">Hiç karşılanmayan ihtiyaçlar: ${weak.map(w=>`${esc(w.t)} → ${w.z.map(esc).join(", ")}`).join(" · ")}</div>`:"")}
+$("#mxRow").onclick=()=>{st.mx.needs.push(["İş",""]);save();mx()};$("#mxCol").onclick=()=>{st.mx.tools.push("Araç "+String.fromCharCode(65+st.mx.tools.length));save();mx()};
+$("#mxCsv").onclick=()=>dl("ihtiyac_analizi_matrisi.csv",[["Tür","İhtiyaç"].concat(st.mx.tools)].concat(st.mx.needs.map((n,i)=>[n[0],n[1]].concat(st.mx.tools.map((_,j)=>st.mx.v[i+"_"+j]??"")))).concat([["","Ek özellikler"].concat(st.mx.tools.map((_,j)=>st.mx.extra[j]||""))]));
+mx();
+
+// güvenlik
+const SEC=["Satıcı GDPR, CCPA ve (Türkiye'de) KVKK gibi düzenlemelere hâkim ve uyumunu belgeleyebiliyor.","Güçlü veri güvenliği önlemleri var (şifreleme, erişim yetkilendirme, denetim kayıtları).","Mevcut İK ve iş sistemlerimizle sorunsuz bütünleşebiliyor.","Değişen ihtiyaçlarımıza uyum sağlayıp gelecekteki sorunlara genişleyebilir.","Yardım hizmetleri, eğitim kaynakları ve kullanıcı topluluğu var.","Uygulama, destek ve bakım dahil toplam maliyet net."];
+st.sec=st.sec||{};$("#sec").innerHTML=SEC.map((s,i)=>`<li><label><input type="checkbox" data-sc="${i}" ${st.sec[i]?"checked":""}>${s}</label></li>`).join("");
+function secO(){const n=SEC.filter((_,i)=>st.sec[i]).length;$("#secOut").innerHTML=!st.sec[0]?'<span class="no">Satıcı veri mahremiyeti düzenlemelerine yabancı görünüyorsa bu bir kırmızı bayrak.</span>':`${n}/${SEC.length} ölçüt karşılanıyor.`}
+$$("[data-sc]").forEach(c=>c.onchange=()=>{st.sec[c.dataset.sc]=c.checked;save();secO()});secO();
+
+// ROI
+function roi(){const v=[1,2,3,4,5,6,7].map(i=>+$("#c"+i).value||0);$("#c7v").textContent=v[6];const yrs=Math.max(1,v[3]);const tco=v[0]*yrs+v[1]+v[2]*yrs;const claim=v[4]*v[5]*yrs;const real=claim*v[6]/100;
+ const r=(x)=>tco?((x-tco)/tco*100):0;
+ $("#roiOut").innerHTML=`<div class="stats"><div class="stat"><b>${fmt(tco,0)}</b><span>${yrs} yıllık toplam maliyet (bin ₺)</span></div><div class="stat"><b>${fmt(claim,0)}</b><span>Vaat edilen fayda</span></div><div class="stat"><b style="color:${real>=tco?css("--ok"):css("--bad")}">${fmt(real,0)}</b><span>Gerçekçi fayda</span></div></div><div class="small">Vaat edilen getiri: %${fmt(r(claim),0)} · Gerçekçi getiri: <strong style="color:${real>=tco?css("--ok"):css("--bad")}">%${fmt(r(real),0)}</strong>. ${real<tco?"Gerçekçi senaryoda araç maliyetini karşılamıyor.":"Gerçekçi senaryoda bile maliyetini karşılıyor."} Lisansın yanında uygulama, destek ve bakım maliyetlerini unutma; gerçek getiri, aracın kurumsal ihtiyaçlarla örtüşmesinden gelir.</div>`}
+[1,2,3,4,5,6,7].forEach(i=>$("#c"+i).oninput=roi);roi();redraws.push(roi);
+
+// plan
+st.pl=st.pl||{};[1,2,3,4,5,6].forEach(i=>{const el=$("#pl"+i);el.value=st.pl[i]||"";el.oninput=()=>{st.pl[i]=el.value;save()}});
+
+// 11. test
+const Q=[
+ {q:"Bir anketten veri toplayıp memnuniyeti anlamak için analiz etmek…",o:["her zaman araştırmadır","analizdir; araştırma için güvenilirlik, yanlılık ve doğrulamayı güvence altına alan bir yöntem gerekir","hiçbir işe yaramaz","yalnızca akademide yapılır"],a:1,e:"Her araştırma analiz içerir ama her analiz araştırma değildir."},
+ {q:"Ücret ile memnuniyet arasında güçlü korelasyon buldun. Araştırmacı ilk ne yapar?",o:["Ücretleri artırmayı önerir","İş düzeyi gibi diğer değişkenleri kontrol eder ve alternatif açıklamaları sorar","Analizi bitirir","Korelasyonu nedensellik olarak raporlar"],a:1,e:"Üst düzeydekilerin ücreti de yüksektir; ayrıca ödüller gibi iç içe değişkenler olabilir."},
+ {q:"“Sonuçlar başka gruplara, zamanlara, yerlere ne kadar uygulanabilir?” hangi ölçüttür?",o:["Güvenirlik","Geçerlik","Aktarılabilirlik","Uygulanabilirlik"],a:2,e:"Güvenirlik tutarlılık, geçerlik doğru şeyi ölçme, uygulanabilirlik iş için yararlılıktır."},
+ {q:"İnsan analitiğindeki ölçülerin çoğu neden “vekil ölçü”dür?",o:["Veri pahalı olduğu için","Ölçülen şeyler (memnuniyet gibi) soyut ve doğrudan ölçülemediği için","Yasal zorunluluk nedeniyle","Yazılımlar öyle istediği için"],a:1,e:"Bu yüzden güvenirlik ve geçerlik kanıtı göstermek güven için şarttır."},
+ {q:"Yazara göre geçerliğe nereden başlamalı?",o:["Ekolojik geçerlik","Yapı geçerliği: kapsam geçerliği en kolay, ölçüt geçerliği en güçlü","Dış geçerlik","Hiçbiri; güvenirlik yeterli"],a:1,e:"Bu kavramlarla başlayıp bilgini genişlet."},
+ {q:"Gönüllülerden oluşan büyük bir örneklem neden yine yanıltabilir?",o:["Büyük örneklem her zaman doğrudur","Kolayda örneklemedeki yanlılık örneklem büyüdükçe düzelmez","Gönüllüler hep yalan söyler","Örneklem çok küçük olduğu için"],a:1,e:"Simülasyonda gördüğün gibi temsil sorunu büyüklükle çözülmez."},
+ {q:"“Eğitimin performansa etkisi motivasyona göre değişir” hangi kavramdır?",o:["Aracılık","Düzenleyicilik","Faktör analizi","Kümeleme"],a:1,e:"Düzenleyicilik ilişkinin ne zaman var olduğunu, aracılık nasıl var olduğunu açıklar."},
+ {q:"A departmanını eğitip B'yi eğitmeyerek karşılaştırmak hangi tasarımdır?",o:["Deneysel","Yarı deneysel","Deneysel olmayan","Nitel"],a:1,e:"Kimin erişeceği manipüle ediliyor ama rastgele değil, mevcut kısıtlar içinde."},
+ {q:"Yazar teknoloji benimsemeye nereden başlamayı öneriyor?",o:["En popüler araçtan","Güçlü yönlerini tamamlayan araçlardan","En pahalı platformdan","Zayıf yönlerini kapatan araçlardan"],a:1,e:"Uzmanlaşmanın gücünden yararlanır ve teknoloji benimseme becerisi kazanırsın."},
+ {q:"Satıcı GDPR/CCPA gibi düzenlemelere yabancı görünüyorsa…",o:["Önemli değil","Bu bir kırmızı bayraktır","Daha ucuz olduğu anlamına gelir","Daha yenilikçi olduğu anlamına gelir"],a:1,e:"Güvenlik ve uyuma öncelik ver."}];
+st.quiz=st.quiz||{};
+function quiz(){$("#quiz").innerHTML=Q.map((x,i)=>`<div class="card" style="margin:12px 0"><div class="ui" style="font-weight:700">${i+1}. ${x.q}</div>${x.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("")}<div class="fb" id="qe${i}" style="display:none">${x.e}</div></div>`).join("");
+ $$("#quiz .opt").forEach(b=>b.onclick=()=>{st.quiz[b.dataset.q]=+b.dataset.o;save();paint()});paint()}
+function paint(){let sc=0,n=0;Q.forEach((x,i)=>{const ch=st.quiz[i];if(ch===undefined)return;n++;if(ch===x.a)sc++;
+ $$(`#quiz .opt[data-q="${i}"]`).forEach(b=>{const j=+b.dataset.o;b.classList.toggle("right",j===x.a);b.classList.toggle("wrong",j===ch&&ch!==x.a);b.disabled=true});$("#qe"+i).style.display="block"});
+ $("#score").innerHTML=n?`Skor: ${sc} / ${Q.length}${n===Q.length?' <button class="btn ghost" id="reset" style="margin-left:8px">Yeniden dene</button>':""}`:"";const r=$("#reset");if(r)r.onclick=()=>{st.quiz={};save();quiz()}}
+quiz();
+})();
+</script>
+<script>
+/* site gezinme: sayfa içi bağlantılar geçmişi doldurmasın, geri tuşu önceki sayfaya dönsün */
+(function(){document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1));var el=id?document.getElementById(id):null;if(!el)return;e.preventDefault();el.scrollIntoView({behavior:"smooth",block:"start"});try{history.replaceState(history.state,"","#"+id)}catch(_){}});
+document.addEventListener("keydown",function(e){if(e.altKey||e.ctrlKey||e.metaKey)return;var t=document.activeElement;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;var p=document.querySelector(e.key==="ArrowLeft"&&e.shiftKey?".pager .pv":e.key==="ArrowRight"&&e.shiftKey?".pager .nx":null);if(p&&p.href){location.href=p.href}});})();
+</script>
+</body>
+</html>
